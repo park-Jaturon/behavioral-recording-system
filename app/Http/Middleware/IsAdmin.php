@@ -18,7 +18,9 @@ class IsAdmin
     {
         if(auth()->user()->rank == 'admin'){
             return $next($request);
+        }else{
+            return redirect('home')->with('error', "ไม่ใช้admin");
         }
-        return redirect('home')->with('error', "ไม่ใช้admin");
+        
     }
 }
