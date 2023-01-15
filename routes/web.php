@@ -29,7 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->middleware('isadmin')->group(function(){
 Route::get('dashboard',[AdminControllre::class, 'index'])->name('admindashboard');
-Route::get('roomindex',[RoomController::class, 'roomindex'])->name('room.index');
+Route::get('room',[RoomController::class, 'roomindex'])->name('room.index');
+Route::get('room/add',[RoomController::class,'addroom'])->name('add.room');
 Route::get('manage/teacher',[ManageteacherController::class, 'manageteacherindex'])->name('index.manageteacher');
 Route::get('manage/parents',[ManagesparentsController::class,'manageparentsindex'])->name('index.manageparents');
 Route::get('manage/student',[ManagestudentController::class, 'managestudentindex'])->name('index.managestudent');

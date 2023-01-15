@@ -11,4 +11,9 @@ class RoomController extends Controller
     {
         return view('admin.roomindex');
     }
+
+    public function addroom()
+    {
+        return view('admin.roomadd');
+    }
 }
