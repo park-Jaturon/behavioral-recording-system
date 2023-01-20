@@ -21,5 +21,10 @@ class CreateUserSeeder extends Seeder
             'rank' => 'admin',
             'password' => Hash::make('a123456789'),
         ]);
+        DB::table('users')->insert([
+            'users_name' => 'Teacher1',
+            'rank' => 'teacher',
+            'password' => Hash::make('t123456789'),
+        ]);
     }
 }

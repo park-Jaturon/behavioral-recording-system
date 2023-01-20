@@ -24,6 +24,12 @@ class User extends Authenticatable
         'rank_id',
     ];
 
+    // public function getteacher()
+    // {
+        
+    //     return $this->belongsTo(Teacher::class,'rank_id','teacher_id');
+    // }
+
     /**
      * The attributes that should be hidden for serialization.
      *

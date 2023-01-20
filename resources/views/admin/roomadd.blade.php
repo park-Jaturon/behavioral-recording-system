@@ -8,29 +8,27 @@
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
-                        <form action="" method="post">
+                        @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        {{ $message }}
+                    </div>
+                @endif
+                        <form action="{{route('store.room')}}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <div class="mb-3">
-                                <label for="" class="form-label">ห้อง</label>
-                                <input type="text" name="" id="" class="form-control" placeholder=""
-                                    aria-describedby="helpId">
-                                <small id="helpId" class="text-muted">Help text</small>
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col-8      ">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">ห้อง</label>
+                                        <input type="text" name="roomname" id="" class="form-control"
+                                            placeholder="" aria-describedby="helpId">
+                                        <small id="helpId" class="text-muted">Help text</small>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">ครูประจำห้อง</label>
-                                <input type="text" name="" id="" class="form-control" placeholder=""
-                                    aria-describedby="helpId">
-                                <small id="helpId" class="text-muted">Help text</small>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">ครูพี่เลี้ยง</label>
-                                <input type="text" name="" id="" class="form-control" placeholder=""
-                                    aria-describedby="helpId">
-                                <small id="helpId" class="text-muted">Help text</small>
-                            </div>
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                            
+                            <div class="row mb-0 ">
+                                <div class="col-md-8 offset-md-4 ">
+                                    <button type="submit" class="btn btn-primary float-end">
                                         {{ __('บันทึก') }}
                                     </button>
                                 </div>

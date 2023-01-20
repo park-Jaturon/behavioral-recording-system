@@ -52,9 +52,13 @@ class LoginController extends Controller
         {
             if (auth()->user()->rank == 'admin') {
                return redirect()->route('admindashboard')->withSuccess('Admin');
-            } else {
+            } elseif(auth()->user()->rank == 'teacher'){
+                return redirect()->route('teacherhome')->withSuccess('Teacher');
+            }
+            else {
                 return redirect()->route('home');
             }
+           
             
         }else{
             return redirect()->route('login')

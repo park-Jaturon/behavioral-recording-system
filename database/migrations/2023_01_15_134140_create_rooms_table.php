@@ -14,11 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rooms', function (Blueprint $table) {
-            $table->id('room_id');
+            $table->bigIncrements('rooms_id');
             $table->string('room_name',20)->comment('ชื่อห้อง');
-            $table->tinyInteger('room_teacher')->comment('ครูประจำห้อง')->default(0);
-            $table->tinyInteger('room_aide_teacher')->comment('ครูพี่เลี้ยง')->default(0);
-            $table->timestamps();
         });
     }
 

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('parents', function (Blueprint $table) {
-            $table->id('parents_id');
+            $table->bigIncrements('parents_id');
             $table->string('prefix_name',20)->comment('คำนำหน้าชื่อ');
             $table->string('first_name',50)->comment('ชื่อ');
             $table->string('last_name',50)->comment('นามสกุล');
