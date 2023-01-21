@@ -20,6 +20,6 @@ class Teacher extends Model
         'first_name',
         'last_name',
         'rank_teacher',
-        'teacher_ image',
+        'teacher_image',
     ];
 }

@@ -26,9 +26,9 @@ class RoomController extends Controller
           
         ]);
 
-        $room = new Room();
-        $room->room_name = $request->roomname;
-        $room->save();
+        Room::create([
+            'room_name' => $request->roomname,
+        ]);
         return redirect()->back()->with('success','บันทึกข้อมูลเสร็จสิ้น');
     }
 }

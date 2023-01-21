@@ -35,6 +35,8 @@ Route::get('room',[RoomController::class, 'roomindex'])->name('room.index');
 Route::get('room/add',[RoomController::class,'addroom'])->name('add.room');
 Route::post('add-room',[RoomController::class, 'storeroom'])->name('store.room');
 Route::get('manage/teacher',[ManageteacherController::class, 'manageteacherindex'])->name('index.manageteacher');
+Route::get('teacher/add',[ManageteacherController::class, 'addteachers'])->name('add.teacher');
+Route::post('add-teacher',[ManageteacherController::class, 'storeteacher'])->name('store.teacher');
 Route::get('manage/parents',[ManagesparentsController::class,'manageparentsindex'])->name('index.manageparents');
 Route::get('manage/student',[ManagestudentController::class, 'managestudentindex'])->name('index.managestudent');
 });

@@ -13,7 +13,7 @@
                         {{ $message }}
                     </div>
                 @endif
-                        <form action="{{route('store.room')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('store.room')}}" method="post">
                             @csrf
                             <div class="row justify-content-center align-items-center g-2">
                                 <div class="col-8      ">

@@ -11,4 +11,5 @@ class ManagestudentController extends Controller
     {
         return view('admin.managestudentindex');
     }
+
 }

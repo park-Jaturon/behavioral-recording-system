@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->bigIncrements('rooms_id');
             $table->string('room_name',20)->comment('ชื่อห้อง');
+            $table->timestamps();
         });
     }
 
