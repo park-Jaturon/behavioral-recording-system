@@ -38,6 +38,8 @@ Route::get('manage/teacher',[ManageteacherController::class, 'manageteacherindex
 Route::get('teacher/add',[ManageteacherController::class, 'addteachers'])->name('add.teacher');
 Route::post('add-teacher',[ManageteacherController::class, 'storeteacher'])->name('store.teacher');
 Route::get('manage/parents',[ManagesparentsController::class,'manageparentsindex'])->name('index.manageparents');
+Route::get('parents/add',[ManagesparentsController::class, 'addparents'])->name('add.parents');
+Route::post('add-parents',[ManagesparentsController::class, 'storeparents'])->name('store.parents');
 Route::get('manage/student',[ManagestudentController::class, 'managestudentindex'])->name('index.managestudent');
 });
 
