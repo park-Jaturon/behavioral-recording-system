@@ -16,9 +16,9 @@ class IsTeacher
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->rank == 'teacher'){
+        if (auth()->user()->rank == 'teacher') {
             return $next($request);
-        }else{
+        } else {
             return redirect('home')->with('error', "ไม่ใช้Teacher");
         }
     }

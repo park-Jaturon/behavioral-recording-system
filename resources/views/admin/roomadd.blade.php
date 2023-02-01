@@ -13,15 +13,18 @@
                         {{ $message }}
                     </div>
                 @endif
-                        <form action="{{route('store.room')}}" method="post">
+                        <form action="{{ empty( $dataRoom->rooms_id) ? route('store.room') : url('admin/room/update/' .  $dataRoom->rooms_id) }}" method="post">{{--route('store.room')--}}
+                            @if (!empty($dataRoom->rooms_id))
+                                @method('put')
+                            @endif
                             @csrf
                             <div class="row justify-content-center align-items-center g-2">
                                 <div class="col-8      ">
                                     <div class="mb-3">
                                         <label for="" class="form-label">ห้อง</label>
-                                        <input type="text" name="roomname" id="" class="form-control"
+                                        <input type="text" name="roomname" value="{{ old('roomname', $dataRoom->room_name) }}" class="form-control"
                                             placeholder="" aria-describedby="helpId">
-                                        <small id="helpId" class="text-muted">Help text</small>
+                                        {{-- <small id="helpId" class="text-muted">Help text</small> --}}
                                     </div>
                                 </div>
                             </div>

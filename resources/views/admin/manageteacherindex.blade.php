@@ -7,7 +7,7 @@
                 <a href="{{ route('add.teacher') }}" class=" btn btn-primary float-end">เพิ่ม</a>
             </div>
             <div class="table-responsive my-3">
-                <table class="table table-primary">
+                <table id="tbTeacher" class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">ชื่อ</th>
@@ -22,7 +22,17 @@
                                 <td>{{$teachers->prefix_name}}{{$teachers->first_name}} {{$teachers->last_name}}</td>
                                 <td>{{$teachers->rank_teacher}}</td>
                                 <td>{{$teachers->room_name}}</td>
-                                <td><img src="{{asset('uploads/teacher/'.$teachers->teacher_image)}}" width="150" height="150" alt=""></td>
+                                <td><img src="{{asset('uploads/teacher/'.$teachers->teacher_image)}}" width="100" height="120" alt=""></td>
+                                <td class="text-center">
+                                    <a class="btn btn-warning "href="{{ url('admin/teacher/edit/' . $teachers->teachers_id) }}"role="button">แก้ไข</a>
+                                </td>
+                                <td>
+                                    <div class="d-grid gap-2">
+                                        <button type="button" 
+                                            class="btn btn-danger delete-item"  data-teachers_id="{{$teachers->teachers_id}}">ลบ</button>
+                                        @vite(['resources/js/confirm-delete-teacher.js'])
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

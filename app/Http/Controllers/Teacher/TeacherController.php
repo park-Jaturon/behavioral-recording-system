@@ -13,10 +13,11 @@ class TeacherController extends Controller
 {
     public function home()
     {
-       $room = DB::table('rooms')
-        ->join('users','users.room_id','=','rooms.room_id')
-       ->get();
-            
-       return view('teacher.home-teacher',compact('room'));
+        $user = DB::table('users')
+            ->join('teachers', 'teachers.teachers_id', '=', 'users.rank_id')
+
+            ->get();
+
+        return view('teacher.home-teacher', compact('room'));
     }
 }
