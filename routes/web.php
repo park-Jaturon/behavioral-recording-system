@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ManageteacherController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\Teacher\CheckController;
+use App\Http\Controllers\Teacher\PostController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Models\Room;
 use Illuminate\Support\Facades\Route;
@@ -70,4 +71,10 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('check',[CheckController::class, 'index'])->name('index.check');
     Route::get('post-time/{student_id}',[CheckController::class, 'post_time']);
     Route::post('store/check/{student_id}',[CheckController::class, 'checktime'])->name('store.check');
+    Route::get('post/index',[PostController::class, 'index'])->name('index.post');
+    Route::get('post/add',[PostController::class, 'add_post'])->name('add.post');
+    Route::post('post/store',[PostController::class, 'store'])->name('store.post');
+    Route::get('post/edit/{posts_id}',[PostController::class, 'edit']);
+    Route::put('post/update/{posts_id}',[PostController::class, 'update']);
+    Route::delete('post/delete/{posts_id}',[PostController::class, 'delete']);
 });
