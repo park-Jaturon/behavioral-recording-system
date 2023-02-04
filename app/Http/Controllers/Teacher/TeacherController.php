@@ -15,9 +15,10 @@ class TeacherController extends Controller
     {
         $user = DB::table('users')
             ->join('teachers', 'teachers.teachers_id', '=', 'users.rank_id')
-
+            ->join('rooms','rooms.rooms_id','=','teachers.rooms_id')
+            ->join('students','students.rooms_id','=','rooms.rooms_id')
             ->get();
-
-        return view('teacher.home-teacher', compact('room'));
+// dd($user);
+        return view('teacher.home-teacher', compact('user'));
     }
 }

@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header text-center"> {{ $user[0]->room_name}}</div>
 
                     <div class="card-body">
                         @if ($message = Session::get('success'))
@@ -13,23 +13,31 @@
                                 {{ $message }}
                             </div>
                         @endif
+                        <div class="table-responsive">
+                            <table class="table table-striped table-fixed">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">เลขที่</th>
+                                        <th scope="col">ชื่อ-นามสกุล</th>
+                                        <th scope="col">เบอร์โทรบิดา</th>
+                                        <th scope="col">เบอร์โทรมารดา</th>
+                                        <th scope="col">เบอร์โทรถรับส่ง</th>
 
-                        @foreach ($room as $rooms)
-                            <div class="row justify-content-center align-items-center g-2 mb-2">
-                                <div class="col-4 float-start mx-2">
-                                    <h4 class="text-center">ครูประจำห้อง</h4>
-                                    <img src="{{ asset('uploadds/aideteacher/' . $rooms->teacher_image) }}"
-                                        class="rounded float-center" width="150" height="150"><br>
-                                        <h3><span>{{$rooms->room_teacher}}</span></h3>
-                                </div>
-                                <div class="col-4 float-end mx-2">
-                                    <h4 class="text-center">ครูพี่เลี้ยง</h4>
-                                    <img src="{{ asset('uploadds/aideteacher/' . $rooms->aide_teacher_image) }}"
-                                        class="rounded float-center" width="150" height="150"><br>
-                                      <h3><span>{{$rooms->room_aide_teacher}}</span></h3>  
-                                </div>
-                            </div>
-                        @endforeach
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($user as $users)
+                                        <tr class="">
+                                            <td class="text-center">{{ $users->number }}</td>
+                                            <td>{{ $users->prefix_name . $users->prefix_name . ' ' . $users->last_name }}</td>
+                                            <td>{{$users->telephone_number_father}}</td>
+                                            <td>{{$users->telephone_number_mother}}</td>
+                                            <td>{{$users->telephone_number_bus}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

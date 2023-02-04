@@ -24,7 +24,7 @@
                                 <td>{{$teachers->room_name}}</td>
                                 <td><img src="{{asset('uploads/teacher/'.$teachers->teacher_image)}}" width="100" height="120" alt=""></td>
                                 <td class="text-center">
-                                    <a class="btn btn-warning "href="{{ url('admin/teacher/edit/' . $teachers->teachers_id) }}"role="button">แก้ไข</a>
+                                    <a class="btn btn-warning " href="{{ url('admin/teacher/edit/' . $teachers->teachers_id) }}"role="button">แก้ไข</a>
                                 </td>
                                 <td>
                                     <div class="d-grid gap-2">
