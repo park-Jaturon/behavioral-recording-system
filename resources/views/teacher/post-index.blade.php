@@ -7,10 +7,10 @@
                 <a href="{{ route('add.post') }}" class=" btn btn-success float-end">เพิ่ม</a>
             </div>
             @if ($message = Session::get('successaddpost'))
-            <div class="alert alert-success">
-                {{ $message }}
-            </div>
-        @endif
+                <div class="alert alert-success">
+                    {{ $message }}
+                </div>
+            @endif
         </div>
         <div class="row justify-content-center align-items-center g-2 ">
 
@@ -28,9 +28,8 @@
                         </div>
                         @if (auth()->User()->rank == 'teacher')
                             <div class="card-footer text-end">
-                                <a href="{{ url('teacher/post/edit/'.$row->posts_id) }}" class="btn btn-primary">แก้ไข</a>
-                                <button type="button"  id="btPost"
-                                class="btn btn-danger delete-item "  data-posts_id="{{$row->posts_id}}">ลบ</button> {{-- data-parents_id="{{$parents->parents_id}}" --}}
+                                <a href="{{ url('teacher/post/edit/' . $row->posts_id) }}" class="btn btn-primary">แก้ไข</a>
+                                <button type="button" class="btn btn-danger delete-item " data-posts_id="{{ $row->posts_id }}">ลบ</button>                              
                             </div>
                         @endif
 

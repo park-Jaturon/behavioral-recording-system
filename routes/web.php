@@ -6,7 +6,9 @@ use App\Http\Controllers\Admin\ManagestudentController;
 use App\Http\Controllers\Admin\ManageteacherController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\Teacher\ActivityController;
 use App\Http\Controllers\Teacher\CheckController;
+use App\Http\Controllers\Teacher\EventsController;
 use App\Http\Controllers\Teacher\PostController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Models\Room;
@@ -24,13 +26,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->middleware('isadmin')->group(function () {
     Route::get('dashboard', [AdminControllre::class, 'index'])->name('admindashboard');
@@ -68,13 +70,25 @@ Route::prefix('admin')->middleware('isadmin')->group(function () {
 
 Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('home', [TeacherController::class, 'home'])->name('teacherhome');
+    /* Check */
     Route::get('check',[CheckController::class, 'index'])->name('index.check');
     Route::get('post-time/{student_id}',[CheckController::class, 'post_time']);
     Route::post('store/check/{student_id}',[CheckController::class, 'checktime'])->name('store.check');
+    /* Post */
     Route::get('post/index',[PostController::class, 'index'])->name('index.post');
     Route::get('post/add',[PostController::class, 'add_post'])->name('add.post');
     Route::post('post/store',[PostController::class, 'store'])->name('store.post');
     Route::get('post/edit/{posts_id}',[PostController::class, 'edit']);
     Route::put('post/update/{posts_id}',[PostController::class, 'update']);
     Route::delete('post/delete/{posts_id}',[PostController::class, 'delete']);
+    /* Event */ 
+    Route::get('event/inddex',[EventsController::class, 'index'] )->name('index.event');
+    Route::post('event/add',[EventsController::class, 'store'])->name('calendar.store');
+    Route::patch('event/update/{id}', [EventsController::class, 'update'])->name('calendar.update');
+    Route::delete('event/delete/{id}', [EventsController::class, 'destroy'])->name('calendar.destroy');
+    /* Activity */ 
+    Route::get('activity/index',[ActivityController::class, 'index'])->name('index.activity');
+    Route::get('activity/{events_id}',[ActivityController::class, 'image'])->name('image.activity');
+    Route::get('activity/show/{events_id}',[ActivityController::class, 'show'])->name('show.activity');
+    Route::post('activity/store',[ActivityController::class, 'store'])->name('store.activity');
 });

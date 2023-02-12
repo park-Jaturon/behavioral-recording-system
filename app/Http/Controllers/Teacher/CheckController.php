@@ -32,7 +32,7 @@ class CheckController extends Controller
         ->where('timecards.student_id', '=',$student_id)
         ->where( 'timecards.c_date','=', $datenow)
         ->get();
-        //   dd($check_student);
+           //dd($student);
         return view('teacher.post-time', compact('data', 'timenow', 'datenow','student','check_student'));    //,'student'
     }
 

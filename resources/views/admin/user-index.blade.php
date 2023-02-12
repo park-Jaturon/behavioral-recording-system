@@ -32,7 +32,7 @@
                                             <td>
                                                 <button type="button" class="btn btn-danger delete-item"
                                                     data-rooms_id="{{ $users->users_id }}">ลบ</button>
-                                                @vite(['resources/js/confirm-delete-room.js'])
+                                                {{-- @vite(['resources/js/confirm-delete-room.js']) --}}
                                             </td>
                                         </tr>
                                     @endforeach
