@@ -21,7 +21,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">เนื้อความ</label>
-                                <textarea name="description" id="summernote" rows="3">{{ old('description',$data->p_description) }}</textarea>{{-- ,$data->description --}}
+                                <textarea name="description" id="editor" rows="3">{{ old('description',$data->p_description) }}</textarea>{{-- ,$data->description --}}
                             </div>
                             <button type="submit" class="btn btn-primary float-end">
                                 {{ __('บันทึก') }}
@@ -32,5 +32,11 @@
             </div>
         </div>
     </div>
-    @vite(['resources\js\description-post.js'])
+    
 @endsection
+
+@section('script')
+<script src="\js\ckeditor-description.js"></script>
+@endsection
+
+

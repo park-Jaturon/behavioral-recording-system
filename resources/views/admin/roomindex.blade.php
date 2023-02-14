@@ -36,34 +36,8 @@
             </div>
         </div>
     </div>
+@endsection
 
-    <script>
-        document.querySelector('#tbRoom').addEventListener('click', (e) => {
-            if (e.target.matches('.delete-item')) {
-                console.log(e.target.dataset.rooms_id);
-                Swal.fire({
-                    title: 'Are you sure delete?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        axios.delete($url + '/admin/room/delete/' + e.target.dataset.rooms_id).then((
-                            response) => {
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            );
-                            setTimeout(() => {
-                                window.location.href = $url + '/admin/room';
-                            }, 2000);
-                        });
-                    }
-                });
-            }
-        });
-    </script>
+@section('script')
+<script src="\js\confirm-delete-room.js"></script>
 @endsection

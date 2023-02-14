@@ -1,38 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                   <div class="container">
-                    <form>
-                        <div class="mb-3 row">
-                            <label for="inputName" class="col-4 col-form-label">Name</label>
-                            <div class="col-8">
-                                <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Name">
+                    <div class="card-body">
+                        <form action="{{url('teacher/activity/store/'.$event->events_id)}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-3 row">
+                                <label for="staticTitle" class="col-sm-2 col-form-label">เรื่อง</label>
+                                <div class="col-sm-10">
+                                  <input type="text" readonly class="form-control-plaintext" id="staticTitle" value="{{date('d-m-Y ', strtotime($event->start)).' '.$event->title}}">
+                                </div>
+                              </div>
+                              <div class="mb-3 row">
+                                <label for="inputImages" class="col-sm-2 col-form-label">รูป</label>
+                                <div class="col-sm-10">
+                                  <input type="file" class="form-control" id="inputPassword" name="images[]" multiple>
+                                </div>
+                              </div>
+                            <div class="row mb-0 ">
+                                <div class="col-md-8 offset-md-4 ">
+                                    <button type="submit" class="btn btn-primary float-end">
+                                        {{ __('บันทึก') }}
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <fieldset class="mb-3 row">
-                            <legend class="col-form-legend col-4">Group name</legend>
-                            <div class="col-8">
-                                you can use radio and checkboxes here
-                            </div>
-                        </fieldset>
-                        <div class="mb-3 row">
-                            <div class="offset-sm-4 col-sm-8">
-                                <button type="submit" class="btn btn-primary">Action</button>
-                            </div>
-                        </div>
-                    </form>
-                   </div>
-                    <input class="form-control" type="text" value="{{$event->title}}" aria-label="readonly input example" readonly>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

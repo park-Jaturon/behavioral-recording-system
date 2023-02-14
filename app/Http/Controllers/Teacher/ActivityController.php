@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
 use App\Models\Events;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ActivityController extends Controller
@@ -13,25 +15,35 @@ class ActivityController extends Controller
     public function index()
     {
         $event = Events::all();
-             
-         return view('teacher.activity-index',compact('event'));
+
+        return view('teacher.activity-index', compact('event'));
     }
 
     public function image($events_id)
     {
-        return view('teacher.activity-image',compact('events_id'));
+        return view('teacher.activity-image', compact('events_id'));
     }
 
-    public function show($events_id)
+    public function add($events_id)
     {
-        $event = Events::find($events_id);
-  
-        return response()->json($event);
+        $event = Events::findOrFail($events_id);
+
+        return view('teacher.add-activity', compact('event'));
     }
 
-    public function store(Request $request)
+    public function store_activity(Request $request, $events_id)
     {
-        $data = $request;
-        dd($data);
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imageName = 'image-' . time() . rand(1, 1000) . '.' . $image->extension();
+                $image->move(public_path('uploads/activity/'), $imageName);
+                Activity::create([
+                    'events_id' => $events_id,
+                    'activity_images' => $imageName
+                ]);
+            }
+        }
+
+        return redirect(route('index.activity'))->with('success', 'บันทึกรูปกกิจกกรรมเสร็จสิ้น');
     }
 }

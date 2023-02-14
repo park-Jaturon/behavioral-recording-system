@@ -39,5 +39,10 @@
 
         </div>
     </div>
-    @vite(['resources\js\confirm-delete-post.js'])
+   
+    
+@endsection
+
+@section('script')
+<script src="\js\confirm-delete-post.js"></script>
 @endsection

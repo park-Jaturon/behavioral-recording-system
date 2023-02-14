@@ -89,6 +89,6 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     /* Activity */ 
     Route::get('activity/index',[ActivityController::class, 'index'])->name('index.activity');
     Route::get('activity/{events_id}',[ActivityController::class, 'image'])->name('image.activity');
-    Route::get('activity/show/{events_id}',[ActivityController::class, 'show'])->name('show.activity');
-    Route::post('activity/store',[ActivityController::class, 'store'])->name('store.activity');
+    Route::get('activity/add/{events_id}',[ActivityController::class, 'add'])->name('add.activity');
+    Route::post('activity/store/{events_id}',[ActivityController::class, 'store_activity'])->name('store.activity');
 });
