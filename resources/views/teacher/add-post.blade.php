@@ -36,7 +36,17 @@
 @endsection
 
 @section('script')
-<script src="\js\ckeditor-description.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ),{
+            ckfinder: {
+                uploadUrl: '{{route('ckedditor.upload').'?_token='.csrf_token()}}',
+    }
+        })
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection
 
 

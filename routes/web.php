@@ -77,6 +77,7 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     /* Post */
     Route::get('post/index',[PostController::class, 'index'])->name('index.post');
     Route::get('post/add',[PostController::class, 'add_post'])->name('add.post');
+    Route::post('post/ckeditor/upload',[PostController::class, 'uploadimage'])->name('ckedditor.upload');
     Route::post('post/store',[PostController::class, 'store'])->name('store.post');
     Route::get('post/edit/{posts_id}',[PostController::class, 'edit']);
     Route::put('post/update/{posts_id}',[PostController::class, 'update']);

@@ -13,13 +13,30 @@ class PostController extends Controller
     public function index()
     {
         $post = Post::all();
-        return view('teacher.post-index',compact('post'));
+       
+        return view('teacher.post-index', compact('post'));
     }
 
     public function add_post()
     {
         $data = new  Post();
-        return view('teacher.add-post',compact('data'));
+        return view('teacher.add-post', compact('data'));
+    }
+
+    public function uploadimage(Request $request)
+    {
+
+        if ($request->hasFile('upload')) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+
+            $request->file('upload')->move(public_path('uploads/poster/'), $fileName);
+
+            $url = asset('uploads/poster/' . $fileName);
+            return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
+        }
     }
 
     public function store(Request $request)
@@ -31,25 +48,25 @@ class PostController extends Controller
             'p_description' => $request->description,
         ]);
 
-        return redirect(route('index.post'))->with('successaddpost','บันทึกข้อมูลเสร็จสิ้น');
+        return redirect(route('index.post'))->with('successaddpost', 'บันทึกข้อมูลเสร็จสิ้น');
     }
 
     public function edit($posts_id)
     {
         $data = Post::findOrFail($posts_id);
 
-        return view('teacher.add-post',compact('data'));
+        return view('teacher.add-post', compact('data'));
     }
 
-    public function update(Request $request,$posts_id)
+    public function update(Request $request, $posts_id)
     {
         Post::where('posts_id', $posts_id)
-        ->update([
-            'p_topic' => $request->topic,
-            'p_description' => $request->description,
-        ]);
+            ->update([
+                'p_topic' => $request->topic,
+                'p_description' => $request->description,
+            ]);
 
-        return redirect(route('index.post'))->with('successaddpost','บันทึกข้อมูลเสร็จสิ้น');
+        return redirect(route('index.post'))->with('successaddpost', 'บันทึกข้อมูลเสร็จสิ้น');
     }
 
     public function delete($posts_id)
