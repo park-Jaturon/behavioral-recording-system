@@ -26,7 +26,9 @@ class EventsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string'
+            'title' => 'required|string',
+            'start_date' => 'required',
+            'end_date' => 'required'
         ]);
 
         $subject = Events::create([
