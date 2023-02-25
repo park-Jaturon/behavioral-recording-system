@@ -43,6 +43,9 @@
                 uploadUrl: '{{route('ckedditor.upload').'?_token='.csrf_token()}}',
     }
         })
+        .then( editor =>{
+            console.log(editor);
+        } )
         .catch( error => {
             console.error( error );
         } );

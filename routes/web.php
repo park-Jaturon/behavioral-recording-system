@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ManageteacherController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\Teacher\ActivityController;
+use App\Http\Controllers\Teacher\BehaviorController;
 use App\Http\Controllers\Teacher\CheckController;
 use App\Http\Controllers\Teacher\EventsController;
 use App\Http\Controllers\Teacher\PostController;
@@ -92,4 +93,9 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('activity/{events_id}',[ActivityController::class, 'image'])->name('image.activity');
     Route::get('activity/add/{events_id}',[ActivityController::class, 'add'])->name('add.activity');
     Route::post('activity/store/{events_id}',[ActivityController::class, 'store_activity'])->name('store.activity');
+    /* Behavior */ 
+    Route::get('behavior',[BehaviorController::class ,'index'])->name('index.behavior');
+    Route::get('behavior/add',[BehaviorController::class, 'add'])->name('add.behavior');
+    Route::post('behavior/store',[BehaviorController::class, 'store'])->name('store.behavior');
+    Route::post('behavior/ckeditor/upload',[BehaviorController::class, 'uploadimage'])->name('behavior.upload');
 });
