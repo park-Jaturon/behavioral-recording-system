@@ -51,8 +51,10 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'inlineRadioOptions' => ['required'],
+            'rankidteachers' => ['required'],
+            'rankidparents' => ['required'],
         ]);
     }
 
@@ -64,10 +66,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data['rankidteachers']);
+        //  $datateachers = $data->rankidteachers;
+        if ($data['rankidteachers'] == 0) {
+            $rankid = $data['rankidparents'];
+        } elseif ($data['rankidparents'] == 0) {
+            $rankid = $data['rankidteachers'];
+        }
+
+        // dd( $data);
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'users_name' => $data['name'],
             'password' => Hash::make($data['password']),
+            'rank_id' => $rankid,
+            'rank' => $data['inlineRadioOptions']
         ]);
     }
 }

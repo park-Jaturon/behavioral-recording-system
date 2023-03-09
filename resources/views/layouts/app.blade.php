@@ -70,9 +70,7 @@
 
                     <div class="justify-content-start flex-grow-1 mx-3">
                         <div>
-                            <a class="navbar-brand" href="{{ url('/home') }}">
-                                {{ config('app.name', 'Laravel') }}
-                            </a>
+                            ระบบบันทึกติดตามพฤติกรรมเด็กเล็ก
 
                         </div>
                     </div>
@@ -165,7 +163,7 @@
                                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
                                     <li class="nav-item ">
-                                        <a class="nav-link" href="{{ route('teacherhome') }}">Dashboard</a>
+                                        <a class="nav-link" href="{{ route('teacher.dashboard') }}">Dashboard</a>
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('index.check') }}">ลงเวลา</a>
@@ -186,11 +184,14 @@
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">
-                                            Dropdown
+                                            บันทึกรายงาน
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-dark">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="{{ route('record.weight-height') }}">บันทึกน้ำหนัก - ส่วนสูง</a>
+                                            </li>
+                                            <li><a class="dropdown-item"
+                                                    href="{{ route('record.appraisal') }}">แบบประเมินพัฒนาการ</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>

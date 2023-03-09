@@ -43,28 +43,24 @@ class LoginController extends Controller
     {
         $input = $request->all();
 
-        $this->validate($request,[
+        $this->validate($request, [
             'usersname' => 'required',
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(array('users_name' => $input['usersname'], 'password' => $input['password'])))
-        {
+        if (auth()->attempt(array('users_name' => $input['usersname'], 'password' => $input['password']))) {
             if (auth()->user()->rank == 'admin') {
-               return redirect()->route('admindashboard')->withSuccess('Admin');
-            } elseif(auth()->user()->rank == 'teacher'){
-                return redirect()->route('teacherhome')->withSuccess('Teacher');
-            }
-            else {
+                return redirect()->route('admindashboard')->withSuccess('Admin');
+            } elseif (auth()->user()->rank == 'teacher') {
+                return redirect()->route('teacher.dashboard')->withSuccess('Teacher');
+            } else {
                 return redirect()->route('home');
             }
-           
-            
-        }else{
+        } else {
             return redirect()->route('login')
-            ->withErrors([
-            'username' => 'Please login to access the dashboard.',
-        ])->onlyInput('username');
+                ->withErrors([
+                    'username' => 'Please login to access the dashboard.',
+                ])->onlyInput('username');
         }
     }
 }

@@ -7,14 +7,21 @@ use App\Models\Student;
 use App\Models\Timecards;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CheckController extends Controller
 {
     public function index()
     {
-        $student = Student::all();
+        // $student = Student::all();
+        $student = DB::table('teachers')
+        ->join('rooms', 'teachers.rooms_id', '=', 'rooms.rooms_id')
+        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+        ->join('students', 'rooms.rooms_id', '=', 'students.rooms_id')
+        // ->select('users.*', 'contacts.phone', 'orders.price')
+        ->get();
         $datenow = date('d/m/Y');
-        //dd($student);
+        // dd($student);
         return  view('teacher.check-index', compact('student', 'datenow'));
     }
 

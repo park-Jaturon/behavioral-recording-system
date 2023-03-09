@@ -6,8 +6,10 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('รายงานพฤติกรรม') }}
-                        <a href="{{ route('add.behavior') }}" class=" btn btn-primary float-end">เพิ่ม</a>
+                        {{-- @foreach ($user as $users)
+                            {{ __('บันทึกน้ำหนัก - ส่วนสูง ห้อง') . $users->room_name }}
+                        @endforeach --}}
+                        {{ __('บันทึกน้ำหนัก - ส่วนสูง ') }}
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -16,22 +18,27 @@
                             </div>
                         @endif
 
-                        <table class="table table-striped">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">เลขที่</th>
                                     <th scope="col">ชื่อ - นามสกุล</th>
-                                    <th scope="col">รายงาน</th>
-
+                                    <th scope="col">ห้อง</th>
+                                    <th scope="col">น้ำหนัก - ส่วนสูง</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($behavior as $data)
+                                @foreach ($user as $data)
                                     <tr>
                                         <th scope="row">{{ $data->number }}</th>
-                                        <td>{{ $data->prefix_name . $data->first_name . ' ' . $data->last_name }}</td>
-                                        <td> <a
-                                                href="{{ url('teacher/behavior/report/' . $data->student_id) }}" style="text-decoration: none;">{{ $data->report }}</a>
+                                        <td>
+                                            <a href="{{url('teacher/record/weight-height/add/'.$data->student_id)}}" style="text-decoration: none;">
+                                                {{ $data->prefix_name . $data->first_name . ' ' . $data->last_name }}
+                                            </a>
+                                        </td>
+                                        <td>{{ $data->room_name }}</td>
+                                        <td>
+                                            <a class="btn btn-primary" href="{{url('teacher/record/weight-height/show/'.$data->student_id)}}" role="button">ดูบันทึก</a>
                                         </td>
                                     </tr>
                                 @endforeach

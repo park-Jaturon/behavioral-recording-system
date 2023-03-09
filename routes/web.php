@@ -10,6 +10,7 @@ use App\Http\Controllers\Teacher\ActivityController;
 use App\Http\Controllers\Teacher\BehaviorController;
 use App\Http\Controllers\Teacher\CheckController;
 use App\Http\Controllers\Teacher\EventsController;
+use App\Http\Controllers\Teacher\PersonalRecordController;
 use App\Http\Controllers\Teacher\PostController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Models\Room;
@@ -67,10 +68,12 @@ Route::prefix('admin')->middleware('isadmin')->group(function () {
     Route::delete('student/delete/{student_id}', [ManagestudentController::class, 'destroy'])->name('destroy.student');
     /* User */
     Route::get('users', [UserController::class, 'index'])->name('index.user');
+    Route::get('create/users/teacher',[UserController::class, 'teacher']);
 });
 
 Route::prefix('teacher')->middleware('isteacher')->group(function () {
-    Route::get('home', [TeacherController::class, 'home'])->name('teacherhome');
+    Route::get('dashboard', [TeacherController::class, 'home'])->name('teacher.dashboard');
+    Route::get('room',[TeacherController::class, 'room'])->name('teacher.room');
     /* Check */
     Route::get('check',[CheckController::class, 'index'])->name('index.check');
     Route::get('post-time/{student_id}',[CheckController::class, 'post_time']);
@@ -98,4 +101,13 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('behavior/add',[BehaviorController::class, 'add'])->name('add.behavior');
     Route::post('behavior/store',[BehaviorController::class, 'store'])->name('store.behavior');
     Route::post('behavior/ckeditor/upload',[BehaviorController::class, 'uploadimage'])->name('behavior.upload');
+    Route::get('behavior/report/{student_id}',[BehaviorController::class, 'report'])->name('report.behavior');
+    Route::delete('behavior/delete/{behavior_id}',[BehaviorController::class, 'delete']);
+    /* personal record */
+     Route::get('record/weight-height',[PersonalRecordController::class, 'weight_height'])->name('record.weight-height');
+     Route::get('record/weight-height/show/{student_id}',[PersonalRecordController::class, 'weight_height_show']);
+     Route::get('record/weight-height/add/{student_id}',[PersonalRecordController::class, 'weight_height_add']);
+     Route::get('record/appraisal',[PersonalRecordController::class, 'appraisal'])->name('record.appraisal');
+     Route::get('record/appraisal/show/{student_id}',[PersonalRecordController::class, 'appraisal_show']);
+     Route::get('record/appraisal/add/{student_id}',[PersonalRecordController::class, 'appraisal_add']);
 });

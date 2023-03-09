@@ -31,4 +31,8 @@ class Student extends Model
         'telephone_number_bus',
         'habitations',
     ];
+
+    public function images(){
+        return $this->hasMany(Behavior::class,'student_id','student_id');
+    }
 }

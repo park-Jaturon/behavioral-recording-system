@@ -20,4 +20,8 @@ class Behavior extends Model
        'description',
        'url_images',
     ];
+
+    public function images(){
+        return $this->belongsTo(Student::class,'student_id','student_id');
+    }
 }
