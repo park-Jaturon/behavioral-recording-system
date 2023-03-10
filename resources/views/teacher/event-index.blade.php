@@ -29,8 +29,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="saveSub" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                    <button type="button" id="saveSub" class="btn btn-primary">บันทึก</button>
                 </div>
             </div>
         </div>
@@ -200,7 +200,7 @@
                                 Swal.fire({
                                     position: 'top-end',
                                     icon: 'success',
-                                    title: 'Your work has been saved',
+                                    title: 'บันทึกตารางเรียน/กิจกรรมของคุณแล้ว',
                                     showConfirmButton: false,
                                     timer: 1500
                                 });
@@ -237,7 +237,7 @@
                             Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
-                                title: 'Event Updated!',
+                                title: 'ตารางเรียน/กิจกรรมของคุณแล้ว อัปเดตแล้ว',
                                 showConfirmButton: false,
                                 timer: 1500
                             })
@@ -250,13 +250,13 @@
                 eventClick: function(event) {
                     var id = event.eventsid;
                     Swal.fire({
-                        title: 're you sure delete?',
-                        text: "You won't be able to revert this!",
+                        title: 'คุณแน่ใจน่ะว่าจะลบจริงๆ',
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
+                        confirmButtonText: 'ใช้ฉันต้องการลบ',
+                        cancelButtonText: 'ยกเลิก'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
@@ -269,7 +269,7 @@
                                     Swal.fire({
                                         position: 'top-end',
                                         icon: 'success',
-                                        title: 'Your file has been deleted',
+                                        title: 'ตารางเรียน/กิจกรรมของคุณถูกลบไปแล้ว',
                                         showConfirmButton: false,
                                         timer: 1500
                                     })

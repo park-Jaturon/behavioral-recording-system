@@ -70,7 +70,7 @@
 
                     <div class="justify-content-start flex-grow-1 mx-3">
                         <div>
-                            ระบบบันทึกติดตามพฤติกรรมเด็กเล็ก
+                            <h5>ระบบบันทึกติดตามพฤติกรรมเด็กเล็ก</h5> 
 
                         </div>
                     </div>

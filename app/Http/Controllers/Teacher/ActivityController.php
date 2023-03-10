@@ -24,7 +24,7 @@ class ActivityController extends Controller
         $activities = DB::table('activities')
         ->where('events_id', '=', $events_id)
         ->get();
-        return view('teacher.activity-image', compact('activities'));
+        return view('teacher.activity-image', compact('activities','events_id'));
     }
 
     public function add($events_id)
