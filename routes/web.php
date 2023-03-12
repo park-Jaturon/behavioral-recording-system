@@ -68,7 +68,7 @@ Route::prefix('admin')->middleware('isadmin')->group(function () {
     Route::delete('student/delete/{student_id}', [ManagestudentController::class, 'destroy'])->name('destroy.student');
     /* User */
     Route::get('users', [UserController::class, 'index'])->name('index.user');
-    Route::get('create/users/teacher',[UserController::class, 'teacher']);
+    // Route::get('create/users/teacher',[UserController::class, 'teacher']);
 });
 
 Route::prefix('teacher')->middleware('isteacher')->group(function () {
@@ -110,4 +110,5 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
      Route::get('record/appraisal',[PersonalRecordController::class, 'appraisal'])->name('record.appraisal');
      Route::get('record/appraisal/show/{student_id}',[PersonalRecordController::class, 'appraisal_show']);
      Route::get('record/appraisal/add/{student_id}',[PersonalRecordController::class, 'appraisal_add']);
+     Route::post('record/appraisal/store/{student_id}',[PersonalRecordController::class, 'appraisal_store'])->name('store.appraisal');
 });
