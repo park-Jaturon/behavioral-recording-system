@@ -35,12 +35,14 @@
                                     <thead>
                                         <tr>
                                             <th scope="col" class=" text-center" valign="middle">พัฒนาการ</th>
-                                            <th scope="col" class=" text-center" valign="middle">ตัวบ่งชี้</th>
+                                            <th scope="col" class=" text-center" valign="middle" width="150px">ตัวบ่งชี้
+                                            </th>
                                             <th scope="col" class=" text-center" valign="middle">พฤติกรรม</th>
-                                            <th scope="col" class=" text-center" valign="middle" width="200px">
-                                                <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                            <th scope="col" class=" text-center" valign="middle" width="170px">
+                                                ภาคเรียน1
+                                            </th>
+                                            <th scope="col" class=" text-center" valign="middle" width="170px">
+                                                ภาคเรียน2
                                             </th>
                                         </tr>
 
@@ -59,30 +61,129 @@
                                             <td>
                                                 1.1 น้ำหนักตามเณฑ์อายุของกรมอนามัย
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[0]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[0]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text" value="ควรเสริม"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @elseif ($dataphysicallysemester1[0]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text" value="ปานกลาง"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @elseif ($dataphysicallysemester1[0]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[0]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[0]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[0]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text" value="ควรเสริม"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @elseif ($dataphysicallysemester2[0]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text" value="ปานกลาง"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @elseif ($dataphysicallysemester2[0]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[0]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 1.2 ส่วนสูงตามเกณฑ์อายุของกรมอนามัย
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[1]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[1]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text" value="ควรเสริม"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @elseif ($dataphysicallysemester1[1]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text" value="ปานกลาง"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @elseif ($dataphysicallysemester1[1]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[1]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[1]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[1]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[1]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[1]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[1]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 1.3 เส้นรอบศีรษะตามเกณฑ์อายุ
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[2]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[2]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[2]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[2]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[2]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[2]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[2]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[2]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[2]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[2]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -92,60 +193,270 @@
                                             <td>
                                                 2.1 รับประทานอาหารที่มีประโยชน์และดื่มน้ำสะอาดได้ด้วยตนเอง
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[3]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[3]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[3]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[3]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[3]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[3]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[3]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[3]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[3]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[3]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 2.2 ล้างมือก่อนรับประทานอาหารและหลังใช้ห้องส้วมได้ด้วยตนเอง
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[4]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[4]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[4]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[4]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[4]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[4]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[4]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[4]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[4]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[4]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 2.3 นอนพักผ่อนเป็นเวลา
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[5]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[5]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[5]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[5]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[5]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[5]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[5]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[5]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[5]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[5]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 2.4 ออกกำลังกายเป็นเวลา
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[6]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[6]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[6]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[6]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[6]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[6]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[6]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[6]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[6]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[6]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 2.5 อาบน้ำแต่ตัวได้แต่ไม่คล่อง
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[7]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[7]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[7]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[7]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[7]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[7]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[7]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[7]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[7]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[7]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 2.6 ขับถ่ายเป็นเวลา
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[8]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[8]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[8]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[8]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[8]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[8]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[8]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[8]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[8]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[8]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -155,20 +466,90 @@
                                             <td>
                                                 3.1 เล่นและทำกิจกรรมอย่างปลอดภัยได้ด้วยตนเอง
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[9]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[9]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[9]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[9]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[9]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[9]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[9]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[9]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[9]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[9]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 3.2 ระมัดระวังตนเองให้ปลอดภัยขณะเล่นได้บางครั้ง
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[10]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[10]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[10]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[10]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[10]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[10]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[10]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[10]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[10]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[10]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -184,50 +565,225 @@
                                             <td>
                                                 1.1 เดินต่อเท้าไปข้างหน้าเป็นเส้นตรงได้โดยไม่ต้องกางแขน
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[11]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[11]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[11]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[11]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[11]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[11]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[11]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[11]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[11]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[11]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 1.2 กระโดดขาเดียวไปอยู่กับที่ได้โดยไม่เสียการทรงตัว
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[12]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[12]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[12]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[12]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[12]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[12]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[12]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[12]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[12]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[12]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 1.3 วิ่งหลบหลีกสิ่งกีดขวางได้
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[13]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[13]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[13]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[13]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[13]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[13]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[13]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[13]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[13]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[13]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 1.4 รับลูกบอลโดยใช้มือทั้ง 2 ข้าง
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[14]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[14]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[14]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[14]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[14]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[14]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[14]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[14]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[14]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[14]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 1.5 เดินลงบันไดสลับเท้าได้
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[15]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[15]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[15]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[15]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[15]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[15]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[15]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[15]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[15]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[15]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -237,40 +793,178 @@
                                             <td>
                                                 2.1 ใช้กรรไกกรตัดระดาษตามแนวเส้นตรงได้
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[16]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[16]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[16]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[16]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[16]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[16]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[16]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[16]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[16]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[16]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 2.2 เขียนรูปสี่เหลียมตามได้อย่างมีมุมชัดเจน
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[17]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[17]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[17]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[17]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[17]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[17]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[17]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[17]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[17]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[17]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 2.3 ร้อยวัสดุที่มีรูขนาดเส้นผ่าศูนย์กลาง 0.5 เซนติเมตรได้
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[18]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[18]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[18]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[18]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[18]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                            @if (!isset($dataphysicallysemester2[18]->score_rate_physically))
+                                            @elseif ($dataphysicallysemester2[18]->score_rate_physically == 1)
+                                                <input class="form-control text-center" type="text" value="ควรเสริม"
+                                                    aria-label="Disabled input example" disabled readonly>
+                                            @elseif ($dataphysicallysemester2[18]->score_rate_physically == 2)
+                                                <input class="form-control text-center" type="text" value="ปานกลาง"
+                                                    aria-label="Disabled input example" disabled readonly>
+                                            @elseif ($dataphysicallysemester2[18]->score_rate_physically == 3)
+                                                <input class="form-control text-center" type="text" value="ดี"
+                                                    aria-label="Disabled input example" disabled readonly>
+                                            @endif
+                                            @if (empty($dataphysicallysemester2[18]->score_rate_physically))
+                                                <input class="form-control text-center" type="text"
+                                                    value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                    disabled readonly>
+                                            @endif
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 2.4 โยนลูกบอลไปข้างหน้าได้ไม่คล่องแคล่ว
                                             </td>
-                                            <td class="text-center">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester1[19]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester1[19]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[19]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester1[19]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester1[19]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($dataphysicallysemester2[19]->score_rate_physically))
+                                                @elseif ($dataphysicallysemester2[19]->score_rate_physically == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[19]->score_rate_physically == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($dataphysicallysemester2[19]->score_rate_physically == 3)
+                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                                @if (empty($dataphysicallysemester2[19]->score_rate_physically))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                        disabled readonly>
+                                                @endif
                                             </td>
                                         </tr>
                                     </tbody>
@@ -284,10 +978,11 @@
                                             <th scope="col" class=" text-center" valign="middle">พัฒนาการ</th>
                                             <th scope="col" class=" text-center" valign="middle">ตัวบ่งชี้</th>
                                             <th scope="col" class=" text-center" valign="middle">พฤติกรรม</th>
-                                            <th scope="col" class=" text-center" valign="middle" width="200px">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <th scope="col" class=" text-center" valign="middle" width="170px">
+                                                ภาคเรียน1
+                                            </th>
+                                            <th scope="col" class=" text-center" valign="middle" width="170px">
+                                                ภาคเรียน2
                                             </th>
                                         </tr>
 
@@ -308,8 +1003,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -318,8 +1013,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -390,8 +1085,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -410,8 +1105,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -428,8 +1123,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -460,7 +1155,7 @@
                                                 2.2 ช่วยเหลือผู้อื่นได้เมื่อมีผู้ชี้เนะ
                                             </td>
                                             <td class="text-center">
-                                                
+
                                                 <input class="form-control" type="text"
                                                     value="Disabled readonly input" aria-label="Disabled input example"
                                                     disabled readonly>
@@ -508,8 +1203,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -533,10 +1228,11 @@
                                             <th scope="col" class=" text-center" valign="middle">พัฒนาการ</th>
                                             <th scope="col" class=" text-center" valign="middle">ตัวบ่งชี้</th>
                                             <th scope="col" class=" text-center" valign="middle">พฤติกรรม</th>
-                                            <th scope="col" class=" text-center" valign="middle" width="200px">
-                                                <input class="form-control" type="text"
-                                                    value="Disabled readonly input" aria-label="Disabled input example"
-                                                    disabled readonly>
+                                            <th scope="col" class=" text-center" valign="middle" width="170px">
+                                                ภาคเรียน1
+                                            </th>
+                                            <th scope="col" class=" text-center" valign="middle" width="170px">
+                                                ภาคเรียน2
                                             </th>
                                         </tr>
                                     </thead>
@@ -600,8 +1296,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -671,8 +1367,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -680,10 +1376,10 @@
                                                 1.3 ปิดน้ำหลังการใช้ทันที
                                             </td>
                                             <td class="text-center">
-                                                
+
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -694,7 +1390,7 @@
                                                 2.1 ปฎิบัติตามมารยาทไทยด้วยตนเอง
                                             </td>
                                             <td class="text-center">
-                                                
+
                                                 <input class="form-control" type="text"
                                                     value="Disabled readonly input" aria-label="Disabled input example"
                                                     disabled readonly>
@@ -726,8 +1422,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -819,8 +1515,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -829,8 +1525,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -852,8 +1548,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -862,8 +1558,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -899,10 +1595,11 @@
                                             <th scope="col" class=" text-center" valign="middle">พัฒนาการ</th>
                                             <th scope="col" class=" text-center" valign="middle">ตัวบ่งชี้</th>
                                             <th scope="col" class=" text-center" valign="middle">พฤติกรรม</th>
-                                            <th scope="col" class=" text-center" valign="middle" width="200px">
-                                                <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                            <th scope="col" class=" text-center" valign="middle" width="170px">
+                                                ภาคเรียน1
+                                            </th>
+                                            <th scope="col" class=" text-center" valign="middle" width="170px">
+                                                ภาคเรียน2
                                             </th>
                                         </tr>
 
@@ -923,8 +1620,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -933,8 +1630,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -943,8 +1640,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -953,8 +1650,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -963,8 +1660,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -986,8 +1683,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -996,8 +1693,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1014,8 +1711,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1025,8 +1722,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1035,8 +1732,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1045,8 +1742,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1055,8 +1752,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1068,8 +1765,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1079,8 +1776,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1092,8 +1789,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1102,8 +1799,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1113,8 +1810,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1132,8 +1829,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1143,8 +1840,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1169,8 +1866,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1198,8 +1895,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1208,8 +1905,8 @@
                                             </td>
                                             <td class="text-center">
                                                 <input class="form-control" type="text"
-                                                value="Disabled readonly input" aria-label="Disabled input example"
-                                                disabled readonly>
+                                                    value="Disabled readonly input" aria-label="Disabled input example"
+                                                    disabled readonly>
                                             </td>
                                         </tr>
                                         <tr>

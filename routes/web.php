@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ManagestudentController;
 use App\Http\Controllers\Admin\ManageteacherController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\Parent\HomeController;
 use App\Http\Controllers\Teacher\ActivityController;
 use App\Http\Controllers\Teacher\BehaviorController;
 use App\Http\Controllers\Teacher\CheckController;
@@ -111,4 +112,14 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
      Route::get('record/appraisal/show/{student_id}',[PersonalRecordController::class, 'appraisal_show']);
      Route::get('record/appraisal/add/{student_id}',[PersonalRecordController::class, 'appraisal_add']);
      Route::post('record/appraisal/store/{student_id}',[PersonalRecordController::class, 'appraisal_store'])->name('store.appraisal');
+});
+
+Route::prefix('parent')->middleware('isparent')->group(function () {
+    /* parent home */
+    Route::get('home',[HomeController::class, 'index'])->name('home.parent');
+    Route::get('descendant',[HomeController::class, 'descendant_show'])->name('show.descendant');
+    Route::get('descendant/time',[HomeController::class,'descendant_time'])->name('time.descendant');
+    Route::get('descendant/time/show/{student_id}',[HomeController::class,'time_show']);
+    Route::get('post',[HomeController::class, 'descendant_post'])->name('post.descendant');
+    Route::get('descendant/post/show/{student_id}',[HomeController::class, 'post_show']);
 });

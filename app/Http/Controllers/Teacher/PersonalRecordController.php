@@ -55,7 +55,48 @@ class PersonalRecordController extends Controller
 
     public function appraisal_show($student_id)
     {
-        return view('personal-record.appraisal-show');
+        $dataphysicallysemester1 = DB::table('physically')
+        ->where('student_id','=',$student_id)
+        ->where('semester','=',"ภาคเรียน1")
+        ->get();
+        $dataphysicallysemester2 = DB::table('physically')
+        ->where('student_id','=',$student_id)
+        ->where('semester','=',"ภาคเรียน2")
+        ->get();
+
+        $datamood_mindsemester1 = DB::table('mood_mind')
+        ->where('student_id','=',$student_id)
+        ->where('semester','=',"ภาคเรียน1")
+        ->get();
+        $datamood_mindsemester2 = DB::table('mood_mind')
+        ->where('student_id','=',$student_id)
+        ->where('semester','=',"ภาคเรียน2")
+        ->get();
+
+        $datasocialsemester1 = DB::table('social')
+        ->where('student_id','=',$student_id)
+        ->where('semester','=',"ภาคเรียน1")
+        ->get();
+        $datasocialsemester2 = DB::table('social')
+        ->where('student_id','=',$student_id)
+        ->where('semester','=',"ภาคเรียน2")
+        ->get();
+
+        $dataintellectualsemester1 = DB::table('intellectual')
+        ->where('student_id','=',$student_id)
+        ->where('semester','=',"ภาคเรียน1")
+        ->get();
+        $dataintellectualsemester2 = DB::table('intellectual')
+        ->where('student_id','=',$student_id)
+        ->where('semester','=',"ภาคเรียน2")
+        ->get();
+        // dd($dataphysicallysemester2);
+        return view('personal-record.appraisal-show',compact(
+            'dataphysicallysemester1','dataphysicallysemester2',
+            'datamood_mindsemester1','datamood_mindsemester2',
+            'datasocialsemester1','datasocialsemester2',
+            'dataintellectualsemester1','dataintellectualsemester2'
+        ));
     }
 
     public function appraisal_add($student_id)
@@ -167,7 +208,7 @@ class PersonalRecordController extends Controller
                 'developments12_behavior2_1' => 'required|int',
                 'developments12_behavior2_2' => 'required|int',
                 'developments12_behavior2_3' => 'required|int',
-                'commenteacher' => 'required|string'
+                // 'commenteacher' => 'required|string'
             ],
             [
                 'developments1_behavior1_1' => 'ยังไม่ได้ประเมิน',
@@ -272,108 +313,222 @@ class PersonalRecordController extends Controller
         );
 
         // dd($student_id);
-        Development::create([
-            'student_id' => $student_id,
-            'semester' => $request->semester,
-            'd1_b1_1' => $request->developments1_behavior1_1,
-            'd1_b1_2' => $request->developments1_behavior1_2,
-            'd1_b1_3' => $request->developments1_behavior1_3,
-            'd1_b2_1' => $request->developments1_behavior2_1,
-            'd1_b2_2' => $request->developments1_behavior2_2,
-            'd1_b2_3' => $request->developments1_behavior2_3,
-            'd1_b2_4' => $request->developments1_behavior2_4,
-            'd1_b2_5' => $request->developments1_behavior2_5,
-            'd1_b2_6' => $request->developments1_behavior2_6,
-            'd1_b3_1' => $request->developments1_behavior3_1,
-            'd1_b3_2' => $request->developments1_behavior3_2,
-            'd2_b1_1' => $request->developments2_behavior1_1,
-            'd2_b1_2' => $request->developments2_behavior1_2,
-            'd2_b1_3' => $request->developments2_behavior1_3,
-            'd2_b1_4' => $request->developments2_behavior1_4,
-            'd2_b1_5' => $request->developments2_behavior1_5,
-            'd2_b2_1' => $request->developments2_behavior2_1,
-            'd2_b2_2' => $request->developments2_behavior2_2,
-            'd2_b2_3' => $request->developments2_behavior2_3,
-            'd2_b2_4' => $request->developments2_behavior2_4,
-            'd3_b1_1' => $request->developments3_behavior1_1,
-            'd3_b1_2' => $request->developments3_behavior1_2,
-            'd3_b2_1' => $request->developments3_behavior2_1,
-            'd3_b2_2' => $request->developments3_behavior2_2,
-            'd3_b2_3' =>  $request->developments3_behavior2_3,
-            'd3_b2_4' => $request->developments3_behavior2_4,
-            'd4_b1_1' => $request->developments4_behavior1_1,
-            'd4_b1_2' => $request->developments4_behavior1_2,
-            'd4_b1_3' => $request->developments4_behavior1_3,
-            'd4_b1_4' => $request->developments4_behavior1_4,
-            'd5_b1_1' => $request->developments5_behavior1_1,
-            'd5_b1_2' => $request->developments5_behavior1_2,
-            'd5_b2_1' => $request->developments5_behavior2_1,
-            'd5_b2_2' => $request->developments5_behavior2_2,
-            'd5_b2_3' => $request->developments5_behavior2_3,
-            'd5_b3_1' => $request->developments5_behavior3_1,
-            'd5_b3_2' => $request->developments5_behavior3_2,
-            'd5_b4_1' => $request->developments5_behavior4_1,
-            'd5_b4_2' => $request->developments5_behavior4_2,
-            'd6_b1_1' => $request->developments6_behavior1_1,
-            'd6_b1_2' => $request->developments6_behavior1_2,
-            'd6_b1_3' => $request->developments6_behavior1_3,
-            'd6_b1_4' => $request->developments6_behavior1_4,
-            'd6_b2_1' => $request->developments6_behavior2_1,
-            'd6_b2_2' => $request->developments6_behavior2_2,
-            'd6_b2_3' => $request->developments6_behavior2_3,
-            'd6_b3_1' => $request->developments6_behavior3_1,
-            'd6_b3_2' => $request->developments6_behavior3_2,
-            'd7_b1_1' => $request->developments7_behavior1_1,
-            'd7_b1_2' => $request->developments7_behavior1_2,
-            'd7_b1_3' => $request->developments7_behavior1_3,
-            'd7_b2_1' => $request->developments7_behavior2_1,
-            'd7_b2_2' => $request->developments7_behavior2_2,
-            'd7_b2_3' => $request->developments7_behavior2_3,
-            'd7_b2_4' => $request->developments7_behavior2_4,
-            'd7_b2_5' => $request->developments7_behavior2_5,
-            'd8_b1_1' => $request->developments8_behavior1_1,
-            'd8_b1_2' => $request->developments8_behavior1_2,
-            'd8_b1_3' => $request->developments8_behavior1_3,
-            'd8_b2_1' => $request->developments8_behavior2_1,
-            'd8_b2_2' => $request->developments8_behavior2_2,
-            'd8_b2_3' => $request->developments8_behavior2_3,
-            'd8_b2_4' => $request->developments8_behavior2_4,
-            'd8_b2_5' => $request->developments8_behavior2_5,
-            'd8_b3_1' => $request->developments8_behavior3_1,
-            'd8_b3_2' => $request->developments8_behavior3_2,
-            'd8_b3_3' => $request->developments8_behavior3_3,
-            'd8_b3_4' => $request->developments8_behavior3_4,
-            'd8_b3_5' => $request->developments8_behavior3_5,
-            'd9_b1_1' => $request->developments9_behavior1_1,
-            'd9_b1_2' => $request->developments9_behavior1_2,
-            'd9_b1_3' => $request->developments9_behavior1_3,
-            'd9_b1_4' => $request->developments9_behavior1_4,
-            'd9_b1_5' => $request->developments9_behavior1_5,
-            'd9_b2_1' => $request->developments9_behavior2_1,
-            'd9_b2_2' => $request->developments9_behavior2_2,
-            'd9_b2_3' => $request->developments9_behavior2_3,
-            'd10_b1_1' => $request->developments10_behavior1_1,
-            'd10_b1_2' => $request->developments10_behavior1_2,
-            'd10_b1_3' => $request->developments10_behavior1_3,
-            'd10_b1_4' => $request->developments10_behavior1_4,
-            'd10_b1_5' => $request->developments10_behavior1_5,
-            'd10_b2_1' => $request->developments10_behavior2_1,
-            'd10_b2_2' => $request->developments10_behavior2_2,
-            'd10_b3_1' => $request->developments10_behavior3_1,
-            'd10_b3_2' => $request->developments10_behavior3_2,
-            'd10_b3_3' => $request->developments10_behavior3_3,
-            'd11_b1_1' => $request->developments11_behavior1_1,
-            'd11_b1_2' => $request->developments11_behavior1_2,
-            'd11_b2_1' => $request->developments11_behavior2_1,
-            'd11_b2_2' => $request->developments11_behavior2_2,
-            'd12_b1_1' => $request->developments12_behavior1_1,
-            'd12_b1_2' => $request->developments12_behavior1_2,
-            'd12_b1_3' => $request->developments12_behavior1_3,
-            'd12_b2_1' => $request->developments12_behavior2_1,
-            'd12_b2_2' => $request->developments12_behavior2_2,
-            'd12_b2_3' => $request->developments12_behavior2_3,
-            'comment_t' => $request->commenteacher
-        ]);
+        // Development::create([
+        //     'student_id' => $student_id,
+        //     'semester' => $request->semester,
+        //     'd1_b1_1' => $request->developments1_behavior1_1,
+        //     'd1_b1_2' => $request->developments1_behavior1_2,
+        //     'd1_b1_3' => $request->developments1_behavior1_3,
+        //     'd1_b2_1' => $request->developments1_behavior2_1,
+        //     'd1_b2_2' => $request->developments1_behavior2_2,
+        //     'd1_b2_3' => $request->developments1_behavior2_3,
+        //     'd1_b2_4' => $request->developments1_behavior2_4,
+        //     'd1_b2_5' => $request->developments1_behavior2_5,
+        //     'd1_b2_6' => $request->developments1_behavior2_6,
+        //     'd1_b3_1' => $request->developments1_behavior3_1,
+        //     'd1_b3_2' => $request->developments1_behavior3_2,
+        //     'd2_b1_1' => $request->developments2_behavior1_1,
+        //     'd2_b1_2' => $request->developments2_behavior1_2,
+        //     'd2_b1_3' => $request->developments2_behavior1_3,
+        //     'd2_b1_4' => $request->developments2_behavior1_4,
+        //     'd2_b1_5' => $request->developments2_behavior1_5,
+        //     'd2_b2_1' => $request->developments2_behavior2_1,
+        //     'd2_b2_2' => $request->developments2_behavior2_2,
+        //     'd2_b2_3' => $request->developments2_behavior2_3,
+        //     'd2_b2_4' => $request->developments2_behavior2_4,
+        //     'd3_b1_1' => $request->developments3_behavior1_1,
+        //     'd3_b1_2' => $request->developments3_behavior1_2,
+        //     'd3_b2_1' => $request->developments3_behavior2_1,
+        //     'd3_b2_2' => $request->developments3_behavior2_2,
+        //     'd3_b2_3' =>  $request->developments3_behavior2_3,
+        //     'd3_b2_4' => $request->developments3_behavior2_4,
+        //     'd4_b1_1' => $request->developments4_behavior1_1,
+        //     'd4_b1_2' => $request->developments4_behavior1_2,
+        //     'd4_b1_3' => $request->developments4_behavior1_3,
+        //     'd4_b1_4' => $request->developments4_behavior1_4,
+        //     'd5_b1_1' => $request->developments5_behavior1_1,
+        //     'd5_b1_2' => $request->developments5_behavior1_2,
+        //     'd5_b2_1' => $request->developments5_behavior2_1,
+        //     'd5_b2_2' => $request->developments5_behavior2_2,
+        //     'd5_b2_3' => $request->developments5_behavior2_3,
+        //     'd5_b3_1' => $request->developments5_behavior3_1,
+        //     'd5_b3_2' => $request->developments5_behavior3_2,
+        //     'd5_b4_1' => $request->developments5_behavior4_1,
+        //     'd5_b4_2' => $request->developments5_behavior4_2,
+        //     'd6_b1_1' => $request->developments6_behavior1_1,
+        //     'd6_b1_2' => $request->developments6_behavior1_2,
+        //     'd6_b1_3' => $request->developments6_behavior1_3,
+        //     'd6_b1_4' => $request->developments6_behavior1_4,
+        //     'd6_b2_1' => $request->developments6_behavior2_1,
+        //     'd6_b2_2' => $request->developments6_behavior2_2,
+        //     'd6_b2_3' => $request->developments6_behavior2_3,
+        //     'd6_b3_1' => $request->developments6_behavior3_1,
+        //     'd6_b3_2' => $request->developments6_behavior3_2,
+        //     'd7_b1_1' => $request->developments7_behavior1_1,
+        //     'd7_b1_2' => $request->developments7_behavior1_2,
+        //     'd7_b1_3' => $request->developments7_behavior1_3,
+        //     'd7_b2_1' => $request->developments7_behavior2_1,
+        //     'd7_b2_2' => $request->developments7_behavior2_2,
+        //     'd7_b2_3' => $request->developments7_behavior2_3,
+        //     'd7_b2_4' => $request->developments7_behavior2_4,
+        //     'd7_b2_5' => $request->developments7_behavior2_5,
+        //     'd8_b1_1' => $request->developments8_behavior1_1,
+        //     'd8_b1_2' => $request->developments8_behavior1_2,
+        //     'd8_b1_3' => $request->developments8_behavior1_3,
+        //     'd8_b2_1' => $request->developments8_behavior2_1,
+        //     'd8_b2_2' => $request->developments8_behavior2_2,
+        //     'd8_b2_3' => $request->developments8_behavior2_3,
+        //     'd8_b2_4' => $request->developments8_behavior2_4,
+        //     'd8_b2_5' => $request->developments8_behavior2_5,
+        //     'd8_b3_1' => $request->developments8_behavior3_1,
+        //     'd8_b3_2' => $request->developments8_behavior3_2,
+        //     'd8_b3_3' => $request->developments8_behavior3_3,
+        //     'd8_b3_4' => $request->developments8_behavior3_4,
+        //     'd8_b3_5' => $request->developments8_behavior3_5,
+        //     'd9_b1_1' => $request->developments9_behavior1_1,
+        //     'd9_b1_2' => $request->developments9_behavior1_2,
+        //     'd9_b1_3' => $request->developments9_behavior1_3,
+        //     'd9_b1_4' => $request->developments9_behavior1_4,
+        //     'd9_b1_5' => $request->developments9_behavior1_5,
+        //     'd9_b2_1' => $request->developments9_behavior2_1,
+        //     'd9_b2_2' => $request->developments9_behavior2_2,
+        //     'd9_b2_3' => $request->developments9_behavior2_3,
+        //     'd10_b1_1' => $request->developments10_behavior1_1,
+        //     'd10_b1_2' => $request->developments10_behavior1_2,
+        //     'd10_b1_3' => $request->developments10_behavior1_3,
+        //     'd10_b1_4' => $request->developments10_behavior1_4,
+        //     'd10_b1_5' => $request->developments10_behavior1_5,
+        //     'd10_b2_1' => $request->developments10_behavior2_1,
+        //     'd10_b2_2' => $request->developments10_behavior2_2,
+        //     'd10_b3_1' => $request->developments10_behavior3_1,
+        //     'd10_b3_2' => $request->developments10_behavior3_2,
+        //     'd10_b3_3' => $request->developments10_behavior3_3,
+        //     'd11_b1_1' => $request->developments11_behavior1_1,
+        //     'd11_b1_2' => $request->developments11_behavior1_2,
+        //     'd11_b2_1' => $request->developments11_behavior2_1,
+        //     'd11_b2_2' => $request->developments11_behavior2_2,
+        //     'd12_b1_1' => $request->developments12_behavior1_1,
+        //     'd12_b1_2' => $request->developments12_behavior1_2,
+        //     'd12_b1_3' => $request->developments12_behavior1_3,
+        //     'd12_b2_1' => $request->developments12_behavior2_1,
+        //     'd12_b2_2' => $request->developments12_behavior2_2,
+        //     'd12_b2_3' => $request->developments12_behavior2_3,
+        //     'comment_t' => $request->commenteacher
+        // ]);
+
+
+        $dataPhysically = [
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior1_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior2_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior2_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior2_5],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior2_6],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior3_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments1_behavior3_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments2_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments2_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments2_behavior1_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments2_behavior1_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments2_behavior1_5],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments2_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments2_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments2_behavior2_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_physically'=> $request->developments2_behavior2_4],
+        ];
+        DB::table('physically')->insert($dataPhysically);
+
+        $dataMoodMind = [
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments3_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments3_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments3_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments3_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments3_behavior2_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments3_behavior2_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments4_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments4_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments4_behavior1_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments4_behavior1_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments5_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments5_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments5_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments5_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments5_behavior2_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments5_behavior3_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments5_behavior3_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments5_behavior4_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_mood_mind'=> $request->developments5_behavior4_2],
+        ];
+        DB::table('mood_mind')->insert($dataMoodMind);
+
+        $dataSocial = [
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments6_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments6_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments6_behavior1_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments6_behavior1_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments6_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments6_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments6_behavior2_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments6_behavior3_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments6_behavior3_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments7_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments7_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments7_behavior1_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments7_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments7_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments7_behavior2_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments7_behavior2_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments7_behavior2_5],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior1_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior2_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior2_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior2_5],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior3_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior3_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior3_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior3_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_social'=> $request->developments8_behavior3_5]
+        ];
+        DB::table('social')->insert($dataSocial);
+
+        $dataIntellectual = [
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments9_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments9_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments9_behavior1_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments9_behavior1_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments9_behavior1_5],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments9_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments9_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments9_behavior2_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior1_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior1_4],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior1_5],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior3_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior3_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments10_behavior3_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments11_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments11_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments11_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments11_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments12_behavior1_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments12_behavior1_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments12_behavior1_3],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments12_behavior2_1],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments12_behavior2_2],
+            ['student_id' => $student_id, 'semester' => $request->semester,'score_rate_intellectual'=> $request->developments12_behavior2_3]
+        ];
+        DB::table('intellectual')->insert($dataIntellectual);
 
         return redirect(route('record.appraisal'))->with('successaddpost', 'บันทึกข้อมูลเสร็จสิ้น');
     }

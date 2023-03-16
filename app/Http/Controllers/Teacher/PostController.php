@@ -43,7 +43,7 @@ class PostController extends Controller
     {
         // dd($request);
         Post::create([
-            'teachers_id' => Auth::user()->users_id,
+            'teachers_id' => Auth::user()->rank_id,
             'p_topic' => $request->topic,
             'p_description' => $request->description,
         ]);
