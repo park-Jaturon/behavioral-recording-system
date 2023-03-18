@@ -90,12 +90,19 @@ class PersonalRecordController extends Controller
         ->where('student_id','=',$student_id)
         ->where('semester','=',"ภาคเรียน2")
         ->get();
-        // dd($dataphysicallysemester2);
+
+        $Summary = DB::table('physically')
+        ->select(DB::raw('ROUND(AVG(score_rate_physically),1) as physically'))
+        ->where('student_id','=', $student_id)
+        ->get();
+
+        // dd($Summary);
         return view('personal-record.appraisal-show',compact(
             'dataphysicallysemester1','dataphysicallysemester2',
             'datamood_mindsemester1','datamood_mindsemester2',
             'datasocialsemester1','datasocialsemester2',
-            'dataintellectualsemester1','dataintellectualsemester2'
+            'dataintellectualsemester1','dataintellectualsemester2',
+            'Summary'
         ));
     }
 

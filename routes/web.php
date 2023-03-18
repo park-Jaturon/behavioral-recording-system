@@ -83,7 +83,7 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('post/index',[PostController::class, 'index'])->name('index.post');
     Route::get('post/add',[PostController::class, 'add_post'])->name('add.post');
     Route::post('post/ckeditor/upload',[PostController::class, 'uploadimage'])->name('ckedditor.upload');
-    Route::post('post/store',[PostController::class, 'store'])->name('store.post');
+    Route::post('post/store/{rooms_id}',[PostController::class, 'store'])->name('store.post');
     Route::get('post/edit/{posts_id}',[PostController::class, 'edit']);
     Route::put('post/update/{posts_id}',[PostController::class, 'update']);
     Route::delete('post/delete/{posts_id}',[PostController::class, 'delete']);
@@ -121,5 +121,9 @@ Route::prefix('parent')->middleware('isparent')->group(function () {
     Route::get('descendant/time',[HomeController::class,'descendant_time'])->name('time.descendant');
     Route::get('descendant/time/show/{student_id}',[HomeController::class,'time_show']);
     Route::get('post',[HomeController::class, 'descendant_post'])->name('post.descendant');
-    Route::get('descendant/post/show/{student_id}',[HomeController::class, 'post_show']);
+    Route::get('descendant/post/show/{rooms_id}',[HomeController::class, 'post_show']);
+    Route::get('events',[HomeController::class, 'descendant_events'])->name('events.descendant');
+    Route::get('descendant/events/show/{rooms_id}',[HomeController::class, 'events_show']);
+    Route::get('behaviors',[HomeController::class, 'descendant_behaviors'])->name('descendant.behaviors');
+    Route::get('descendant/behavior/show/{student_id}',[HomeController::class, 'behavior_show']);
 });

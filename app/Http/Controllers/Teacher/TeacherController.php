@@ -27,7 +27,6 @@ class TeacherController extends Controller
             ->join('rooms','rooms.rooms_id','=','teachers.rooms_id')
             ->join('students','students.rooms_id','=','rooms.rooms_id')
             ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
-            
             ->get();
 // dd($user);
         return view('teacher.home-teacher', compact('user'));

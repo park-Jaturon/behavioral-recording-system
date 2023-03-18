@@ -5,13 +5,20 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Events;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
     public function index()
     {
         $events = array();
-        $bookings = Events::all();
+        $bookings = DB::table('teachers')
+        ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+       ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+       ->join('events','teachers.rooms_id','=','events.rooms_id')
+       ->get();
+
         foreach ($bookings as $booking) {
             $events[] = [
                 'eventsid' => $booking->events_id,
@@ -20,7 +27,13 @@ class EventsController extends Controller
                 'end' => $booking->end,
             ];
         }
-        return view('teacher.event-index', ['events' => $events]);
+
+        $room = DB::table('teachers')
+        ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+        ->first();
+
+        return view('teacher.event-index', ['events' => $events],compact('room'));
     }
 
     public function store(Request $request)
@@ -33,7 +46,7 @@ class EventsController extends Controller
 
         $subject = Events::create([
             'title' => $request->title,
-            'teachers_id' => $request->teachers_id,
+            'rooms_id' => $request->rooms_id,
             'start' => $request->start_date,
             'end' => $request->end_date,
         ]);

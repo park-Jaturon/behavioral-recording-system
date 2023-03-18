@@ -5,10 +5,10 @@
         <div class="row justify-content-center align-items-center g-2">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">{{ __('เพิ่มประกาศ') }}</div>
 
                     <div class="card-body">
-                        <form action="{{empty($data->posts_id) ? route('store.post') : url('teacher/post/update/' . $data->posts_id) }}" method="post">
+                        <form action="{{empty($data->posts_id) ? url('teacher/post/store/'. $room->rooms_id) : url('teacher/post/update/' . $data->posts_id) }}" method="post">
                             @if (!empty($data->posts_id))
                                 @method('put')
                             @endif

@@ -180,7 +180,7 @@
 
                     $('#saveSub').click(function() {
                         var title = $('#title').val();
-                        var teachers_id = {!! json_encode(Auth::User()->rank_id) !!};
+                        var rooms_id = {!! json_encode($room->rooms_id) !!};
                         var start_date = $('#estart').val();
                         var end_date = $('#eend').val();
                         console.log(title, start_date, end_date);
@@ -191,7 +191,7 @@
                             dataType: 'json',
                             data: {
                                 title,
-                                teachers_id,
+                                rooms_id,
                                 start_date,
                                 end_date
                             },

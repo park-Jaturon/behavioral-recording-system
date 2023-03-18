@@ -25,10 +25,10 @@
                                 @foreach ($students as $row)
                                     <tr>
                                         <th scope="row">
-                                            <a href="{{ url('parent/descendant/post/show/' . $row->student_id) }}"
-                                                style="text-decoration: none;">{{ $row->prefix_name . $row->prefix_name . ' ' . $row->last_name }}</a>
+                                            {{ $row->prefix_name . $row->first_name . ' ' . $row->last_name }}
                                         </th>
-                                        <td>{{$row->room_name}}</td>
+                                        <td> <a href="{{ url('parent/descendant/post/show/' . $row->rooms_id) }}"
+                                                style="text-decoration: none;">{{ $row->room_name }}</a></td>
                                     </tr>
                                 @endforeach
 

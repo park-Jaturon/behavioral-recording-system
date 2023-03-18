@@ -7,20 +7,30 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Composer;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $post = Post::all();
-       
+       $post = DB::table('teachers')
+       ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+       ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+       ->join('posts','teachers.rooms_id','=','posts.rooms_id')
+       ->get();
+    //    dd($post);
         return view('teacher.post-index', compact('post'));
     }
 
     public function add_post()
     {
+        $room = DB::table('teachers')
+        ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+        ->first();
         $data = new  Post();
-        return view('teacher.add-post', compact('data'));
+        // dd($room->rooms_id);
+        return view('teacher.add-post', compact('data','room'));
     }
 
     public function uploadimage(Request $request)
@@ -39,11 +49,11 @@ class PostController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $rooms_id)
     {
         // dd($request);
         Post::create([
-            'teachers_id' => Auth::user()->rank_id,
+            'rooms_id' => $rooms_id,
             'p_topic' => $request->topic,
             'p_description' => $request->description,
         ]);

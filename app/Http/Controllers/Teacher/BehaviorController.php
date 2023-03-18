@@ -7,13 +7,20 @@ use App\Models\Behavior;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BehaviorController extends Controller
 {
     public function index()
     {
+        $room = DB::table('teachers')
+        ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+        ->first();
+        // dd( $room->rooms_id);
         $behavior = DB::table('behaviors')
             ->join('students', 'behaviors.student_id', '=', 'students.student_id')
+            ->where('students.rooms_id','=',$room->rooms_id)
             ->select('students.number','students.student_id','students.prefix_name', 'students.first_name', 'students.last_name', DB::raw('count(behaviors.student_id) as report '))
             ->groupBy('students.number','students.student_id','students.prefix_name', 'students.first_name', 'students.last_name')
             ->get();
@@ -24,7 +31,14 @@ class BehaviorController extends Controller
 
     public function add()
     {
-        $studentname = Student::all();
+        $room = DB::table('teachers')
+        ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+        ->first();
+// dd($room->rooms_id);
+        $studentname = Student::where('rooms_id','=',$room->rooms_id)
+        ->get();
+        // dd( $studentname);
         return view('teacher.behavior-add', compact('studentname'));
     }
 

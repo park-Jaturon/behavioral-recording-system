@@ -15,7 +15,7 @@
                                     <label for="inputName" class="col-4 col-form-label">ชื่อ</label>
                                     <div class="col-8">
                                         <select class="form-select" aria-label="Default select example" name="fname">
-                                            <option selected>ชื่อ - นามสกุล</option>
+                                            <option selected disabled>ชื่อ - นามสกุล</option>
                                             @foreach ($studentname as $name)
                                                 <option value="{{ $name->student_id}}">
                                                     {{ $name->prefix_name . $name->first_name . ' ' . $name->last_name }}
@@ -28,7 +28,7 @@
                                     <label for="inputName" class="col-4 col-form-label">รายงาน</label>
                                     <div class="col-8">
                                         <select class="form-select" name="type" aria-label="Default select example">
-                                            <option selected>ประเภท</option>
+                                            <option selected disabled>ประเภท</option>
                                             <option value="ด้านร่างกาย">ด้านร่างกาย</option>
                                             <option value="ด้านอารมณ์และจิตใจ">ด้านอารมณ์และจิตใจ</option>
                                             <option value="ด้านสังคม">ด้านสังคม</option>
