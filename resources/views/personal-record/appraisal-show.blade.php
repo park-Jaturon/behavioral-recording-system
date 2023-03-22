@@ -4793,7 +4793,30 @@
 
                             <!-- ความคิดเห็น -->
                             <div id="menu4" class="container tab-pane fade"><br>
-
+                                <div class="card">
+                                    <div class="card-header">
+                                        ความคิดเห็นของครูประจำชั้น
+                                    </div>
+                                    <div class="card-body">
+                                        @forelse ($commenTeacher as $commenT)
+                                        <div class="card mb-2">
+                                            <div class="card-header">
+                                             {{$commenT->semester}}
+                                            </div>
+                                            <div class="card-body">
+                                              <blockquote class="blockquote mb-0">
+                                               {{$commenT->comment_teacher}}
+                                              </blockquote>
+                                            </div>
+                                          </div>
+                                        @empty
+                                        <div class="alert alert-danger text-center" role="alert">
+                                            ยังไม่ได้รับการประเมิน
+                                          </div>
+                                        @endforelse
+                                    </div>
+                                    
+                                </div>
                             </div>
 
                             <!-- สรุปผลการประเมิน -->
@@ -4869,21 +4892,27 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        <i class="bi bi-check-lg"></i>
+                                                        @if ($Summary[0]->physically > 2.5)
+                                                            <i class="bi bi-check-lg"></i>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        <i class="bi bi-check-lg"></i>
+                                                        @if ($Summary[0]->physically > 1.5)
+                                                            <i class="bi bi-check-lg"></i>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        <i class="bi bi-check-lg"></i>
+                                                        @if ($Summary[0]->physically < 1.5)
+                                                            <i class="bi bi-check-lg"></i>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
@@ -4898,21 +4927,27 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        <i class="bi bi-check-lg"></i>
+                                                        @if ($Summary[0]->physically > 2.5)
+                                                            <i class="bi bi-check-lg"></i>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        <i class="bi bi-check-lg"></i>
+                                                        @if ($Summary[0]->physically > 1.5)
+                                                            <i class="bi bi-check-lg"></i>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        <i class="bi bi-check-lg"></i>
+                                                        @if ($Summary[0]->physically < 1.5)
+                                                            <i class="bi bi-check-lg"></i>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
@@ -4927,21 +4962,27 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        <i class="bi bi-check-lg"></i>
+                                                        @if ($Summary[0]->physically > 2.5)
+                                                            <i class="bi bi-check-lg"></i>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        <i class="bi bi-check-lg"></i>
+                                                        @if ($Summary[0]->physically > 1.5)
+                                                            <i class="bi bi-check-lg"></i>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        <i class="bi bi-check-lg"></i>
+                                                        @if ($Summary[0]->physically < 1.5)
+                                                            <i class="bi bi-check-lg"></i>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>

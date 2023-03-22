@@ -5,6 +5,11 @@
         <div class="row justify-content-center">
             <a href="{{ route('register') }}" class=" btn btn-primary float-end">เพิ่ม</a>
             <div class="col-md-6 mt-3">
+                @if ($message = Session::get('successupdateuser'))
+                <div class="alert alert-success">
+                    {{ $message }}
+                </div>
+            @endif
                 <div class="card">
                     <div class="card-header">{{ __('ผู้ใช้งานครู') }}
                         
@@ -12,7 +17,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table id="tbUser1" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">ชื่อผู้ใช้งาน</th>
@@ -30,11 +35,11 @@
                                             <td>{{$teacher->rank}}</td>
                                             <td class="text-center">
                                                 <a
-                                                    class="btn btn-warning "href="{{ url('admin/room/edit/' . $teacher->users_id) }}"role="button">แก้ไข</a>
+                                                    class="btn btn-warning "href="{{ url('admin/users/edit/' . $teacher->users_id) }}"role="button">แก้ไข</a>
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-danger delete-item"
-                                                    data-rooms_id="{{ $teacher->users_id }}">ลบ</button>
+                                                    data-users_id="{{ $teacher->users_id }}">ลบ</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -53,7 +58,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table id="tbUser2" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">ชื่อผู้ใช้งาน</th>
@@ -71,11 +76,11 @@
                                             <td>{{$parent->rank}}</td>
                                             <td class="text-center">
                                                 <a
-                                                    class="btn btn-warning "href="{{ url('admin/room/edit/' . $parent->users_id) }}"role="button">แก้ไข</a>
+                                                    class="btn btn-warning "href="{{ url('admin/users/edit/' . $parent->users_id) }}"role="button">แก้ไข</a>
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-danger delete-item"
-                                                    data-rooms_id="{{ $parent->users_id }}">ลบ</button>
+                                                    data-users_id="{{ $parent->users_id }}">ลบ</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -88,4 +93,64 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        document.querySelector('#tbUser1').addEventListener('click', (e) => {
+        if (e.target.matches('.delete-item')) {
+            console.log(e.target.dataset.users_id);
+            Swal.fire({
+                title: 'คุณแน่ใจน่ะว่าจะลบจริงๆ',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช้ฉันต้องการลบ',
+                cancelButtonText:'ยกเลิก'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete($url + '/admin/users/delete/' + e.target.dataset.users_id).then((response) => {
+                        Swal.fire(
+                            'ลบแล้ว!',
+                            'ข้อมูลของคุณถูกลบไปแล้ว',
+                            'success'
+                        );
+                        setTimeout(() => {
+                            window.location.href = $url + '/admin/users';
+                        }, 2000);
+                    });
+                }
+            });
+        }
+    });
+
+    document.querySelector('#tbUser2').addEventListener('click', (e) => {
+        if (e.target.matches('.delete-item')) {
+            console.log(e.target.dataset.users_id);
+            Swal.fire({
+                title: 'คุณแน่ใจน่ะว่าจะลบจริงๆ',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช้ฉันต้องการลบ',
+                cancelButtonText:'ยกเลิก'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete($url + '/admin/users/delete/' + e.target.dataset.users_id).then((response) => {
+                        Swal.fire(
+                            'ลบแล้ว!',
+                            'ข้อมูลของคุณถูกลบไปแล้ว',
+                            'success'
+                        );
+                        setTimeout(() => {
+                            window.location.href = $url + '/admin/users';
+                        }, 2000);
+                    });
+                }
+            });
+        }
+    });
+    </script>
 @endsection

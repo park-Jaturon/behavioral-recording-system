@@ -48,7 +48,7 @@
                                     <label for="prefix" class="form-label">ตำแหน่ง</label>
                                     <select class="form-select" name="rankteacher" aria-label="Default select example">
                                         <option selected>{{ old('--ตำแหน่ง--', $dataTeacher->rank_teacher) }}</option>
-                                        <option value="ครูประจำห้อง">ครูประจำห้อง</option>
+                                        <option value="ครูประจำชั้น">ครูประจำชั้น</option>
                                         <option value="ครูพี่เลี้ยง">ครูพี่เลี้ยง</option>
                                     </select>
                                 </div>
