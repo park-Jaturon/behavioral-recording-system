@@ -261,7 +261,7 @@
                                         <th scope="row" rowspan="9">
                                             <u>พัฒนาการด้านร่างกาย</u> <br>
                                             <label for="">มาตรฐานที่ 2</label><br>
-                                            <label for="">กล้ามเนื้อใหณ่และกล้ามเนื้อเล็กแข็งแรง
+                                            <label for="">กล้ามเนื้อใหญ่และกล้ามเนื้อเล็กแข็งแรง
                                                 ใช้ได้อย่างคล่องแคล่วและประสานสัมพันธ์กัน</label>
                                         </th>
                                         <td rowspan="5">
@@ -632,7 +632,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            1.4สนใจแล้วมีความสุขขณะทำงานศิลปะ
+                                            1.4 สนใจแล้วมีความสุขขณะทำงานศิลปะ
                                         </td>
                                         <td class="text-center">
                                             <select class="form-select" aria-label="Default select example" id="id30" onchange="jsfuncSetState('id30')"
@@ -697,7 +697,7 @@
                                     </tr>
                                     <tr>
                                         <td rowspan="3">
-                                            2.มีความเมตากรุณา มีน้ำำใจ และช่วยเหลือแบ่งปัน
+                                            2.มีความเมตากรุณา มีน้ำใจ และช่วยเหลือแบ่งปัน
                                         </td>
                                         <td>
                                             2.1 แสดงความรักต่อเพื่อนและมีเมตตาต่อสัตว์เลี้ยง
@@ -987,7 +987,7 @@
                                             3.ประหยัดพอเพียง
                                         </td>
                                         <td>
-                                            3.1 ใช้สิงของเครื่องใช้อย่างประหยัดและพพอเพียงเมื่อมีผู้ชี้เนะ
+                                            3.1 ใช้สิงของเครื่องใช้อย่างประหยัดและพอเพียงเมื่อมีผู้ชี้เนะ
                                         </td>
                                         <td class="text-center">
                                             <select class="form-select" aria-label="Default select example" id="id47" onchange="jsfuncSetState('id47')"
@@ -1460,7 +1460,7 @@
                                             1.สนทนาโต้ตอบและเล่าเรื่องให้ผู้อื่นเข้าใจ
                                         </td>
                                         <td>
-                                            1.1 ฟังผู้อื่นพูดจนจบและสนทนาโต้ดอบสอดคล้องกับเรื่องที่ฟัง
+                                            1.1 ฟังผู้อื่นพูดจนจบและสนทนาโต้ตอบสอดคล้องกับเรื่องที่ฟัง
                                         </td>
                                         <td class="text-center">
                                             <select class="form-select" aria-label="Default select example" id="id70" onchange="jsfuncSetState('id70')"
@@ -1700,7 +1700,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            1.5 แก้ปัญหาด้วยวิธีการต่างๆ โดยกการลองผิดลองถูกด้วยตนเอง
+                                            1.5 แก้ปัญหาด้วยวิธีการต่างๆ โดยการลองผิดลองถูกด้วยตนเอง
                                         </td>
                                         <td class="text-center">
                                             <select class="form-select" aria-label="Default select example" id="id82" onchange="jsfuncSetState('id82')"
@@ -1830,7 +1830,7 @@
                                         </td>
                                         <td>
                                             1.1
-                                            สร้างผลงานศิลปะเพื่อสื่อสานตวามรู้สึกของตนเองโดยมีการดัดแปลงและแปลกใหม่จากเดิมหรือมีรายละเอียดเพิ่มขึ้น
+                                            สร้างผลงานศิลปะเพื่อสื่อสานความรู้สึกของตนเองโดยมีการดัดแปลงและแปลกใหม่จากเดิมหรือมีรายละเอียดเพิ่มขึ้น
                                         </td>
                                         <td class="text-center">
                                             <select class="form-select" aria-label="Default select example" id="id88" onchange="jsfuncSetState('id88')"
