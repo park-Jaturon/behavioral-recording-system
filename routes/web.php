@@ -114,7 +114,8 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
      Route::get('record/appraisal/show/{student_id}',[PersonalRecordController::class, 'appraisal_show']);
      Route::get('record/appraisal/add/{student_id}',[PersonalRecordController::class, 'appraisal_add']);
      Route::post('record/appraisal/store/{student_id}',[PersonalRecordController::class, 'appraisal_store'])->name('store.appraisal');
-     Route::get('pdf', [PersonalRecordController::class, 'exportPDF'])->name('show.pdf');
+     Route::get('pdf/{student_id}', [PersonalRecordController::class, 'viewPDF'])->name('show.pdf');
+     Route::get('pdf/download/{student_id}', [PersonalRecordController::class, 'exportPDF'])->name('download.pdf');
 });
 
 Route::prefix('parent')->middleware('isparent')->group(function () {

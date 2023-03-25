@@ -2,6 +2,25 @@
 
 @section('content')
     <div class="container">
+        <div class="row  my-2">
+            {{-- @dd(isset($dataphysicallysemester1)) --}}
+            <div class="col-3 text-end">
+                @if (empty($dataphysicallysemester1[0]->score_rate_physically))
+                    <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true"><i
+                            class="bi bi-file-earmark-pdf"></i>ดู</a>
+                    <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true"><i
+                            class="bi bi-file-earmark-pdf"></i> ดาวโหล</a>
+                @else
+                    <a name="" id="" class="btn btn-primary" href="{{ url('teacher/pdf/' . $student_id) }}"
+                        role="button"><i class="bi bi-file-earmark-pdf"></i> ดู</a>
+                    <a name="" id="" class="btn btn-primary"
+                        href="{{ url('teacher/pdf/download/' . $student_id) }}" role="button"><i
+                            class="bi bi-file-earmark-pdf"></i> ดาวโหล</a>
+                @endif
+
+            </div>
+        </div>
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card text-start">
@@ -90,11 +109,13 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[0]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[0]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text" value="ควรเสริม"
-                                                        aria-label="Disabled input example" disabled readonly>
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
                                                 @elseif ($dataphysicallysemester2[0]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text" value="ปานกลาง"
-                                                        aria-label="Disabled input example" disabled readonly>
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
                                                 @elseif ($dataphysicallysemester2[0]->score_rate_physically == 3)
                                                     <input class="form-control text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
@@ -113,11 +134,13 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[1]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[1]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text" value="ควรเสริม"
-                                                        aria-label="Disabled input example" disabled readonly>
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
                                                 @elseif ($dataphysicallysemester1[1]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text" value="ปานกลาง"
-                                                        aria-label="Disabled input example" disabled readonly>
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
                                                 @elseif ($dataphysicallysemester1[1]->score_rate_physically == 3)
                                                     <input class="form-control text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
@@ -1276,8 +1299,8 @@
                                                 @endif
                                                 @if (empty($datamood_mindsemester2[5]->score_rate_mood_mind))
                                                     <input class="form-control text-center" type="text"
-                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
-                                                        disabled readonly>
+                                                        value="ยังไม่ได้รับการประเมิน"
+                                                        aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                             </td>
                                         </tr>
@@ -1305,13 +1328,14 @@
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[6]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
-                                                        aria-label="Disabled input example" disabled readonly>
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ดี" aria-label="Disabled input example" disabled
+                                                        readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester1[6]->score_rate_mood_mind))
                                                     <input class="form-control text-center" type="text"
-                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
-                                                        disabled readonly>
+                                                        value="ยังไม่ได้รับการประเมิน"
+                                                        aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                             </td>
                                             <td valign="middle">
@@ -4799,23 +4823,23 @@
                                     </div>
                                     <div class="card-body">
                                         @forelse ($commenTeacher as $commenT)
-                                        <div class="card mb-2">
-                                            <div class="card-header">
-                                             {{$commenT->semester}}
+                                            <div class="card mb-2">
+                                                <div class="card-header">
+                                                    {{ $commenT->semester }}
+                                                </div>
+                                                <div class="card-body">
+                                                    <blockquote class="blockquote mb-0">
+                                                        {{ $commenT->comment_teacher }}
+                                                    </blockquote>
+                                                </div>
                                             </div>
-                                            <div class="card-body">
-                                              <blockquote class="blockquote mb-0">
-                                               {{$commenT->comment_teacher}}
-                                              </blockquote>
-                                            </div>
-                                          </div>
                                         @empty
-                                        <div class="alert alert-danger text-center" role="alert">
-                                            ยังไม่ได้รับการประเมิน
-                                          </div>
+                                            <div class="alert alert-danger text-center" role="alert">
+                                                ยังไม่ได้รับการประเมิน
+                                            </div>
                                         @endforelse
                                     </div>
-                                    
+
                                 </div>
                             </div>
 

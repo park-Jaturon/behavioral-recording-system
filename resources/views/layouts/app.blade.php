@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'park') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -53,6 +53,12 @@
     <script>
         var $url = {!! json_encode(url('/')) !!};
     </script>
+
+<style>
+    li:hover {
+      background-color: #ffe1e1;
+    }
+    </style>
 </head>
 
 <body>
@@ -130,7 +136,7 @@
                                         <a class="nav-link active" aria-current="page"
                                             href="{{ route('admindashboard') }}">Dashboard</a>
                                     </li>
-                                    <li class="nav-item ">
+                                    <li class="nav-item " >
                                         <a class="nav-link" href="{{ route('room.index') }}">ห้องเรียน</a>
                                     </li>
                                     <li class="nav-item">
@@ -142,7 +148,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('index.managestudent') }}">นักเรียน</a>
                                     </li>
-                                    <li class="nav-item dropdown">
+                                    {{-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                             Dropdown
@@ -155,14 +161,16 @@
                                             </li>
                                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             @endif
                             {{-- Teacher --}}
                             @if (Auth::User()->rank == 'teacher')
                                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-                                    <li class="nav-item ">
+                                    <li class="nav-item " hover:background-color: yellow;
+                                        
+                                      >
                                         <a class="nav-link" href="{{ route('teacher.dashboard') }}">Dashboard</a>
                                     </li>
                                     <li class="nav-item ">
@@ -180,8 +188,12 @@
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('index.behavior') }}">รายงานพฤติกรรม</a>
                                     </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('record.appraisal') }}">แบบประเมินพัฒนาการ</a>
+                                    </li>
+                                <li>
 
-                                    <li class="nav-item dropdown">
+                                    {{-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                             บันทึกรายงาน
@@ -197,7 +209,7 @@
                                             </li>
                                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             @endif
                             {{-- Parent --}}
@@ -207,9 +219,22 @@
                                 <li class="nav-item ">
                                     <a class="nav-link" href="{{ route('home.parent') }}">Dashboard</a>
                                 </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{route('time.descendant')}}">เวลาเรียน</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{route('post.descendant')}}">ประกาศ</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{route('events.descendant')}}">ตารางเรียน</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{route('descendant.behaviors')}}">รายงานพฤติกรรม</a>
+                                </li>
+
                                 
 
-                                <li class="nav-item dropdown">
+                                {{-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         บันทึกรายงาน
@@ -225,14 +250,14 @@
                                         </li>
                                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
                         @endif
-                            <form class="d-flex mt-3" role="search">
+                            {{-- <form class="d-flex mt-3" role="search">
                                 <input class="form-control me-2" type="search" placeholder="Search"
                                     aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
+                            </form> --}}
                         </div>
                     </div>
                 </div>

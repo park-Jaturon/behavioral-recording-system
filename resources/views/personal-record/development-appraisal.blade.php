@@ -22,7 +22,6 @@
                                     <th scope="col" class=" text-center">ชื่อ - นามสกุล</th>
                                     <th scope="col" class=" text-center">ห้อง</th>
                                     <th scope="col" class=" text-center">แบบประเมินพัฒนาการ</th>
-                                    <th scope="col" class=" text-center">PDF</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,9 +36,6 @@
                                         <td class=" text-center">{{ $data->room_name }}</td>
                                         <td class=" text-center">
                                             <a class="btn btn-primary" href="{{url('teacher/record/appraisal/show/'.$data->student_id)}}" role="button">ดูบันทึก</a>
-                                        </td>
-                                        <td class=" text-center">
-                                           <a href="{{route('show.pdf')}}"><i class="bi bi-filetype-pdf" style='font-size:30px'></i></a> 
                                         </td>
                                     </tr>
                                 @endforeach

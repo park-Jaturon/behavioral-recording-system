@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-primary">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">วันที่</th>

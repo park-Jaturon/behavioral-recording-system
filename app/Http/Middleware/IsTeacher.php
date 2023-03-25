@@ -19,7 +19,7 @@ class IsTeacher
         if (auth()->user()->rank == 'teacher') {
             return $next($request);
         } else {
-            return redirect('/')->with('error', "ไม่ใช้Teacher");
+            return redirect('/teacher/dashboard')->with('error', "ไม่ใช้Teacher");
         }
     }
 }
