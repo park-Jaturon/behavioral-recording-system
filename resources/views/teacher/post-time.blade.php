@@ -53,7 +53,7 @@
                                 {{-- เวลากลับบ้าน --}}
                                 <div class="col">
                                     {{-- @dd(empty($check_student[0]->c_out))  --}}
-                                    @if ($timenow > '16:30:00')
+                                    @if ($timenow > '15:00:00')
                                         @if (empty($check_student[0]->c_out))
                                             <div class="mb-3">
                                             <label for="" class="form-label">เวลากลับบ้าน</label>
@@ -73,7 +73,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">เวลากลับบ้าน</label>
                                         <input class="form-control"  type="text"
-                                            value="{{ __('หลัง 13.00 น.') }}" aria-label="readonly input example" readonly>
+                                            value="{{ __('หลัง 15.00 น.') }}" aria-label="readonly input example" readonly>
                                     </div>
                                     @endif
                                 </div>
@@ -90,7 +90,7 @@
                         <div class="row justify-content-center align-items-center g-2">
                             <div class="col my-3">
                                 <div class="table-responsive">
-                                    <table class="table table-primary">
+                                    <table class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th scope="col">date</th>
