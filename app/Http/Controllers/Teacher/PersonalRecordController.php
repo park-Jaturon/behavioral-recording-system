@@ -675,13 +675,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[0]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[0]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[0]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -695,13 +695,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[0]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[0]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[0]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -717,13 +717,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[1]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[1]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[1]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -737,13 +737,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[1]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[1]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[1]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -758,13 +758,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[2]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[2]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[2]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -778,13 +778,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[2]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[2]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[2]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -801,13 +801,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[3]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[3]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[3]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -821,13 +821,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[3]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[3]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[3]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -843,13 +843,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[4]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[4]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[4]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -863,13 +863,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[4]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[4]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[4]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -885,13 +885,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[5]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 16, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 16, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 16, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 16, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[5]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 16, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 16, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 16, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 16, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[5]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 16, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 16, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 16, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 16, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -905,13 +905,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[5]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 16, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 16, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 16, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 16, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[5]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 16, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 16, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 16, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 16, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[5]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 16, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 16, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 16, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 16, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -927,13 +927,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[6]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[6]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[6]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -947,13 +947,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[6]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[6]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[6]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -969,13 +969,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[7]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[7]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[7]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -989,13 +989,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[7]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[7]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[7]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -1011,13 +1011,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[8]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[8]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[8]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -1031,13 +1031,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[8]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[8]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[8]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -1054,13 +1054,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[9]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[9]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[9]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -1074,13 +1074,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[9]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[9]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[9]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -1096,13 +1096,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester1[10]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[10]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 140, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
             } elseif ($dataphysicallysemester1[10]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 140, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             }
@@ -1116,13 +1116,13 @@ class PersonalRecordController extends Controller
             if ($dataphysicallysemester2[10]->score_rate_physically == 1) {
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[10]->score_rate_physically == 2) {
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 0, 170, '', true, 0, true);
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, '', 1, 'C', false, 1, '', '', true, 0, true);
             } elseif ($dataphysicallysemester2[10]->score_rate_physically == 3) {
-                $pdf::MultiCell(10, 17, '<img src=".\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
+                $pdf::MultiCell(10, 17, '<img src="public\image\check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, 170, '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
             }
@@ -1131,6 +1131,7 @@ class PersonalRecordController extends Controller
             $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
         }
+        /*
         // ---------------------------------------------------------------------------------------------------------------------------------------------
         $pdf::AddPage();
         // set cell padding  //ช่องว่างภายใน
@@ -5022,7 +5023,7 @@ class PersonalRecordController extends Controller
         $pdf::MultiCell(120, 30, 'ลงชื่อ...................................................................................<br/>
         (ผู้อำนวยการโรงเรียนอนุบาลมหาสารคาม)<br/> วันที่...........เดือน......................พ.ศ. ............. ', 0, 'C', false, 1, 50, 252, true, 0, true, true, 15, 'M');
         // --------------------------------------------------------------------------------------------
-
+*/
         //Close and output PDF document
         $pdf::Output($student->prefix_name . $student->first_name . ' ' . $student->last_name.'.pdf', 'I');
 
@@ -5031,7 +5032,7 @@ class PersonalRecordController extends Controller
         //============================================================+
     }
 
-    public function exportPDF($student_id)
+   /* public function exportPDF($student_id)
     {
         $student = Student::find($student_id);
 
@@ -9503,5 +9504,5 @@ class PersonalRecordController extends Controller
         //============================================================+
         // END OF FILE
         //============================================================+
-    }
+    } */
 }
