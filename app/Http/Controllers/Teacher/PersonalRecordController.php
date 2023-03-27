@@ -5011,10 +5011,10 @@ class PersonalRecordController extends Controller
         $pdf::MultiCell(48, 0, '1 = ควรเสริม', 1, 'C', false, 0, 40, '', true, 0, true, true, 15, 'M');
         $pdf::MultiCell(92, 0, 'แสดงพฤติกรรมที่ไม่ชัดเจนหรือต้องการชี้แนะอยู่เป็นประจำ', 1, 'C', false, 1, '', '', true, 1, true, true, 15, 'M');
 
-        $pdf::MultiCell(10, 0, '<img src=" image\radio_button_unchecked_black_24dp.svg" width="10" height="15">', 0, 'C', false, 0, 40, 190, true, 0, true);
+        $pdf::MultiCell(10, 0, '<img src="./image/radio_button_unchecked_black_24dp.svg" width="10" height="15">', 0, 'C', false, 0, 40, 190, true, 0, true);
         $pdf::MultiCell(80, 0, 'มีความพร้อมเลื่อนชั้นได้', 0, 'L', false, 0, 48, 189, true, 0, true);
 
-        $pdf::MultiCell(10, 0, '<img src=" image\radio_button_unchecked_black_24dp.svg" width="10" height="15">', 0, 'C', false, 0, 40, 197, true, 0, true);
+        $pdf::MultiCell(10, 0, '<img src="./image/radio_button_unchecked_black_24dp.svg" width="10" height="15">', 0, 'C', false, 0, 40, 197, true, 0, true);
         $pdf::MultiCell(80, 0, 'ข้อเสนอแนะในกรณีไม่พร้อมเลื่อนชั้น', 0, 'L', false, 0, 48, 196, true, 0, true);
 
 
@@ -9486,10 +9486,10 @@ class PersonalRecordController extends Controller
         $pdf::MultiCell(48, 0, '1 = ควรเสริม', 1, 'C', false, 0, 40, '', true, 0, true, true, 15, 'M');
         $pdf::MultiCell(92, 0, 'แสดงพฤติกรรมที่ไม่ชัดเจนหรือต้องการชี้แนะอยู่เป็นประจำ', 1, 'C', false, 1, '', '', true, 1, true, true, 15, 'M');
 
-        $pdf::MultiCell(10, 0, '<img src=" image\radio_button_unchecked_black_24dp.svg" width="10" height="15">', 0, 'C', false, 0, 40, 190, true, 0, true);
+        $pdf::MultiCell(10, 0, '<img src="./image/radio_button_unchecked_black_24dp.svg" width="10" height="15">', 0, 'C', false, 0, 40, 190, true, 0, true);
         $pdf::MultiCell(80, 0, 'มีความพร้อมเลื่อนชั้นได้', 0, 'L', false, 0, 48, 189, true, 0, true);
 
-        $pdf::MultiCell(10, 0, '<img src=" image\radio_button_unchecked_black_24dp.svg" width="10" height="15">', 0, 'C', false, 0, 40, 197, true, 0, true);
+        $pdf::MultiCell(10, 0, '<img src="./image/radio_button_unchecked_black_24dp.svg" width="10" height="15">', 0, 'C', false, 0, 40, 197, true, 0, true);
         $pdf::MultiCell(80, 0, 'ข้อเสนอแนะในกรณีไม่พร้อมเลื่อนชั้น', 0, 'L', false, 0, 48, 196, true, 0, true);
 
 
