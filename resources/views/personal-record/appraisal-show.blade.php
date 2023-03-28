@@ -4881,8 +4881,8 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically > 2.5)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if ($SummaryPhysically->physically >= 2.5)
+                                                            <i class="bi bi-check-lg"></i>  
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4890,8 +4890,9 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically > 1.5)
+                                                        @if ($SummaryPhysically->physically > 1.5 && $SummaryPhysically->physically < 2.5) 
                                                             <i class="bi bi-check-lg"></i>
+                                                            
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4899,7 +4900,7 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically < 1.5)
+                                                        @if ($SummaryPhysically->physically <= 1.5 && $SummaryPhysically->physically != null)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -4909,14 +4910,14 @@
                                                 //
                                             </td>
                                         </tr>
-                                        <tr>
+                                       <tr>
                                             <th scope="row">
                                                 ด้านอารมณ์ - จิตใจ
                                             </th>
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically > 2.5)
+                                                        @if ($SummaryMoodMind->score_mood_mind >= 2.5)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -4925,7 +4926,7 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically > 1.5)
+                                                        @if ($SummaryMoodMind->score_mood_mind > 1.5)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -4934,7 +4935,7 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically < 1.5)
+                                                        @if ($SummaryMoodMind->score_mood_mind <= 1.5 && $SummaryPhysically->physically != null)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -4951,7 +4952,7 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically > 2.5)
+                                                        @if ($SummarySocial->score_social > 2.5)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -4960,7 +4961,7 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically > 1.5)
+                                                        @if ($SummarySocial->score_social > 1.5)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -4969,7 +4970,7 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically < 1.5)
+                                                        @if ($SummarySocial->score_social <= 1.5)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -4986,7 +4987,7 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically > 2.5)
+                                                        @if ($SummaryIntellectual->score_intellectual > 2.5)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -4995,7 +4996,7 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically > 1.5)
+                                                        @if ($SummaryIntellectual->score_intellectual > 1.5)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -5004,7 +5005,7 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($Summary[0]->physically < 1.5)
+                                                        @if ($SummaryIntellectual->score_intellectual <= 1.5)
                                                             <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
@@ -5013,7 +5014,7 @@
                                             <td>
                                                 //
                                             </td>
-                                        </tr>
+                                        </tr> 
                                     </tbody>
                                 </table>
                             </div>

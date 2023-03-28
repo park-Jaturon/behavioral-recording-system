@@ -57,6 +57,8 @@ class PersonalRecordController extends Controller
 
     public function appraisal_show($student_id)
     {
+        $student = Student::find($student_id);
+
         $dataphysicallysemester1 = DB::table('physically')
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน1")
@@ -93,25 +95,33 @@ class PersonalRecordController extends Controller
             ->where('semester', '=', "ภาคเรียน2")
             ->get();
 
-        $Summary = DB::table('physically')
+        $SummaryPhysically = DB::table('physically')
             ->select(DB::raw('ROUND(AVG(score_rate_physically),1) as physically'))
-            ->where('student_id', '=', $student_id)
-            ->get();
-
+            ->where('student_id', '=', $student->student_id)
+            ->first();
+        $SummaryMoodMind = DB::table('mood_mind')
+            ->select(DB::raw('ROUND(AVG(score_rate_mood_mind),1) as score_mood_mind'))
+            ->where('student_id', '=', $student->student_id)
+            ->first();
+        $SummarySocial = DB::table('social')
+            ->select(DB::raw('ROUND(AVG(score_rate_social),1) as score_social'))
+            ->where('student_id', '=', $student->student_id)
+            ->first();
+        $SummaryIntellectual = DB::table('intellectual')
+            ->select(DB::raw('ROUND(AVG(score_rate_intellectual),1) as score_intellectual'))
+            ->where('student_id', '=', $student->student_id)
+            ->first();
+       
         $commenTeacher = DB::table('comment_appraisal')
             ->where('student_id', '=', $student_id)
             ->get();
-        // dd($commenTeacher);
+        // dd($SummaryPhysically);
         return view('personal-record.appraisal-show', compact(
-            'dataphysicallysemester1',
-            'dataphysicallysemester2',
-            'datamood_mindsemester1',
-            'datamood_mindsemester2',
-            'datasocialsemester1',
-            'datasocialsemester2',
-            'dataintellectualsemester1',
-            'dataintellectualsemester2',
-            'Summary',
+            'dataphysicallysemester1','dataphysicallysemester2',
+            'datamood_mindsemester1','datamood_mindsemester2',
+            'datasocialsemester1','datasocialsemester2',
+            'dataintellectualsemester1','dataintellectualsemester2',
+            'SummaryPhysically','SummaryMoodMind','SummarySocial','SummaryIntellectual',
             'commenTeacher',
             'student_id'
         ));
@@ -1131,7 +1141,7 @@ class PersonalRecordController extends Controller
             $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 0, '', '', true, 0, true);
             $pdf::MultiCell(10, 17, ' ', 1, 'C', false, 1, '', '', true, 0, true);
         }
-        
+
         // ---------------------------------------------------------------------------------------------------------------------------------------------
         $pdf::AddPage();
         // set cell padding  //ช่องว่างภายใน
@@ -4917,7 +4927,6 @@ class PersonalRecordController extends Controller
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
             }
-            
         } else {
             $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
             $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
@@ -5026,7 +5035,7 @@ class PersonalRecordController extends Controller
         // --------------------------------------------------------------------------------------------
 
         //Close and output PDF document
-        $pdf::Output($student->prefix_name . $student->first_name . ' ' . $student->last_name.'.pdf', 'I');
+        $pdf::Output($student->prefix_name . $student->first_name . ' ' . $student->last_name . '.pdf', 'I');
 
         //============================================================+
         // END OF FILE
@@ -9501,10 +9510,10 @@ class PersonalRecordController extends Controller
         // --------------------------------------------------------------------------------------------
 
         //Close and output PDF document
-        $pdf::Output($student->prefix_name . $student->first_name . ' ' . $student->last_name.'.pdf', 'D');
+        $pdf::Output($student->prefix_name . $student->first_name . ' ' . $student->last_name . '.pdf', 'D');
 
         //============================================================+
         // END OF FILE
         //============================================================+
-    } 
+    }
 }
