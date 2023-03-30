@@ -109,4 +109,32 @@ class HomeController extends Controller
         ->get();
         return view('parent.show-behavior',compact('report'));
     }
+
+    public function descendant_activity()
+    {
+        $students = DB::table('students')
+        ->where('parents_id', '=', Auth::user()->rank_id)
+        ->join('rooms', 'students.rooms_id', '=', 'rooms.rooms_id')
+        ->get();
+
+        return view('parent.parent-activity', compact('students'));
+    }
+
+    public function activity_show($id)
+    {
+        $event = DB::table('events')
+        ->where('rooms_id', '=', $id)
+        ->get();
+        // dd($event);
+        return view('parent.show-activity',compact('event'));
+    }
+
+    public function activity_showimage($id)
+    {
+        $eventImage = DB::table('activities')
+        ->where('events_id', '=', $id)
+        ->get();
+        // dd($eventImage);
+        return view('parent.show-activity-image',compact('eventImage'));
+    }
 }

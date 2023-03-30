@@ -266,7 +266,7 @@
             <nav class="navbar navbar-expand-md  shadow-sm" style="background-color:#ffe1e1">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ __('ระบบบันทึกติดตามพฤติกรรมเด็กเล็ก') }}
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

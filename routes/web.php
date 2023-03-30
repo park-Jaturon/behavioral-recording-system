@@ -130,4 +130,7 @@ Route::prefix('parent')->middleware('isparent')->group(function () {
     Route::get('descendant/events/show/{rooms_id}',[HomeController::class, 'events_show']);
     Route::get('behaviors',[HomeController::class, 'descendant_behaviors'])->name('descendant.behaviors');
     Route::get('descendant/behavior/show/{student_id}',[HomeController::class, 'behavior_show']);
+    Route::get('activity',[HomeController::class, 'descendant_activity'])->name('activity.descendant');
+    Route::get('descendant/activity/show/{rooms_id}',[HomeController::class, 'activity_show']);
+    Route::get('descendant/activity/show/image/{events_id}',[HomeController::class, 'activity_showimage']);
 });
