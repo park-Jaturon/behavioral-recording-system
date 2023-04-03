@@ -6,7 +6,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3>ปวะวัตินักเรียน</h3>
+                    {{ __('ปวะวัตินักเรียน') }}
                 </div>
                 <div class="card-body">
                     @if ($message = Session::get('success'))
@@ -15,7 +15,9 @@
                         </div>
                     @endif
 
-                    <form action="{{empty($data->student_id) ? route('store.student') : url('admin/student/update/'.$data->student_id)}}" method="post">
+                    <form
+                        action="{{ empty($data->student_id) ? route('store.student') : url('admin/student/update/' . $data->student_id) }}"
+                        method="post">
                         @if (!empty($data->student_id))
                             @method('put')
                         @endif
@@ -148,21 +150,24 @@
                             <div class="col">
                                 <label for="telephonenumberfather" class="form-label">เบอร์โทรบิดา</label>
                                 <input type="text" name="telephonenumberfather" id="telephonenumberfather"
-                                    class="form-control" value="{{ old('telephonenumberfather',$data->telephone_number_father) }}">
+                                    class="form-control"
+                                    value="{{ old('telephonenumberfather', $data->telephone_number_father) }}">
                                 {{-- ,$data->telephone_number_parents1 --}}
 
                             </div>
                             <div class="col">
                                 <label for="telephonenumbermother" class="form-label">เบอร์โทรมารดา</label>
                                 <input type="text" name="telephonenumbermother" id="telephonenumbermother"
-                                    class="form-control" value="{{ old('telephonenumbermother',$data->telephone_number_mother) }}">
+                                    class="form-control"
+                                    value="{{ old('telephonenumbermother', $data->telephone_number_mother) }}">
                                 {{-- ,$data->telephone_number_parents2 --}}
 
                             </div>
                             <div class="col">
                                 <label for="telephonenumberbus" class="form-label">เบอร์โทรถรับส่ง</label>
                                 <input type="text" name="telephonenumberbus" id="telephonenumberbus"
-                                    class="form-control" value="{{ old('telephonenumberbus',$data->telephone_number_bus) }}">
+                                    class="form-control"
+                                    value="{{ old('telephonenumberbus', $data->telephone_number_bus) }}">
                                 {{-- ,$data->telephone_number_bus --}}
 
                             </div>
@@ -171,7 +176,7 @@
                         <div class="row justify-content-center align-items-center g-2 mb-3">
                             <div class="col">
                                 <label for="exampleFormControlTextarea1" class="form-label">ที่อยู่</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" name="habitations" rows="3">{{ old('habitations',$data->habitations) }}</textarea> {{-- ,$data->habitations --}}
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="habitations" rows="3">{{ old('habitations', $data->habitations) }}</textarea> {{-- ,$data->habitations --}}
                             </div>
 
                         </div>
@@ -179,17 +184,12 @@
                             บันทึก
                         </button>
                     </form>
-
-                </div>
-                <div class="card-footer text-muted">
-                    Footer
                 </div>
             </div>
         </div>
     </div>
-    
 @endsection
 
 @section('script')
-<script src="\js\datepicker-th.js"></script>
+    <script src="\js\datepicker-th.js"></script>
 @endsection
