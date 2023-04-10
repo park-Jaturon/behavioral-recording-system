@@ -40,11 +40,14 @@ class ManageteacherController extends Controller
 
         $request->validate([
             'prefix' => 'required|string',
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
+            'firstname' => 'required|string|min:3',
+            'lastname' => 'required|string|min:3',
             'rankteacher' => 'required|string',
             'imageteacher' => 'required|mimes:jpeg,jpg,png',
             'room' => 'required',
+        ],[
+            'firstname.min' => 'ข้อมูลไม่ถูกต้อง',
+            'lastname.min' => 'ข้อมูลไม่ถูกต้อง',
         ]);
 
         $teachers = new Teacher();
@@ -67,8 +70,8 @@ class ManageteacherController extends Controller
     {
         $request->validate([
             'prefix' => 'required|string',
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
+            'firstname' => 'required|string|min:3',
+            'lastname' => 'required|string|min:3',
             'rankteacher' => 'required|string',
             'imageteacher' => 'required|mimes:jpeg,jpg,png',
             'room' => 'required',

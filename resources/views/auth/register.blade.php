@@ -16,7 +16,7 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
-                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"  {{--@error('name') is-invalid @enderror --}}
                                         value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                     @error('name')
@@ -33,7 +33,7 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password" {{--@error('password') is-invalid @enderror --}}
                                         required autocomplete="new-password">
 
                                     @error('password')

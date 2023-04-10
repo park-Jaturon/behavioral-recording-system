@@ -34,12 +34,21 @@
                                     <label for="firstname" class="form-label">ชื่อ</label>
                                     <input type="text" name="firstname" id="firstname"
                                         value="{{ old('firstname', $dataTeacher->first_name) }}" class="form-control">
-                                    {{-- ,$teachers->first_name --}}
+                                     <small id="helpId" class="text-muted"> @error('firstname')
+                                            <span role="alert" class="text-danger">
+                                                <strong> {{ $message }}</strong>
+                                            </span>
+                                        @enderror</small>
                                 </div>
                                 <div class="col">
                                     <label for="lastname" class="form-label">นามสกุล</label>
                                     <input type="text" name="lastname" id="lastname" class="form-control"
                                         value="{{ old('lastname', $dataTeacher->last_name) }}"> {{-- ,$teachers['last_name'] --}}
+                                        <small id="helpId" class="text-muted"> @error('lastname')
+                                            <span role="alert" class="text-danger">
+                                                <strong> {{ $message }}</strong>
+                                            </span>
+                                        @enderror</small>
                                 </div>
                             </div>
                             {{-- form-ตำแหน่ง-ห้อง-รูป --}}

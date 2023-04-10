@@ -8,10 +8,11 @@ document.querySelector('#tbRoom').addEventListener('click', (e) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'ใช้ฉันต้องการลบ',
-            cancelButtonText:'ยกเลิก'
+            cancelButtonText: 'ยกเลิก'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete($url + '/admin/room/delete/' + e.target.dataset.rooms_id).then((response) => {
+                axios.delete($url + '/admin/room/delete/' + e.target.dataset.rooms_id)
+                .then((response) => {
                     Swal.fire(
                         'ลบแล้ว!',
                         'ข้อมูลของคุณถูกลบไปแล้ว',
@@ -20,7 +21,16 @@ document.querySelector('#tbRoom').addEventListener('click', (e) => {
                     setTimeout(() => {
                         window.location.href = $url + '/admin/room';
                     }, 2000);
-                });
+                })
+                    .catch(error => {
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                            footer: '<a href="">Why do I have this issue?</a>'
+                        })
+                    });
             }
         });
     }

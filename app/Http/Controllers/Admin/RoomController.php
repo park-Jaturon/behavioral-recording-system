@@ -34,9 +34,12 @@ class RoomController extends Controller
     {
 
         $request->validate([
-            'roomname' => 'required|string',
+            'roomname' => 'required|string|min:3',
           
-        ]);
+        ],
+    [
+        'roomname'=> 'ห้อง ต้องอักขระอย่างน้อย 3 ตัว เช่น อบ 2/1'
+    ]);
 
         Room::create([
             'room_name' => $request->roomname,
@@ -68,5 +71,7 @@ class RoomController extends Controller
     public function delete($rooms_id)
     {
         Room::destroy($rooms_id);
+
+        // return redirect()->while('message','park');
     }
 }

@@ -6,7 +6,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    {{ __('ปวะวัตินักเรียน') }}
+                    {{ __('ประวัตินักเรียน') }}
                 </div>
                 <div class="card-body">
                     @if ($message = Session::get('success'))
@@ -32,17 +32,37 @@
                                     <option value="เด็กชาย">เด็กชาย</option>
                                     <option value="เด็กหญิง">เด็กหญิง</option>
                                 </select>
+                                @error('prefix')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                             <div class="col">
                                 <label for="firstname" class="form-label">ชื่อ</label>
                                 <input type="text" name="firstname" id="firstname"
                                     value="{{ old('firstname', $data->first_name) }}" class="form-control">
-                                {{-- ,$data->first_name --}}
+                                @error('firstname')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                             <div class="col">
                                 <label for="lastname" class="form-label">นามสกุล</label>
                                 <input type="text" name="lastname" id="lastname" class="form-control"
-                                    value="{{ old('lastname', $data->last_name) }}"> {{-- ,$data['last_name'] --}}
+                                    value="{{ old('lastname', $data->last_name) }}">
+                                @error('lastname')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                             <div class="col">
                                 <label for=" " class="form-label">ห้อง</label>
@@ -55,6 +75,13 @@
                                         <option value="{{ $rooms->rooms_id }}"> {{ $rooms->room_name }}</option>
                                     @endforeach
                                 </select>
+                                @error('room')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                         </div>
                         {{-- form-สัญลักษณ์-วันเกิด-รหัสประจำตัว --}}
@@ -69,52 +96,71 @@
                                         value="{{ old('birthdays', $data->birthdays) }}"> {{-- ,$data->birthdays --}}
                                 </div>
                             </div>
-                            {{-- @vite(['resources/js/datepicker-th.js']) --}}
+
                             <div class="col">
                                 <label for="symbol" class="form-label">สัญลักษณ์</label>
-                                <div class="input-group mb-3">
-                                    <select class="form-select" name="symbol">
-                                        <option selected>{{ old('symbol', $data->symbol) }}</option> {{-- ,$data->symbol --}}
-                                        <option value="ร่ม">ร่ม</option>
-                                        <option value="บ้าน">บ้าน</option>
-                                        <option value="ลูกบอล">ลูกบอล</option>
-                                        <option value="โทรศัพท์">โทรศัพท์</option>
-                                        <option value="ทับทิม">ทับทิม</option>
-                                        <option value="ส้ม">ส้ม</option>
-                                        <option value="ทุเรียน">ทุเรียน</option>
-                                        <option value="กระต่าย">กระต่าย</option>
-                                        <option value="รองเท้า">รองเท้า</option>
-                                        <option value="หมู">หมู</option>
-                                        <option value="เป็ด">เป็ด</option>
-                                        <option value="แมลงปอ">แมลงปอ</option>
-                                        <option value="ปลา">ปลา</option>
-                                        <option value="ไอศครีม">ไอศครีม</option>
-                                        <option value="ปู">ปู</option>
-                                        <option value="แตงโม">แตงโม</option>
-                                        <option value="พัด">พัด</option>
-                                        <option value="ปลาหมึก">ปลาหมึก</option>
-                                        <option value="กุหลาบ">กุหลาบ</option>
-                                        <option value="มังคุด">มังคุด</option>
-                                        <option value="พระอาทิตย์">พระอาทิตย์</option>
-                                        <option value="ผีเสื้อ">ผีเสื้อ</option>
-                                    </select>
-                                </div>
 
+                                <select class="form-select" name="symbol">
+                                    <option selected>{{ old('symbol', $data->symbol) }}</option> {{-- ,$data->symbol --}}
+                                    <option value="ร่ม">ร่ม</option>
+                                    <option value="บ้าน">บ้าน</option>
+                                    <option value="ลูกบอล">ลูกบอล</option>
+                                    <option value="โทรศัพท์">โทรศัพท์</option>
+                                    <option value="ทับทิม">ทับทิม</option>
+                                    <option value="ส้ม">ส้ม</option>
+                                    <option value="ทุเรียน">ทุเรียน</option>
+                                    <option value="กระต่าย">กระต่าย</option>
+                                    <option value="รองเท้า">รองเท้า</option>
+                                    <option value="หมู">หมู</option>
+                                    <option value="เป็ด">เป็ด</option>
+                                    <option value="แมลงปอ">แมลงปอ</option>
+                                    <option value="ปลา">ปลา</option>
+                                    <option value="ไอศครีม">ไอศครีม</option>
+                                    <option value="ปู">ปู</option>
+                                    <option value="แตงโม">แตงโม</option>
+                                    <option value="พัด">พัด</option>
+                                    <option value="ปลาหมึก">ปลาหมึก</option>
+                                    <option value="กุหลาบ">กุหลาบ</option>
+                                    <option value="มังคุด">มังคุด</option>
+                                    <option value="พระอาทิตย์">พระอาทิตย์</option>
+                                    <option value="ผีเสื้อ">ผีเสื้อ</option>
+                                </select>
 
+                                @error('symbol')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                             <div class="col">
                                 <label for="idtags" class="form-label">รหัสประจำตัว</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" name="idtags" id="idtags" class="form-control"
-                                        value="{{ old('idtags', $data->id_tags) }}"> {{-- ,$data->id_tags- --}}
-                                </div>
+
+                                <input type="text" name="idtags" id="idtags" class="form-control"
+                                    value="{{ old('idtags', $data->id_tags) }}">
+
+                                @error('idtags')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                             <div class="col">
                                 <label for="numberid" class="form-label">เลขที่</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" name="numberid" id="numberid" class="form-control"
-                                        value="{{ old('numberid', $data->number) }}"> {{-- ,$data->id_tags- --}}
-                                </div>
+
+                                <input type="text" name="numberid" id="numberid" class="form-control"
+                                    value="{{ old('numberid', $data->number) }}">
+
+                                @error('numberid')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                         </div>
                         {{-- form-ชื่อ-บิดา-มารดา-ผู้ปกครอง --}}
@@ -122,12 +168,26 @@
                             <div class="col">
                                 <label for="father" class="form-label">ชื่อ – นามสกุล (บิดา)</label>
                                 <input type="text" name="father" id="father" class="form-control"
-                                    value="{{ old('father', $data->father) }}"> {{-- ,$data->parents1 --}}
+                                    value="{{ old('father', $data->father) }}">
+                                @error('father')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                             <div class="col">
                                 <label for="mother" class="form-label">ชื่อ – นามสกุล (มารดา)</label>
                                 <input type="text" name="mother" id="mother" class="form-control"
-                                    value="{{ old('mother', $data->mother) }}"> {{-- ,$data->parents2 --}}
+                                    value="{{ old('mother', $data->mother) }}">
+                                @error('mother')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                             <div class="col">
                                 <label for="parents" class="form-label">ชื่อ – นามสกุล (ผู้ปกครอง)</label>
@@ -143,6 +203,13 @@
                                             {{ $parents->last_name }}</option>
                                     @endforeach
                                 </select>
+                                @error('parents')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
                         </div>
                         {{-- form-เบอร์ติดต่อ --}}
@@ -152,7 +219,13 @@
                                 <input type="text" name="telephonenumberfather" id="telephonenumberfather"
                                     class="form-control"
                                     value="{{ old('telephonenumberfather', $data->telephone_number_father) }}">
-                                {{-- ,$data->telephone_number_parents1 --}}
+                                @error('telephonenumberfather')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
 
                             </div>
                             <div class="col">
@@ -160,7 +233,13 @@
                                 <input type="text" name="telephonenumbermother" id="telephonenumbermother"
                                     class="form-control"
                                     value="{{ old('telephonenumbermother', $data->telephone_number_mother) }}">
-                                {{-- ,$data->telephone_number_parents2 --}}
+                                @error('telephonenumbermother')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
 
                             </div>
                             <div class="col">
@@ -168,7 +247,13 @@
                                 <input type="text" name="telephonenumberbus" id="telephonenumberbus"
                                     class="form-control"
                                     value="{{ old('telephonenumberbus', $data->telephone_number_bus) }}">
-                                {{-- ,$data->telephone_number_bus --}}
+                                @error('telephonenumberbus')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
 
                             </div>
                         </div>
@@ -177,6 +262,13 @@
                             <div class="col">
                                 <label for="exampleFormControlTextarea1" class="form-label">ที่อยู่</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="habitations" rows="3">{{ old('habitations', $data->habitations) }}</textarea> {{-- ,$data->habitations --}}
+                                @error('habitations')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                             </div>
 
                         </div>

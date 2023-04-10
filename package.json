@@ -15,6 +15,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "echarts": "^5.4.2",
         "flatpickr": "^4.6.13",
         "jquery-datetimepicker": "^2.5.21"
     }

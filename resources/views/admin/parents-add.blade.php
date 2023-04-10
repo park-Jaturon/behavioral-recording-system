@@ -37,12 +37,24 @@
                                     <label for="firstname" class="form-label">ชื่อ</label>
                                     <input type="text" name="firstname" id="firstname"
                                         value="{{ old('firstname', $dataParent->first_name) }}" class="form-control">
-                                    {{-- ,$dataParent->first_name --}}
+                                    <small id="helpId" class="text-muted"> @error('firstname')
+                                            <span role="alert" class="text-danger">
+                                                <strong> {{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </small>
                                 </div>
                                 <div class="col">
                                     <label for="lastname" class="form-label">นามสกุล</label>
                                     <input type="text" name="lastname" id="lastname" class="form-control"
-                                        value="{{ old('lastname', $dataParent->last_name) }}"> {{-- ,$dataParent['last_name'] --}}
+                                        value="{{ old('lastname', $dataParent->last_name) }}">
+                                    @error('lastname')
+                                        <small id="helpId" class="text-muted">
+                                            <span role="alert" class="text-danger">
+                                                <strong> {{ $message }}</strong>
+                                            </span>
+                                        </small>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -51,12 +63,24 @@
                                 <div class="col">
                                     <label for="relationship" class="form-label">ความสัมพันธ์กับเด็ก</label>
                                     <input type="text" name="relationship" id="relationship" class="form-control"
-                                        value="{{ old('relationship', $dataParent->relationship) }}"> {{-- ,$dataParent['last_name'] --}}
+                                        value="{{ old('relationship', $dataParent->relationship) }}">
+                                    <small id="helpId" class="text-muted"> @error('relationship')
+                                            <span role="alert" class="text-danger">
+                                                <strong> {{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </small>
                                 </div>
                                 <div class="col">
                                     <label for="job" class="form-label">อาชีพ</label>
                                     <input type="text" name="job" id="job" class="form-control"
-                                        value="{{ old('job', $dataParent->job) }}"> {{-- ,$dataParent['last_name'] --}}
+                                        value="{{ old('job', $dataParent->job) }}">
+                                    <small id="helpId" class="text-muted"> @error('job')
+                                            <span role="alert" class="text-danger">
+                                                <strong> {{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </small>
                                 </div>
                             </div>
 

@@ -52,7 +52,8 @@ class PersonalRecordController extends Controller
             ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name')
             ->get();
         //  dd($user);
-        return view('personal-record.development-appraisal', compact('user'));
+         
+        return view('personal-record.development-appraisal', compact('user') );
     }
 
     public function appraisal_show($student_id)

@@ -25,10 +25,15 @@ class ManagesparentsController extends Controller
         
         $request->validate([
             'prefix' => 'required|string',
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
-            'relationship' => 'required|string',
-            'job' => 'required|string',
+            'firstname' => 'required|string|min:3',
+            'lastname' => 'required|string|min:3',
+            'relationship' => 'required|string|min:3',
+            'job' => 'required|string|min:3',
+        ],[
+            'firstname.min' => 'ข้อมูลไม่ถูกต้อง',
+            'lastname.min' => 'ข้อมูลไม่ถูกต้อง',
+            'relationship.min' => 'ข้อมูลไม่ถูกต้อง',
+            'job.min' => 'ข้อมูลไม่ถูกต้อง',
         ]);
 
        $parent = new Parents();
@@ -51,10 +56,10 @@ class ManagesparentsController extends Controller
     {
         $request->validate([
             'prefix' => 'required|string',
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
-            'relationship' => 'required|string',
-            'job' => 'required|string',
+            'firstname' => 'required|string|min:3',
+            'lastname' => 'required|string|min:3',
+            'relationship' => 'required|string|min:3',
+            'job' => 'required|string|min:3',
         ]);
 
         $parent = Parents::findOrFail($parents_id);

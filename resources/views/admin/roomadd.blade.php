@@ -9,11 +9,13 @@
 
                     <div class="card-body">
                         @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        {{ $message }}
-                    </div>
-                @endif
-                        <form action="{{ empty( $dataRoom->rooms_id) ? route('store.room') : url('admin/room/update/' .  $dataRoom->rooms_id) }}" method="post">{{--route('store.room')--}}
+                            <div class="alert alert-success">
+                                {{ $message }}
+                            </div>
+                        @endif
+                        <form
+                            action="{{ empty($dataRoom->rooms_id) ? route('store.room') : url('admin/room/update/' . $dataRoom->rooms_id) }}"
+                            method="post">{{-- route('store.room') --}}
                             @if (!empty($dataRoom->rooms_id))
                                 @method('put')
                             @endif
@@ -22,13 +24,18 @@
                                 <div class="col-8      ">
                                     <div class="mb-3">
                                         <label for="" class="form-label">ห้อง</label>
-                                        <input type="text" name="roomname" value="{{ old('roomname', $dataRoom->room_name) }}" class="form-control"
+                                        <input type="text" name="roomname"
+                                            value="{{ old('roomname', $dataRoom->room_name) }}" class="form-control"
                                             placeholder="" aria-describedby="helpId">
-                                        {{-- <small id="helpId" class="text-muted">Help text</small> --}}
+                                        <small id="helpId" class="text-muted"> @error('roomname')
+                                            <span role="alert" class="text-danger">
+                                                <strong> {{ $message }}</strong>
+                                            </span>
+                                        @enderror</small>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row mb-0 ">
                                 <div class="col-md-8 offset-md-4 ">
                                     <button type="submit" class="btn btn-primary float-end">

@@ -290,7 +290,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     {{-- CKEditor5 --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-
+{{-- echarts --}}
+<script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
     @yield('script')
 </body>
 

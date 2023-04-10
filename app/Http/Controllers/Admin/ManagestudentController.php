@@ -83,20 +83,42 @@ class ManagestudentController extends Controller
     {
         $request->validate([
             'prefix' => 'required|string',
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
+            'firstname' => 'required|string|min:3',
+            'lastname' => 'required|string|min:3',
             'room' => 'required',
             'birthdays' => 'required|string',
             'symbol' => 'required|string',
-            'idtags' => 'required|string',
+            'idtags' => 'required|string|min:5|max:5',
             'numberid' => 'required|string',
-            'father' => 'required|string',
-            'mother' => 'required|string',
+            'father' => 'required|string|min:3',
+            'mother' => 'required|string|min:3',
             'parents' => 'required',
-            'telephonenumberfather' => 'required|string',
-            'telephonenumbermother' => 'required|string',
-            'telephonenumberbus' => 'required|string',
-            'habitations' => 'required|string',
+            'telephonenumberfather' => 'required|string|regex:/^([0-9]*)$/|min:1|max:10',
+            'telephonenumbermother' => 'required|string|regex:/^([0-9]*)$/|min:1|max:10',
+            'telephonenumberbus' => 'required|string|regex:/^([0-9]*)$/|min:1|max:10',
+            'habitations' => 'required|string|min:10|max:255',
+        ],[
+            'prefix.required' => 'กรุณาป้อน คำนำหน้าชื่อ',
+            'firstname.required' => 'กรุณาป้อน ชื่อ',
+            'firstname.min' => 'ข้อมูลไม่ถูกต้อง',
+            'lastname.required' => 'กรุณาป้อน นามสกุล',
+            'room.required' => 'กรุณาเลือก ห้องเรียน',
+            // 'birthdays.required' => 'กรุณาป้อนวันเกิด',
+            'symbol.required' => 'กรุณาเลือก สัญลักษณ์',
+            'idtags.required' => 'กรุณาป้อน รหัสประจำตัว',
+            'idtags.min' => 'ข้อมูลไม่ถูกต้อง',
+            'idtags.max' => 'ข้อมูลไม่ถูกต้อง',
+            'numberid.required' => 'กรุณาป้อน เลขที่',
+            'father.required' => 'กรุณาป้อนชื่อ – นามสกุล (บิดา)',
+            'mother.required' => 'กรุณาป้อน ชื่อ – นามสกุล (มารดา)',
+            'parents.required' => 'กรุณาเลือก ชื่อ – นามสกุล (ผู้ปกครอง)',
+            'telephonenumberfather.required' => 'กรุณาป้อน เบอร์โทรบิดา หากไม่มีให้ใส่ -',
+            'telephonenumberfather.regex' => 'ข้อมูลไม่ถูกต้อง',
+            'telephonenumbermother.required' => 'กรุณาป้อน เบอร์โทรมารดา หากไม่มีให้ใส่ -',
+            'telephonenumbermother.regex' => 'ข้อมูลไม่ถูกต้อง',
+            'telephonenumberbus.required' => 'กรุณาป้อน เบอร์โทรถรับส่ง หากไม่มีให้ใส่ -',
+            'telephonenumberbus.regex' => 'ข้อมูลไม่ถูกต้อง',
+            'habitations.required' => 'กรุณาป้อน ที่อยู่',
         ]);
         //dd($request);
         Student::create([
@@ -122,5 +144,6 @@ class ManagestudentController extends Controller
     public function destroy($student_id)
     {
         Student::destroy($student_id);
+
     }
 }
