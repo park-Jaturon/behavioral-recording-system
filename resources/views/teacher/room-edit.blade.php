@@ -1,24 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center align-items-center g-2">
-
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
-                    {{ __('ประวัตินักเรียน') }}
-                </div>
+                <div class="card-header">{{ __('แก้ไขประวัตินักเรียน') }}</div>
+
                 <div class="card-body">
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            {{ $message }}
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
                         </div>
                     @endif
 
                     <form
-                        action="{{ empty($data->student_id) ? route('store.student') : url('admin/student/update/' . $data->student_id) }}"
+                        action="{{ empty($datastudents->student_id) ? route('store.student') : url('admin/student/update/' . $datastudents->student_id) }}"
                         method="post">
-                        @if (!empty($data->student_id))
+                        @if (!empty($datastudents->student_id))
                             @method('put')
                         @endif
                         @csrf
@@ -27,8 +26,8 @@
                             <div class="col">
                                 <label for="prefix" class="form-label">คำนำหน้าชื่อ</label>
                                 <select class="form-select" name="prefix" aria-label="Default select example">
-                                    <option selected>{{ old('prefix_name', $data->prefix_name) }}</option>
-                                    {{-- ,$data->prefix_name --}}
+                                    <option selected>{{ old('prefix_name', $datastudents->prefix_name) }}</option>
+                                    {{-- ,$datastudents->prefix_name --}}
                                     <option value="เด็กชาย">เด็กชาย</option>
                                     <option value="เด็กหญิง">เด็กหญิง</option>
                                 </select>
@@ -43,7 +42,7 @@
                             <div class="col">
                                 <label for="firstname" class="form-label">ชื่อ</label>
                                 <input type="text" name="firstname" id="firstname"
-                                    value="{{ old('firstname', $data->first_name) }}" class="form-control">
+                                    value="{{ old('firstname', $datastudents->first_name) }}" class="form-control">
                                 @error('firstname')
                                     <small id="helpId" class="text-muted">
                                         <span role="alert" class="text-danger">
@@ -55,7 +54,7 @@
                             <div class="col">
                                 <label for="lastname" class="form-label">นามสกุล</label>
                                 <input type="text" name="lastname" id="lastname" class="form-control"
-                                    value="{{ old('lastname', $data->last_name) }}">
+                                    value="{{ old('lastname', $datastudents->last_name) }}">
                                 @error('lastname')
                                     <small id="helpId" class="text-muted">
                                         <span role="alert" class="text-danger">
@@ -68,7 +67,7 @@
                                 <label for=" " class="form-label">ห้อง</label>
                                 <select class="form-select" name="room" aria-label="Default select example">
                                     @foreach ($room as $rooms)
-                                        @if ($data->rooms_id == $rooms->rooms_id)
+                                        @if ($datastudents->rooms_id == $rooms->rooms_id)
                                             <option selected>{{ old('--ห้อง--', $rooms->room_name) }}
                                         @endif
                                         </option>
@@ -93,7 +92,7 @@
                                         <i class="bi bi-calendar3"></i>
                                     </span>
                                     <input type="text" id="datepicker" name="birthdays" class="form-control "
-                                        value="{{ old('birthdays', $data->birthdays) }}"> {{-- ,$data->birthdays --}}
+                                        value="{{ old('birthdays', $datastudents->birthdays) }}"> {{-- ,$datastudents->birthdays --}}
                                 </div>
                             </div>
 
@@ -101,7 +100,7 @@
                                 <label for="symbol" class="form-label">สัญลักษณ์</label>
 
                                 <select class="form-select" name="symbol">
-                                    <option selected>{{ old('symbol', $data->symbol) }}</option> {{-- ,$data->symbol --}}
+                                    <option selected>{{ old('symbol', $datastudents->symbol) }}</option> {{-- ,$datastudents->symbol --}}
                                     <option value="ร่ม">ร่ม</option>
                                     <option value="บ้าน">บ้าน</option>
                                     <option value="ลูกบอล">ลูกบอล</option>
@@ -138,7 +137,7 @@
                                 <label for="id_tags" class="form-label">รหัสประจำตัว</label>
 
                                 <input type="text" name="id_tags" id="idtags" class="form-control"
-                                    value="{{ old('id tags', $data->id_tags) }}">
+                                    value="{{ old('id tags', $datastudents->id_tags) }}">
 
                                 @error('id_tags')
                                     <small id="helpId" class="text-muted">
@@ -152,7 +151,7 @@
                                 <label for="numberid" class="form-label">เลขที่</label>
 
                                 <input type="text" name="numberid" id="numberid" class="form-control"
-                                    value="{{ old('numberid', $data->number) }}">
+                                    value="{{ old('numberid', $datastudents->number) }}">
 
                                 @error('numberid')
                                     <small id="helpId" class="text-muted">
@@ -168,7 +167,7 @@
                             <div class="col">
                                 <label for="father" class="form-label">ชื่อ – นามสกุล (บิดา)</label>
                                 <input type="text" name="father" id="father" class="form-control"
-                                    value="{{ old('father', $data->father) }}">
+                                    value="{{ old('father', $datastudents->father) }}">
                                 @error('father')
                                     <small id="helpId" class="text-muted">
                                         <span role="alert" class="text-danger">
@@ -180,7 +179,7 @@
                             <div class="col">
                                 <label for="mother" class="form-label">ชื่อ – นามสกุล (มารดา)</label>
                                 <input type="text" name="mother" id="mother" class="form-control"
-                                    value="{{ old('mother', $data->mother) }}">
+                                    value="{{ old('mother', $datastudents->mother) }}">
                                 @error('mother')
                                     <small id="helpId" class="text-muted">
                                         <span role="alert" class="text-danger">
@@ -193,7 +192,7 @@
                                 <label for="parents" class="form-label">ชื่อ – นามสกุล (ผู้ปกครอง)</label>
                                 <select class="form-select" name="parents" aria-label="Default select example">
                                     @foreach ($parent as $parents)
-                                        @if ($data->parents_id == $parents->parents_id)
+                                        @if ($datastudents->parents_id == $parents->parents_id)
                                             <option selected>
                                                 {{ old('--ผู้ปกกครอง--', $parents->prefix_name . $parents->first_name . ' ' . $parents->last_name) }}
                                             </option>
@@ -218,7 +217,7 @@
                                 <label for="telephonenumberfather" class="form-label">เบอร์โทรบิดา</label>
                                 <input type="text" name="telephonenumberfather" id="telephonenumberfather"
                                     class="form-control"
-                                    value="{{ old('telephonenumberfather', $data->telephone_number_father) }}">
+                                    value="{{ old('telephonenumberfather', $datastudents->telephone_number_father) }}">
                                 @error('telephonenumberfather')
                                     <small id="helpId" class="text-muted">
                                         <span role="alert" class="text-danger">
@@ -232,7 +231,7 @@
                                 <label for="telephonenumbermother" class="form-label">เบอร์โทรมารดา</label>
                                 <input type="text" name="telephonenumbermother" id="telephonenumbermother"
                                     class="form-control"
-                                    value="{{ old('telephonenumbermother', $data->telephone_number_mother) }}">
+                                    value="{{ old('telephonenumbermother', $datastudents->telephone_number_mother) }}">
                                 @error('telephonenumbermother')
                                     <small id="helpId" class="text-muted">
                                         <span role="alert" class="text-danger">
@@ -246,7 +245,7 @@
                                 <label for="telephonenumberbus" class="form-label">เบอร์โทรถรับส่ง</label>
                                 <input type="text" name="telephonenumberbus" id="telephonenumberbus"
                                     class="form-control"
-                                    value="{{ old('telephonenumberbus', $data->telephone_number_bus) }}">
+                                    value="{{ old('telephonenumberbus', $datastudents->telephone_number_bus) }}">
                                 @error('telephonenumberbus')
                                     <small id="helpId" class="text-muted">
                                         <span role="alert" class="text-danger">
@@ -261,7 +260,7 @@
                         <div class="row justify-content-center align-items-center g-2 mb-3">
                             <div class="col">
                                 <label for="exampleFormControlTextarea1" class="form-label">ที่อยู่</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" name="habitations" rows="3">{{ old('habitations', $data->habitations) }}</textarea> {{-- ,$data->habitations --}}
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="habitations" rows="3">{{ old('habitations', $datastudents->habitations) }}</textarea> {{-- ,$datastudents->habitations --}}
                                 @error('habitations')
                                     <small id="helpId" class="text-muted">
                                         <span role="alert" class="text-danger">
@@ -280,8 +279,5 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="\js\datepicker-th.js"></script>
+</div>
 @endsection

@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header text-center"> {{ $user[0]->room_name}}</div>
+                    <div class="card-header text-center"> {{ $user[0]->room_name }}</div>
 
                     <div class="card-body">
                         @if ($message = Session::get('success'))
@@ -19,20 +19,22 @@
                                     <tr>
                                         <th class="text-center" scope="col">เลขที่</th>
                                         <th scope="col">ชื่อ-นามสกุล</th>
-                                        <th scope="col">เบอร์โทรบิดา</th>
-                                        <th scope="col">เบอร์โทรมารดา</th>
-                                        <th scope="col">เบอร์โทรถรับส่ง</th>
-
+                                        <th scope="col" class=" text-center">ดูข้อมูล</th>
+                                        <th scope="col" class=" text-center">แก้ไขข้อมูล</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($user as $users)
                                         <tr class="">
                                             <td class="text-center">{{ $users->number }}</td>
-                                            <td>{{ $users->prefix_name . $users->prefix_name . ' ' . $users->last_name }}</td>
-                                            <td>{{$users->telephone_number_father}}</td>
-                                            <td>{{$users->telephone_number_mother}}</td>
-                                            <td>{{$users->telephone_number_bus}}</td>
+                                            <td>{{ $users->prefix_name . $users->first_name . ' ' . $users->last_name }}
+                                            </td>
+                                            <td align="center"><a class="btn btn-primary "
+                                                    href="{{ url('teacher/room/show/' . $users->student_id) }}"
+                                                    role="button"><i class="bi bi-eye"></i></a></td>
+                                            <td align="center"><a class="btn btn-primary "
+                                                    href="{{ url('teacher/room/edit/' . $users->student_id) }}"
+                                                    role="button"><i class="bi bi-tools"></i></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

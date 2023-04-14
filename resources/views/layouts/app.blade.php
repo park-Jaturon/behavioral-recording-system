@@ -54,10 +54,10 @@
         var $url = {!! json_encode(url('/')) !!};
     </script>
 
-<style>
-    li:hover {
-      background-color: #ffe1e1;
-    }
+    <style>
+        li:hover {
+            background-color: #ffe1e1;
+        }
     </style>
 </head>
 
@@ -76,7 +76,7 @@
 
                     <div class="justify-content-start flex-grow-1 mx-3">
                         <div>
-                            <h5>ระบบบันทึกติดตามพฤติกรรมเด็กเล็ก</h5> 
+                            <h5>ระบบบันทึกติดตามพฤติกรรมเด็กเล็ก</h5>
 
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                                         <a class="nav-link active" aria-current="page"
                                             href="{{ route('admindashboard') }}">Dashboard</a>
                                     </li>
-                                    <li class="nav-item " >
+                                    <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('room.index') }}">ห้องเรียน</a>
                                     </li>
                                     <li class="nav-item">
@@ -149,7 +149,7 @@
                                         <a class="nav-link" href="{{ route('index.managestudent') }}">นักเรียน</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('index.user')}}">ผู้ใช้งาน</a>
+                                        <a class="nav-link" href="{{ route('index.user') }}">ผู้ใช้งาน</a>
                                     </li>
                                     {{-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -171,9 +171,7 @@
                             @if (Auth::User()->rank == 'teacher')
                                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-                                    <li class="nav-item " hover:background-color: yellow;
-                                        
-                                      >
+                                    <li class="nav-item " hover:background-color: yellow;>
                                         <a class="nav-link" href="{{ route('teacher.dashboard') }}">Dashboard</a>
                                     </li>
                                     <li class="nav-item ">
@@ -194,9 +192,9 @@
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('record.appraisal') }}">แบบประเมินพัฒนาการ</a>
                                     </li>
-                                <li>
+                                    <li>
 
-                                    {{-- <li class="nav-item dropdown">
+                                        {{-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                             บันทึกรายงาน
@@ -217,27 +215,27 @@
                             @endif
                             {{-- Parent --}}
                             @if (Auth::User()->rank == 'parent')
-                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('home.parent') }}">Dashboard</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{route('time.descendant')}}">เวลาเรียน</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{route('post.descendant')}}">ประกาศ</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{route('events.descendant')}}">ตารางเรียน</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{route('descendant.behaviors')}}">รายงานพฤติกรรม</a>
-                                </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('home.parent') }}">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('time.descendant') }}">เวลาเรียน</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('post.descendant') }}">ประกาศ</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('events.descendant') }}">ตารางเรียน</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('descendant.behaviors') }}">รายงานพฤติกรรม</a>
+                                    </li>
 
-                                
 
-                                {{-- <li class="nav-item dropdown">
+
+                                    {{-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         บันทึกรายงาน
@@ -254,8 +252,8 @@
                                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                                     </ul>
                                 </li> --}}
-                            </ul>
-                        @endif
+                                </ul>
+                            @endif
                             {{-- <form class="d-flex mt-3" role="search">
                                 <input class="form-control me-2" type="search" placeholder="Search"
                                     aria-label="Search">
@@ -290,8 +288,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     {{-- CKEditor5 --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-{{-- echarts --}}
-<script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    {{-- echarts --}}
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
     @yield('script')
 </body>
 

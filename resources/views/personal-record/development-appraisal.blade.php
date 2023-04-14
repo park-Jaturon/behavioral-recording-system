@@ -75,6 +75,7 @@
 @endsection
 @section('script')
     <script>
+        import * as echarts from 'echarts';
         var myChart = echarts.init(document.getElementById('myChart'));
 
         var option = {

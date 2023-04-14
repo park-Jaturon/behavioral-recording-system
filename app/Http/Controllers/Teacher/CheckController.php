@@ -29,7 +29,7 @@ class CheckController extends Controller
     {
         $data = Student::findOrFail($student_id);
         $timenow = date('H:i:s');
-        $datenow = date('d/m/Y');
+        $datenow = date('Y-m-d');
         $student = DB::table('students')
         ->join('timecards','students.student_id','=','timecards.student_id')
         ->where('timecards.student_id', '=',$student_id)
@@ -39,30 +39,34 @@ class CheckController extends Controller
         ->where('timecards.student_id', '=',$student_id)
         ->where( 'timecards.c_date','=', $datenow)
         ->get();
-           //dd($student);
-        return view('teacher.post-time', compact('data', 'timenow', 'datenow','student','check_student'));    //,'student'
+        $latest_date = DB::table('timecards')
+        ->where('timecards.student_id', '=',$student_id)
+        ->max('c_date');
+        
+        //    dd( $latest_date);
+        return view('teacher.post-time', compact('data', 'timenow', 'datenow','student','check_student','latest_date'));    //,'student'
     }
 
     public function checktime(Request $request, $student_id)
     {
 // dd($request);
         // $timenow = date('H:i:s');
-        $datenow = date('d/m/Y');
+        $datenow = date('Y/m/d');
         if (isset($request->checkin)) {
             $check_in = new Timecards();
             $check_in->student_id = $student_id;
             $check_in->c_date = $datenow;
             $check_in->c_in = $request->checkin;
             $check_in->save();
-            return redirect()->back();
+            return redirect()->back()->with('Messages','คุณได้บันทึกเวลามาโรงเรียนเรียบร้อยแล้ว');
         }elseif(isset($request->checkout)){
              DB::table('timecards')
               ->where('student_id', $student_id)
               ->where('c_date', $datenow)
               ->update(['c_out' => $request->checkout]);
-            return redirect()->back();
+            return redirect()->back()->with('Messages','คุณได้บันทึกเวลากลับบ้านเรียบร้อยแล้ว');
         }else{
-            return redirect()->back()->with('error','คุณได้บันทึกเวลาวันนี้เรียบร้อยแล้ว');
+            return redirect()->back()->with('Messages','คุณไม่สามารถบันทึกเวลาได้ในขณะนี้ ');
         }
     }
 }

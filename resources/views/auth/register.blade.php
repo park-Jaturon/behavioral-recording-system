@@ -72,7 +72,7 @@
                                 {{-- teachers --}}
                                 <div class="col-md-6 mt-2 teachers" style="display: none">
                                     <select class="form-select  " name="rankidteachers" aria-label="Default select example">
-                                        <option selected value="0">ชื่อ - นามสกุล</option>
+                                        <option selected value="0" disabled>ชื่อ - นามสกุล</option>
                                         @foreach ($datateachers as $datateacher)
                                             <option value="{{ $datateacher->teachers_id }}">
                                                 {{ $datateacher->prefix_name . $datateacher->first_name . ' ' . $datateacher->last_name }}
@@ -84,7 +84,7 @@
                                 {{-- parents --}}
                                 <div class="col-md-6 mt-2 parents" style="display: none">
                                     <select class="form-select  " name="rankidparents" aria-label="Default select example">
-                                        <option selected value="0">ชื่อ - นามสกุล</option>
+                                        <option selected value="0" disabled>ชื่อ - นามสกุล</option>
                                         @foreach ($dataparents as $dataparent)
                                             <option value="{{ $dataparent->parents_id }}">
                                                 {{ $dataparent->prefix_name . $dataparent->first_name . ' ' . $dataparent->last_name }}

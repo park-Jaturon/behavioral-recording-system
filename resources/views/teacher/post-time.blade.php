@@ -5,10 +5,21 @@
         <div class="row justify-content-center align-items-center g-2">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('ลงเวลามาเรียน-กลับบ้าน') }} {{ $datenow }}</div>
+                    <div class="card-header">
+                        {{ __('ลงเวลามาเรียน-กลับบ้าน' . ' ' . date('d/m/Y', strtotime($datenow))) }}
+
+
+                    </div>
+
+
 
                     <div class="card-body">
-                        @if ($message = Session::get('error'))
+                        {{-- @if ($message = Session::get('error'))
+                            <div class="alert alert-success">
+                                {{ $message }}
+                            </div>
+                        @endif --}}
+                        @if ($message = Session::get('Messages'))
                             <div class="alert alert-success">
                                 {{ $message }}
                             </div>
@@ -35,48 +46,62 @@
                                 </div>
                                 {{-- เวลามาโรงเรียน --}}
                                 <div class="col">
-                                    {{-- @dd($student->max('$datenow'),$datenow) --}}
-                                    @if ($student->max('c_date') == $datenow)
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">เวลามาโรงเรียนแล้วนะ</label>
-                                            <input class="form-control" type="text" value="{{ __('ลงเวลาแล้ว') }}"
-                                                aria-label="readonly input example" disabled>
-                                        </div>
+                                    {{-- @dd($latest_date,$datenow) --}}
+                                    @if ($timenow <= '08:00:00')
+                                        @if ($latest_date == $datenow)
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">เวลามาโรงเรียน</label>
+                                                <input class="form-control text-center" type="text"
+                                                    value="{{ __('ลงเวลาแล้ว') }}" aria-label="readonly input example"
+                                                    disabled>
+                                            </div>
+                                        @else
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">เวลามาโรงเรียน</label>
+                                                <input class="form-control" name="checkin" type="text"
+                                                    value="{{ $timenow }}" aria-label="readonly input example"
+                                                    readonly>
+                                            </div>
+                                        @endif
                                     @else
                                         <div class="mb-3">
                                             <label for="" class="form-label">เวลามาโรงเรียน</label>
-                                            <input class="form-control" name="checkin" type="text"
-                                                value="{{ $timenow }}" aria-label="readonly input example" readonly>
+                                            <input class="form-control bg-secondary text-light text-center" type="text"
+                                                value="{{ __('07.00-08.00') }}" aria-label="readonly input example"
+                                                disabled>
                                         </div>
                                     @endif
+
                                 </div>
                                 {{-- เวลากลับบ้าน --}}
                                 <div class="col">
                                     {{-- @dd(empty($check_student[0]->c_out))  --}}
-                                    @if ($timenow > '15:00:00')
+                                    @if ($timenow >= '15:00:00' && $timenow <= '18:00:00')
                                         @if (empty($check_student[0]->c_out))
                                             <div class="mb-3">
-                                            <label for="" class="form-label">เวลากลับบ้าน</label>
-                                            <input class="form-control" name="checkout" type="text"
-                                                value="{{ $timenow }}" aria-label="readonly input example" readonly>
-                                        </div>  
-                                        @endif   
+                                                <label for="" class="form-label">เวลากลับบ้าน</label>
+                                                <input class="form-control" name="checkout" type="text"
+                                                    value="{{ $timenow }}" aria-label="readonly input example"
+                                                    readonly>
+                                            </div>
+                                        @endif
                                         @if (!empty($check_student[0]->c_out))
-                                             <div class="mb-3">
-                                            <label for="" class="form-label">เวลากลับบ้าน</label>
-                                            <input class="form-control" type="text" value="{{ __('กลับบ้านแล้ว') }}"
-                                                aria-label="readonly input example" disabled>
-                                        </div>        
-                                        @endif  
-                                                     
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">เวลากลับบ้าน</label>
+                                                <input class="form-control" type="text" value="{{ __('กลับบ้านแล้ว') }}"
+                                                    aria-label="readonly input example" disabled>
+                                            </div>
+                                        @endif
                                     @else
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">เวลากลับบ้าน</label>
-                                        <input class="form-control"  type="text"
-                                            value="{{ __('หลัง 15.00 น.') }}" aria-label="readonly input example" readonly>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">เวลากลับบ้าน</label>
+                                            <input class="form-control bg-secondary text-light text-center" type="text"
+                                                value="{{ __('15.00-18.00') }}" aria-label="readonly input example"
+                                                readonly>
+                                        </div>
                                     @endif
                                 </div>
+
                                 <div class="row mb-0 ">
                                     <div class="col-md-8 offset-md-4 ">
                                         <button type="submit" class="btn btn-primary float-end">
@@ -84,6 +109,7 @@
                                         </button>
                                     </div>
                                 </div>
+
                             </div>
                         </form>
                         {{-- List --}}
@@ -93,15 +119,17 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th scope="col">date</th>
-                                                <th scope="col">work-in</th>
-                                                <th scope="col">work-out</th>
+                                                <th scope="col">วันที่</th>
+                                                <th scope="col">เวลามาโรงเรียน</th>
+                                                <th scope="col">เวลากลับบ้าน</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($student as $students)
                                                 <tr class="">
-                                                    <td scope="row">{{ $students->c_date }}</td>
+                                                    <td scope="row">
+                                                        {{ date('d/m/Y', strtotime($students->c_date)) }}
+                                                    </td>
                                                     <td>{{ $students->c_in }}</td>
                                                     <td>{{ $students->c_out }}</td>
                                                 </tr>
