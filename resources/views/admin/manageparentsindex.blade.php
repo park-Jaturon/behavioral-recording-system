@@ -19,7 +19,7 @@
                         @foreach ($parent as $parents)
                             <tr>
                                 <td class="text-center" scope="row">{{ $parents->parents_id }}</td>
-                                <td>{{ $parents->prefix_name . $parents->prefix_name . ' ' . $parents->last_name }}</td>
+                                <td>{{ $parents->prefix_name . $parents->first_name . ' ' . $parents->last_name }}</td>
                                 <td class="text-center">{{ $parents->job }}</td>
                                 <td class="text-center">
                                     <a

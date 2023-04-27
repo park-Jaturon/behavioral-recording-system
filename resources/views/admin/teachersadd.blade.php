@@ -5,7 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('เพิ่มครู') }}</div>
+                    <div class="card-header">
+                        @if (empty($dataTeacher->teachers_id))
+                            {{ __('เพิ่มข้อมูลครู') }}
+                        @else
+                            {{ __('แก้ไขข้อมูลครู') }}
+                        @endif
+
+                    </div>
 
                     <div class="card-body">
                         @if ($message = Session::get('success'))
@@ -13,10 +20,12 @@
                                 {{ $message }}
                             </div>
                         @endif
-                        <form action="{{empty($dataTeacher->teachers_id) ? route('store.teacher') : url('admin/teacher/update/'.$dataTeacher->teachers_id)}}" method="post" enctype="multipart/form-data">{{-- route('store.teacher') --}}
+                        <form
+                            action="{{ empty($dataTeacher->teachers_id) ? route('store.teacher') : url('admin/teacher/update/' . $dataTeacher->teachers_id) }}"
+                            method="post" enctype="multipart/form-data">{{-- route('store.teacher') --}}
                             @if (!empty($dataTeacher->teachers_id))
-                            @method('put')
-                        @endif
+                                @method('put')
+                            @endif
                             @csrf
                             {{-- form-ชื่อ-นามสกุล  --}}
                             <div class="row justify-content-center align-items-center g-3 mb-3">
@@ -29,41 +38,65 @@
                                         <option value="นาง">นาง</option>
                                         <option value="นางสาว">นางสาว</option>
                                     </select>
+                                    @error('prefix')
+                                        <small id="helpId" class="text-muted">
+                                            <span role="alert" class="text-danger">
+                                                <strong> {{ $message }}</strong>
+                                            </span>
+                                        </small>
+                                    @enderror
                                 </div>
+                                
                                 <div class="col">
                                     <label for="firstname" class="form-label">ชื่อ</label>
                                     <input type="text" name="firstname" id="firstname"
                                         value="{{ old('firstname', $dataTeacher->first_name) }}" class="form-control">
-                                     <small id="helpId" class="text-muted"> @error('firstname')
+                                    <small id="helpId" class="text-muted"> @error('firstname')
                                             <span role="alert" class="text-danger">
                                                 <strong> {{ $message }}</strong>
                                             </span>
-                                        @enderror</small>
+                                        @enderror
+                                    </small>
                                 </div>
                                 <div class="col">
                                     <label for="lastname" class="form-label">นามสกุล</label>
                                     <input type="text" name="lastname" id="lastname" class="form-control"
                                         value="{{ old('lastname', $dataTeacher->last_name) }}"> {{-- ,$teachers['last_name'] --}}
-                                        <small id="helpId" class="text-muted"> @error('lastname')
+                                    <small id="helpId" class="text-muted"> @error('lastname')
                                             <span role="alert" class="text-danger">
                                                 <strong> {{ $message }}</strong>
                                             </span>
-                                        @enderror</small>
+                                        @enderror
+                                    </small>
                                 </div>
                             </div>
                             {{-- form-ตำแหน่ง-ห้อง-รูป --}}
                             <div class="row justify-content-center align-items-center g-3 mb-3">
                                 <div class="col">
-                                    <label for="prefix" class="form-label">ตำแหน่ง</label>
+                                    <label for="rankteacher" class="form-label">ตำแหน่ง</label>
                                     <select class="form-select" name="rankteacher" aria-label="Default select example">
                                         <option selected>{{ old('--ตำแหน่ง--', $dataTeacher->rank_teacher) }}</option>
                                         <option value="ครูประจำชั้น">ครูประจำชั้น</option>
                                         <option value="ครูพี่เลี้ยง">ครูพี่เลี้ยง</option>
                                     </select>
+                                    @error('rankteacher')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                                 </div>
                                 <div class="col">
                                     <label for="formFile" class="form-label">รูป</label>
                                     <input class="form-control" type="file" name="imageteacher" id="formFile">
+                                    @error('imageteacher')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                                 </div>
                                 <div class="col">
                                     <label for="prefix" class="form-label">ห้อง</label>
@@ -74,6 +107,13 @@
                                             <option value="{{ $rooms->rooms_id }}"> {{ $rooms->room_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('room')
+                                    <small id="helpId" class="text-muted">
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    </small>
+                                @enderror
                                 </div>
                             </div>
 

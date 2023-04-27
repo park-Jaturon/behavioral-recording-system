@@ -5,7 +5,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('เพิ่มห้องเรียน') }}</div>
+                    <div class="card-header">
+                        @if (empty($dataRoom->rooms_id))
+                            {{ __('เพิ่มห้องเรียน') }}
+                        @else
+                            {{ __('แก้ไขห้องเรียน') }}
+                        @endif
+                    </div>
 
                     <div class="card-body">
                         @if ($message = Session::get('success'))
@@ -24,14 +30,15 @@
                                 <div class="col-8      ">
                                     <div class="mb-3">
                                         <label for="" class="form-label">ห้อง</label>
-                                        <input type="text" name="roomname"
-                                            value="{{ old('roomname', $dataRoom->room_name) }}" class="form-control"
+                                        <input type="text" name="room_name"
+                                            value="{{ old('room_name', $dataRoom->room_name) }}" class="form-control"
                                             placeholder="" aria-describedby="helpId">
-                                        <small id="helpId" class="text-muted"> @error('roomname')
-                                            <span role="alert" class="text-danger">
-                                                <strong> {{ $message }}</strong>
-                                            </span>
-                                        @enderror</small>
+                                        <small id="helpId" class="text-muted"> @error('room_name')
+                                                <span role="alert" class="text-danger">
+                                                    <strong> {{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </small>
                                     </div>
                                 </div>
                             </div>

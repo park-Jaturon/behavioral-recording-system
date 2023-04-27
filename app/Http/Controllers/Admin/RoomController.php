@@ -32,17 +32,19 @@ class RoomController extends Controller
 
     public function storeroom(Request $request)
     {
-
+       
         $request->validate([
-            'roomname' => 'required|string|min:3',
+            'room_name' => 'required|string|regex:/^อบ[1-9]+\/+[1-9]$/|max:6|unique:rooms',//min:5
           
         ],
     [
-        'roomname'=> 'ห้อง ต้องอักขระอย่างน้อย 3 ตัว เช่น อบ 2/1'
+        'room_name.required'=> 'โปรดระบุ ห้องเรียน',
+        'room_name.regex'=> 'รูปแบบห้องเรียนไม่ถูกต้อง ตัวอย่าง อบ1/1 *ห้ามเว้นวรรค',
+        'roomname.unique' => 'ห้องเรียนนี้ถูกใช้ไปแล้ว',
     ]);
-
+        //  dd();
         Room::create([
-            'room_name' => $request->roomname,
+            'room_name' => $request->room_name,
         ]);
         return redirect()->back()->with('success','บันทึกข้อมูลเสร็จสิ้น');
     }
@@ -56,13 +58,18 @@ class RoomController extends Controller
     public function update(Request $request,$rooms_id)
     {
         $request->validate([
-            'roomname' => 'required|string',
+            'room_name' => 'required|string|regex:/^อบ[1-9]+\/+[1-9]$/|min:5|unique:rooms',
           
+        ],
+        [
+            'room_name.required'=> 'โปรดระบุ ห้องเรียน',
+            'room_name.regex'=> 'รูปแบบห้องเรียนไม่ถูกต้อง ตัวอย่าง อบ1/1 *ห้ามเว้นวรรค',
+            'roomname.max' => 'ห้องเรียนนี้ถูกใช้ไปแล้ว',
         ]);
 
         $room = Room::findOrFail($rooms_id);
 
-        $room->room_name = $request->roomname;
+        $room->room_name = $request->room_name;
         $room->save();
         
         return redirect()->back()->with('success','แก้ไขข้อมูลเสร็จสิ้น');

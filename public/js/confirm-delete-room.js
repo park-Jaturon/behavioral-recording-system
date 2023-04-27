@@ -23,12 +23,11 @@ document.querySelector('#tbRoom').addEventListener('click', (e) => {
                     }, 2000);
                 })
                     .catch(error => {
-
                         Swal.fire({
                             icon: 'error',
-                            title: 'Oops...',
-                            text: 'Something went wrong!',
-                            footer: '<a href="">Why do I have this issue?</a>'
+                            title: 'ผิดพลาด',
+                            text: 'ไม่สามารถลบห้องเรียนนี้ได้',
+                            // footer: '<a href="">Why do I have this issue?</a>'
                         })
                     });
             }

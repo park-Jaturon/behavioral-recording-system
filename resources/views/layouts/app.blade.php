@@ -40,7 +40,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 
-
     <!-- fullcalender -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -53,15 +52,16 @@
     <script>
         var $url = {!! json_encode(url('/')) !!};
     </script>
-
-    <style>
+    
+    {{-- <style>
         li:hover {
             background-color: #ffe1e1;
         }
-    </style>
+    </style> --}}
 </head>
 
 <body>
+
     <div id="app">
         @auth
             <nav class="navbar  mt-0" style="background-color: #ffe1e1;">
@@ -278,11 +278,10 @@
             </nav>
         @endauth
 
-
         <main class="py-4">
             @yield('content')
-
         </main>
+
     </div>
     <!-- AXIOS -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>

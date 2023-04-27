@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Room;
 use App\Models\Teacher;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -17,7 +18,9 @@ class ManageteacherController extends Controller
             ->join('rooms', 'teachers.rooms_id', '=', 'rooms.rooms_id')
             ->select('teachers.*', 'rooms.room_name')
             ->get();
-        //dd($teacher);
+            // Debugbar::info($object);
+        // dd($teacher);
+        Debugbar::info('info!');
         return view('admin.manageteacherindex', compact('teacher'));
     }
 
@@ -40,14 +43,22 @@ class ManageteacherController extends Controller
 
         $request->validate([
             'prefix' => 'required|string',
-            'firstname' => 'required|string|min:3',
-            'lastname' => 'required|string|min:3',
+            'firstname' => 'required|string|min:3|regex:/^[ก-๙]+$/u',
+            'lastname' => 'required|string|min:3|regex:/^[ก-๙]+$/u',
             'rankteacher' => 'required|string',
             'imageteacher' => 'required|mimes:jpeg,jpg,png',
             'room' => 'required',
         ],[
-            'firstname.min' => 'ข้อมูลไม่ถูกต้อง',
-            'lastname.min' => 'ข้อมูลไม่ถูกต้อง',
+            'prefix.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
+            'firstname.required' => 'โปรดระบุชื่อ',
+            'firstname.regex' => 'ชื่อต้องเป็นภาษาไทยเท่านั้น',
+            'firstname.min' => 'ชื่อไม่ถูกต้อง',
+            'lastname.required' => 'โปรดระบุนามสกุล',
+            'lastname.regex' => 'นามสกุลต้องเป็นภาษาไทยเท่านั้น',
+            'lastname.min' => 'นามสกุลไม่ถูกต้อง',
+            'rankteacher.required' => 'กรุณาเลือกตำแหน่ง',
+            'imageteacher.required' => 'กรุณาใส่รูป',
+            'room.required' => 'กรุณาเลือกห้องเรียน',
         ]);
 
         $teachers = new Teacher();
@@ -70,11 +81,23 @@ class ManageteacherController extends Controller
     {
         $request->validate([
             'prefix' => 'required|string',
-            'firstname' => 'required|string|min:3',
-            'lastname' => 'required|string|min:3',
+            'firstname' => 'required|string|min:3|regex:/^[ก-ฮ]+$/',
+            'lastname' => 'required|string|min:3|regex:/^[ก-ฮ]+$/',
             'rankteacher' => 'required|string',
-            'imageteacher' => 'required|mimes:jpeg,jpg,png',
+            'imageteacher' => 'nullable|mimes:jpeg,jpg,png',
             'room' => 'required',
+        ],
+        [
+            'prefix.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
+            'firstname.required' => 'โปรดระบุชื่อ',
+            'firstname.regex' => 'ชื่อต้องเป็นภาษาไทยเท่านั้น',
+            'firstname.min' => 'ชื่อไม่ถูกต้อง',
+            'lastname.required' => 'โปรดระบุนามสกุล',
+            'lastname.regex' => 'นามสกุลต้องเป็นภาษาไทยเท่านั้น',
+            'lastname.min' => 'นามสกุลไม่ถูกต้อง',
+            'rankteacher.required' => 'กรุณาเลือกตำแหน่ง',
+            'imageteacher.required' => 'กรุณาใส่รูป',
+            'room.required' => 'กรุณาเลือกห้องเรียน',
         ]);
 
         $teachers = Teacher::findOrFail($teachers_id);
@@ -103,12 +126,19 @@ class ManageteacherController extends Controller
 
     public function delete($teachers_id)
     {
-
         $teachers = Teacher::findOrFail($teachers_id);
+        $countTeacher = Teacher::where('rooms_id',$teachers->rooms_id)->count();
+        // echo "p";
+        // error_log( $countTeacher);
+       if($countTeacher>1){
         $destination = 'uploads/teacher/' . $teachers->teacher_image;
         if (File::exists($destination)) {
             File::delete($destination);
         }
         Teacher::destroy($teachers_id);
+       }else{
+        // 
+       }
+        
     }
 }

@@ -99,7 +99,7 @@ class ManagestudentController extends Controller
             'telephonenumberbus' => 'numeric|digits:10|nullable',
             'habitations' => 'required|string|min:10|max:255',
         ],[
-            'prefix.required' => 'กรุณาเลือก คำนำหน้าชื่อ',
+            'prefix.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'firstname.required' => 'กรุณาป้อน ชื่อ',
             'firstname.min' => 'ข้อมูลไม่ถูกต้อง',
             'lastname.required' => 'กรุณาป้อน นามสกุล',
@@ -151,6 +151,5 @@ class ManagestudentController extends Controller
     public function destroy($student_id)
     {
         Student::destroy($student_id);
-
     }
 }

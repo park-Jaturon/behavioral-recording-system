@@ -15,11 +15,8 @@
                     @endif
 
                     <form
-                        action="{{ empty($datastudents->student_id) ? route('store.student') : url('admin/student/update/' . $datastudents->student_id) }}"
-                        method="post">
-                        @if (!empty($datastudents->student_id))
-                            @method('put')
-                        @endif
+                        action="{{url('teacher/room/edit/' . $datastudents->student_id) }}" method="post">
+                        
                         @csrf
                         {{-- form-ชื่อ-นามสกุล  --}}
                         <div class="row justify-content-center align-items-center g-3 mb-3">
@@ -63,7 +60,7 @@
                                     </small>
                                 @enderror
                             </div>
-                            <div class="col">
+                            {{-- <div class="col">
                                 <label for=" " class="form-label">ห้อง</label>
                                 <select class="form-select" name="room" aria-label="Default select example">
                                     @foreach ($room as $rooms)
@@ -81,7 +78,7 @@
                                         </span>
                                     </small>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
                         {{-- form-สัญลักษณ์-วันเกิด-รหัสประจำตัว --}}
                         <div class="row justify-content-center align-items-center g-2 mb-3">
@@ -188,7 +185,7 @@
                                     </small>
                                 @enderror
                             </div>
-                            <div class="col">
+                            {{-- <div class="col">
                                 <label for="parents" class="form-label">ชื่อ – นามสกุล (ผู้ปกครอง)</label>
                                 <select class="form-select" name="parents" aria-label="Default select example">
                                     @foreach ($parent as $parents)
@@ -209,7 +206,7 @@
                                         </span>
                                     </small>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
                         {{-- form-เบอร์ติดต่อ --}}
                         <div class="row justify-content-center align-items-center g-3 mb-3">

@@ -52,8 +52,8 @@ class PersonalRecordController extends Controller
             ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name')
             ->get();
         //  dd($user);
-         
-        return view('personal-record.development-appraisal', compact('user') );
+
+        return view('personal-record.development-appraisal', compact('user'));
     }
 
     public function appraisal_show($student_id)
@@ -112,20 +112,82 @@ class PersonalRecordController extends Controller
             ->select(DB::raw('ROUND(AVG(score_rate_intellectual),1) as score_intellectual'))
             ->where('student_id', '=', $student->student_id)
             ->first();
-       
+
         $commenTeacher = DB::table('comment_appraisal')
             ->where('student_id', '=', $student_id)
             ->get();
-        // dd($SummaryPhysically);
-        return view('personal-record.appraisal-show', compact(
-            'dataphysicallysemester1','dataphysicallysemester2',
-            'datamood_mindsemester1','datamood_mindsemester2',
-            'datasocialsemester1','datasocialsemester2',
-            'dataintellectualsemester1','dataintellectualsemester2',
-            'SummaryPhysically','SummaryMoodMind','SummarySocial','SummaryIntellectual',
-            'commenTeacher',
-            'student_id'
-        ));
+
+        $appraisalsemester1Physically = DB::table('physically')
+            ->select(DB::raw('SUM(score_rate_physically) as score_physically'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน1')
+            ->first();
+        $appraisalsemester2Physically = DB::table('physically')
+            ->select(DB::raw('SUM(score_rate_physically) as score_physically'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
+            ->first();
+
+        $appraisalsemester1mood_mind = DB::table('mood_mind')
+            ->select(DB::raw('SUM(score_rate_mood_mind) as score_mood_mind'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน1')
+            ->first();
+        $appraisalsemester2mood_mind = DB::table('mood_mind')
+            ->select(DB::raw('SUM(score_rate_mood_mind) as score_mood_mind'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
+            ->first();
+
+        $appraisalsemester1social = DB::table('social')
+            ->select(DB::raw('SUM(score_rate_social) as score_social'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน1')
+            ->first();
+        $appraisalsemester2social = DB::table('social')
+            ->select(DB::raw('SUM(score_rate_social) as score_social'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
+            ->first();
+        
+        $appraisalsemester1intellectual = DB::table('intellectual')
+            ->select(DB::raw('SUM(score_rate_intellectual) as score_intellectual'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน1')
+            ->first();
+        $appraisalsemester2intellectual = DB::table('intellectual')
+            ->select(DB::raw('SUM(score_rate_intellectual) as score_intellectual'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
+            ->first();
+        //    dd(($appraisalsemester1mood_mind->score_mood_mind / 60) * 100);
+        return view(
+            'personal-record.appraisal-show',          
+            compact(
+                'dataphysicallysemester1',
+                'dataphysicallysemester2',
+                'datamood_mindsemester1',
+                'datamood_mindsemester2',
+                'datasocialsemester1',
+                'datasocialsemester2',
+                'dataintellectualsemester1',
+                'dataintellectualsemester2',
+                'SummaryPhysically',
+                'SummaryMoodMind',
+                'SummarySocial',
+                'SummaryIntellectual',
+                'commenTeacher',
+                'student_id',
+                'appraisalsemester1Physically',
+                'appraisalsemester1mood_mind',
+                'appraisalsemester1social',
+                'appraisalsemester1intellectual',
+                'appraisalsemester2Physically',
+                'appraisalsemester2mood_mind',
+                'appraisalsemester2social',
+                'appraisalsemester2intellectual'
+            )
+        );
     }
 
     public function appraisal_add($student_id)

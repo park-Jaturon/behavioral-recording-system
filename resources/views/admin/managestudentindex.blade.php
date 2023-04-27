@@ -19,7 +19,7 @@
                         @foreach ($student as $students)
                             <tr>
                                 <td class="text-center" scope="row">{{ $students->number }}</td>
-                                <td>{{ $students->prefix_name . $students->prefix_name . ' ' . $students->last_name }}</td>
+                                <td>{{ $students->prefix_name . $students->first_name . ' ' . $students->last_name }}</td>
                                 <td class="text-center">{{ $students->room_name }}</td>
                                 <td class="text-center">
                                     <a

@@ -9,19 +9,19 @@
                     <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true"><i
                             class="bi bi-file-earmark-pdf"></i>ดู</a>
                     <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true"><i
-                            class="bi bi-file-earmark-pdf"></i> ดาวโหล</a>
+                            class="bi bi-file-earmark-pdf"></i> ดาวน์โหลด</a>
                 @else
                     <a name="" id="" class="btn btn-primary" href="{{ url('teacher/pdf/' . $student_id) }}"
                         role="button"><i class="bi bi-file-earmark-pdf"></i> ดู</a>
                     <a name="" id="" class="btn btn-primary"
                         href="{{ url('teacher/pdf/download/' . $student_id) }}" role="button"><i
-                            class="bi bi-file-earmark-pdf"></i> ดาวโหล</a>
+                            class="bi bi-file-earmark-pdf"></i> ดาวน์โหลด</a>
                 @endif
 
             </div>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-between">
             <div class="col-md-8">
                 <div class="card text-start">
                     <div class="card-header">
@@ -4815,7 +4815,7 @@
                                 </table>
                             </div>
 
-                            <!-- ความคิดเห็น -->
+                            <!-- ความเห็นของครู -->
                             <div id="menu4" class="container tab-pane fade"><br>
                                 <div class="card">
                                     <div class="card-header">
@@ -4829,7 +4829,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <blockquote class="blockquote mb-0">
-                                                        {{ $commenT->comment_teacher }}
+                                                        {!! $commenT->comment_teacher !!}
                                                     </blockquote>
                                                 </div>
                                             </div>
@@ -4882,7 +4882,7 @@
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
                                                         @if ($SummaryPhysically->physically >= 2.5)
-                                                            <i class="bi bi-check-lg"></i>  
+                                                            <i class="bi bi-check-lg"></i>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4890,9 +4890,8 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryPhysically->physically > 1.5 && $SummaryPhysically->physically < 2.5) 
+                                                        @if ($SummaryPhysically->physically > 1.5 && $SummaryPhysically->physically < 2.5)
                                                             <i class="bi bi-check-lg"></i>
-                                                            
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4910,7 +4909,7 @@
                                                 //
                                             </td>
                                         </tr>
-                                       <tr>
+                                        <tr>
                                             <th scope="row">
                                                 ด้านอารมณ์ - จิตใจ
                                             </th>
@@ -5014,14 +5013,173 @@
                                             <td>
                                                 //
                                             </td>
-                                        </tr> 
+                                        </tr>
                                     </tbody>
                                 </table>
+                                <div>
+                                    <span>
+                                        >66.66&&<=100 = ดี
+                                    </span>
+                                    <br>
+                                    <span>
+                                        >33.33&&<=66.66 = ปานกลาง
+                                    </span>
+                                    <br>
+                                    <span>
+                                        <=33.33 = ควรเสริม  
+                                    </span>
+                                    
+                                    {{-- '>33.33&&<=66.66 = ปานกลาง',
+                                    '>66.66&&<=100 = ดี' --}}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <div class="card-header">
+                        {{ __('กราฟ 1') }}
+                    </div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        <div id="myChart1" style="height: 400px;"></div>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        {{ __('กราฟ 2') }}
+                    </div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        <div id="myChart2" style="height: 400px;"></div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+    
+@endsection
+@section('script')
+    <script>
+        var myChart1 = echarts.init(document.getElementById('myChart1'));
+        var PhysicallyData = {!! json_encode($appraisalsemester1Physically->score_physically) !!};
+        var mood_mindData = {!! json_encode($appraisalsemester1mood_mind->score_mood_mind) !!};
+        var socialData = {!! json_encode($appraisalsemester1social->score_social) !!};
+        var intellectualData = {!! json_encode($appraisalsemester1intellectual->score_intellectual) !!};
+        // console.log((PhysicallyData / 60) );
+       
+        var option = {
+            title: {
+                text: '',
+                subtext: '' ,
+                left: 'right',
+                top: 'bottom'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [{
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [{
+                        value: (PhysicallyData / 60) * 100,
+                        name: 'พัฒนาการด้านร่างกาย'
+                    },
+                    {
+                        value: (mood_mindData / 57) * 100,
+                        name: 'พัฒนาการด้านอารมณ์และจิตใจ'
+                    },
+                    {
+                        value: (socialData / 90) * 100,
+                        name: 'พัฒนาการด้านสังคม'
+                    },
+                    {
+                        value: (intellectualData / 84) * 100,
+                        name: 'พัฒนาการด้านสติปัญญา'
+                    }
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+
+        myChart1.setOption(option);
+
+        var myChart2 = echarts.init(document.getElementById('myChart2'));
+        var PhysicallyData2 = {!! json_encode($appraisalsemester2Physically->score_physically) !!};
+        var mood_mindData2 = {!! json_encode($appraisalsemester2mood_mind->score_mood_mind) !!};
+        var socialData2 = {!! json_encode($appraisalsemester2social->score_social) !!};
+        var intellectualData2 = {!! json_encode($appraisalsemester2intellectual->score_intellectual) !!};
+console.log();
+        var option = {
+            title: {
+                text: 'Referer of a Website',
+                subtext: 'Fake Data',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [{
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [{
+                        value: (PhysicallyData2 / 60) * 100,
+                        name: 'พัฒนาการด้านร่างกาย'
+                    },
+                    {
+                        value: (mood_mindData2 / 57)* 100,
+                        name: 'พัฒนาการด้านอารมณ์และจิตใจ'
+                    },
+                    {
+                        value: (socialData2 / 90)* 100,
+                        name: 'พัฒนาการด้านสังคม'
+                    },
+                    {
+                        value: (intellectualData2 / 84)*100,
+                        name: 'พัฒนาการด้านสติปัญญา'
+                    }
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+
+        myChart2.setOption(option);
+    </script>
 @endsection

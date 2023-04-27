@@ -63,10 +63,7 @@
                         @endif
 
                         <div id="myChart" style="height: 400px;"></div>
-                        <tbody>
-
-                        </tbody>
-                        </table>
+                        
                     </div>
                 </div>
             </div>
@@ -75,7 +72,7 @@
 @endsection
 @section('script')
     <script>
-        import * as echarts from 'echarts';
+       
         var myChart = echarts.init(document.getElementById('myChart'));
 
         var option = {
@@ -97,23 +94,19 @@
                 radius: '50%',
                 data: [{
                         value: 1048,
-                        name: 'Search Engine'
+                        name: 'พัฒนาการด้านร่างกาย'
                     },
                     {
                         value: 735,
-                        name: 'Direct'
+                        name: 'พัฒนาการด้านอารมณ์และจิตใจ'
                     },
                     {
                         value: 580,
-                        name: 'Email'
+                        name: 'พัฒนาการด้านสังคม'
                     },
                     {
                         value: 484,
-                        name: 'Union Ads'
-                    },
-                    {
-                        value: 300,
-                        name: 'Video Ads'
+                        name: 'พัฒนาการด้านสติปัญญา'
                     }
                 ],
                 emphasis: {

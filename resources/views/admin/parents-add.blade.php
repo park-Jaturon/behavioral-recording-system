@@ -5,7 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('เพิ่มผู้ปกครอง') }}</div>
+                    <div class="card-header">
+                        @if (empty($dataParent->parents_id))
+                            {{ __('เพิ่มข้อมูลผู้ปกครอง') }}
+                        @else
+                            {{ __('แก้ไขข้อมูลผู้ปกครอง') }}
+                        @endif
+
+                    </div>
 
                     <div class="card-body">
                         @if ($message = Session::get('success'))
@@ -32,12 +39,18 @@
                                         <option value="นาง">นาง</option>
                                         <option value="นางสาว">นางสาว</option>
                                     </select>
+                                    @error('prefix')
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="col">
                                     <label for="firstname" class="form-label">ชื่อ</label>
                                     <input type="text" name="firstname" id="firstname"
                                         value="{{ old('firstname', $dataParent->first_name) }}" class="form-control">
-                                    <small id="helpId" class="text-muted"> @error('firstname')
+                                    <small id="helpId" class="text-muted">
+                                        @error('firstname')
                                             <span role="alert" class="text-danger">
                                                 <strong> {{ $message }}</strong>
                                             </span>
