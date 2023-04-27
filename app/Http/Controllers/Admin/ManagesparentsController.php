@@ -65,10 +65,24 @@ class ManagesparentsController extends Controller
     {
         $request->validate([
             'prefix' => 'required|string',
-            'firstname' => 'required|string|min:3',
-            'lastname' => 'required|string|min:3',
-            'relationship' => 'required|string|min:3',
-            'job' => 'required|string|min:3',
+            'firstname' => 'required|string|min:3|regex:/^[ก-ฮ]+$/',
+            'lastname' => 'required|string|min:3|regex:/^[ก-ฮ]+$/',
+            'relationship' => 'required|string|min:3|regex:/^[ก-ฮ]+$/',
+            'job' => 'required|string|min:3|regex:/^[ก-ฮ]+$/',
+        ],[
+            'prefix.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
+            'firstname.required' => 'โปรดระบุชื่อ',
+            'firstname.regex' => 'ชื่อต้องเป็นภาษาไทยเท่านั้น',
+            'firstname.min' => 'ชื่อไม่ถูกต้อง',
+            'lastname.required' => 'โปรดระบุนามสกุล',
+            'lastname.regex' => 'นามสกุลต้องเป็นภาษาไทยเท่านั้น',
+            'lastname.min' => 'นามสกุลไม่ถูกต้อง',
+            'relationship.required' => 'โปรดระบุความสัมพันธ์',
+            'relationship.regex' => 'ความสัมพันธ์ต้องเป็นภาษาไทยเท่านั้น',
+            'relationship.min' => 'ข้อมูลไม่ถูกต้อง',
+            'job.required' => 'โปรดระบุอาชีพ',
+            'job.regex' => 'อาชีพต้องเป็นภาษาไทยเท่านั้น',
+            'job.min' => 'ข้อมูลไม่ถูกต้อง',
         ]);
 
         $parent = Parents::findOrFail($parents_id);
