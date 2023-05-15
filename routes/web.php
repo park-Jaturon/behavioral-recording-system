@@ -53,6 +53,7 @@ Route::prefix('admin')->middleware('isadmin')->group(function () {
     Route::get('teacher/edit/{teachers_id}', [ManageteacherController::class, 'edit']);
     Route::put('teacher/update/{teachers_id}', [ManageteacherController::class, 'update']);
     Route::delete('teacher/delete/{teachers_id}', [ManageteacherController::class, 'delete']);
+    Route::post('teacher/inspect/delete' ,[ManageteacherController::class, 'inspect']);
     /* Parents */
     Route::get('manage/parents', [ManagesparentsController::class, 'manageparentsindex'])->name('index.manageparents');
     Route::get('parents/add', [ManagesparentsController::class, 'addparents'])->name('add.parents');
@@ -109,13 +110,37 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('behavior/report/{student_id}',[BehaviorController::class, 'report'])->name('report.behavior');
     Route::delete('behavior/delete/{behavior_id}',[BehaviorController::class, 'delete']);
     /* personal record */
-     Route::get('record/weight-height',[PersonalRecordController::class, 'weight_height'])->name('record.weight-height');
-     Route::get('record/weight-height/show/{student_id}',[PersonalRecordController::class, 'weight_height_show']);
-     Route::get('record/weight-height/add/{student_id}',[PersonalRecordController::class, 'weight_height_add']);
+
+    //  Route::get('record/weight-height',[PersonalRecordController::class, 'weight_height'])->name('record.weight-height');
+    //  Route::get('record/weight-height/show/{student_id}',[PersonalRecordController::class, 'weight_height_show']);
+    //  Route::get('record/weight-height/add/{student_id}',[PersonalRecordController::class, 'weight_height_add']);
+
      Route::get('record/appraisal',[PersonalRecordController::class, 'appraisal'])->name('record.appraisal');
      Route::get('record/appraisal/show/{student_id}',[PersonalRecordController::class, 'appraisal_show']);
      Route::get('record/appraisal/add/{student_id}',[PersonalRecordController::class, 'appraisal_add']);
      Route::post('record/appraisal/store/{student_id}',[PersonalRecordController::class, 'appraisal_store'])->name('store.appraisal');
+    /*  
+     Route::get('record/appraisal/add/page1/{student_id}',[PersonalRecordController::class, 'appraisal_add_page1']);
+     Route::post('record/appraisal/page1/{student_id}',[PersonalRecordController::class, 'appraisal_store_page1'])->name('store.appraisal.page1');
+     Route::get('record/appraisal/add/page2/{student_id}',[PersonalRecordController::class, 'appraisal_add_page2']);
+     Route::post('record/appraisal/page2/{student_id}',[PersonalRecordController::class, 'appraisal_store_page2'])->name('store.appraisal.page2');
+     Route::get('record/appraisal/add/page3/{student_id}',[PersonalRecordController::class, 'appraisal_add_page3']);
+     Route::post('record/appraisal/page3/{student_id}',[PersonalRecordController::class, 'appraisal_store_page3'])->name('store.appraisal.page3');
+     Route::get('record/appraisal/add/page4/{student_id}',[PersonalRecordController::class, 'appraisal_add_page4']);
+     Route::post('record/appraisal/page4/{student_id}',[PersonalRecordController::class, 'appraisal_store_page4'])->name('store.appraisal.page4');
+     Route::get('record/appraisal/add/page5/{student_id}',[PersonalRecordController::class, 'appraisal_add_page5']);
+     Route::post('record/appraisal/page5/{student_id}',[PersonalRecordController::class, 'appraisal_store_page5'])->name('store.appraisal.page5');
+     Route::get('record/appraisal/add/page6/{student_id}',[PersonalRecordController::class, 'appraisal_add_page6']);
+     Route::post('record/appraisal/page6/{student_id}',[PersonalRecordController::class, 'appraisal_store_page6'])->name('store.appraisal.page6');
+     Route::get('record/appraisal/add/page7/{student_id}',[PersonalRecordController::class, 'appraisal_add_page7']);
+     Route::post('record/appraisal/page7/{student_id}',[PersonalRecordController::class, 'appraisal_store_page7'])->name('store.appraisal.page7');
+     Route::get('record/appraisal/add/page8/{student_id}',[PersonalRecordController::class, 'appraisal_add_page8']);
+     Route::post('record/appraisal/page8/{student_id}',[PersonalRecordController::class, 'appraisal_store_page8'])->name('store.appraisal.page8');
+     Route::get('record/appraisal/add/page9/{student_id}',[PersonalRecordController::class, 'appraisal_add_page9']);
+     Route::post('record/appraisal/page9/{student_id}',[PersonalRecordController::class, 'appraisal_store_page9'])->name('store.appraisal.page9');
+     Route::get('record/appraisal/add/comment/{student_id}/{term}',[PersonalRecordController::class, 'appraisal_add_comment']);
+     Route::post('record/appraisal/comment/{student_id}/{term}',[PersonalRecordController::class, 'appraisal_store_commenteacher'])->name('store.appraisal.comment');
+    */
      Route::get('pdf/{student_id}', [PersonalRecordController::class, 'viewPDF'])->name('show.pdf');
      Route::get('pdf/download/{student_id}', [PersonalRecordController::class, 'exportPDF'])->name('download.pdf');
 });

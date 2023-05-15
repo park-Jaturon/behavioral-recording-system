@@ -18,9 +18,7 @@ class ManageteacherController extends Controller
             ->join('rooms', 'teachers.rooms_id', '=', 'rooms.rooms_id')
             ->select('teachers.*', 'rooms.room_name')
             ->get();
-            // Debugbar::info($object);
-        // dd($teacher);
-        Debugbar::info('info!');
+           
         return view('admin.manageteacherindex', compact('teacher'));
     }
 
@@ -81,8 +79,8 @@ class ManageteacherController extends Controller
     {
         $request->validate([
             'prefix' => 'required|string',
-            'firstname' => 'required|string|min:3|regex:/^[ก-ฮ]+$/',
-            'lastname' => 'required|string|min:3|regex:/^[ก-ฮ]+$/',
+            'firstname' => 'required|string|min:3|regex:/^[ก-๙]+$/u',
+            'lastname' => 'required|string|min:3|regex:/^[ก-๙]+$/u',
             'rankteacher' => 'required|string',
             'imageteacher' => 'nullable|mimes:jpeg,jpg,png',
             'room' => 'required',
@@ -122,6 +120,20 @@ class ManageteacherController extends Controller
         $teachers->save();
 
         return redirect()->back()->with('success', 'แก้ไขข้อมูลเสร็จสิ้น');
+    }
+
+    public function inspect(Request $request)
+    {
+        $dataTeacher = Teacher::findOrFail($request->teachers);
+
+        $count = Teacher::where('rooms_id', $dataTeacher->rooms_id)->count();
+         if($count > 1){
+            return response()->json('1');  
+         }else{
+            return response()->json('0'); 
+         }
+        // Debugbar::info( $count);
+       
     }
 
     public function delete($teachers_id)

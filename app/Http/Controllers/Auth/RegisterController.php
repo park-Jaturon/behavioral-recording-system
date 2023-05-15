@@ -49,16 +49,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string','min:3', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'inlineRadioOptions' => ['required'],
-            'rankidteachers' => ['required'],
-            'rankidparents' => ['required'],
+            'rankid' => ['required'],
+            
         ],[
-            'name.required' => 'ข้อมูลไม่ถูกต้อง',
-            'name.min' => 'ข้อมูลไม่ถูกต้อง', 
-            'password' => 'ข้อมูลไม่ถูกต้อง',
+            'name.required' => 'โปรดระบุ IDName',
+            'name.min' => 'ข้อมูลไม่ถูกต้อง IDName ต้องมีอย่างน้อย 3 ตัว', 
+            'password' => 'ข้อมูลไม่ถูกต้อง password ต้องมีอย่างน้อย 9 ตัว',
+            'inlineRadioOptions.required' => 'กรุณาเลือกสิทธิผู้ใช้งาน',
+            'rankid.required' => 'กรุณาเลือกชื่อผู้ใช้งาน',
         ]);
     }
 
@@ -70,19 +73,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data['rankidteachers']);
-        //  $datateachers = $data->rankidteachers;
-        if ($data['rankidteachers'] == 0) {
-            $rankid = $data['rankidparents'];
-        } elseif ($data['rankidparents'] == 0) {
-            $rankid = $data['rankidteachers'];
-        }
-
-        // dd( $data);
+      
         return User::create([
             'users_name' => $data['name'],
             'password' => Hash::make($data['password']),
-            'rank_id' => $rankid,
+            'rank_id' => $data['rankid'],
             'rank' => $data['inlineRadioOptions']
         ]);
     }

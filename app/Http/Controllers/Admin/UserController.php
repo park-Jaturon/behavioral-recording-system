@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class UserController extends Controller
 {
     public function index()
@@ -43,7 +44,7 @@ class UserController extends Controller
                 ->select('prefix_name', 'first_name', 'last_name')
                 ->first();
             // dd( $username);
-            return view('admin.user-edit', compact('username','iduser'));
+            return view('admin.user-edit', compact('username', 'iduser'));
         }
         if ($iduser->rank == "parent") {
 
@@ -53,22 +54,24 @@ class UserController extends Controller
                 ->where('parents_id', '=', $iduser->rank_id)
                 ->select('prefix_name', 'first_name', 'last_name')
                 ->first();
-                // dd( $username);
-            return view('admin.user-edit',compact('username','iduser'));
+            // dd( $username);
+            return view('admin.user-edit', compact('username', 'iduser'));
         }
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         // dd($request);
-       User::where('users_id', $id)
-        ->update([
-            'users_name' => $request->name,
-            'password' =>  Hash::make($request->password),
-        ]);
+        User::where('users_id', $id)
+            ->update([
+                'users_name' => $request->name,
+                'password' =>  Hash::make($request->password),
+            ]);
 
-    return redirect(route('index.user'))->with('successupdateuser', 'แก้ไขข้อมูลเสร็จสิ้น');
+        return redirect(route('index.user'))->with('successupdateuser', 'แก้ไขข้อมูลเสร็จสิ้น');
     }
+
+   
 
     public function delete($id)
     {

@@ -4,6 +4,15 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong> {{$error}}</strong> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                   
+                    @endforeach
+                @endif
                 <div class="card">
                     <div class="card-header">{{ __('เพิ่มผู้ใช้งาน') }}</div>
 
@@ -71,7 +80,7 @@
                             <div class="row justify-content-md-center mb-3">
                                 {{-- teachers --}}
                                 <div class="col-md-6 mt-2 teachers" style="display: none">
-                                    <select class="form-select  " name="rankidteachers" aria-label="Default select example">
+                                    <select class="form-select  " name="rankid" aria-label="Default select example">
                                         <option selected value="0" disabled>ชื่อ - นามสกุล</option>
                                         @foreach ($datateachers as $datateacher)
                                             <option value="{{ $datateacher->teachers_id }}">
@@ -83,14 +92,14 @@
 
                                 {{-- parents --}}
                                 <div class="col-md-6 mt-2 parents" style="display: none">
-                                    <select class="form-select  " name="rankidparents" aria-label="Default select example">
+                                    <select class="form-select  " name="rankid" aria-label="Default select example">
                                         <option selected value="0" disabled>ชื่อ - นามสกุล</option>
                                         @foreach ($dataparents as $dataparent)
                                             <option value="{{ $dataparent->parents_id }}">
                                                 {{ $dataparent->prefix_name . $dataparent->first_name . ' ' . $dataparent->last_name }}
                                             </option>
                                         @endforeach
-                                    </select>
+                                    </select> 
                                 </div>
                             </div>
                             

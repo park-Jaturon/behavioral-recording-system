@@ -48,16 +48,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/locale-all.js'></script>
 
+{{-- parsley.js --}}
+{{-- <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
+integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
         var $url = {!! json_encode(url('/')) !!};
     </script>
-    
-    {{-- <style>
-        li:hover {
-            background-color: #ffe1e1;
-        }
-    </style> --}}
+
+    @yield('style')
 </head>
 
 <body>
@@ -289,6 +290,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     {{-- echarts --}}
     <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    
     @yield('script')
 </body>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Room;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Support\Facades\DB;
@@ -74,6 +75,8 @@ class RoomController extends Controller
         
         return redirect()->back()->with('success','แก้ไขข้อมูลเสร็จสิ้น');
     }
+
+    
 
     public function delete($rooms_id)
     {

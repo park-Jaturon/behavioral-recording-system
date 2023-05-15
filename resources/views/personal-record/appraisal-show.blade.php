@@ -5,16 +5,16 @@
         <div class="row  my-2">
             {{-- @dd(isset($dataphysicallysemester1)) --}}
             <div class="col-3 text-end">
-                @if (empty($dataphysicallysemester1[0]->score_rate_physically))
+                @if (isset($datasemester1) && isset($datasemester2))
+                    <a name="" id="" class="btn btn-primary" href="{{ url('teacher/pdf/' . $student_id) }}"
+                        role="button"><i class="bi bi-file-earmark-pdf"></i>ดู</a>
+                    <a name="" id="" class="btn btn-primary"
+                        href="{{ url('teacher/pdf/download/' . $student_id) }}" role="button"><i
+                            class="bi bi-file-earmark-pdf"></i> ดาวน์โหลด</a>
+                @else
                     <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true"><i
                             class="bi bi-file-earmark-pdf"></i>ดู</a>
                     <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true"><i
-                            class="bi bi-file-earmark-pdf"></i> ดาวน์โหลด</a>
-                @else
-                    <a name="" id="" class="btn btn-primary" href="{{ url('teacher/pdf/' . $student_id) }}"
-                        role="button"><i class="bi bi-file-earmark-pdf"></i> ดู</a>
-                    <a name="" id="" class="btn btn-primary"
-                        href="{{ url('teacher/pdf/download/' . $student_id) }}" role="button"><i
                             class="bi bi-file-earmark-pdf"></i> ดาวน์โหลด</a>
                 @endif
 
@@ -4842,7 +4842,20 @@
 
                                 </div>
                             </div>
-
+                            @php
+                                $score_physically1 = ($appraisalsemester1Physically->score_physically / 60) * 100;
+                                $score_physically2 = ($appraisalsemester2Physically->score_physically / 60) * 100;
+                                $score_mood_mind1 = ($appraisalsemester1mood_mind->score_mood_mind / 57) * 100;
+                                $score_mood_mind2 = ($appraisalsemester2mood_mind->score_mood_mind / 57) * 100;
+                                $score_social1 = ($appraisalsemester1social->score_social / 90) * 100;
+                                $score_social2 = ($appraisalsemester2social->score_social / 90) * 100;
+                                $score_intellectual1 = ($appraisalsemester1intellectual->score_intellectual / 84) * 100;
+                                $score_intellectual2 = ($appraisalsemester2intellectual->score_intellectual / 84) * 100;
+                                // Debugbar::notice($score_physically1,$score_physically2);
+                                // Debugbar::notice($score_mood_mind1,$score_mood_mind2);
+                                // Debugbar::notice($score_social1,$score_social2);
+                                // Debugbar::notice($score_intellectual1,$score_intellectual2);
+                            @endphp
                             <!-- สรุปผลการประเมิน -->
                             <div id="menu5" class="container tab-pane fade"><br>
                                 <table class="table table-bordered border-dark">
@@ -4881,8 +4894,14 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryPhysically->physically >= 2.5)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_physically2 > 66.66 && $score_physically2 <= 100)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_physically1 > 66.66 && $score_physically1 <= 100)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4890,8 +4909,14 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryPhysically->physically > 1.5 && $SummaryPhysically->physically < 2.5)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_physically2 > 33.33 && $score_physically2 <= 66.66)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_physically1 > 33.33 && $score_physically1 <= 66.66)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4899,14 +4924,28 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryPhysically->physically <= 1.5 && $SummaryPhysically->physically != null)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_physically2 <= 33.33)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_physically1 <= 33.33)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                //
+                                                @if (isset($datasemester1) && isset($datasemester2))
+                                                    @if ($score_physically2 > 66.66 && $score_physically2 <= 100)
+                                                        ควรส่งเสริม
+                                                    @elseif ($score_physically2 > 33.33 && $score_physically2 <= 66.66)
+                                                        ควรปรับปรุง
+                                                    @else
+                                                        ควรแก้ไขด่วน
+                                                    @endif
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -4916,8 +4955,14 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryMoodMind->score_mood_mind >= 2.5)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_mood_mind2 > 66.66 && $score_mood_mind2 <= 100)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_mood_mind1 > 66.66 && $score_mood_mind1 <= 100)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4925,8 +4970,14 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryMoodMind->score_mood_mind > 1.5 && $SummaryMoodMind->score_mood_mind < 2.5)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_mood_mind2 > 33.33 && $score_mood_mind2 <= 66.66)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_mood_mind1 > 33.33 && $score_mood_mind1 <= 66.66)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4934,14 +4985,28 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryMoodMind->score_mood_mind <= 1.5 && $SummaryMoodMind->score_mood_mind != null)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_mood_mind2 <= 33.33)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_mood_mind1 <= 33.33)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                //
+                                                @if (isset($datasemester1) && isset($datasemester2))
+                                                @if ($score_physically2 > 66.66 && $score_physically2 <= 100)
+                                                    ควรส่งเสริม
+                                                @elseif ($score_physically2 > 33.33 && $score_physically2 <= 66.66)
+                                                    ควรปรับปรุง
+                                                @else
+                                                    ควรแก้ไขด่วน
+                                                @endif
+                                            @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -4951,8 +5016,14 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummarySocial->score_social >= 2.5)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_social2 > 66.66 && $score_social2 <= 100)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_social1 > 66.66 && $score_social1 <= 100)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4960,8 +5031,14 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummarySocial->score_social > 1.5 && $SummarySocial->score_social < 2.5)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_social2 > 33.33 && $score_social2 <= 66.66)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_social1 > 33.33 && $score_social1 <= 66.66)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4969,14 +5046,28 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummarySocial->score_social <= 1.5 && $SummarySocial->score_social != null)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_social2 <= 33.33)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_social1 <= 33.33)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                //
+                                                @if (isset($datasemester1) && isset($datasemester2))
+                                                @if ($score_physically2 > 66.66 && $score_physically2 <= 100)
+                                                    ควรส่งเสริม
+                                                @elseif ($score_physically2 > 33.33 && $score_physically2 <= 66.66)
+                                                    ควรปรับปรุง
+                                                @else
+                                                    ควรแก้ไขด่วน
+                                                @endif
+                                            @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -4986,8 +5077,14 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryIntellectual->score_intellectual >= 2.5)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_intellectual2 > 66.66 && $score_intellectual2 <= 100)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_intellectual1 > 66.66 && $score_intellectual1 <= 100)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -4995,8 +5092,14 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryIntellectual->score_intellectual > 1.5 && $SummaryIntellectual->score_intellectual < 2.5)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_intellectual2 > 33.33 && $score_intellectual2 <= 66.66)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_intellectual1 > 33.33 && $score_intellectual1 <= 66.66)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -5004,34 +5107,44 @@
                                             <td>
                                                 <div class="row justify-content-md-center">
                                                     <div class="col-md-auto">
-                                                        @if ($SummaryIntellectual->score_intellectual <= 1.5 && $SummaryIntellectual->score_intellectual != null)
-                                                            <i class="bi bi-check-lg"></i>
+                                                        @if (isset($datasemester1) && isset($datasemester2))
+                                                            @if ($score_intellectual2 <= 33.33)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
+                                                        @else
+                                                            @if ($score_intellectual1 <= 33.33)
+                                                                <i class="bi bi-check-lg"></i>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                //
+                                                @if (isset($datasemester1) && isset($datasemester2))
+                                                @if ($score_physically2 > 66.66 && $score_physically2 <= 100)
+                                                    ควรส่งเสริม
+                                                @elseif ($score_physically2 > 33.33 && $score_physically2 <= 66.66)
+                                                    ควรปรับปรุง
+                                                @else
+                                                    ควรแก้ไขด่วน
+                                                @endif
+                                            @endif
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div>
+                                {{-- <div>
                                     <span>
-                                        >66.66&&<=100 = ดี
-                                    </span>
-                                    <br>
-                                    <span>
-                                        >33.33&&<=66.66 = ปานกลาง
-                                    </span>
-                                    <br>
-                                    <span>
-                                        <=33.33 = ควรเสริม  
-                                    </span>
-                                    
-                                    {{-- '>33.33&&<=66.66 = ปานกลาง',
-                                    '>66.66&&<=100 = ดี' --}}
-                                </div>
+                                        >66.66&&<=100=ดี </span>
+                                            <br>
+                                            <span>
+                                                >33.33&&<=66.66=ปานกลาง </span>
+                                                    <br>
+                                                    <span>
+                                                        <=33.33=ควรเสริม </span>
+
+                                                          
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -5040,7 +5153,7 @@
             <div class="col-md-4">
                 <div class="card mb-2">
                     <div class="card-header">
-                        {{ __('กราฟ 1') }}
+                        {{ __('ภาคเรียน1') }}
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -5055,7 +5168,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        {{ __('กราฟ 2') }}
+                        {{ __('ภาคเรียน2') }}
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -5072,7 +5185,6 @@
 
         </div>
     </div>
-    
 @endsection
 @section('script')
     <script>
@@ -5082,11 +5194,11 @@
         var socialData = {!! json_encode($appraisalsemester1social->score_social) !!};
         var intellectualData = {!! json_encode($appraisalsemester1intellectual->score_intellectual) !!};
         // console.log((PhysicallyData / 60) );
-       
+
         var option = {
             title: {
                 text: '',
-                subtext: '' ,
+                subtext: '',
                 left: 'right',
                 top: 'bottom'
             },
@@ -5135,11 +5247,11 @@
         var mood_mindData2 = {!! json_encode($appraisalsemester2mood_mind->score_mood_mind) !!};
         var socialData2 = {!! json_encode($appraisalsemester2social->score_social) !!};
         var intellectualData2 = {!! json_encode($appraisalsemester2intellectual->score_intellectual) !!};
-console.log();
+        console.log();
         var option = {
             title: {
-                text: 'Referer of a Website',
-                subtext: 'Fake Data',
+                text: ' ',
+                subtext: ' ',
                 left: 'center'
             },
             tooltip: {
@@ -5158,15 +5270,15 @@ console.log();
                         name: 'พัฒนาการด้านร่างกาย'
                     },
                     {
-                        value: (mood_mindData2 / 57)* 100,
+                        value: (mood_mindData2 / 57) * 100,
                         name: 'พัฒนาการด้านอารมณ์และจิตใจ'
                     },
                     {
-                        value: (socialData2 / 90)* 100,
+                        value: (socialData2 / 90) * 100,
                         name: 'พัฒนาการด้านสังคม'
                     },
                     {
-                        value: (intellectualData2 / 84)*100,
+                        value: (intellectualData2 / 84) * 100,
                         name: 'พัฒนาการด้านสติปัญญา'
                     }
                 ],

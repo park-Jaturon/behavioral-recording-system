@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Development;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,33 +14,33 @@ use function Termwind\render;
 
 class PersonalRecordController extends Controller
 {
-    public function weight_height()
-    {
-        $user = DB::table('teachers')
-            ->join('users', function ($join) {
-                $join->on('teachers.teachers_id', '=', 'users.rank_id')
-                    ->where('users.rank', '=', 'teacher');
-            })
-            ->join('rooms', 'teachers.rooms_id', '=', 'rooms.rooms_id')
-            ->join('students', 'rooms.rooms_id', '=', 'students.rooms_id')
-            ->where('users.rank_id', '=', Auth::user()->rank_id)
-            // ->select('users.*', 'contacts.phone', 'orders.price')
-            ->get();
-        // dd($user);
-        return view('personal-record.weight-height', compact('user'));
-    }
+    // public function weight_height()
+    // {
+    //     $user = DB::table('teachers')
+    //         ->join('users', function ($join) {
+    //             $join->on('teachers.teachers_id', '=', 'users.rank_id')
+    //                 ->where('users.rank', '=', 'teacher');
+    //         })
+    //         ->join('rooms', 'teachers.rooms_id', '=', 'rooms.rooms_id')
+    //         ->join('students', 'rooms.rooms_id', '=', 'students.rooms_id')
+    //         ->where('users.rank_id', '=', Auth::user()->rank_id)
+    //         // ->select('users.*', 'contacts.phone', 'orders.price')
+    //         ->get();
+    //     // dd($user);
+    //     return view('personal-record.weight-height', compact('user'));
+    // }
 
-    public function weight_height_show($student_id)
-    {
-        return view('personal-record.weight-height-show');
-    }
+    // public function weight_height_show($student_id)
+    // {
+    //     return view('personal-record.weight-height-show');
+    // }
 
-    public function weight_height_add($student_id)
-    {
-        return view('personal-record.weight-height-add');
-    }
+    // public function weight_height_add($student_id)
+    // {
+    //     return view('personal-record.weight-height-add');
+    // }
 
-    public function appraisal()
+    public function appraisal() //หน้าแรก
     {
         $user = DB::table('teachers')
             ->join('users', function ($join) {
@@ -51,14 +52,23 @@ class PersonalRecordController extends Controller
             ->where('users.rank_id', '=', Auth::user()->rank_id)
             ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name')
             ->get();
-        //  dd($user);
-
+     
         return view('personal-record.development-appraisal', compact('user'));
     }
 
-    public function appraisal_show($student_id)
+    public function appraisal_show($student_id) //ดู
     {
         $student = Student::find($student_id);
+
+        $datasemester1 = DB::table('physically')
+        ->where('student_id','=',$student_id)
+        ->where('semester','LIKE',"%ภาคเรียน1%")
+        ->first();
+        $datasemester2 = DB::table('physically')
+        ->where('student_id','=',$student_id)
+        ->where('semester','LIKE',"%ภาคเรียน2%")
+        ->first();
+        // Debugbar::info(isset($datasemester1),isset($datasemester2));
 
         $dataphysicallysemester1 = DB::table('physically')
             ->where('student_id', '=', $student_id)
@@ -95,8 +105,8 @@ class PersonalRecordController extends Controller
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน2")
             ->get();
-
-        $SummaryPhysically = DB::table('physically')
+ 
+        $SummaryPhysically = DB::table('physically') //แบบตาราง
             ->select(DB::raw('ROUND(AVG(score_rate_physically),1) as physically'))
             ->where('student_id', '=', $student->student_id)
             ->first();
@@ -117,52 +127,56 @@ class PersonalRecordController extends Controller
             ->where('student_id', '=', $student_id)
             ->get();
 
-        $appraisalsemester1Physically = DB::table('physically')
+        $appraisalsemester1Physically = DB::table('physically')//ด้านร่างกายภาคเรียน1
             ->select(DB::raw('SUM(score_rate_physically) as score_physically'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน1')
             ->first();
-        $appraisalsemester2Physically = DB::table('physically')
+        $appraisalsemester2Physically = DB::table('physically')//ด้านร่างกายภาคเรียน2
             ->select(DB::raw('SUM(score_rate_physically) as score_physically'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
 
-        $appraisalsemester1mood_mind = DB::table('mood_mind')
+        $appraisalsemester1mood_mind = DB::table('mood_mind') //-ด้านอารมณ์-จิตใจภาคเรียน1
             ->select(DB::raw('SUM(score_rate_mood_mind) as score_mood_mind'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน1')
             ->first();
-        $appraisalsemester2mood_mind = DB::table('mood_mind')
+        $appraisalsemester2mood_mind = DB::table('mood_mind') //-ด้านอารมณ์-จิตใจภาคเรียน2
             ->select(DB::raw('SUM(score_rate_mood_mind) as score_mood_mind'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
 
-        $appraisalsemester1social = DB::table('social')
+        $appraisalsemester1social = DB::table('social') //ด้านสังคมภาคเรียน1
             ->select(DB::raw('SUM(score_rate_social) as score_social'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน1')
             ->first();
-        $appraisalsemester2social = DB::table('social')
+        $appraisalsemester2social = DB::table('social') //ด้านสังคมภาคเรียน2
             ->select(DB::raw('SUM(score_rate_social) as score_social'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
-        
-        $appraisalsemester1intellectual = DB::table('intellectual')
+
+        $appraisalsemester1intellectual = DB::table('intellectual') //ด้านสติปัญญาภาคเรียน1
             ->select(DB::raw('SUM(score_rate_intellectual) as score_intellectual'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน1')
             ->first();
-        $appraisalsemester2intellectual = DB::table('intellectual')
+        $appraisalsemester2intellectual = DB::table('intellectual') //ด้านสติปัญญาภาคเรียน2
             ->select(DB::raw('SUM(score_rate_intellectual) as score_intellectual'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
         //    dd(($appraisalsemester1mood_mind->score_mood_mind / 60) * 100);
+        //    Debugbar::info($appraisalsemester1Physically,$appraisalsemester2Physically);
+        //    Debugbar::info($appraisalsemester1mood_mind,$appraisalsemester2mood_mind);
+        //    Debugbar::info($appraisalsemester1social,$appraisalsemester2social);
+        //    Debugbar::info($appraisalsemester1intellectual,$appraisalsemester2intellectual);
         return view(
-            'personal-record.appraisal-show',          
+            'personal-record.appraisal-show',
             compact(
                 'dataphysicallysemester1',
                 'dataphysicallysemester2',
@@ -185,19 +199,32 @@ class PersonalRecordController extends Controller
                 'appraisalsemester2Physically',
                 'appraisalsemester2mood_mind',
                 'appraisalsemester2social',
-                'appraisalsemester2intellectual'
+                'appraisalsemester2intellectual',
+                'datasemester1','datasemester2'
             )
         );
     }
 
-    public function appraisal_add($student_id)
+    public function appraisal_add($student_id) //เพิ่มข้อมูล
     {
         $student = Student::findOrFail($student_id);
         //    dd($student->student_id);
-        return view('personal-record.appraisal-add', compact('student'));
+        $datasemester1 = DB::table('physically')
+        ->where('student_id','=',$student_id)
+        ->where('semester','LIKE',"%ภาคเรียน1%")
+        ->first();
+        $datasemester2 = DB::table('physically')
+        ->where('student_id','=',$student_id)
+        ->where('semester','LIKE',"%ภาคเรียน2%")
+        ->first();
+        Debugbar::info(isset($datasemester1),isset($datasemester2));
+
+        return view('personal-record.appraisal-add', compact('student',
+                                                             'datasemester1','datasemester2'
+                                                            ));
     }
 
-    public function appraisal_store(Request $request, $student_id)
+      public function appraisal_store(Request $request, $student_id)
     {
         $request->validate(
             [
