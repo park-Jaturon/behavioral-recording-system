@@ -176,6 +176,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                         <a class="nav-link" href="{{ route('teacher.dashboard') }}">Dashboard</a>
                                     </li>
                                     <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('teacher.room') }}">ห้องเรียน</a>
+                                    </li>
+                                    <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('index.check') }}">ลงเวลา</a>
                                     </li>
                                     <li class="nav-item ">

@@ -23,7 +23,7 @@
                                             <td class="text-center" scope="row">{{ $students->number }}</td>
                                             <td >
                                                 <a href="{{ url('teacher/post-time/' . $students->student_id) }}"
-                                                    style="text-decoration: none;">{{ $students->prefix_name . $students->prefix_name . ' ' . $students->last_name }}</a>
+                                                    style="text-decoration: none;">{{ $students->prefix_name . $students->first_name . ' ' . $students->last_name }}</a>
                                             </td>
                                          
                                         </tr>

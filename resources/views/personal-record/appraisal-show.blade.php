@@ -4832,7 +4832,7 @@
                                                     </blockquote>
                                                 </div>
                                                 <div class="card-footer text-end">
-                                                    <a name="" id="" class="btn btn-primary" href="{{ url('teacher/commen/edit/'.$commenT->id) }}" role="button">แก้ไข</a>
+                                                    <a name="" id="" class="btn btn-warning" href="{{ url('teacher/commen/edit/'.$commenT->id) }}" role="button">แก้ไข</a>
                                                 </div>
                                             </div>
                                         @empty
