@@ -47,7 +47,7 @@
                                 {{-- เวลามาโรงเรียน --}}
                                 <div class="col">
                                     {{-- @dd($latest_date,$datenow) --}}
-                                    @if ($timenow <= '08:00:00')
+                                    @if ($timenow <= '08.00')
                                         @if ($latest_date == $datenow)
                                             <div class="mb-3">
                                                 <label for="" class="form-label">เวลามาโรงเรียน</label>
@@ -76,7 +76,7 @@
                                 {{-- เวลากลับบ้าน --}}
                                 <div class="col">
                                     {{-- @dd(empty($check_student[0]->c_out))  --}}
-                                    @if ($timenow >= '15:00:00' && $timenow <= '18:00:00')
+                                    @if ($timenow >= '15.00' && $timenow <= '18.00')
                                         @if (empty($check_student[0]->c_out))
                                             <div class="mb-3">
                                                 <label for="" class="form-label">เวลากลับบ้าน</label>
@@ -96,7 +96,7 @@
                                         <div class="mb-3">
                                             <label for="" class="form-label">เวลากลับบ้าน</label>
                                             <input class="form-control bg-secondary text-light text-center" type="text"
-                                                value="{{ __('15.00-18.00') }}" aria-label="readonly input example"
+                                                value="{{ __('15.00-17.00') }}" aria-label="readonly input example"
                                                 readonly>
                                         </div>
                                     @endif

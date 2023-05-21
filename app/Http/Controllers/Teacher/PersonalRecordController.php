@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Elibyy\TCPDF\Facades\TCPDF;
+use Illuminate\Support\Composer;
+
 use function Termwind\render;
 
 class PersonalRecordController extends Controller
@@ -52,7 +54,7 @@ class PersonalRecordController extends Controller
             ->where('users.rank_id', '=', Auth::user()->rank_id)
             ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name')
             ->get();
-     
+
         return view('personal-record.development-appraisal', compact('user'));
     }
 
@@ -61,14 +63,14 @@ class PersonalRecordController extends Controller
         $student = Student::find($student_id);
 
         $datasemester1 = DB::table('physically')
-        ->where('student_id','=',$student_id)
-        ->where('semester','LIKE',"%ภาคเรียน1%")
-        ->first();
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->first();
         $datasemester2 = DB::table('physically')
-        ->where('student_id','=',$student_id)
-        ->where('semester','LIKE',"%ภาคเรียน2%")
-        ->first();
-        // Debugbar::info(isset($datasemester1),isset($datasemester2));
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->first();
+        // Debugbar::info( $student);
 
         $dataphysicallysemester1 = DB::table('physically')
             ->where('student_id', '=', $student_id)
@@ -105,7 +107,7 @@ class PersonalRecordController extends Controller
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน2")
             ->get();
- 
+
         $SummaryPhysically = DB::table('physically') //แบบตาราง
             ->select(DB::raw('ROUND(AVG(score_rate_physically),1) as physically'))
             ->where('student_id', '=', $student->student_id)
@@ -127,12 +129,12 @@ class PersonalRecordController extends Controller
             ->where('student_id', '=', $student_id)
             ->get();
 
-        $appraisalsemester1Physically = DB::table('physically')//ด้านร่างกายภาคเรียน1
+        $appraisalsemester1Physically = DB::table('physically') //ด้านร่างกายภาคเรียน1
             ->select(DB::raw('SUM(score_rate_physically) as score_physically'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน1')
             ->first();
-        $appraisalsemester2Physically = DB::table('physically')//ด้านร่างกายภาคเรียน2
+        $appraisalsemester2Physically = DB::table('physically') //ด้านร่างกายภาคเรียน2
             ->select(DB::raw('SUM(score_rate_physically) as score_physically'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน2')
@@ -186,7 +188,7 @@ class PersonalRecordController extends Controller
                 'datasocialsemester2',
                 'dataintellectualsemester1',
                 'dataintellectualsemester2',
-                'SummaryPhysically',
+                // 'SummaryPhysically',
                 'SummaryMoodMind',
                 'SummarySocial',
                 'SummaryIntellectual',
@@ -200,7 +202,8 @@ class PersonalRecordController extends Controller
                 'appraisalsemester2mood_mind',
                 'appraisalsemester2social',
                 'appraisalsemester2intellectual',
-                'datasemester1','datasemester2'
+                'datasemester1',
+                'datasemester2'
             )
         );
     }
@@ -210,21 +213,23 @@ class PersonalRecordController extends Controller
         $student = Student::findOrFail($student_id);
         //    dd($student->student_id);
         $datasemester1 = DB::table('physically')
-        ->where('student_id','=',$student_id)
-        ->where('semester','LIKE',"%ภาคเรียน1%")
-        ->first();
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->first();
         $datasemester2 = DB::table('physically')
-        ->where('student_id','=',$student_id)
-        ->where('semester','LIKE',"%ภาคเรียน2%")
-        ->first();
-        Debugbar::info(isset($datasemester1),isset($datasemester2));
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->first();
+        Debugbar::info(isset($datasemester1), isset($datasemester2));
 
-        return view('personal-record.appraisal-add', compact('student',
-                                                             'datasemester1','datasemester2'
-                                                            ));
+        return view('personal-record.appraisal-add', compact(
+            'student',
+            'datasemester1',
+            'datasemester2'
+        ));
     }
 
-      public function appraisal_store(Request $request, $student_id)
+    public function appraisal_store(Request $request, $student_id)
     {
         $request->validate(
             [
@@ -655,6 +660,28 @@ class PersonalRecordController extends Controller
             'comment_teacher' => $request->commenteacher,
         ]);
         return redirect(route('record.appraisal'))->with('successaddappraisal', 'บันทึกข้อมูลเสร็จสิ้น');
+    }
+
+    public function commenTeacher($id)
+    {
+
+        $tcomment = DB::table('comment_appraisal')
+            ->find($id);
+
+        $student = Student::findOrFail($tcomment->student_id);
+        // 
+        Debugbar::info($tcomment, $student);
+        // Debugbar::info($tcomment->student_id);
+        return view('personal-record.commenTeacher-edit', compact('tcomment', 'student'));
+    }
+    public function updatecommenTeacher(Request $request, $id)
+    {
+        $tcomment = DB::table('comment_appraisal')
+            ->find($id);
+        DB::table('comment_appraisal')
+            ->where('id', $id)
+            ->update(['comment_teacher' => $request->commenteacher]);
+            return redirect(url('teacher/record/appraisal/show/'.$tcomment->student_id));
     }
 
     public function viewPDF($student_id)

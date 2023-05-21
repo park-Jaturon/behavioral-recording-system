@@ -18,6 +18,7 @@ class ActivityController extends Controller
         ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
         ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
         ->join('events','teachers.rooms_id','=','events.rooms_id')
+        ->orderByRaw('events.start DESC')
         ->get();
         // dd($event);
         return view('teacher.activity-index', compact('event'));

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use App\Models\Timecards;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -28,12 +29,15 @@ class CheckController extends Controller
     public function post_time($student_id)
     {
         $data = Student::findOrFail($student_id);
-        $timenow = date('H:i:s');
+        $timenow = date('H.i');
         $datenow = date('Y-m-d');
         $student = DB::table('students')
         ->join('timecards','students.student_id','=','timecards.student_id')
+        ->select('timecards.c_date','timecards.c_in','timecards.c_out')
         ->where('timecards.student_id', '=',$student_id)
+        ->orderByRaw('timecards.c_date DESC')
         ->get();
+        Debugbar::info( $student);
         $check_student = DB::table('students')
         ->join('timecards','students.student_id','=','timecards.student_id')
         ->where('timecards.student_id', '=',$student_id)

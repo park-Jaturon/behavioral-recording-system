@@ -17,7 +17,6 @@
                     <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true"><i
                             class="bi bi-file-earmark-pdf"></i> ดาวน์โหลด</a>
                 @endif
-
             </div>
         </div>
 
@@ -4831,6 +4830,9 @@
                                                     <blockquote class="blockquote mb-0">
                                                         {!! $commenT->comment_teacher !!}
                                                     </blockquote>
+                                                </div>
+                                                <div class="card-footer text-end">
+                                                    <a name="" id="" class="btn btn-primary" href="{{ url('teacher/commen/edit/'.$commenT->id) }}" role="button">แก้ไข</a>
                                                 </div>
                                             </div>
                                         @empty
