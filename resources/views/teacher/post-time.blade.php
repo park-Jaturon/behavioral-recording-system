@@ -96,7 +96,7 @@
                                         <div class="mb-3">
                                             <label for="" class="form-label">เวลากลับบ้าน</label>
                                             <input class="form-control bg-secondary text-light text-center" type="text"
-                                                value="{{ __('15.00-17.00') }}" aria-label="readonly input example"
+                                                value="{{ __('15.00-18.00') }}" aria-label="readonly input example"
                                                 readonly>
                                         </div>
                                     @endif

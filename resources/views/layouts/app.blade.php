@@ -190,9 +190,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('index.activity') }}">รูปกิจกรรม</a>
                                     </li>
-                                    <li class="nav-item ">
+                                    {{-- <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('index.behavior') }}">รายงานพฤติกรรม</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('record.appraisal') }}">แบบประเมินพัฒนาการ</a>
                                     </li>
@@ -225,6 +225,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                         <a class="nav-link" href="{{ route('home.parent') }}">Dashboard</a>
                                     </li>
                                     <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('show.descendant') }}">ห้องเรียน</a>
+                                    </li>
+                                    <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('time.descendant') }}">เวลาเรียน</a>
                                     </li>
                                     <li class="nav-item ">
@@ -232,6 +235,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('events.descendant') }}">ตารางเรียน</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('activity.descendant') }}">รูปกิจกรรม</a>
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('descendant.behaviors') }}">รายงานพฤติกรรม</a>

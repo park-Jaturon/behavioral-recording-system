@@ -68,7 +68,7 @@ class CheckController extends Controller
               ->where('student_id', $student_id)
               ->where('c_date', $datenow)
               ->update(['c_out' => $request->checkout]);
-            return redirect()->back()->with('Messages','คุณได้บันทึกเวลากลับบ้านเรียบร้อยแล้ว');
+            return redirect()->back()->with('Messages','คุณไม่สามารถบันทึกเวลาได้เนื่องจากคุณยังไม่ได้บันทึกเวลามาโรงเรียน');
         }else{
             return redirect()->back()->with('Messages','คุณไม่สามารถบันทึกเวลาได้ในขณะนี้ ');
         }
