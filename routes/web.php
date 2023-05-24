@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\ManagesparentsController;
 use App\Http\Controllers\Admin\ManagestudentController;
 use App\Http\Controllers\Admin\ManageteacherController;
 use App\Http\Controllers\Admin\RoomController;
-use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Parent\HomeController;
 use App\Http\Controllers\Teacher\ActivityController;
 use App\Http\Controllers\Teacher\BehaviorController;
