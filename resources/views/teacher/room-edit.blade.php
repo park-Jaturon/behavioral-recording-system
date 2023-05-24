@@ -8,14 +8,14 @@
                 <div class="card-header">{{ __('แก้ไขประวัตินักเรียน') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('success'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('success') }}
                         </div>
                     @endif
 
                     <form
-                        action="{{url('teacher/room/edit/' . $datastudents->student_id) }}" method="post">
+                        action="{{url('teacher/room/update/' . $datastudents->student_id) }}" method="post">
                         
                         @csrf
                         {{-- form-ชื่อ-นามสกุล  --}}

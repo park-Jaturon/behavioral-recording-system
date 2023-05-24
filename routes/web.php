@@ -80,6 +80,7 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('room',[TeacherController::class, 'room'])->name('teacher.room');
     Route::get('room/show/{id}',[TeacherController::class, 'room_show'])->name('room.show');
     Route::get('room/edit/{id}',[TeacherController::class, 'room_edit'])->name('room.edit');
+    Route::post('room/update/{id}',[TeacherController::class, 'room_update'])->name('room.update');
     /* Check */
     Route::get('check',[CheckController::class, 'index'])->name('index.check');
     Route::get('post-time/{student_id}',[CheckController::class, 'post_time']);

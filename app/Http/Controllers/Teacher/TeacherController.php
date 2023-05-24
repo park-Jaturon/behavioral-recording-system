@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -43,7 +44,71 @@ class TeacherController extends Controller
     public function room_edit($student_id)
     {
         $datastudents = Student::findOrFail($student_id);
+        $TeacherRoom = Room::findOrFail($datastudents->rooms_id);
+        $room = Room::all();
+        return view('teacher.room-edit', compact('datastudents',));
+    }
 
-        return view('teacher.room-edit', compact('datastudents'));
+    public function room_update(Request $request, $student_id)
+    {
+        $request->validate([
+            'prefix' => 'required|string',
+            'firstname' => 'required|string|min:3|regex:/^[ก-๙]+$/u',
+            'lastname' => 'required|string|min:3|regex:/^[ก-๙]+$/u',
+            'birthdays' => 'required|string',
+            'symbol' => 'required|string',
+            'id_tags' => 'required|numeric|digits:5',
+            'numberid' => 'required|regex:/^([0-9]*)$/|string',
+            'father' => 'required|string|min:3',
+            'mother' => 'required|string|min:3',
+            'telephonenumberfather' => 'numeric|digits:10|nullable',
+            'telephonenumbermother' => 'numeric|digits:10|nullable',
+            'telephonenumberbus' => 'numeric|digits:10|nullable',
+            'habitations' => 'required|string|min:10|max:255',
+        ],[
+            'prefix.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
+            'firstname.required' => 'กรุณาป้อน ชื่อ',
+            'firstname.min' => 'ข้อมูลไม่ถูกต้อง',
+            'firstname.regex' => 'ชื่อต้องเป็นภาษาไทยเท่านั้น',
+            'lastname.required' => 'กรุณาป้อน นามสกุล',
+            'lastname.min' => 'ข้อมูลไม่ถูกต้อง',
+            'lastname.regex' => 'นามสกุลต้องเป็นภาษาไทยเท่านั้น',
+            // 'birthdays.required' => 'กรุณาป้อนวันเกิด',
+            'symbol.required' => 'กรุณาเลือก สัญลักษณ์',
+            'id_tags.required' => 'กรุณาป้อน รหัสประจำตัว',
+            'id_tags.min' => 'ข้อมูลไม่ถูกต้อง',
+            'id_tags.max' => 'ข้อมูลไม่ถูกต้อง',
+            'numberid.required' => 'กรุณาป้อน เลขที่',
+            'numberid.regex' => 'กรุณาป้อน เลขที่ เป็นตัวเลขเท่านั้น ',
+            'father.required' => 'กรุณาป้อนชื่อ – นามสกุล (บิดา)',
+            'mother.required' => 'กรุณาป้อน ชื่อ – นามสกุล (มารดา)',
+            'telephonenumberfather.required' => 'กรุณาป้อน เบอร์โทรบิดา ',
+            'telephonenumberfather.numeric' => 'โปรดระบุเบอร์โทรบิดาเป็นตัวเลขเท่านั้น',
+            'telephonenumberfather.digits' => 'เบอร์โทรบิดาต้องมี 10 ตัว',
+            'telephonenumbermother.required' => 'กรุณาป้อน เบอร์โทรมารดา ',
+            'telephonenumbermother.numeric' => 'โปรดระบุเบอร์โทรมารดาเป็นตัวเลขเท่านั้น',
+            'telephonenumbermother.digits' => 'เบอร์โทรมารดาต้องมี 10 ตัว',
+            'telephonenumberbus.required' => 'กรุณาป้อน เบอร์โทรถรับส่ง ',
+            'telephonenumberbus.numeric' => 'โปรดระบุเบอร์โทรถรับส่งเป็นตัวเลขเท่านั้น',
+            'telephonenumberbus.digits' => 'เบอร์โทรถรับส่งต้องมี 10 ตัว',
+            'habitations.required' => 'กรุณาป้อน ที่อยู่',
+        ]);
+
+        $data = Student::findOrFail($student_id);
+        $data->prefix_name = $request->prefix;
+          $data->first_name = $request->firstname;
+          $data->last_name = $request->lastname;
+          $data->birthdays = $request->birthdays;
+          $data->symbol = $request->symbol;
+          $data->id_tags = $request->id_tags;
+          $data->number = $request->numberid;
+          $data->father = $request->father;
+          $data->mother = $request->mother;
+          $data->telephone_number_father = $request->telephonenumberfather;
+          $data->telephone_number_mother = $request->telephonenumbermother;
+          $data->telephone_number_bus = $request->telephonenumberbus;
+          $data->habitations = $request->habitations;
+          $data->save();
+        return redirect()->back()->with('success','แก้ไขข้อมูลเสร็จสิ้น');
     }
 }

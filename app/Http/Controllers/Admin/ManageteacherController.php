@@ -32,8 +32,10 @@ class ManageteacherController extends Controller
     public function edit($teachers_id)
     {
         $dataTeacher = Teacher::findOrFail($teachers_id);
+        $TeacherRoom = Room::findOrFail($dataTeacher->rooms_id);
         $room = Room::all();
-        return view('admin.teachersadd', compact('dataTeacher', 'room'));
+        Debugbar::info($TeacherRoom);
+        return view('admin.teachersadd', compact('dataTeacher', 'room','TeacherRoom'));
     }
 
     public function storeteacher(Request $request)

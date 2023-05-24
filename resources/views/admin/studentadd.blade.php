@@ -67,11 +67,10 @@
                             <div class="col">
                                 <label for=" " class="form-label">ห้อง</label>
                                 <select class="form-select" name="room" aria-label="Default select example">
+                                    <option value="{{ $StudentRoom->rooms_id }}" selected>
+                                        {{ old('--ห้อง--', $StudentRoom->room_name) }}{{-- , $rooms->room_name --}}
+                                    </option>
                                     @foreach ($room as $rooms)
-                                        @if ($data->rooms_id == $rooms->rooms_id)
-                                            <option selected>{{ old('--ห้อง--', $rooms->room_name) }}
-                                        @endif
-                                        </option>
                                         <option value="{{ $rooms->rooms_id }}"> {{ $rooms->room_name }}</option>
                                     @endforeach
                                 </select>
@@ -92,8 +91,13 @@
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="bi bi-calendar3"></i>
                                     </span>
-                                    <input type="text" id="datepicker" name="birthdays" class="form-control "
-                                        value="{{ old('birthdays', $data->birthdays) }}"> {{-- ,$data->birthdays --}}
+                                    @if (!empty($data->student_id))
+                                        <input type="text" name="birthdays" id="birthdays" class="form-control"
+                                            value="{{ old('birthdays', $data->birthdays) }}">
+                                    @else
+                                        <input type="text" id="datepicker" name="birthdays" class="form-control "
+                                            value=""> {{-- ,$data->birthdays --}}
+                                    @endif
                                 </div>
                             </div>
 
@@ -192,12 +196,12 @@
                             <div class="col">
                                 <label for="parents" class="form-label">ชื่อ – นามสกุล (ผู้ปกครอง)</label>
                                 <select class="form-select" name="parents" aria-label="Default select example">
+
+
+                                    <option value="{{ $ParentStuden->parents_id }}" selected>
+                                        {{ old('--ผู้ปกกครอง--', $ParentStuden->prefix_name . $ParentStuden->first_name . ' ' . $ParentStuden->last_name) }}
+                                    </option>
                                     @foreach ($parent as $parents)
-                                        @if ($data->parents_id == $parents->parents_id)
-                                            <option selected>
-                                                {{ old('--ผู้ปกกครอง--', $parents->prefix_name . $parents->first_name . ' ' . $parents->last_name) }}
-                                            </option>
-                                        @endif
                                         <option value="{{ $parents->parents_id }}">
                                             {{ $parents->prefix_name }}{{ $parents->first_name }}
                                             {{ $parents->last_name }}</option>

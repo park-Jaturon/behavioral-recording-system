@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Parents;
 use App\Models\Room;
 use App\Models\Student;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,10 +25,12 @@ class ManagestudentController extends Controller
     public function esitstudent($student_id)
     {
         $data = Student::findOrFail($student_id);
+        $StudentRoom = Room::findOrFail($data->rooms_id);
         $room = Room::all();
+        $ParentStuden = Parents::findOrFail($data->parents_id);
         $parent = Parents::all();
-        //dd(  $data);
-        return view('admin.studentadd',compact('data','room','parent'));
+        Debugbar::info($ParentStuden);
+        return view('admin.studentadd',compact('data','room','parent','StudentRoom','ParentStuden'));
     }
 
     public function addstudent()
@@ -119,7 +122,7 @@ class ManagestudentController extends Controller
             'room' => 'required',
             'birthdays' => 'required|string',
             'symbol' => 'required|string',
-            'id_tags' => 'required|numeric|digits:5|unique:students',
+            'id_tags' => 'required|numeric|digits:5',
             'numberid' => 'required|regex:/^([0-9]*)$/|string',
             'father' => 'required|string|min:3',
             'mother' => 'required|string|min:3',
@@ -167,7 +170,7 @@ class ManagestudentController extends Controller
           $data->rooms_id = $request->room;
           $data->birthdays = $request->birthdays;
           $data->symbol = $request->symbol;
-          $data->id_tags = $request->idtags;
+          $data->id_tags = $request->id_tags;
           $data->number = $request->numberid;
           $data->father = $request->father;
           $data->mother = $request->mother;
