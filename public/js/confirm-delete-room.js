@@ -7,7 +7,7 @@ document.querySelector('#tbRoom').addEventListener('click', (e) => {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'ใช้ฉันต้องการลบ',
+            confirmButtonText: 'ใช่ฉันต้องการลบ',
             cancelButtonText: 'ยกเลิก'
         }).then((result) => {
             if (result.isConfirmed) {
