@@ -101,7 +101,9 @@
                                 <div class="col">
                                     <label for="prefix" class="form-label">ห้อง</label>
                                     <select class="form-select" name="room" aria-label="Default select example">
-                                        <option value="{{$dataTeacher->rooms_id}}" selected>{{ old('--ห้อง--', $TeacherRoom->room_name) }}
+                                        <option @if (empty($dataTeacher->teachers_id))value="{{$dataTeacher->rooms_id}}" @endif selected>{{ old('--ห้อง--', $TeacherRoom->room_name) }}
+                                        
+                                       
                                         </option>
                                         @foreach ($room as $rooms)
                                             <option value="{{ $rooms->rooms_id }}"> {{ $rooms->room_name }}</option>

@@ -38,7 +38,9 @@ class ManagestudentController extends Controller
         $data = new Student();
         $room = Room::all();
         $parent = Parents::all();
-        return view('admin.studentadd',compact('data','room','parent'));
+        $ParentStuden = new Parents();
+        $StudentRoom = new Room();
+        return view('admin.studentadd',compact('data','room','parent','StudentRoom','ParentStuden'));
     }
 
     public function storestudent(Request $request)

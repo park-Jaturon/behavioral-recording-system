@@ -26,7 +26,8 @@ class ManageteacherController extends Controller
     {
         $room = Room::all();
         $dataTeacher =  new Teacher();
-        return view('admin.teachersadd', compact('room', 'dataTeacher'));
+        $TeacherRoom = new Room(); ;
+        return view('admin.teachersadd', compact('room', 'dataTeacher','TeacherRoom'));
     }
 
     public function edit($teachers_id)
