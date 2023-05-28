@@ -4,6 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <h3>นักเรียน</h3>
+            </div>
+            <div class="col-md-8">
                 <a href="{{ route('add.student') }}" class=" btn btn-success float-end">เพิ่ม</a>
             </div>
             <div class="col-md-8">

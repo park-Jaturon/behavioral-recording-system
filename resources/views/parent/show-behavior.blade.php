@@ -345,6 +345,147 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <div class="card-header">
+                        {{ __('ภาคเรียน1') }}
+                    </div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        <div id="myChart1" style="height: 400px;"></div>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        {{ __('ภาคเรียน2') }}
+                    </div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        <div id="myChart2" style="height: 400px;"></div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        var myChart1 = echarts.init(document.getElementById('myChart1'));
+        var PhysicallyData = {!! json_encode($appraisalsemester1Physically->score_physically) !!};
+        var mood_mindData = {!! json_encode($appraisalsemester1mood_mind->score_mood_mind) !!};
+        var socialData = {!! json_encode($appraisalsemester1social->score_social) !!};
+        var intellectualData = {!! json_encode($appraisalsemester1intellectual->score_intellectual) !!};
+        // console.log((PhysicallyData / 60) );
+
+        var option = {
+            title: {
+                text: '',
+                subtext: '',
+                left: 'right',
+                top: 'bottom'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [{
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [{
+                        value: (PhysicallyData / 60) * 100,
+                        name: 'พัฒนาการด้านร่างกาย'
+                    },
+                    {
+                        value: (mood_mindData / 57) * 100,
+                        name: 'พัฒนาการด้านอารมณ์และจิตใจ'
+                    },
+                    {
+                        value: (socialData / 90) * 100,
+                        name: 'พัฒนาการด้านสังคม'
+                    },
+                    {
+                        value: (intellectualData / 84) * 100,
+                        name: 'พัฒนาการด้านสติปัญญา'
+                    }
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+
+        myChart1.setOption(option);
+
+        var myChart2 = echarts.init(document.getElementById('myChart2'));
+        var PhysicallyData2 = {!! json_encode($appraisalsemester2Physically->score_physically) !!};
+        var mood_mindData2 = {!! json_encode($appraisalsemester2mood_mind->score_mood_mind) !!};
+        var socialData2 = {!! json_encode($appraisalsemester2social->score_social) !!};
+        var intellectualData2 = {!! json_encode($appraisalsemester2intellectual->score_intellectual) !!};
+        console.log();
+        var option = {
+            title: {
+                text: ' ',
+                subtext: ' ',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [{
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [{
+                        value: (PhysicallyData2 / 60) * 100,
+                        name: 'พัฒนาการด้านร่างกาย'
+                    },
+                    {
+                        value: (mood_mindData2 / 57) * 100,
+                        name: 'พัฒนาการด้านอารมณ์และจิตใจ'
+                    },
+                    {
+                        value: (socialData2 / 90) * 100,
+                        name: 'พัฒนาการด้านสังคม'
+                    },
+                    {
+                        value: (intellectualData2 / 84) * 100,
+                        name: 'พัฒนาการด้านสติปัญญา'
+                    }
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+
+        myChart2.setOption(option);
+    </script>
 @endsection

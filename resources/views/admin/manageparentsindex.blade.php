@@ -4,13 +4,15 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <h3>ผู้ปกครอง</h3>
+            </div>
+            <div class="col-md-8">
                 <a href="{{ route('add.parents') }}" class=" btn btn-primary float-end">เพิ่ม</a>
             </div>
             <div class="col-md-8">
                 <table id="tbParent" class="table table-striped">
                     <thead>
-                        <tr>
-                            <th class="text-center" scope="col">id</th>
+                        <tr>  
                             <th class="text-center" scope="col">ชื่อ-นามสกุล</th>
                             <th class="text-center" scope="col">อาชีพ</th>
                         </tr>
@@ -18,7 +20,6 @@
                     <tbody>
                         @foreach ($parent as $parents)
                             <tr>
-                                <td class="text-center" scope="row">{{ $parents->parents_id }}</td>
                                 <td>{{ $parents->prefix_name . $parents->first_name . ' ' . $parents->last_name }}</td>
                                 <td class="text-center">{{ $parents->job }}</td>
                                 <td class="text-center">

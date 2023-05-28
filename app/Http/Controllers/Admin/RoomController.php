@@ -40,8 +40,8 @@ class RoomController extends Controller
         ],
     [
         'room_name.required'=> 'โปรดระบุ ห้องเรียน',
-        'room_name.regex'=> 'รูปแบบห้องเรียนไม่ถูกต้อง ตัวอย่าง อบ1/1 *ห้ามเว้นวรรค',
-        'roomname.unique' => 'ห้องเรียนนี้ถูกใช้ไปแล้ว',
+        'room_name.regex'=> 'รูปแบบห้องเรียนไม่ถูกต้อง ตัวอย่าง อบ2/1 *ห้ามเว้นวรรค',
+        'room_name.unique' => 'ห้องเรียนนี้มีอยู่แล้ว',
     ]);
         //  dd();
         Room::create([
@@ -64,7 +64,7 @@ class RoomController extends Controller
         ],
         [
             'room_name.required'=> 'โปรดระบุ ห้องเรียน',
-            'room_name.regex'=> 'รูปแบบห้องเรียนไม่ถูกต้อง ตัวอย่าง อบ1/1 *ห้ามเว้นวรรค',
+            'room_name.regex'=> 'รูปแบบห้องเรียนไม่ถูกต้อง ตัวอย่าง อบ2/1 *ห้ามเว้นวรรค',
             'roomname.max' => 'ห้องเรียนนี้ถูกใช้ไปแล้ว',
         ]);
 

@@ -14,7 +14,7 @@ class EventsController extends Controller
     {
         $events = array();
         $bookings = DB::table('teachers')
-        ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+        // ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
        ->join('events','teachers.rooms_id','=','events.rooms_id')
        ->get();
@@ -29,7 +29,7 @@ class EventsController extends Controller
         }
 
         $room = DB::table('teachers')
-        ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+        // ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
         ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
         ->first();
 

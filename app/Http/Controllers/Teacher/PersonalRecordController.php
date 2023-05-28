@@ -674,6 +674,7 @@ class PersonalRecordController extends Controller
         // Debugbar::info($tcomment->student_id);
         return view('personal-record.commenTeacher-edit', compact('tcomment', 'student'));
     }
+
     public function updatecommenTeacher(Request $request, $id)
     {
         $tcomment = DB::table('comment_appraisal')
@@ -696,6 +697,7 @@ class PersonalRecordController extends Controller
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน2")
             ->get();
+            // dd($dataphysicallysemester2);
 
         $datamood_mindsemester1 = DB::table('mood_mind')
             ->where('student_id', '=', $student_id)
@@ -736,21 +738,34 @@ class PersonalRecordController extends Controller
 
 
         $SummaryPhysically = DB::table('physically')
-            ->select(DB::raw('ROUND(AVG(score_rate_physically),1) as physically'))
-            ->where('student_id', '=', $student->rooms_id)
+            ->select(DB::raw('SUM(score_rate_physically) as score_physically'))//DB::raw('SUM(score_rate_physically) as score_physically
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
             ->first();
+        $SummaryPhysically2 = ($SummaryPhysically->score_physically / 60) * 100;
+        // dd($SummaryPhysically->score_physically);
+        // Debugbar::notice($dataphysicallysemester2);
+
         $SummaryMoodMind = DB::table('mood_mind')
-            ->select(DB::raw('ROUND(AVG(score_rate_mood_mind),1) as score_mood_mind'))
-            ->where('student_id', '=', $student->rooms_id)
+            ->select(DB::raw('SUM(score_rate_mood_mind) as score_mood_mind'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
             ->first();
+            $SummaryMoodMind2 = ($SummaryMoodMind->score_mood_mind / 57) * 100;
+
         $SummarySocial = DB::table('social')
-            ->select(DB::raw('ROUND(AVG(score_rate_social),1) as score_social'))
-            ->where('student_id', '=', $student->rooms_id)
+            ->select(DB::raw('SUM(score_rate_social) as score_social'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
             ->first();
+        $SummarySocial2 = ($SummarySocial->score_social / 90) * 100;
+
         $SummaryIntellectual = DB::table('intellectual')
-            ->select(DB::raw('ROUND(AVG(score_rate_intellectual),1) as score_intellectual'))
-            ->where('student_id', '=', $student->rooms_id)
+            ->select(DB::raw('SUM(score_rate_intellectual) as score_intellectual'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
             ->first();
+        $SummaryIntellectual2 = ($SummaryIntellectual->score_intellectual / 84) * 100;
         // dd(  $SummaryMoodMind);
 
         // dd( $dataphysicallysemester1);
@@ -5028,17 +5043,17 @@ class PersonalRecordController extends Controller
 
         $pdf::MultiCell(40, 17, 'ด้านร่างกาย', 1, 'C', false, 0, 40, '', true,);
         if (isset($SummaryPhysically)) {
-            if ($SummaryPhysically->physically > 2.5) {
+            if ($SummaryPhysically2 > 66.66 && $SummaryPhysically2 <= 100) {
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryPhysically->physically > 1.5) {
+            } elseif ($SummaryPhysically2 > 33.33 && $SummaryPhysically2 <= 66.66) {
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryPhysically->physically < 1.5) {
+            } elseif ($SummaryPhysically2 <= 33.33) {
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R', 'C', false, 0, '', '', true, 0, true);
@@ -5055,17 +5070,17 @@ class PersonalRecordController extends Controller
 
         $pdf::MultiCell(40, 17, 'ด้านอารมณ์ - จิตใจ', 1, 'C', false, 0, 40, '', true,);
         if (isset($SummaryMoodMind)) {
-            if ($SummaryMoodMind->score_mood_mind > 2.5) {
+            if ($SummaryMoodMind2 > 66.66 && $SummaryMoodMind2 <= 100) {
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryMoodMind->score_mood_mind > 1.5) {
+            } elseif ($SummaryMoodMind2 > 33.33 && $SummaryMoodMind2 <= 66.66) {
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryMoodMind->score_mood_mind < 1.5) {
+            } elseif ($SummaryMoodMind->score_mood_mind < 33.33) {
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
@@ -5080,17 +5095,17 @@ class PersonalRecordController extends Controller
 
         $pdf::MultiCell(40, 17, 'ด้านสังคม', 1, 'C', false, 0, 40, '', true,);
         if (isset($SummarySocial)) {
-            if ($SummarySocial->score_social > 2.5) {
+            if ($SummarySocial2 > 66.66 && $SummarySocial2 <= 100) {
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummarySocial->score_social > 1.5) {
+            } elseif ($SummarySocial2 > 33.33 && $SummarySocial2 <= 66.66) {
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummarySocial->score_social < 1.5) {
+            } elseif ($SummarySocial2 < 33.33) {
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
@@ -5105,17 +5120,17 @@ class PersonalRecordController extends Controller
 
         $pdf::MultiCell(40, 17, 'ด้านสติปัญญา', 1, 'C', false, 0, 40, '', true,);
         if (isset($SummaryIntellectual)) {
-            if ($SummaryIntellectual->score_intellectual > 2.5) {
+            if ($SummaryIntellectual2 > 66.66 && $SummaryIntellectual2 <= 100) {
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryIntellectual->score_intellectual > 1.5) {
+            } elseif ($SummaryIntellectual2 > 33.33 && $SummaryIntellectual2 <= 66.66) {
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryIntellectual->score_intellectual < 1.5) {
+            } elseif ($SummaryIntellectual2 < 33.33) {
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
@@ -5159,7 +5174,7 @@ class PersonalRecordController extends Controller
         //============================================================+
     }
 
-    public function exportPDF($student_id)
+    public function exportPDF($student_id) //โหลดpdf
     {
         $student = Student::find($student_id);
 
@@ -5210,23 +5225,34 @@ class PersonalRecordController extends Controller
 
 
 
-        $SummaryPhysically = DB::table('physically')
-            ->select(DB::raw('ROUND(AVG(score_rate_physically),1) as physically'))
-            ->where('student_id', '=', $student->rooms_id)
+            $SummaryPhysically = DB::table('physically')
+            ->select(DB::raw('SUM(score_rate_physically) as score_physically'))//DB::raw('SUM(score_rate_physically) as score_physically
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
             ->first();
+        $SummaryPhysically2 = ($SummaryPhysically->score_physically / 60) * 100;
+       
         $SummaryMoodMind = DB::table('mood_mind')
-            ->select(DB::raw('ROUND(AVG(score_rate_mood_mind),1) as score_mood_mind'))
-            ->where('student_id', '=', $student->rooms_id)
+            ->select(DB::raw('SUM(score_rate_mood_mind) as score_mood_mind'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
             ->first();
+            $SummaryMoodMind2 = ($SummaryMoodMind->score_mood_mind / 57) * 100;
+
         $SummarySocial = DB::table('social')
-            ->select(DB::raw('ROUND(AVG(score_rate_social),1) as score_social'))
-            ->where('student_id', '=', $student->rooms_id)
+            ->select(DB::raw('SUM(score_rate_social) as score_social'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
             ->first();
+        $SummarySocial2 = ($SummarySocial->score_social / 90) * 100;
+
         $SummaryIntellectual = DB::table('intellectual')
-            ->select(DB::raw('ROUND(AVG(score_rate_intellectual),1) as score_intellectual'))
-            ->where('student_id', '=', $student->rooms_id)
+            ->select(DB::raw('SUM(score_rate_intellectual) as score_intellectual'))
+            ->where('student_id', '=', $student_id)
+            ->where('semester', '=', 'ภาคเรียน2')
             ->first();
-        // dd(  $SummaryMoodMind);
+        $SummaryIntellectual2 = ($SummaryIntellectual->score_intellectual / 84) * 100;
+        
 
         // dd( $dataphysicallysemester1);
         // create new PDF document
@@ -9502,17 +9528,17 @@ class PersonalRecordController extends Controller
 
         $pdf::MultiCell(40, 17, 'ด้านร่างกาย', 1, 'C', false, 0, 40, '', true,);
         if (isset($SummaryPhysically)) {
-            if ($SummaryPhysically->physically > 2.5) {
+            if ($SummaryPhysically2 > 66.66 && $SummaryPhysically2 <= 100 ) {
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryPhysically->physically > 1.5) {
+            } elseif ($SummaryPhysically2 > 33.33 && $SummaryPhysically2 <= 66.66) {
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryPhysically->physically < 1.5) {
+            } elseif ($SummaryPhysically2 <= 33.33) {
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R', 'C', false, 0, '', '', true, 0, true);
@@ -9530,17 +9556,17 @@ class PersonalRecordController extends Controller
 
         $pdf::MultiCell(40, 17, 'ด้านอารมณ์ - จิตใจ', 1, 'C', false, 0, 40, '', true,);
         if (isset($SummaryMoodMind)) {
-            if ($SummaryMoodMind->score_mood_mind > 2.5) {
+            if ($SummaryMoodMind2 > 66.66 && $SummaryMoodMind2 <= 100) {
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryMoodMind->score_mood_mind > 1.5) {
+            } elseif ($SummaryMoodMind2 > 33.33 && $SummaryMoodMind2 <= 66.66) {
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryMoodMind->score_mood_mind < 1.5) {
+            } elseif ($SummaryMoodMind->score_mood_mind <= 33.33) {
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
@@ -9555,17 +9581,17 @@ class PersonalRecordController extends Controller
 
         $pdf::MultiCell(40, 17, 'ด้านสังคม', 1, 'C', false, 0, 40, '', true,);
         if (isset($SummarySocial)) {
-            if ($SummarySocial->score_social > 2.5) {
+            if ($SummarySocial2 > 66.66 && $SummarySocial2 <= 100) {
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummarySocial->score_social > 1.5) {
+            } elseif ($SummarySocial2 > 33.33 && $SummarySocial2 <= 66.66) {
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummarySocial->score_social < 1.5) {
+            } elseif ($SummarySocial2 <= 33.33) {
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R,T', 'C', false, 0, '', '', true, 0, true);
@@ -9580,17 +9606,17 @@ class PersonalRecordController extends Controller
 
         $pdf::MultiCell(40, 17, 'ด้านสติปัญญา', 1, 'C', false, 0, 40, '', true,);
         if (isset($SummaryIntellectual)) {
-            if ($SummaryIntellectual->score_intellectual > 2.5) {
+            if ($SummaryIntellectual2 > 66.66 && $SummaryIntellectual2 <= 100) {
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryIntellectual->score_intellectual > 1.5) {
+            } elseif ($SummaryIntellectual2 > 33.33 && $SummaryIntellectual2 <= 66.66) {
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(40, 17, '', 1, 'C', false, 1, '', '', true,); //หมายเหตุ
-            } elseif ($SummaryIntellectual->score_intellectual < 1.5) {
+            } elseif ($SummaryIntellectual2 < 33.33) {
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 1, 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 1, 'C', false, 0, '', '', true, 0, true);

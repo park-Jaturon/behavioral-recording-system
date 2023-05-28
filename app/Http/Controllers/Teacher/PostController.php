@@ -14,7 +14,7 @@ class PostController extends Controller
     public function index()
     {
        $post = DB::table('teachers')
-       ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+    //    ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
        ->join('posts','teachers.rooms_id','=','posts.rooms_id')
        ->get();
@@ -25,11 +25,11 @@ class PostController extends Controller
     public function add_post()
     {
         $room = DB::table('teachers')
-        ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+        // ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
         ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
         ->first();
         $data = new  Post();
-        // dd($room->rooms_id);
+        // dd($room);
         return view('teacher.add-post', compact('data','room'));
     }
 

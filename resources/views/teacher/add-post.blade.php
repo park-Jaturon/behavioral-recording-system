@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('เพิ่มประกาศ') }}</div>
 
                     <div class="card-body">
-                        <form action="{{empty($data->posts_id) ? url('teacher/post/store/'. $room->rooms_id) : url('teacher/post/update/' . $data->posts_id) }}" method="post">
+                        <form action="{{empty($data->posts_id) ? url('teacher/post/store/'.$room->rooms_id) : url('teacher/post/update/' . $data->posts_id) }}" method="post">
                             @if (!empty($data->posts_id))
                                 @method('put')
                             @endif
@@ -17,7 +17,7 @@
                                 <label for="" class="form-label">หัวเรื่อง</label>
                                 <input type="text" name="topic" id="" class="form-control" placeholder=""
                                     aria-describedby="helpId" value="{{ old('topic',$data->p_topic) }}"> {{-- p_name --}}
-                                <small id="helpId" class="text-muted">Help text</small>
+                                {{-- <small id="helpId" class="text-muted">Help text</small> --}}
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">เนื้อความ</label>

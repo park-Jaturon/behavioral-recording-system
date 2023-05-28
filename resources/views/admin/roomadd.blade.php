@@ -27,13 +27,14 @@
                             @endif
                             @csrf
                             <div class="row justify-content-center align-items-center g-2">
-                                <div class="col-8      ">
+                                <div class="col-8">
                                     <div class="mb-3">
                                         <label for="" class="form-label">ห้อง</label>
                                         <input type="text" name="room_name"
                                             value="{{ old('room_name', $dataRoom->room_name) }}" class="form-control"
                                             placeholder="" aria-describedby="helpId">
-                                        <small id="helpId" class="text-muted"> @error('room_name')
+                                        <small id="helpId" class="text-muted"> 
+                                            @error('room_name')
                                                 <span role="alert" class="text-danger">
                                                     <strong> {{ $message }}</strong>
                                                 </span>
