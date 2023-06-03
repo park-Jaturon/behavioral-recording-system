@@ -36,6 +36,8 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile/{id}', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+Route::post('/profile/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('UpdateProfile');
 
 Route::prefix('admin')->middleware('isadmin')->group(function () {
     Route::get('dashboard', [AdminControllre::class, 'index'])->name('admindashboard');
@@ -73,6 +75,12 @@ Route::prefix('admin')->middleware('isadmin')->group(function () {
     Route::get('users/edit/{id}',[UserController::class, 'edit_user']);
     Route::post('users/update/{id}',[UserController::class, 'update']);
     Route::delete('users/delete/{id}',[UserController::class, 'delete']);
+    /* Admin */ 
+    Route::get('users/admin', [UserController::class, 'admin'])->name('index.admin');
+    Route::get('users/admin/add', [UserController::class, 'register_admin'])->name('registeradmin');
+    Route::post('users/admin/store', [UserController::class, 'store_admin']);
+    Route::post('inspect/delete',[UserController::class, 'inspectAdmin']);
+    Route::delete('users/admin/delete/{id}', [UserController::class, 'destroy_admin']);
 });
 
 Route::prefix('teacher')->middleware('isteacher')->group(function () {
@@ -137,7 +145,7 @@ Route::prefix('parent')->middleware('isparent')->group(function () {
     Route::get('events',[HomeController::class, 'descendant_events'])->name('events.descendant');
     Route::get('descendant/events/show/{rooms_id}',[HomeController::class, 'events_show']);
     Route::get('behaviors',[HomeController::class, 'descendant_behaviors'])->name('descendant.behaviors');
-    Route::get('descendant/behavior/show/{student_id}',[HomeController::class, 'behavior_show']);
+    Route::get('descendant/behavior/show/{student_id}',[HomeController::class, 'behavior_show']); //
     Route::get('activity',[HomeController::class, 'descendant_activity'])->name('activity.descendant');
     Route::get('descendant/activity/show/{rooms_id}',[HomeController::class, 'activity_show']);
     Route::get('descendant/activity/show/image/{events_id}',[HomeController::class, 'activity_showimage']);

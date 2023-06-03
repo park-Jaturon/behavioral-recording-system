@@ -4831,9 +4831,11 @@
                                                         {!! $commenT->comment_teacher !!}
                                                     </blockquote>
                                                 </div>
+                                                @if (auth()->User()->rank == 'teacher')
                                                 <div class="card-footer text-end">
                                                     <a name="" id="" class="btn btn-warning" href="{{ url('teacher/commen/edit/'.$commenT->id) }}" role="button">แก้ไข</a>
                                                 </div>
+                                                @endif
                                             </div>
                                         @empty
                                             <div class="alert alert-danger text-center" role="alert">
@@ -5152,6 +5154,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4">
                 <div class="card mb-2">
                     <div class="card-header">
