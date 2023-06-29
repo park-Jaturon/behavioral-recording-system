@@ -14,6 +14,7 @@ use App\Http\Controllers\Teacher\EventsController;
 use App\Http\Controllers\Teacher\PersonalRecordController;
 use App\Http\Controllers\Teacher\PostController;
 use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Controllers\Teacher\AppraisalController;
 use App\Models\Room;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -126,12 +127,14 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
 
      Route::get('record/appraisal',[PersonalRecordController::class, 'appraisal'])->name('record.appraisal');
      Route::get('record/appraisal/show/{student_id}',[PersonalRecordController::class, 'appraisal_show']);
-     Route::get('record/appraisal/add/{student_id}',[PersonalRecordController::class, 'appraisal_add']);
-     Route::post('record/appraisal/store/{student_id}',[PersonalRecordController::class, 'appraisal_store'])->name('store.appraisal');
+    //  Route::post('record/appraisal/store/{student_id}',[PersonalRecordController::class, 'appraisal_store'])->name('store.appraisal');
      Route::get('commen/edit/{id}',[PersonalRecordController::class, 'commenTeacher']);
      Route::post('commen/update/{id}',[PersonalRecordController::class, 'updatecommenTeacher']);
      Route::get('pdf/{student_id}', [PersonalRecordController::class, 'viewPDF'])->name('show.pdf');
      Route::get('pdf/download/{student_id}', [PersonalRecordController::class, 'exportPDF'])->name('download.pdf');
+     Route::get('record/appraisal/add/{student_id}',[PersonalRecordController::class, 'appraisal_add']);
+     Route::post('record/appraisal/page1/put/{student_id}', [PersonalRecordController::class, 'page1_put']);
+     Route::get('record/appraisal/add-page2/{student_id}',[AppraisalController::class, 'page2_add'])->name('add.page2');
 });
 
 Route::prefix('parent')->middleware('isparent')->group(function () {

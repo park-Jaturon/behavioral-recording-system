@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Elibyy\TCPDF\Facades\TCPDF;
 use Illuminate\Support\Composer;
+use Laravel\Ui\Presets\React;
 
 use function Termwind\render;
 
@@ -54,7 +55,6 @@ class PersonalRecordController extends Controller
             ->where('users.rank_id', '=', Auth::user()->rank_id)
             ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name')
             ->get();
-
         return view('personal-record.development-appraisal', compact('user'));
     }
 
@@ -212,455 +212,910 @@ class PersonalRecordController extends Controller
     {
         $student = Student::findOrFail($student_id);
         //    dd($student->student_id);
-        $datasemester1 = DB::table('physically')
+
+        $table1_semester1 = DB::table('physically')
+            ->where('table_no', 1)
             ->where('student_id', '=', $student_id)
             ->where('semester', 'LIKE', "%ภาคเรียน1%")
-            ->first();
-        $datasemester2 = DB::table('physically')
+            ->get();
+        $table1_semester2 = DB::table('physically')
+            ->where('table_no', 1)
             ->where('student_id', '=', $student_id)
             ->where('semester', 'LIKE', "%ภาคเรียน2%")
-            ->first();
-        Debugbar::info(isset($datasemester1), isset($datasemester2));
+            ->get();
+
+        $table2_semester1 = DB::table('physically')
+            ->where('table_no', 2)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->get();
+        $table2_semester2 = DB::table('physically')
+            ->where('table_no', 2)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->get();
+
+        $table3_semester1 = DB::table('mood_mind')
+            ->where('table_no', 3)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->get();
+        $table3_semester2 = DB::table('mood_mind')
+            ->where('table_no', 3)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->get();
+
+        $table4_semester1 = DB::table('mood_mind')
+            ->where('table_no', 4)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->get();
+        $table4_semester2 = DB::table('mood_mind')
+            ->where('table_no', 4)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->get();
+
+        $table5_semester1 = DB::table('social')
+            ->where('table_no', 5)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->get();
+        $table5_semester2 = DB::table('social')
+            ->where('table_no', 5)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->get();
+
+        $table6_semester1 = DB::table('social')
+            ->where('table_no', 6)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->get();
+        $table6_semester2 = DB::table('social')
+            ->where('table_no', 6)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->get();
+
+        $table7_semester1 = DB::table('social')
+            ->where('table_no', 7)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->get();
+        $table7_semester2 = DB::table('social')
+            ->where('table_no', 7)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->get();
+
+        $table8_semester1 = DB::table('intellectual')
+            ->where('table_no', 8)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->get();
+        $table8_semester2 = DB::table('intellectual')
+            ->where('table_no', 8)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->get();
+
+        $table9_semester1 = DB::table('intellectual')
+            ->where('table_no', 9)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->get();
+        $table9_semester2 = DB::table('intellectual')
+            ->where('table_no', 9)
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->get();
+
+        $table10_semester1 = DB::table('comment_appraisal')
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน1%")
+            ->get();
+
+        $table10_semester2 = DB::table('comment_appraisal')
+            ->where('student_id', '=', $student_id)
+            ->where('semester', 'LIKE', "%ภาคเรียน2%")
+            ->get();
+
+        if (
+            count($table1_semester1) > 0 && count($table2_semester1) > 0 && count($table3_semester1) > 0 &&
+            count($table4_semester1) > 0 && count($table5_semester1) > 0 && count($table6_semester1) > 0 &&
+            count($table7_semester1) > 0 && count($table8_semester1) > 0 && count($table9_semester1) > 0 &&
+            count($table10_semester1) > 0
+        ) {
+            $check_table_semester1 = true;
+        } else {
+            $check_table_semester1 = false;
+        }
+
+        if (
+            count($table1_semester2) > 0 && count($table2_semester2) > 0 && count($table3_semester2) > 0 &&
+            count($table4_semester2) > 0 && count($table5_semester2) > 0 && count($table6_semester2) > 0 &&
+            count($table7_semester2) > 0 && count($table8_semester2) > 0 && count($table9_semester2) > 0 &&
+            count($table10_semester2) > 0
+        ) {
+            $check_table_semester2 = true;
+        } else {
+            $check_table_semester2 = false;
+        }
+
+        // Debugbar::warning($table1_semester1);
+        Debugbar::info( $table1_semester1);
 
         return view('personal-record.appraisal-add', compact(
             'student',
-            'datasemester1',
-            'datasemester2'
+            'table1_semester1',
+            'table1_semester2',
+            'table2_semester1',
+            'table2_semester2',
+            'table3_semester1',
+            'table3_semester2',
+            'table4_semester1',
+            'table4_semester2',
+            'table5_semester1',
+            'table5_semester2',
+            'table6_semester1',
+            'table6_semester2',
+            'table7_semester1',
+            'table7_semester2',
+            'table8_semester1',
+            'table8_semester2',
+            'table9_semester1',
+            'table9_semester2',
+            'table10_semester1',
+            'table10_semester2',
+            'check_table_semester1','check_table_semester2'
         ));
     }
 
-    public function appraisal_store(Request $request, $student_id)
+    public function appraisal_store(Request $request, $student_id) //บันทึก
     {
-        $request->validate(
-            [
-                'semester' => 'required|string',
-                'developments1_behavior1_1' => 'required|int',
-                'developments1_behavior1_2' => 'required|int',
-                'developments1_behavior1_3' => 'required|int',
-                'developments1_behavior2_1' => 'required|int',
-                'developments1_behavior2_2' => 'required|int',
-                'developments1_behavior2_3' => 'required|int',
-                'developments1_behavior2_4' => 'required|int',
-                'developments1_behavior2_5' => 'required|int',
-                'developments1_behavior2_6' => 'required|int',
-                'developments1_behavior3_1' => 'required|int',
-                'developments1_behavior3_2' => 'required|int',
-                'developments2_behavior1_1' => 'required|int',
-                'developments2_behavior1_2' => 'required|int',
-                'developments2_behavior1_3' => 'required|int',
-                'developments2_behavior1_4' => 'required|int',
-                'developments2_behavior1_5' => 'required|int',
-                'developments2_behavior2_1' => 'required|int',
-                'developments2_behavior2_2' => 'required|int',
-                'developments2_behavior2_3' => 'required|int',
-                'developments2_behavior2_4' => 'required|int',
-                'developments3_behavior1_1' => 'required|int',
-                'developments3_behavior1_2' => 'required|int',
-                'developments3_behavior2_1' => 'required|int',
-                'developments3_behavior2_2' => 'required|int',
-                'developments3_behavior2_3' => 'required|int',
-                'developments3_behavior2_4' => 'required|int',
-                'developments4_behavior1_1' => 'required|int',
-                'developments4_behavior1_2' => 'required|int',
-                'developments4_behavior1_3' => 'required|int',
-                'developments4_behavior1_4' => 'required|int',
-                'developments5_behavior1_1' => 'required|int',
-                'developments5_behavior1_2' => 'required|int',
-                'developments5_behavior2_1' => 'required|int',
-                'developments5_behavior2_2' => 'required|int',
-                'developments5_behavior2_3' => 'required|int',
-                'developments5_behavior3_1' => 'required|int',
-                'developments5_behavior3_2' => 'required|int',
-                'developments5_behavior4_1' => 'required|int',
-                'developments5_behavior4_2' => 'required|int',
-                'developments6_behavior1_1' => 'required|int',
-                'developments6_behavior1_2' => 'required|int',
-                'developments6_behavior1_3' => 'required|int',
-                'developments6_behavior1_4' => 'required|int',
-                'developments6_behavior2_1' => 'required|int',
-                'developments6_behavior2_2' => 'required|int',
-                'developments6_behavior2_3' => 'required|int',
-                'developments6_behavior3_1' => 'required|int',
-                'developments6_behavior3_2' => 'required|int',
-                'developments7_behavior1_1' => 'required|int',
-                'developments7_behavior1_2' => 'required|int',
-                'developments7_behavior1_3' => 'required|int',
-                'developments7_behavior2_1' => 'required|int',
-                'developments7_behavior2_2' => 'required|int',
-                'developments7_behavior2_3' => 'required|int',
-                'developments7_behavior2_4' => 'required|int',
-                'developments7_behavior2_5' => 'required|int',
-                'developments8_behavior1_1' => 'required|int',
-                'developments8_behavior1_2' => 'required|int',
-                'developments8_behavior1_3' => 'required|int',
-                'developments8_behavior2_1' => 'required|int',
-                'developments8_behavior2_2' => 'required|int',
-                'developments8_behavior2_3' => 'required|int',
-                'developments8_behavior2_4' => 'required|int',
-                'developments8_behavior2_5' => 'required|int',
-                'developments8_behavior3_1' => 'required|int',
-                'developments8_behavior3_2' => 'required|int',
-                'developments8_behavior3_3' => 'required|int',
-                'developments8_behavior3_4' => 'required|int',
-                'developments8_behavior3_5' => 'required|int',
-                'developments9_behavior1_1' => 'required|int',
-                'developments9_behavior1_2' => 'required|int',
-                'developments9_behavior1_3' => 'required|int',
-                'developments9_behavior1_4' => 'required|int',
-                'developments9_behavior1_5' => 'required|int',
-                'developments9_behavior2_1' => 'required|int',
-                'developments9_behavior2_2' => 'required|int',
-                'developments9_behavior2_3' => 'required|int',
-                'developments10_behavior1_1' => 'required|int',
-                'developments10_behavior1_2' => 'required|int',
-                'developments10_behavior1_3' => 'required|int',
-                'developments10_behavior1_4' => 'required|int',
-                'developments10_behavior1_5' => 'required|int',
-                'developments10_behavior2_1' => 'required|int',
-                'developments10_behavior2_2' => 'required|int',
-                'developments10_behavior3_1' => 'required|int',
-                'developments10_behavior3_2' => 'required|int',
-                'developments10_behavior3_3' => 'required|int',
-                'developments11_behavior1_1' => 'required|int',
-                'developments11_behavior1_2' => 'required|int',
-                'developments11_behavior2_1' => 'required|int',
-                'developments11_behavior2_2' => 'required|int',
-                'developments12_behavior1_1' => 'required|int',
-                'developments12_behavior1_2' => 'required|int',
-                'developments12_behavior1_3' => 'required|int',
-                'developments12_behavior2_1' => 'required|int',
-                'developments12_behavior2_2' => 'required|int',
-                'developments12_behavior2_3' => 'required|int',
-                // 'commenteacher' => 'required|string'
-            ],
-            [
-                'developments1_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior1_3' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior2_3' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior2_4' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior2_5' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior2_6' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior3_1' => 'ยังไม่ได้ประเมิน',
-                'developments1_behavior3_2' => 'ยังไม่ได้ประเมิน',
-                'developments2_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments2_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments2_behavior1_3' => 'ยังไม่ได้ประเมิน',
-                'developments2_behavior1_4' => 'ยังไม่ได้ประเมิน',
-                'developments2_behavior1_5' => 'ยังไม่ได้ประเมิน',
-                'developments2_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments2_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments2_behavior2_3' => 'ยังไม่ได้ประเมิน',
-                'developments2_behavior2_4' => 'ยังไม่ได้ประเมิน',
-                'developments3_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments3_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments3_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments3_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments3_behavior2_3' => 'ยังไม่ได้ประเมิน',
-                'developments3_behavior2_4' => 'ยังไม่ได้ประเมิน',
-                'developments4_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments4_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments4_behavior1_3' => 'ยังไม่ได้ประเมิน',
-                'developments4_behavior1_4' => 'ยังไม่ได้ประเมิน',
-                'developments5_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments5_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments5_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments5_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments5_behavior2_3' => 'ยังไม่ได้ประเมิน',
-                'developments5_behavior3_1' => 'ยังไม่ได้ประเมิน',
-                'developments5_behavior3_2' => 'ยังไม่ได้ประเมิน',
-                'developments5_behavior4_1' => 'ยังไม่ได้ประเมิน',
-                'developments5_behavior4_2' => 'ยังไม่ได้ประเมิน',
-                'developments6_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments6_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments6_behavior1_3' => 'ยังไม่ได้ประเมิน',
-                'developments6_behavior1_4' => 'ยังไม่ได้ประเมิน',
-                'developments6_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments6_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments6_behavior2_3' => 'ยังไม่ได้ประเมิน',
-                'developments6_behavior3_1' => 'ยังไม่ได้ประเมิน',
-                'developments6_behavior3_2' => 'ยังไม่ได้ประเมิน',
-                'developments7_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments7_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments7_behavior1_3' => 'ยังไม่ได้ประเมิน',
-                'developments7_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments7_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments7_behavior2_3' => 'ยังไม่ได้ประเมิน',
-                'developments7_behavior2_4' => 'ยังไม่ได้ประเมิน',
-                'developments7_behavior2_5' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior1_3' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior2_3' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior2_4' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior2_5' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior3_1' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior3_2' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior3_3' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior3_4' => 'ยังไม่ได้ประเมิน',
-                'developments8_behavior3_5' => 'ยังไม่ได้ประเมิน',
-                'developments9_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments9_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments9_behavior1_3' => 'ยังไม่ได้ประเมิน',
-                'developments9_behavior1_4' => 'ยังไม่ได้ประเมิน',
-                'developments9_behavior1_5' => 'ยังไม่ได้ประเมิน',
-                'developments9_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments9_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments9_behavior2_3' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior1_3' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior1_4' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior1_5' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior3_1' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior3_2' => 'ยังไม่ได้ประเมิน',
-                'developments10_behavior3_3' => 'ยังไม่ได้ประเมิน',
-                'developments11_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments11_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments11_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments11_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments12_behavior1_1' => 'ยังไม่ได้ประเมิน',
-                'developments12_behavior1_2' => 'ยังไม่ได้ประเมิน',
-                'developments12_behavior1_3' => 'ยังไม่ได้ประเมิน',
-                'developments12_behavior2_1' => 'ยังไม่ได้ประเมิน',
-                'developments12_behavior2_2' => 'ยังไม่ได้ประเมิน',
-                'developments12_behavior2_3' => 'ยังไม่ได้ประเมิน',
-                'semester' => 'กรุณาเลือกภาคเรียน'
-            ]
-        );
+        $table_no = request()->table_no ? request()->table_no : '';
+        $table_section = request()->table_section ? request()->table_section : '';
+        if ($table_no && $table_no === "1") {
+            // dd(request()->all());
+            $request->validate(
+                [
+                    'semester' => 'required|string',
+                    'developments_behavior1_1_1' => 'required|int',
+                    'developments_behavior1_1_2' => 'required|int',
+                    'developments_behavior1_1_3' => 'required|int',
+                    'developments_behavior1_2_1' => 'required|int',
+                    'developments_behavior1_2_2' => 'required|int',
+                    'developments_behavior1_2_3' => 'required|int',
+                    'developments_behavior1_2_4' => 'required|int',
+                    'developments_behavior1_2_5' => 'required|int',
+                    'developments_behavior1_2_6' => 'required|int',
+                    'developments_behavior1_3_1' => 'required|int',
+                    'developments_behavior1_3_2' => 'required|int',
+                ],
+                [
+                    'developments_behavior1_1_1.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_1_2.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_1_3.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_2_1.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_2_2.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_2_3.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_2_4.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_2_5.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_2_6.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_3_1.required' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior1_3_2.required' => 'ยังไม่ได้ประเมิน',
+                    'semester.required' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
 
-        // dd($student_id);
-        // Development::create([
-        //     'student_id' => $student_id,
-        //     'semester' => $request->semester,
-        //     'd1_b1_1' => $request->developments1_behavior1_1,
-        //     'd1_b1_2' => $request->developments1_behavior1_2,
-        //     'd1_b1_3' => $request->developments1_behavior1_3,
-        //     'd1_b2_1' => $request->developments1_behavior2_1,
-        //     'd1_b2_2' => $request->developments1_behavior2_2,
-        //     'd1_b2_3' => $request->developments1_behavior2_3,
-        //     'd1_b2_4' => $request->developments1_behavior2_4,
-        //     'd1_b2_5' => $request->developments1_behavior2_5,
-        //     'd1_b2_6' => $request->developments1_behavior2_6,
-        //     'd1_b3_1' => $request->developments1_behavior3_1,
-        //     'd1_b3_2' => $request->developments1_behavior3_2,
-        //     'd2_b1_1' => $request->developments2_behavior1_1,
-        //     'd2_b1_2' => $request->developments2_behavior1_2,
-        //     'd2_b1_3' => $request->developments2_behavior1_3,
-        //     'd2_b1_4' => $request->developments2_behavior1_4,
-        //     'd2_b1_5' => $request->developments2_behavior1_5,
-        //     'd2_b2_1' => $request->developments2_behavior2_1,
-        //     'd2_b2_2' => $request->developments2_behavior2_2,
-        //     'd2_b2_3' => $request->developments2_behavior2_3,
-        //     'd2_b2_4' => $request->developments2_behavior2_4,
-        //     'd3_b1_1' => $request->developments3_behavior1_1,
-        //     'd3_b1_2' => $request->developments3_behavior1_2,
-        //     'd3_b2_1' => $request->developments3_behavior2_1,
-        //     'd3_b2_2' => $request->developments3_behavior2_2,
-        //     'd3_b2_3' =>  $request->developments3_behavior2_3,
-        //     'd3_b2_4' => $request->developments3_behavior2_4,
-        //     'd4_b1_1' => $request->developments4_behavior1_1,
-        //     'd4_b1_2' => $request->developments4_behavior1_2,
-        //     'd4_b1_3' => $request->developments4_behavior1_3,
-        //     'd4_b1_4' => $request->developments4_behavior1_4,
-        //     'd5_b1_1' => $request->developments5_behavior1_1,
-        //     'd5_b1_2' => $request->developments5_behavior1_2,
-        //     'd5_b2_1' => $request->developments5_behavior2_1,
-        //     'd5_b2_2' => $request->developments5_behavior2_2,
-        //     'd5_b2_3' => $request->developments5_behavior2_3,
-        //     'd5_b3_1' => $request->developments5_behavior3_1,
-        //     'd5_b3_2' => $request->developments5_behavior3_2,
-        //     'd5_b4_1' => $request->developments5_behavior4_1,
-        //     'd5_b4_2' => $request->developments5_behavior4_2,
-        //     'd6_b1_1' => $request->developments6_behavior1_1,
-        //     'd6_b1_2' => $request->developments6_behavior1_2,
-        //     'd6_b1_3' => $request->developments6_behavior1_3,
-        //     'd6_b1_4' => $request->developments6_behavior1_4,
-        //     'd6_b2_1' => $request->developments6_behavior2_1,
-        //     'd6_b2_2' => $request->developments6_behavior2_2,
-        //     'd6_b2_3' => $request->developments6_behavior2_3,
-        //     'd6_b3_1' => $request->developments6_behavior3_1,
-        //     'd6_b3_2' => $request->developments6_behavior3_2,
-        //     'd7_b1_1' => $request->developments7_behavior1_1,
-        //     'd7_b1_2' => $request->developments7_behavior1_2,
-        //     'd7_b1_3' => $request->developments7_behavior1_3,
-        //     'd7_b2_1' => $request->developments7_behavior2_1,
-        //     'd7_b2_2' => $request->developments7_behavior2_2,
-        //     'd7_b2_3' => $request->developments7_behavior2_3,
-        //     'd7_b2_4' => $request->developments7_behavior2_4,
-        //     'd7_b2_5' => $request->developments7_behavior2_5,
-        //     'd8_b1_1' => $request->developments8_behavior1_1,
-        //     'd8_b1_2' => $request->developments8_behavior1_2,
-        //     'd8_b1_3' => $request->developments8_behavior1_3,
-        //     'd8_b2_1' => $request->developments8_behavior2_1,
-        //     'd8_b2_2' => $request->developments8_behavior2_2,
-        //     'd8_b2_3' => $request->developments8_behavior2_3,
-        //     'd8_b2_4' => $request->developments8_behavior2_4,
-        //     'd8_b2_5' => $request->developments8_behavior2_5,
-        //     'd8_b3_1' => $request->developments8_behavior3_1,
-        //     'd8_b3_2' => $request->developments8_behavior3_2,
-        //     'd8_b3_3' => $request->developments8_behavior3_3,
-        //     'd8_b3_4' => $request->developments8_behavior3_4,
-        //     'd8_b3_5' => $request->developments8_behavior3_5,
-        //     'd9_b1_1' => $request->developments9_behavior1_1,
-        //     'd9_b1_2' => $request->developments9_behavior1_2,
-        //     'd9_b1_3' => $request->developments9_behavior1_3,
-        //     'd9_b1_4' => $request->developments9_behavior1_4,
-        //     'd9_b1_5' => $request->developments9_behavior1_5,
-        //     'd9_b2_1' => $request->developments9_behavior2_1,
-        //     'd9_b2_2' => $request->developments9_behavior2_2,
-        //     'd9_b2_3' => $request->developments9_behavior2_3,
-        //     'd10_b1_1' => $request->developments10_behavior1_1,
-        //     'd10_b1_2' => $request->developments10_behavior1_2,
-        //     'd10_b1_3' => $request->developments10_behavior1_3,
-        //     'd10_b1_4' => $request->developments10_behavior1_4,
-        //     'd10_b1_5' => $request->developments10_behavior1_5,
-        //     'd10_b2_1' => $request->developments10_behavior2_1,
-        //     'd10_b2_2' => $request->developments10_behavior2_2,
-        //     'd10_b3_1' => $request->developments10_behavior3_1,
-        //     'd10_b3_2' => $request->developments10_behavior3_2,
-        //     'd10_b3_3' => $request->developments10_behavior3_3,
-        //     'd11_b1_1' => $request->developments11_behavior1_1,
-        //     'd11_b1_2' => $request->developments11_behavior1_2,
-        //     'd11_b2_1' => $request->developments11_behavior2_1,
-        //     'd11_b2_2' => $request->developments11_behavior2_2,
-        //     'd12_b1_1' => $request->developments12_behavior1_1,
-        //     'd12_b1_2' => $request->developments12_behavior1_2,
-        //     'd12_b1_3' => $request->developments12_behavior1_3,
-        //     'd12_b2_1' => $request->developments12_behavior2_1,
-        //     'd12_b2_2' => $request->developments12_behavior2_2,
-        //     'd12_b2_3' => $request->developments12_behavior2_3,
-        //     'comment_t' => $request->commenteacher
-        // ]);
+            // dd('5555');
+            $chk = DB::table('physically')->where('table_no', $table_no)->whereIn('table_section', $table_section)->get();
+            foreach ($table_section as $section) {
+                $name = 'developments_behavior' . $section;
+                // dd($name);
+                $chk = DB::table('physically')->where('student_id', $student_id)->where('semester', $request->semester)->where('table_no', $table_no)->where('table_section', $section)->first();
+                if ($chk) {
+                    // dd($chk);
+                    DB::beginTransaction();
+                    try {
+                        $dataPhysically = [
+                            'score_rate_physically' => $request->$name,
+                        ];
+
+                        // dd($dataPhysically, request()->all());
+                        DB::table('physically')
+                            ->where('student_id', $student_id)
+                            ->where('semester', $request->semester)
+                            ->where('table_no', $table_no)
+                            ->where('table_section', $section)
+                            ->update($dataPhysically);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                } else {
+                    DB::beginTransaction();
+                    try {
+                        $dataPhysically = [
+                            [
+                                'student_id' => $student_id,
+                                'semester' => $request->semester,
+                                'score_rate_physically' => $request->$name,
+                                'table_no' => $table_no,
+                                'table_section' => $section
+                            ]
+                        ];
+                        // dd($dataPhysically, request()->all());
+                        DB::table('physically')->insert($dataPhysically);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                }
+            }
+        } else if ($table_no && $table_no === "2") {
+            $request->validate(
+                [
+                    'semester' => 'required|string',
+                    'developments_behavior2_1_1' => 'required|int',
+                    'developments_behavior2_1_2' => 'required|int',
+                    'developments_behavior2_1_3' => 'required|int',
+                    'developments_behavior2_1_4' => 'required|int',
+                    'developments_behavior2_1_5' => 'required|int',
+                    'developments_behavior2_2_1' => 'required|int',
+                    'developments_behavior2_2_2' => 'required|int',
+                    'developments_behavior2_2_3' => 'required|int',
+                    'developments_behavior2_2_4' => 'required|int',
+                ],
+                [
+                    'developments_behavior2_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior2_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior2_1_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior2_1_4' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior2_1_5' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior2_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior2_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior2_2_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior2_2_4' => 'ยังไม่ได้ประเมิน',
+                    'semester' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
+            $chk = DB::table('physically')->where('table_no', $table_no)->whereIn('table_section', $table_section)->get();
+
+            foreach ($table_section as $section) {
+                $name = 'developments_behavior' . $section;
+                $chk = DB::table('physically')->where('student_id', $student_id)->where('semester', $request->semester)->where('table_no', $table_no)->where('table_section', $section)->first();
+                if ($chk) {
+                    DB::beginTransaction();
+                    try {
+                        $dataPhysically = [
+                            'score_rate_physically' => $request->$name,
+                        ];
+
+                        // dd($dataPhysically, request()->all());
+                        // DB::table('physically')->update($dataPhysically);
+                        DB::table('physically')
+                            ->where('student_id', $student_id)
+                            ->where('semester', $request->semester)
+                            ->where('table_no', $table_no)
+                            ->where('table_section', $section)
+                            ->update($dataPhysically);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                } else {
+                    DB::beginTransaction();
+                    try {
+                        $dataPhysically = [
+                            [
+                                'student_id' => $student_id,
+                                'semester' => $request->semester,
+                                'score_rate_physically' => $request->$name,
+                                'table_no' => $table_no,
+                                'table_section' => $section
+                            ]
+                        ];
+                        // dd($dataPhysically, request()->all());
+                        DB::table('physically')->insert($dataPhysically);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                }
+            }
+        } else if ($table_no && $table_no === "3") {
+            $request->validate(
+                [
+                    'semester' => 'required|string',
+                    'developments_behavior3_1_1' => 'required|int',
+                    'developments_behavior3_1_2' => 'required|int',
+                    'developments_behavior3_2_1' => 'required|int',
+                    'developments_behavior3_2_2' => 'required|int',
+                    'developments_behavior3_2_3' => 'required|int',
+                    'developments_behavior3_2_4' => 'required|int',
+                    'developments_behavior4_1_1' => 'required|int',
+                    'developments_behavior4_1_2' => 'required|int',
+                    'developments_behavior4_1_3' => 'required|int',
+                    'developments_behavior4_1_4' => 'required|int',
+                ],
+                [
+                    'developments_behavior3_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior3_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior3_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior3_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior3_2_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior3_2_4' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior4_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior4_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior4_1_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior4_1_4' => 'ยังไม่ได้ประเมิน',
+                    'semester' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
+
+            $chk = DB::table('mood_mind')->where('table_no', $table_no)->whereIn('table_section', $table_section)->get();
+
+            foreach ($table_section as $section) {
+                $name = 'developments_behavior' . $section;
+                $chk = DB::table('mood_mind')->where('student_id', $student_id)->where('semester', $request->semester)->where('table_no', $table_no)->where('table_section', $section)->first();
+                if ($chk) {
+                    DB::beginTransaction();
+                    try {
+                        $dataMoodMind = [
+                            'score_rate_mood_mind' => $request->$name,
+                        ];
+
+                        // dd($dataPhysically, request()->all());
+                        // DB::table('mood_mind')->update($dataMoodMind);
+                        DB::table('mood_mind')
+                            ->where('student_id', $student_id)
+                            ->where('semester', $request->semester)
+                            ->where('table_no', $table_no)
+                            ->where('table_section', $section)
+                            ->update($dataMoodMind);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                } else {
+                    DB::beginTransaction();
+                    try {
+                        $dataMoodMind = [
+                            [
+                                'student_id' => $student_id,
+                                'semester' => $request->semester,
+                                'score_rate_mood_mind' => $request->$name,
+                                'table_no' => $table_no,
+                                'table_section' => $section
+                            ]
+                        ];
+                        // dd($dataPhysically, request()->all());
+                        DB::table('mood_mind')->insert($dataMoodMind);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                }
+            }
+        } else if ($table_no && $table_no === "4") {
+            $request->validate(
+                [
+                    'semester' => 'required|string',
+                    'developments_behavior5_1_1' => 'required|int',
+                    'developments_behavior5_1_2' => 'required|int',
+                    'developments_behavior5_2_1' => 'required|int',
+                    'developments_behavior5_2_2' => 'required|int',
+                    'developments_behavior5_2_3' => 'required|int',
+                    'developments_behavior5_3_1' => 'required|int',
+                    'developments_behavior5_3_2' => 'required|int',
+                    'developments_behavior5_4_1' => 'required|int',
+                    'developments_behavior5_4_2' => 'required|int',
+                ],
+                [
+
+                    'developments_behavior5_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior5_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior5_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior5_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior5_2_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior5_3_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior5_3_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior5_4_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior5_4_2' => 'ยังไม่ได้ประเมิน',
+                    'semester' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
+            $chk = DB::table('mood_mind')->where('table_no', $table_no)->whereIn('table_section', $table_section)->get();
+
+            foreach ($table_section as $section) {
+                $name = 'developments_behavior' . $section;
+                $chk = DB::table('mood_mind')->where('student_id', $student_id)->where('semester', $request->semester)->where('table_no', $table_no)->where('table_section', $section)->first();
+                if ($chk) {
+                    DB::beginTransaction();
+                    try {
+                        $dataMoodMind = [
+                            'score_rate_mood_mind' => $request->$name,
+                        ];
+
+                        // dd($dataPhysically, request()->all());
+                        // DB::table('mood_mind')->update($dataMoodMind);
+                        DB::table('mood_mind')
+                            ->where('student_id', $student_id)
+                            ->where('semester', $request->semester)
+                            ->where('table_no', $table_no)
+                            ->where('table_section', $section)
+                            ->update($dataMoodMind);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                } else {
+                    DB::beginTransaction();
+                    try {
+                        $dataMoodMind = [
+                            [
+                                'student_id' => $student_id,
+                                'semester' => $request->semester,
+                                'score_rate_mood_mind' => $request->$name,
+                                'table_no' => $table_no,
+                                'table_section' => $section
+                            ]
+                        ];
+                        // dd($dataPhysically, request()->all());
+                        DB::table('mood_mind')->insert($dataMoodMind);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                }
+            }
+        } else if ($table_no && $table_no === "5") {
+            $request->validate(
+                [
+                    'semester' => 'required|string',
+                    'developments_behavior6_1_1' => 'required|int',
+                    'developments_behavior6_1_2' => 'required|int',
+                    'developments_behavior6_1_3' => 'required|int',
+                    'developments_behavior6_1_4' => 'required|int',
+                    'developments_behavior6_2_1' => 'required|int',
+                    'developments_behavior6_2_2' => 'required|int',
+                    'developments_behavior6_2_3' => 'required|int',
+                    'developments_behavior6_3_1' => 'required|int',
+                    'developments_behavior6_3_2' => 'required|int',
+                ],
+                [
+                    'developments_behavior6_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior6_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior6_1_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior6_1_4' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior6_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior6_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior6_2_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior6_3_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior6_3_2' => 'ยังไม่ได้ประเมิน',
+                    'semester' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
+            $chk = DB::table('social')->where('table_no', $table_no)->whereIn('table_section', $table_section)->get();
+
+            foreach ($table_section as $section) {
+                $name = 'developments_behavior' . $section;
+                $chk = DB::table('social')->where('student_id', $student_id)->where('semester', $request->semester)->where('table_no', $table_no)->where('table_section', $section)->first();
+                if ($chk) {
+                    DB::beginTransaction();
+                    try {
+                        $dataSocial = [
+                            'score_rate_social' => $request->$name,
+                        ];
+
+                        // dd($dataPhysically, request()->all());
+                        // DB::table('social')->update($dataSocial);
+                        DB::table('social')
+                            ->where('student_id', $student_id)
+                            ->where('semester', $request->semester)
+                            ->where('table_no', $table_no)
+                            ->where('table_section', $section)
+                            ->update($dataSocial);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                } else {
+                    DB::beginTransaction();
+                    try {
+                        $dataSocial = [
+                            [
+                                'student_id' => $student_id,
+                                'semester' => $request->semester,
+                                'score_rate_social' => $request->$name,
+                                'table_no' => $table_no,
+                                'table_section' => $section
+                            ]
+                        ];
+                        // dd($dataPhysically, request()->all());
+                        DB::table('social')->insert($dataSocial);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                }
+            }
+        } else if ($table_no && $table_no === "6") {
+            $request->validate(
+                [
+                    'semester' => 'required|string',
+                    'developments_behavior7_1_1' => 'required|int',
+                    'developments_behavior7_1_2' => 'required|int',
+                    'developments_behavior7_1_3' => 'required|int',
+                    'developments_behavior7_2_1' => 'required|int',
+                    'developments_behavior7_2_2' => 'required|int',
+                    'developments_behavior7_2_3' => 'required|int',
+                    'developments_behavior7_2_4' => 'required|int',
+                    'developments_behavior7_2_5' => 'required|int',
+                ],
+                [
+                    'developments_behavior7_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior7_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior7_1_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior7_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior7_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior7_2_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior7_2_4' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior7_2_5' => 'ยังไม่ได้ประเมิน',
+                    'semester' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
+            $chk = DB::table('social')->where('table_no', $table_no)->whereIn('table_section', $table_section)->get();
+
+            foreach ($table_section as $section) {
+                $name = 'developments_behavior' . $section;
+                $chk = DB::table('social')->where('student_id', $student_id)->where('semester', $request->semester)->where('table_no', $table_no)->where('table_section', $section)->first();
+                if ($chk) {
+                    DB::beginTransaction();
+                    try {
+                        $dataSocial = [
+                            'score_rate_social' => $request->$name,
+                        ];
+
+                        // dd($dataPhysically, request()->all());
+                        // DB::table('social')->update($dataSocial);
+                        DB::table('social')
+                            ->where('student_id', $student_id)
+                            ->where('semester', $request->semester)
+                            ->where('table_no', $table_no)
+                            ->where('table_section', $section)
+                            ->update($dataSocial);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                } else {
+                    DB::beginTransaction();
+                    try {
+                        $dataSocial = [
+                            [
+                                'student_id' => $student_id,
+                                'semester' => $request->semester,
+                                'score_rate_social' => $request->$name,
+                                'table_no' => $table_no,
+                                'table_section' => $section
+                            ]
+                        ];
+                        // dd($dataPhysically, request()->all());
+                        DB::table('social')->insert($dataSocial);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                }
+            }
+        } else if ($table_no && $table_no === "7") {
+            $request->validate(
+                [
+                    'semester' => 'required|string',
+                    'developments_behavior8_1_1' => 'required|int',
+                    'developments_behavior8_1_2' => 'required|int',
+                    'developments_behavior8_1_3' => 'required|int',
+                    'developments_behavior8_2_1' => 'required|int',
+                    'developments_behavior8_2_2' => 'required|int',
+                    'developments_behavior8_2_3' => 'required|int',
+                    'developments_behavior8_2_4' => 'required|int',
+                    'developments_behavior8_2_5' => 'required|int',
+                    'developments_behavior8_3_1' => 'required|int',
+                    'developments_behavior8_3_2' => 'required|int',
+                    'developments_behavior8_3_3' => 'required|int',
+                    'developments_behavior8_3_4' => 'required|int',
+                    'developments_behavior8_3_5' => 'required|int',
+                ],
+                [
+                    'developments_behavior8_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_1_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_2_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_2_4' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_2_5' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_3_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_3_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_3_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_3_4' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior8_3_5' => 'ยังไม่ได้ประเมิน',
+                    'semester' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
+            $chk = DB::table('social')->where('table_no', $table_no)->whereIn('table_section', $table_section)->get();
+
+            foreach ($table_section as $section) {
+                $name = 'developments_behavior' . $section;
+                $chk = DB::table('social')->where('student_id', $student_id)->where('semester', $request->semester)->where('table_no', $table_no)->where('table_section', $section)->first();
+                if ($chk) {
+                    DB::beginTransaction();
+                    try {
+                        $dataSocial = [
+                            'score_rate_social' => $request->$name,
+                        ];
+
+                        // dd($dataPhysically, request()->all());
+                        // DB::table('social')->update($dataSocial);
+                        DB::table('social')
+                            ->where('student_id', $student_id)
+                            ->where('semester', $request->semester)
+                            ->where('table_no', $table_no)
+                            ->where('table_section', $section)
+                            ->update($dataSocial);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                } else {
+                    DB::beginTransaction();
+                    try {
+                        $dataSocial = [
+                            [
+                                'student_id' => $student_id,
+                                'semester' => $request->semester,
+                                'score_rate_social' => $request->$name,
+                                'table_no' => $table_no,
+                                'table_section' => $section
+                            ]
+                        ];
+                        // dd($dataPhysically, request()->all());
+                        DB::table('social')->insert($dataSocial);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                }
+            }
+        } else if ($table_no && $table_no === "8") {
+            $request->validate(
+                [
+                    'semester' => 'required|string',
+                    'developments_behavior9_1_1' => 'required|int',
+                    'developments_behavior9_1_2' => 'required|int',
+                    'developments_behavior9_1_3' => 'required|int',
+                    'developments_behavior9_1_4' => 'required|int',
+                    'developments_behavior9_1_5' => 'required|int',
+                    'developments_behavior9_2_1' => 'required|int',
+                    'developments_behavior9_2_2' => 'required|int',
+                    'developments_behavior9_2_3' => 'required|int',
+                    'developments_behavior10_1_1' => 'required|int',
+                    'developments_behavior10_1_2' => 'required|int',
+                    'developments_behavior10_1_3' => 'required|int',
+                    'developments_behavior10_1_4' => 'required|int',
+                    'developments_behavior10_1_5' => 'required|int',
+                    'developments_behavior10_2_1' => 'required|int',
+                    'developments_behavior10_2_2' => 'required|int',
+                    'developments_behavior10_3_1' => 'required|int',
+                    'developments_behavior10_3_2' => 'required|int',
+                    'developments_behavior10_3_3' => 'required|int',
+                ],
+                [
+                    'developments_behavior9_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior9_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior9_1_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior9_1_4' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior9_1_5' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior9_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior9_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior9_2_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_1_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_1_4' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_1_5' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_3_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_3_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior10_3_3' => 'ยังไม่ได้ประเมิน',
+                    'semester' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
+
+            $chk = DB::table('intellectual')->where('table_no', $table_no)->whereIn('table_section', $table_section)->get();
+
+            foreach ($table_section as $section) {
+                $name = 'developments_behavior' . $section;
+                $chk = DB::table('intellectual')->where('student_id', $student_id)->where('semester', $request->semester)->where('table_no', $table_no)->where('table_section', $section)->first();
+                if ($chk) {
+                    DB::beginTransaction();
+                    try {
+                        $dataIntellectual = [
+                            'score_rate_intellectual' => $request->$name,
+                        ];
+
+                        // dd($dataPhysically, request()->all());
+                        // DB::table('intellectual')->update($dataIntellectual);
+                        DB::table('intellectual')
+                            ->where('student_id', $student_id)
+                            ->where('semester', $request->semester)
+                            ->where('table_no', $table_no)
+                            ->where('table_section', $section)
+                            ->update($dataIntellectual);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                } else {
+                    DB::beginTransaction();
+                    try {
+                        $dataIntellectual = [
+                            [
+                                'student_id' => $student_id,
+                                'semester' => $request->semester,
+                                'score_rate_intellectual' => $request->$name,
+                                'table_no' => $table_no,
+                                'table_section' => $section
+                            ]
+                        ];
+                        // dd($dataPhysically, request()->all());
+                        DB::table('intellectual')->insert($dataIntellectual);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                }
+            }
+        } else if ($table_no && $table_no === "9") {
+            $request->validate(
+                [
+                    'semester' => 'required|string',
+                    'developments_behavior11_1_1' => 'required|int',
+                    'developments_behavior11_1_2' => 'required|int',
+                    'developments_behavior11_2_1' => 'required|int',
+                    'developments_behavior11_2_2' => 'required|int',
+                    'developments_behavior12_1_1' => 'required|int',
+                    'developments_behavior12_1_2' => 'required|int',
+                    'developments_behavior12_1_3' => 'required|int',
+                    'developments_behavior12_2_1' => 'required|int',
+                    'developments_behavior12_2_2' => 'required|int',
+                    'developments_behavior12_2_3' => 'required|int',
+                    // 'commenteacher' => 'required|string'
+                ],
+                [
+                    'developments_behavior11_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior11_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior11_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior11_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior12_1_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior12_1_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior12_1_3' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior12_2_1' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior12_2_2' => 'ยังไม่ได้ประเมิน',
+                    'developments_behavior12_2_3' => 'ยังไม่ได้ประเมิน',
+                    'semester' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
+            $chk = DB::table('intellectual')->where('table_no', $table_no)->whereIn('table_section', $table_section)->get();
+
+            foreach ($table_section as $section) {
+                $name = 'developments_behavior' . $section;
+                $chk = DB::table('intellectual')->where('student_id', $student_id)->where('semester', $request->semester)->where('table_no', $table_no)->where('table_section', $section)->first();
+                if ($chk) {
+                    DB::beginTransaction();
+                    try {
+                        $dataIntellectual = [
+                            'score_rate_intellectual' => $request->$name,
+                        ];
+
+                        // dd($dataPhysically, request()->all());
+                        // DB::table('intellectual')->update($dataIntellectual);
+                        DB::table('intellectual')
+                            ->where('student_id', $student_id)
+                            ->where('semester', $request->semester)
+                            ->where('table_no', $table_no)
+                            ->where('table_section', $section)
+                            ->update($dataIntellectual);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                } else {
+                    DB::beginTransaction();
+                    try {
+                        $dataIntellectual = [
+                            [
+                                'student_id' => $student_id,
+                                'semester' => $request->semester,
+                                'score_rate_intellectual' => $request->$name,
+                                'table_no' => $table_no,
+                                'table_section' => $section
+                            ]
+                        ];
+                        // dd($dataPhysically, request()->all());
+                        DB::table('intellectual')->insert($dataIntellectual);
+                        DB::commit();
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                    }
+                }
+            }
+        } else if ($table_no && $table_no === "10") {
+            $request->validate(
+                [
+                    'commenteacher' => 'required|string',
+                    'semester' => 'required|string',
+                ],
+                [
+                    'commenteacher' => 'กรุณากรอกข้อมูล',
+                    'semester' => 'กรุณาเลือกภาคเรียน'
+                ]
+            );
+            $chk = DB::table('comment_appraisal')->where('table_no', $table_no)->where('student_id', $student_id)->where('teachers_id', Auth::user()->rank_id)->where('semester', $request->semester)->first();
+
+            if ($chk) {
+                DB::beginTransaction();
+                try {
+                    $dataComment = [
+                        [
+                            'comment_teacher' => $request->commenteacher,
+                            'semester' => $request->semester
+                        ]
+                    ];
+
+                    // dd($dataPhysically, request()->all());
+                    $chk->update($dataComment);
+                    DB::table('comment_appraisal')
+                        ->where('student_id', $student_id)
+                        ->where('teachers_id', Auth::user()->rank_id)
+                        ->where('table_no', $table_no)
+                        ->update($dataIntellectual);
+                    DB::commit();
+                } catch (Exception $e) {
+                    DB::rollBack();
+                }
+            } else {
+                DB::beginTransaction();
+                try {
+                    $dataComment = [
+
+                        'student_id' => $student_id,
+                        'teachers_id' => Auth::user()->rank_id,
+                        'comment_teacher' => $request->commenteacher,
+                        'table_no' => $table_no,
+                        'semester' => $request->semester,
+
+                    ];
+                    // dd($dataPhysically, request()->all());
+                    DB::table('comment_appraisal')->insert($dataComment);
+                    DB::commit();
+                } catch (Exception $e) {
+                    DB::rollBack();
+                }
+            }
+        }
 
 
-        $dataPhysically = [
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior1_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior2_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior2_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior2_5],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior2_6],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior3_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments1_behavior3_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments2_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments2_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments2_behavior1_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments2_behavior1_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments2_behavior1_5],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments2_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments2_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments2_behavior2_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_physically' => $request->developments2_behavior2_4],
-        ];
-        DB::table('physically')->insert($dataPhysically);
-
-        $dataMoodMind = [
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments3_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments3_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments3_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments3_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments3_behavior2_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments3_behavior2_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments4_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments4_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments4_behavior1_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments4_behavior1_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments5_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments5_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments5_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments5_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments5_behavior2_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments5_behavior3_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments5_behavior3_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments5_behavior4_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_mood_mind' => $request->developments5_behavior4_2],
-        ];
-        DB::table('mood_mind')->insert($dataMoodMind);
-
-        $dataSocial = [
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments6_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments6_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments6_behavior1_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments6_behavior1_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments6_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments6_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments6_behavior2_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments6_behavior3_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments6_behavior3_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments7_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments7_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments7_behavior1_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments7_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments7_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments7_behavior2_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments7_behavior2_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments7_behavior2_5],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior1_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior2_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior2_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior2_5],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior3_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior3_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior3_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior3_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_social' => $request->developments8_behavior3_5]
-        ];
-        DB::table('social')->insert($dataSocial);
-
-        $dataIntellectual = [
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments9_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments9_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments9_behavior1_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments9_behavior1_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments9_behavior1_5],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments9_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments9_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments9_behavior2_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior1_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior1_4],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior1_5],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior3_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior3_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments10_behavior3_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments11_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments11_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments11_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments11_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments12_behavior1_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments12_behavior1_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments12_behavior1_3],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments12_behavior2_1],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments12_behavior2_2],
-            ['student_id' => $student_id, 'semester' => $request->semester, 'score_rate_intellectual' => $request->developments12_behavior2_3]
-        ];
-        DB::table('intellectual')->insert($dataIntellectual);
-
-        DB::table('comment_appraisal')->insert([
-            'student_id' => $student_id,
-            'teachers_id' => Auth::user()->rank_id,
-            'semester' => $request->semester,
-            'comment_teacher' => $request->commenteacher,
-        ]);
-        return redirect(route('record.appraisal'))->with('successaddappraisal', 'บันทึกข้อมูลเสร็จสิ้น');
+        return redirect()->back()->with('successaddappraisal', 'บันทึกข้อมูลเสร็จสิ้น');
     }
+
+
+
 
     public function commenTeacher($id)
     {
@@ -682,7 +1137,7 @@ class PersonalRecordController extends Controller
         DB::table('comment_appraisal')
             ->where('id', $id)
             ->update(['comment_teacher' => $request->commenteacher]);
-            return redirect(url('teacher/record/appraisal/show/'.$tcomment->student_id));
+        return redirect(url('teacher/record/appraisal/show/' . $tcomment->student_id));
     }
 
     public function viewPDF($student_id)
@@ -697,7 +1152,7 @@ class PersonalRecordController extends Controller
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน2")
             ->get();
-            // dd($dataphysicallysemester2);
+        // dd($dataphysicallysemester2);
 
         $datamood_mindsemester1 = DB::table('mood_mind')
             ->where('student_id', '=', $student_id)
@@ -738,7 +1193,7 @@ class PersonalRecordController extends Controller
 
 
         $SummaryPhysically = DB::table('physically')
-            ->select(DB::raw('SUM(score_rate_physically) as score_physically'))//DB::raw('SUM(score_rate_physically) as score_physically
+            ->select(DB::raw('SUM(score_rate_physically) as score_physically')) //DB::raw('SUM(score_rate_physically) as score_physically
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
@@ -751,7 +1206,7 @@ class PersonalRecordController extends Controller
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
-            $SummaryMoodMind2 = ($SummaryMoodMind->score_mood_mind / 57) * 100;
+        $SummaryMoodMind2 = ($SummaryMoodMind->score_mood_mind / 57) * 100;
 
         $SummarySocial = DB::table('social')
             ->select(DB::raw('SUM(score_rate_social) as score_social'))
@@ -5225,19 +5680,19 @@ class PersonalRecordController extends Controller
 
 
 
-            $SummaryPhysically = DB::table('physically')
-            ->select(DB::raw('SUM(score_rate_physically) as score_physically'))//DB::raw('SUM(score_rate_physically) as score_physically
+        $SummaryPhysically = DB::table('physically')
+            ->select(DB::raw('SUM(score_rate_physically) as score_physically')) //DB::raw('SUM(score_rate_physically) as score_physically
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
         $SummaryPhysically2 = ($SummaryPhysically->score_physically / 60) * 100;
-       
+
         $SummaryMoodMind = DB::table('mood_mind')
             ->select(DB::raw('SUM(score_rate_mood_mind) as score_mood_mind'))
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
-            $SummaryMoodMind2 = ($SummaryMoodMind->score_mood_mind / 57) * 100;
+        $SummaryMoodMind2 = ($SummaryMoodMind->score_mood_mind / 57) * 100;
 
         $SummarySocial = DB::table('social')
             ->select(DB::raw('SUM(score_rate_social) as score_social'))
@@ -5252,7 +5707,7 @@ class PersonalRecordController extends Controller
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
         $SummaryIntellectual2 = ($SummaryIntellectual->score_intellectual / 84) * 100;
-        
+
 
         // dd( $dataphysicallysemester1);
         // create new PDF document
@@ -9528,7 +9983,7 @@ class PersonalRecordController extends Controller
 
         $pdf::MultiCell(40, 17, 'ด้านร่างกาย', 1, 'C', false, 0, 40, '', true,);
         if (isset($SummaryPhysically)) {
-            if ($SummaryPhysically2 > 66.66 && $SummaryPhysically2 <= 100 ) {
+            if ($SummaryPhysically2 > 66.66 && $SummaryPhysically2 <= 100) {
                 $pdf::MultiCell(20, 17, '<img src="./image/check-mark-2025986.svg" width="10" height="15">', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
                 $pdf::MultiCell(20, 17, '', 'L,R', 'C', false, 0, '', '', true, 0, true);
