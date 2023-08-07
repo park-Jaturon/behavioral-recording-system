@@ -87,6 +87,7 @@
                                             <td>
                                                 1.1 น้ำหนักตามเณฑ์อายุของกรมอนามัย
                                             </td>
+                                            
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[0]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[0]->score_rate_physically == 1)
@@ -100,10 +101,10 @@
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[0]->score_rate_physically))
-                                                    <input class="form-control text-center" type="text"
-                                                        value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
-                                                        disabled readonly>
-                                                @endif
+                                                <input class="form-control text-center" type="text"
+                                                    value="ยังไม่ได้รับการประเมิน" aria-label="Disabled input example"
+                                                    disabled readonly>
+                                            @endif
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[0]->score_rate_physically))

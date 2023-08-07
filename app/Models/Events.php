@@ -19,5 +19,7 @@ class Events extends Model
        'title',
        'start',
        'end',
+       'level',
+       'school_year',
     ];
 }

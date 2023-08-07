@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Events;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,19 +36,23 @@ class ActivityController extends Controller
     public function add($events_id)
     {
         $event = Events::findOrFail($events_id);
-
         return view('teacher.add-activity', compact('event'));
     }
 
     public function store_activity(Request $request, $events_id)
     {
+        $levelsClass = Events::findOrFail($events_id);
+        // Debugbar::info( $levelsClass);
+        // dd($levelsClass);
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imageName = 'image-' . time() . rand(1, 1000) . '.' . $image->extension();
                 $image->move(public_path('uploads/activity/'), $imageName);
                 Activity::create([
                     'events_id' => $events_id,
-                    'activity_images' => $imageName
+                    'activity_images' => $imageName,
+                    'level' => $levelsClass->level,
+                    'school_year' => $levelsClass->school_year,
                 ]);
             }
         }

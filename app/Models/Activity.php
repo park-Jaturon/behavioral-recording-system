@@ -18,5 +18,7 @@ class Activity extends Model
     protected $fillable = [
        'events_id',
        'activity_images',
+       'level',
+       'school_year',
     ];
 }

@@ -24,7 +24,7 @@ class ManageteacherController extends Controller
 
     public function addteachers()
     {
-        $room = Room::all();
+        $room = Room::orderBy('room_name')->get();
         $dataTeacher =  new Teacher();
         $TeacherRoom = new Room(); ;
         return view('admin.teachersadd', compact('room', 'dataTeacher','TeacherRoom'));
@@ -34,7 +34,7 @@ class ManageteacherController extends Controller
     {
         $dataTeacher = Teacher::findOrFail($teachers_id);
         $TeacherRoom = Room::findOrFail($dataTeacher->rooms_id);
-        $room = Room::all();
+        $room = Room::orderBy('room_name')->get();
         Debugbar::info($TeacherRoom);
         return view('admin.teachersadd', compact('dataTeacher', 'room','TeacherRoom'));
     }

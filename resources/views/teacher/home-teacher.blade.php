@@ -5,8 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header text-center"> {{ $user[0]->room_name }}</div>
-
+                    <div class="card-header text-center"> 
+                        @php
+                            if (count($users)>0) {
+                               echo $users[0]->room_name;
+                            }
+                        @endphp
+                        </div>
+                    
                     <div class="card-body">
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success">
@@ -19,30 +25,79 @@
                                     <tr>
                                         <th class="text-center" scope="col">เลขที่</th>
                                         <th scope="col">ชื่อ-นามสกุล</th>
+                                        <th scope="col" class=" text-center">สถานะ</th>
                                         <th scope="col" class=" text-center">ดูข้อมูล</th>
                                         <th scope="col" class=" text-center">แก้ไขข้อมูล</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($user as $users)
-                                        <tr class="">
-                                            <td class="text-center">{{ $users->number }}</td>
-                                            <td>{{ $users->prefix_name . $users->first_name . ' ' . $users->last_name }}
-                                            </td>
-                                            <td align="center"><a class="btn btn-primary "
-                                                    href="{{ url('teacher/room/show/' . $users->student_id) }}"
-                                                    role="button"><i class="bi bi-eye"></i></a></td>
-                                            <td align="center"><a class="btn btn-primary "
-                                                    href="{{ url('teacher/room/edit/' . $users->student_id) }}"
-                                                    role="button"><i class="bi bi-tools"></i></a></td>
-                                        </tr>
-                                    @endforeach
+                                    @forelse ($users as $user)
+                                    <tr class="">
+                                        <td class="text-center">{{ $user->number }}</td>
+                                        <td>{{ $user->prefix_name . $user->first_name . ' ' . $user->last_name }}
+                                        </td>
+                                        <td align="center">
+                                            <div class="col-6 ">
+                                                @if ($user->status == 'เรียนอยู่')
+                                                    <input class="form-control" type="text"
+                                                        value="{{ $user->status }}" aria-label="Disabled input example"
+                                                        disabled readonly style="color: rgb(23, 187, 23);">
+                                                @else
+                                                    <input class="form-control" type="text"
+                                                        value="{{ $user->status }}" aria-label="Disabled input example"
+                                                        disabled readonly style="color: red;">
+                                                @endif
+
+                                            </div>
+
+                                        </td>
+                                        <td align="center"><a class="btn btn-primary "
+                                                href="{{ url('teacher/room/show/' . $user->student_id) }}"
+                                                role="button"><i class="bi bi-eye"></i></a></td>
+                                        <td align="center"><a class="btn btn-primary "
+                                                href="{{ url('teacher/room/edit/' . $user->student_id) }}"
+                                                role="button"><i class="bi bi-tools"></i></a></td>
+                                    </tr>
+                                @empty
+                               
+                                <div class="alert alert-info text-center" role="alert">
+                                  <h4><strong>ยังไม่มีนักเรียนในห้องเรียนนี้</strong> </h4>  
+                                </div>
+                                    
+                                @endforelse
                                 </tbody>
                             </table>
+                            @if ($UpClass == true)
+                                <div class="col text-end">
+                                    <button type="button" class="btn btn-primary" onclick="upClass()">เลื่อนขั้น</button>
+                                </div>
+                            @endif
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        function upClass() {
+            //   document.getElementById("demo").innerHTML = "Hello World";
+            // console.log({{}});
+
+            axios.put($url + '/teacher/students/upClass', {
+                    students: {!! $users !!},
+                    // lastName: 'Flintstone'
+                })
+                .then(function(response) {
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+    </script>
 @endsection

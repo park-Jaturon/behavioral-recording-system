@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Events;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Student;
@@ -218,25 +219,76 @@ class HomeController extends Controller
             ->where('parents_id', '=', Auth::user()->rank_id)
             ->join('rooms', 'students.rooms_id', '=', 'rooms.rooms_id')
             ->get();
-
+            Debugbar::info( $students);
         return view('parent.parent-activity', compact('students'));
     }
 
-    public function activity_show($id)
+    public function activity_show($id,$year)
     {
+       /* if($id == 1){
+
+        }elseif($id == 2){
+
+        }elseif($id == 3){
+
+        }elseif($id == 4){
+
+        }elseif($id == 5){
+
+        }elseif($id == 6){
+
+        }elseif($id == 7){
+
+        }elseif($id == 8){
+
+        }elseif($id == 9){
+
+        }elseif($id == 10){
+
+        }elseif($id == 11){
+
+        }elseif($id == 12){
+
+        }elseif($id == 13){
+
+        }elseif($id == 14){
+
+        }*/
         $event = DB::table('events')
             ->where('rooms_id', '=', $id)
+            ->where('school_year', '=', $year)
             ->get();
-        // dd($event);
-        return view('parent.show-activity', compact('event'));
+
+            // Debugbar::info($id);
+
+            $event2 = DB::table('events')
+            ->where('rooms_id', '=', 1)
+            ->where('school_year', '=', $year-1)
+            ->get();
+
+            Debugbar::info($event,$event2);
+
+        return view('parent.show-activity', compact('event','event2','id','year'));
     }
+
+    /*public function select_yevel(Request $request)
+    {
+        $event = DB::table('events')
+        ->where('rooms_id', '=', 2)
+        ->where('school_year', '=', $request->SchoolYear)
+        ->get();
+        Debugbar::info($event);
+
+        return response()->json($event);
+    } */
 
     public function activity_showimage($id)
     {
         $eventImage = DB::table('activities')
             ->where('events_id', '=', $id)
             ->get();
-        // dd($eventImage);
+            // Debugbar::info( $eventImage);
+        dd($id);
         return view('parent.show-activity-image', compact('eventImage'));
     }
 }

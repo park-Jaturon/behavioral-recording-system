@@ -181,6 +181,7 @@
                     $('#saveSub').click(function() {
                         var title = $('#title').val();
                         var rooms_id = {!! json_encode($room->rooms_id) !!};
+                        
                         var start_date = $('#estart').val();
                         var end_date = $('#eend').val();
                         console.log(title, start_date, end_date);

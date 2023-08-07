@@ -19,9 +19,10 @@ class RoomController extends Controller
         // ->join('students','rooms.rooms_id','=','students.rooms_id')
         // ->get();
        // dd($room);
-       $room = Room::all();
-    //    $teacher  = Teacher::all();
+       $room = Room::orderBy('room_name')->get();
+    //    $teacher  = Teacher::all();all()->
     //    $student   = Student::all();
+    Debugbar::info($room);
         return view('admin.roomindex',compact('room'));     //,'teacher','student'
     }
 

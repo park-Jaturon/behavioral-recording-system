@@ -75,55 +75,46 @@ class PersonalRecordController extends Controller
         $dataphysicallysemester1 = DB::table('physically')
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน1")
+            ->orderBy('table_section')
             ->get();
         $dataphysicallysemester2 = DB::table('physically')
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน2")
+            ->orderBy('table_section')
             ->get();
 
         $datamood_mindsemester1 = DB::table('mood_mind')
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน1")
+            ->orderBy('table_section')
             ->get();
         $datamood_mindsemester2 = DB::table('mood_mind')
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน2")
+            ->orderBy('table_section')
             ->get();
 
         $datasocialsemester1 = DB::table('social')
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน1")
+            ->orderBy('table_section')
             ->get();
         $datasocialsemester2 = DB::table('social')
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน2")
+            ->orderBy('table_section')
             ->get();
 
         $dataintellectualsemester1 = DB::table('intellectual')
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน1")
+            ->orderBy('table_section')
             ->get();
         $dataintellectualsemester2 = DB::table('intellectual')
             ->where('student_id', '=', $student_id)
             ->where('semester', '=', "ภาคเรียน2")
+            ->orderBy('table_section')
             ->get();
-
-        $SummaryPhysically = DB::table('physically') //แบบตาราง
-            ->select(DB::raw('ROUND(AVG(score_rate_physically),1) as physically'))
-            ->where('student_id', '=', $student->student_id)
-            ->first();
-        $SummaryMoodMind = DB::table('mood_mind')
-            ->select(DB::raw('ROUND(AVG(score_rate_mood_mind),1) as score_mood_mind'))
-            ->where('student_id', '=', $student->student_id)
-            ->first();
-        $SummarySocial = DB::table('social')
-            ->select(DB::raw('ROUND(AVG(score_rate_social),1) as score_social'))
-            ->where('student_id', '=', $student->student_id)
-            ->first();
-        $SummaryIntellectual = DB::table('intellectual')
-            ->select(DB::raw('ROUND(AVG(score_rate_intellectual),1) as score_intellectual'))
-            ->where('student_id', '=', $student->student_id)
-            ->first();
 
         $commenTeacher = DB::table('comment_appraisal')
             ->where('student_id', '=', $student_id)
@@ -173,10 +164,10 @@ class PersonalRecordController extends Controller
             ->where('semester', '=', 'ภาคเรียน2')
             ->first();
         //    dd(($appraisalsemester1mood_mind->score_mood_mind / 60) * 100);
-        //    Debugbar::info($appraisalsemester1Physically,$appraisalsemester2Physically);
-        //    Debugbar::info($appraisalsemester1mood_mind,$appraisalsemester2mood_mind);
-        //    Debugbar::info($appraisalsemester1social,$appraisalsemester2social);
-        //    Debugbar::info($appraisalsemester1intellectual,$appraisalsemester2intellectual);
+           Debugbar::info($dataphysicallysemester1,$dataphysicallysemester2);
+           Debugbar::info($datamood_mindsemester1,$datamood_mindsemester2);
+           Debugbar::info($datasocialsemester1,$datasocialsemester2);
+           Debugbar::info($dataintellectualsemester1,$dataintellectualsemester2);
         return view(
             'personal-record.appraisal-show',
             compact(
@@ -189,9 +180,9 @@ class PersonalRecordController extends Controller
                 'dataintellectualsemester1',
                 'dataintellectualsemester2',
                 // 'SummaryPhysically',
-                'SummaryMoodMind',
-                'SummarySocial',
-                'SummaryIntellectual',
+                // 'SummaryMoodMind',
+                // 'SummarySocial',
+                // 'SummaryIntellectual',
                 'commenTeacher',
                 'student_id',
                 'appraisalsemester1Physically',
@@ -340,12 +331,15 @@ class PersonalRecordController extends Controller
             count($table10_semester2) > 0
         ) {
             $check_table_semester2 = true;
+            Student::where('student_id', '=', $student_id)
+            ->update(['elevate' => 'true']);
         } else {
             $check_table_semester2 = false;
         }
 
         // Debugbar::warning($table1_semester1);
-        Debugbar::info( $table1_semester1);
+        // dd(NOW());
+        Debugbar::info(DATE(NOW()));
 
         return view('personal-record.appraisal-add', compact(
             'student',
@@ -422,6 +416,7 @@ class PersonalRecordController extends Controller
                     try {
                         $dataPhysically = [
                             'score_rate_physically' => $request->$name,
+                            'updated_at' => DATE(NOW())
                         ];
 
                         // dd($dataPhysically, request()->all());
@@ -444,7 +439,8 @@ class PersonalRecordController extends Controller
                                 'semester' => $request->semester,
                                 'score_rate_physically' => $request->$name,
                                 'table_no' => $table_no,
-                                'table_section' => $section
+                                'table_section' => $section,
+                                'created_at' => DATE(NOW())
                             ]
                         ];
                         // dd($dataPhysically, request()->all());
@@ -492,6 +488,7 @@ class PersonalRecordController extends Controller
                     try {
                         $dataPhysically = [
                             'score_rate_physically' => $request->$name,
+                            'updated_at' => DATE(NOW())
                         ];
 
                         // dd($dataPhysically, request()->all());
@@ -515,7 +512,8 @@ class PersonalRecordController extends Controller
                                 'semester' => $request->semester,
                                 'score_rate_physically' => $request->$name,
                                 'table_no' => $table_no,
-                                'table_section' => $section
+                                'table_section' => $section,
+                                'created_at' => DATE(NOW())
                             ]
                         ];
                         // dd($dataPhysically, request()->all());
@@ -566,6 +564,7 @@ class PersonalRecordController extends Controller
                     try {
                         $dataMoodMind = [
                             'score_rate_mood_mind' => $request->$name,
+                            'updated_at' => DATE(NOW())
                         ];
 
                         // dd($dataPhysically, request()->all());
@@ -589,7 +588,8 @@ class PersonalRecordController extends Controller
                                 'semester' => $request->semester,
                                 'score_rate_mood_mind' => $request->$name,
                                 'table_no' => $table_no,
-                                'table_section' => $section
+                                'table_section' => $section,
+                                'created_at' => DATE(NOW())
                             ]
                         ];
                         // dd($dataPhysically, request()->all());
@@ -638,6 +638,7 @@ class PersonalRecordController extends Controller
                     try {
                         $dataMoodMind = [
                             'score_rate_mood_mind' => $request->$name,
+                            'updated_at' => DATE(NOW())
                         ];
 
                         // dd($dataPhysically, request()->all());
@@ -661,7 +662,8 @@ class PersonalRecordController extends Controller
                                 'semester' => $request->semester,
                                 'score_rate_mood_mind' => $request->$name,
                                 'table_no' => $table_no,
-                                'table_section' => $section
+                                'table_section' => $section,
+                                'created_at' => DATE(NOW())
                             ]
                         ];
                         // dd($dataPhysically, request()->all());
@@ -709,6 +711,7 @@ class PersonalRecordController extends Controller
                     try {
                         $dataSocial = [
                             'score_rate_social' => $request->$name,
+                            'updated_at' => DATE(NOW())
                         ];
 
                         // dd($dataPhysically, request()->all());
@@ -732,7 +735,8 @@ class PersonalRecordController extends Controller
                                 'semester' => $request->semester,
                                 'score_rate_social' => $request->$name,
                                 'table_no' => $table_no,
-                                'table_section' => $section
+                                'table_section' => $section,
+                                'created_at' => DATE(NOW())
                             ]
                         ];
                         // dd($dataPhysically, request()->all());
@@ -778,6 +782,7 @@ class PersonalRecordController extends Controller
                     try {
                         $dataSocial = [
                             'score_rate_social' => $request->$name,
+                            'updated_at' => DATE(NOW())
                         ];
 
                         // dd($dataPhysically, request()->all());
@@ -801,7 +806,8 @@ class PersonalRecordController extends Controller
                                 'semester' => $request->semester,
                                 'score_rate_social' => $request->$name,
                                 'table_no' => $table_no,
-                                'table_section' => $section
+                                'table_section' => $section,
+                                'created_at' => DATE(NOW())
                             ]
                         ];
                         // dd($dataPhysically, request()->all());
@@ -857,6 +863,7 @@ class PersonalRecordController extends Controller
                     try {
                         $dataSocial = [
                             'score_rate_social' => $request->$name,
+                            'updated_at' => DATE(NOW())
                         ];
 
                         // dd($dataPhysically, request()->all());
@@ -880,7 +887,8 @@ class PersonalRecordController extends Controller
                                 'semester' => $request->semester,
                                 'score_rate_social' => $request->$name,
                                 'table_no' => $table_no,
-                                'table_section' => $section
+                                'table_section' => $section,
+                                'created_at' => DATE(NOW())
                             ]
                         ];
                         // dd($dataPhysically, request()->all());
@@ -947,6 +955,7 @@ class PersonalRecordController extends Controller
                     try {
                         $dataIntellectual = [
                             'score_rate_intellectual' => $request->$name,
+                            'updated_at' => DATE(NOW())
                         ];
 
                         // dd($dataPhysically, request()->all());
@@ -970,7 +979,8 @@ class PersonalRecordController extends Controller
                                 'semester' => $request->semester,
                                 'score_rate_intellectual' => $request->$name,
                                 'table_no' => $table_no,
-                                'table_section' => $section
+                                'table_section' => $section,
+                                'created_at' => DATE(NOW())
                             ]
                         ];
                         // dd($dataPhysically, request()->all());
@@ -1021,6 +1031,7 @@ class PersonalRecordController extends Controller
                     try {
                         $dataIntellectual = [
                             'score_rate_intellectual' => $request->$name,
+                            'updated_at' => DATE(NOW())
                         ];
 
                         // dd($dataPhysically, request()->all());
@@ -1044,7 +1055,8 @@ class PersonalRecordController extends Controller
                                 'semester' => $request->semester,
                                 'score_rate_intellectual' => $request->$name,
                                 'table_no' => $table_no,
-                                'table_section' => $section
+                                'table_section' => $section,
+                                'created_at' => DATE(NOW())
                             ]
                         ];
                         // dd($dataPhysically, request()->all());
@@ -1074,7 +1086,8 @@ class PersonalRecordController extends Controller
                     $dataComment = [
                         [
                             'comment_teacher' => $request->commenteacher,
-                            'semester' => $request->semester
+                            'semester' => $request->semester,
+                            'updated_at' => DATE(NOW())
                         ]
                     ];
 
@@ -1084,7 +1097,7 @@ class PersonalRecordController extends Controller
                         ->where('student_id', $student_id)
                         ->where('teachers_id', Auth::user()->rank_id)
                         ->where('table_no', $table_no)
-                        ->update($dataIntellectual);
+                        ->update($dataComment);
                     DB::commit();
                 } catch (Exception $e) {
                     DB::rollBack();
@@ -1099,6 +1112,7 @@ class PersonalRecordController extends Controller
                         'comment_teacher' => $request->commenteacher,
                         'table_no' => $table_no,
                         'semester' => $request->semester,
+                        'created_at' => DATE(NOW())
 
                     ];
                     // dd($dataPhysically, request()->all());

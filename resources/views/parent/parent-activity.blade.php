@@ -27,7 +27,7 @@
                                         <th scope="row">
                                             {{ $row->prefix_name . $row->first_name . ' ' . $row->last_name }}
                                         </th>
-                                        <td> <a href="{{ url('parent/descendant/activity/show/' . $row->rooms_id) }}"
+                                        <td> <a href="{{ url('parent/descendant/activity/show/' . $row->rooms_id.'/'.$row->school_year) }}"
                                                 style="text-decoration: none;">{{ $row->room_name }}</a></td>
                                     </tr>
                                 @endforeach

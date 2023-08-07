@@ -55,12 +55,14 @@ class CheckController extends Controller
     {
 // dd($request);
         // $timenow = date('H:i:s');
+        $levelstudent = Student::findOrFail($student_id);
         $datenow = date('Y/m/d');
         if (isset($request->checkin)) {
             $check_in = new Timecards();
             $check_in->student_id = $student_id;
             $check_in->c_date = $datenow;
             $check_in->c_in = $request->checkin;
+            $check_in->level = $levelstudent->level;
             $check_in->save();
             return redirect()->back()->with('Messages','คุณได้บันทึกเวลามาโรงเรียนเรียบร้อยแล้ว');
         }elseif(isset($request->checkout)){

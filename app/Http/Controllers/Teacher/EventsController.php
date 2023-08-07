@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Events;
+use App\Models\Room;
+use App\Models\Student;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,19 +32,21 @@ class EventsController extends Controller
         }
 
         $room = DB::table('teachers')
-        // ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
         ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
         ->first();
-
         return view('teacher.event-index', ['events' => $events],compact('room'));
     }
 
     public function store(Request $request)
     {
+        $levelsClass = Room::findOrFail($request->rooms_id);
+        $schoolYear = Student::where('rooms_id', $levelsClass->rooms_id)->first(); 
+        // Debugbar::info( $schoolYear->school_year);
         $request->validate([
             'title' => 'required|string',
             'start_date' => 'required',
-            'end_date' => 'required'
+            'end_date' => 'required',
+
         ]);
 
         $subject = Events::create([
@@ -49,6 +54,8 @@ class EventsController extends Controller
             'rooms_id' => $request->rooms_id,
             'start' => $request->start_date,
             'end' => $request->end_date,
+            'level' => $levelsClass->room_name,
+            'school_year' =>$schoolYear->school_year,
         ]);
     return response()->json([
         'id' => $subject->events_id,

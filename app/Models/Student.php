@@ -30,6 +30,10 @@ class Student extends Model
         'telephone_number_mother',
         'telephone_number_bus',
         'habitations',
+        'level',
+        'status',
+        'elevate',
+        'school_year',
     ];
 
     public function images(){

@@ -26,7 +26,7 @@ class ManagestudentController extends Controller
     {
         $data = Student::findOrFail($student_id);
         $StudentRoom = Room::findOrFail($data->rooms_id);
-        $room = Room::all();
+        $room = Room::orderBy('room_name')->get();
         $ParentStuden = Parents::findOrFail($data->parents_id);
         $parent = Parents::all();
         Debugbar::info($ParentStuden);
@@ -36,10 +36,12 @@ class ManagestudentController extends Controller
     public function addstudent()
     {
         $data = new Student();
-        $room = Room::all();
+        $room = Room::orderBy('room_name')->get();
         $parent = Parents::all();
         $ParentStuden = new Parents();
         $StudentRoom = new Room();
+        Debugbar::info($room);
+        Debugbar::info(date("Y")+543);
         return view('admin.studentadd',compact('data','room','parent','StudentRoom','ParentStuden'));
     }
 
@@ -92,8 +94,9 @@ class ManagestudentController extends Controller
             'telephonenumberbus.numeric' => 'โปรดระบุเบอร์โทรถรับส่งเป็นตัวเลขเท่านั้น',
             'telephonenumberbus.digits' => 'เบอร์โทรถรับส่งต้องมี 10 ตัว',
             'habitations.required' => 'กรุณาป้อน ที่อยู่',
+            'habitations.min' => 'ที่อยู่ไม่ถูกต้อง'
         ]);
-        //dd($request);
+        // Debugbar::info(date("Y")+543);
         Student::create([
             'prefix_name' => $request->prefix,
             'first_name' => $request->firstname,
@@ -110,6 +113,7 @@ class ManagestudentController extends Controller
             'telephone_number_mother' => $request->telephonenumbermother,
             'telephone_number_bus' => $request->telephonenumberbus,
             'habitations' => $request->habitations,
+            'school_year' => date("Y")+543,
         ]);
         return redirect()->back()->with('success','บันทึกข้อมูลเสร็จสิ้น');
     }
