@@ -223,52 +223,114 @@ class HomeController extends Controller
         return view('parent.parent-activity', compact('students'));
     }
 
-    public function activity_show($id,$year)
+    public function activity_show($id,$year,$level)          //
     {
-       /* if($id == 1){
+        // Debugbar::info($id,$year,$level);
+        if ($level === 'อบ2') {
+            if($id == 1){
+                $event = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+                $event2 = new Events();
+            }elseif($id == 2){
+                $event = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+                $event2 = new Events();
+            }elseif($id == 5){
+                $event = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+                $event2 = new Events();
+            }elseif($id == 6){
+                $event = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+                $event2 = new Events();
+            }elseif($id == 7){
+                $event = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+                $event2 = new Events();
+            }elseif($id == 8){
+                $event = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+                $event2 = new Events();
+            }
+        }
 
-        }elseif($id == 2){
+        if ($level === 'อบ3') {
+            if($id == 9){
+                $event2 = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+    
+                $event = DB::table('events')
+                ->where('rooms_id', '=', 1)
+                ->where('school_year', '=', $year-1)
+                ->get();
+            }elseif($id == 10){
+                $event2 = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+    
+                $event = DB::table('events')
+                ->where('rooms_id', '=', 1)
+                ->where('school_year', '=', $year-1)
+                ->get();
+            }elseif($id == 11){
+                $event2 = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+    
+                $event = DB::table('events')
+                ->where('rooms_id', '=', 1)
+                ->where('school_year', '=', $year-1)
+                ->get();
+            }elseif($id == 12){
+                $event2 = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+    
+                $event = DB::table('events')
+                ->where('rooms_id', '=', 1)
+                ->where('school_year', '=', $year-1)
+                ->get();
+            }elseif($id == 13){
+                $event2 = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+    
+                $event = DB::table('events')
+                ->where('rooms_id', '=', 1)
+                ->where('school_year', '=', $year-1)
+                ->get();
+            }elseif($id == 14){
+                $event2 = DB::table('events')
+                ->where('rooms_id', '=', $id)
+                ->where('school_year', '=', $year)
+                ->get();
+    
+                $event = DB::table('events')
+                ->where('rooms_id', '=', 1)
+                ->where('school_year', '=', $year-1)
+                ->get();
+            }
+        }
 
-        }elseif($id == 3){
-
-        }elseif($id == 4){
-
-        }elseif($id == 5){
-
-        }elseif($id == 6){
-
-        }elseif($id == 7){
-
-        }elseif($id == 8){
-
-        }elseif($id == 9){
-
-        }elseif($id == 10){
-
-        }elseif($id == 11){
-
-        }elseif($id == 12){
-
-        }elseif($id == 13){
-
-        }elseif($id == 14){
-
-        }*/
-        $event = DB::table('events')
-            ->where('rooms_id', '=', $id)
-            ->where('school_year', '=', $year)
-            ->get();
-
-            // Debugbar::info($id);
-
-            $event2 = DB::table('events')
-            ->where('rooms_id', '=', 1)
-            ->where('school_year', '=', $year-1)
-            ->get();
-
-            Debugbar::info($event,$event2);
-
-        return view('parent.show-activity', compact('event','event2','id','year'));
+        return view('parent.show-activity', compact('event','event2','level','year'));    //  
     }
 
     /*public function select_yevel(Request $request)

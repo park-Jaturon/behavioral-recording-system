@@ -152,7 +152,7 @@ Route::prefix('parent')->middleware('isparent')->group(function () {
     Route::get('behaviors',[HomeController::class, 'descendant_behaviors'])->name('descendant.behaviors');
     Route::get('descendant/behavior/show/{student_id}',[HomeController::class, 'behavior_show']); //
     Route::get('activity',[HomeController::class, 'descendant_activity'])->name('activity.descendant');
-    Route::get('descendant/activity/show/{rooms_id}/{school_year}',[HomeController::class, 'activity_show']);
-    Route::get('descendant/activity/show/image/{events_id}',[HomeController::class, 'activity_showimage']);
+    Route::get('descendant/activity/image/show/{events_id}',[HomeController::class, 'activity_showimage']);
+    Route::get('descendant/activity/show/{rooms_id}/{school_year}/{level}',[HomeController::class, 'activity_show'])->name('show_activity');
     Route::post('selectLevel',[HomeController::class,'select_yevel']);
 });
