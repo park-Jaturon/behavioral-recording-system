@@ -50,7 +50,7 @@ class TeacherController extends Controller
         } else {
             $UpClass = false;
         }
-        Debugbar::info($UpClass);
+        Debugbar::info($users);
         return view('teacher.home-teacher', compact('users', 'UpClass'));
     }
 

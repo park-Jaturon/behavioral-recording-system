@@ -81,7 +81,7 @@
                     ${formatDate(item.start)}
                 </td>
                 <td>
-                    <a href="${$url}/parent/home">${item.title}</a>
+                    <a href="${$url}/parent/descendant/activity/image/show/${item.events_id}/${item.school_year}">${item.title}</a>
                 </td>
                 </tr>`;
 

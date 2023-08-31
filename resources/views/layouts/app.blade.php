@@ -141,6 +141,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('index.user') }}">ผู้ใช้งาน</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('index.admin') }}">Admin</a>
+                                    </li>
                                     {{-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">

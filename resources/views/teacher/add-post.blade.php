@@ -5,7 +5,13 @@
         <div class="row justify-content-center align-items-center g-2">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('เพิ่มประกาศ') }}</div>
+                    <div class="card-header">
+                        @if (empty($data->posts_id))
+                        {{ __('เพิ่มประกาศ') }}
+                    @else
+                        {{ __('แก้ไขประกาศ') }}
+                    @endif
+                    </div>
 
                     <div class="card-body">
                         <form action="{{empty($data->posts_id) ? url('teacher/post/store/'.$room->rooms_id) : url('teacher/post/update/' . $data->posts_id) }}" method="post">
@@ -17,11 +23,24 @@
                                 <label for="" class="form-label">หัวเรื่อง</label>
                                 <input type="text" name="topic" id="" class="form-control" placeholder=""
                                     aria-describedby="helpId" value="{{ old('topic',$data->p_topic) }}"> {{-- p_name --}}
-                                {{-- <small id="helpId" class="text-muted">Help text</small> --}}
+                                    <small id="helpId" class="text-muted"> 
+                                        @error('topic')
+                                            <span role="alert" class="text-danger">
+                                                <strong> {{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </small>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">เนื้อความ</label>
                                 <textarea name="description" id="editor" rows="3">{{ old('description',$data->p_description) }}</textarea>{{-- ,$data->description --}}
+                                <small id="helpId" class="text-muted"> 
+                                    @error('description')
+                                        <span role="alert" class="text-danger">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </small>
                             </div>
                             <button type="submit" class="btn btn-primary float-end">
                                 {{ __('บันทึก') }}

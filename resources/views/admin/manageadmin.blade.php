@@ -30,7 +30,10 @@
                             @foreach ($IDAdmin as $ID)
                             <tr class="">
                                 <td scope="row" class=" text-center">{{ $ID->users_name }}</td>
-                                {{-- <td><a name="" id="" class="btn btn-primary" href="#" role="button">แก้ไข</a></td> --}}
+                                {{-- <td>
+                                     <a class="btn btn-warning "href="{{ url('admin/users/edit/' . $ID->users_id) }}"role="button">แก้ไข</a> 
+                                    // <a name="" id="" class="btn btn-warning" href="{{ url('admin/users/edit/' . $ID->users_id) }}" role="button">แก้ไข</a> 
+                                </td> --}}
                                 <td>
                                     <button type="button" class="btn btn-danger delete-item"
                                             data-admin_id="{{ $ID->users_id}}">ลบ</button>

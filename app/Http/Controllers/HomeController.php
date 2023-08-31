@@ -69,6 +69,15 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request);
+        $request->validate([
+            'name' => ['required', 'string','min:3', 'max:255'],
+            'password' => ['required', 'string', 'min:8'],
+        ],[
+            'name.required' => 'โปรดระบุ IDName',
+            'name.min' => 'ข้อมูลไม่ถูกต้อง IDName ต้องมีอย่างน้อย 3 ตัว', 
+            'password.min' => 'ข้อมูลไม่ถูกต้อง password ต้องมีอย่างน้อย 8 ตัว',
+        ]);
+
         User::where('users_id', $id)
             ->update([
                 'users_name' => $request->name,

@@ -6,7 +6,11 @@
 
             <div class="card">
                 <div class="card-header">
-                    {{ __('ประวัตินักเรียน') }}
+                    @if (empty($data->student_id))
+                            {{ __('เพิ่มข้อมูลนักเรียน') }}
+                        @else
+                            {{ __('แก้ไขข้อมูลนักเรียน') }}
+                        @endif
                 </div>
                 <div class="card-body">
                     @if ($message = Session::get('success'))

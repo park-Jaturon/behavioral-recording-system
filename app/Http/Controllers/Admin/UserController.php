@@ -90,7 +90,8 @@ class UserController extends Controller
 
     public function register_admin()
     {
-        return view('admin.admin-add');
+        $dataAdmin = new User();
+        return view('admin.admin-add',compact('dataAdmin'));
     }
 
     public function store_admin(Request $request)
@@ -116,6 +117,35 @@ class UserController extends Controller
 
         return redirect()->route('index.admin')->with('success','บันทึกข้อมูลเสร็จสิ้น');
     }
+
+    // public function edit_admin($users_id)
+    // {
+    // //    dd($users_id);
+    //     $dataAdmin = User::findOrFail($users_id);
+    //     return view('admin.admin-edit',compact('dataAdmin'));
+    // }
+
+    public function update_admin(Request $request,$users_id)
+    {
+        $request->validate([
+            'name' => ['required', 'string','min:3', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],[
+            'name.required' => 'โปรดระบุ IDName',
+            'name.min' => 'ข้อมูลไม่ถูกต้อง IDName ต้องมีอย่างน้อย 3 ตัว', 
+            'password.min' => 'ข้อมูลไม่ถูกต้อง password ต้องมีอย่างน้อย 9 ตัว',
+            'password.confirmed' => 'รหัสผ่านไม่ตรงกัน',
+        ]);
+
+        User::where('users_id', $users_id)
+      ->update([
+        'users_name' => $request['name'],
+        'password' => Hash::make($request['password']),
+
+    ]);
+    return redirect()->route('index.admin')->with('success','แก้ไขข้อมูลเสร็จสิ้น');
+    }
+
     public function inspectAdmin(Request $request)
     {
         $dataAdmin = User::findOrFail($request->admin);

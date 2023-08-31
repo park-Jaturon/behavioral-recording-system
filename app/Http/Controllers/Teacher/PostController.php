@@ -13,24 +13,24 @@ class PostController extends Controller
 {
     public function index()
     {
-       $post = DB::table('teachers')
-    //    ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
-       ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
-       ->join('posts','teachers.rooms_id','=','posts.rooms_id')
-       ->get();
-    //    dd($post);
+        $post = DB::table('teachers')
+            //    ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+            ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+            ->join('posts', 'teachers.rooms_id', '=', 'posts.rooms_id')
+            ->get();
+        //    dd($post);
         return view('teacher.post-index', compact('post'));
     }
 
     public function add_post()
     {
         $room = DB::table('teachers')
-        // ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
-        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
-        ->first();
+            // ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
+            ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+            ->first();
         $data = new  Post();
         // dd($room);
-        return view('teacher.add-post', compact('data','room'));
+        return view('teacher.add-post', compact('data', 'room'));
     }
 
     public function uploadimage(Request $request)
@@ -51,6 +51,17 @@ class PostController extends Controller
 
     public function store(Request $request, $rooms_id)
     {
+
+        $request->validate(
+            [
+                'topic' => 'required|string', //min:5
+                'description' => 'required|string'
+            ],
+            [
+                'topic.required' => 'โปรดระบุ หัวเรื่อง',
+                'description.required' => 'โปรดระบุ เนื้อความ',
+            ]
+        );
         // dd($request);
         Post::create([
             'rooms_id' => $rooms_id,
@@ -70,6 +81,17 @@ class PostController extends Controller
 
     public function update(Request $request, $posts_id)
     {
+        $request->validate(
+            [
+                'topic' => 'required|string', //min:5
+                'description' => 'required|string'
+            ],
+            [
+                'topic.required' => 'โปรดระบุ หัวเรื่อง',
+                'description.required' => 'โปรดระบุ เนื้อความ',
+            ]
+        );
+        
         Post::where('posts_id', $posts_id)
             ->update([
                 'p_topic' => $request->topic,

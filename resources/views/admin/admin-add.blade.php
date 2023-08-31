@@ -6,7 +6,11 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-header">
+                        @if (empty($dataAdmin->users_id))
                         {{ __('เพิ่มผู้ดูแลระบบ') }}
+                    @else
+                        {{ __('แก้ไขผู้ดูแลระบบ') }}
+                    @endif
                     </div>
                     <div class="card-body">
                         @if ($message = Session::get('success'))

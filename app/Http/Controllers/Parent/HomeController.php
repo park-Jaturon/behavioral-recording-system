@@ -233,36 +233,43 @@ class HomeController extends Controller
                 ->where('school_year', '=', $year)
                 ->get();
                 $event2 = new Events();
+
+                Debugbar::info( $event,$event2);
             }elseif($id == 2){
                 $event = DB::table('events')
                 ->where('rooms_id', '=', $id)
                 ->where('school_year', '=', $year)
                 ->get();
                 $event2 = new Events();
+                Debugbar::info( $event,$event2);
             }elseif($id == 5){
                 $event = DB::table('events')
                 ->where('rooms_id', '=', $id)
                 ->where('school_year', '=', $year)
                 ->get();
                 $event2 = new Events();
+                Debugbar::info( $event,$event2);
             }elseif($id == 6){
                 $event = DB::table('events')
                 ->where('rooms_id', '=', $id)
                 ->where('school_year', '=', $year)
                 ->get();
                 $event2 = new Events();
+                Debugbar::info( $event,$event2);
             }elseif($id == 7){
                 $event = DB::table('events')
                 ->where('rooms_id', '=', $id)
                 ->where('school_year', '=', $year)
                 ->get();
                 $event2 = new Events();
+                Debugbar::info( $event,$event2);
             }elseif($id == 8){
                 $event = DB::table('events')
                 ->where('rooms_id', '=', $id)
                 ->where('school_year', '=', $year)
                 ->get();
                 $event2 = new Events();
+                Debugbar::info( $event,$event2);
             }
         }
 
@@ -277,6 +284,7 @@ class HomeController extends Controller
                 ->where('rooms_id', '=', 1)
                 ->where('school_year', '=', $year-1)
                 ->get();
+                Debugbar::info( $event,$event2);
             }elseif($id == 10){
                 $event2 = DB::table('events')
                 ->where('rooms_id', '=', $id)
@@ -297,6 +305,7 @@ class HomeController extends Controller
                 ->where('rooms_id', '=', 1)
                 ->where('school_year', '=', $year-1)
                 ->get();
+                Debugbar::info( $event,$event2);
             }elseif($id == 12){
                 $event2 = DB::table('events')
                 ->where('rooms_id', '=', $id)
@@ -307,6 +316,7 @@ class HomeController extends Controller
                 ->where('rooms_id', '=', 1)
                 ->where('school_year', '=', $year-1)
                 ->get();
+                Debugbar::info( $event,$event2);
             }elseif($id == 13){
                 $event2 = DB::table('events')
                 ->where('rooms_id', '=', $id)
@@ -317,6 +327,7 @@ class HomeController extends Controller
                 ->where('rooms_id', '=', 1)
                 ->where('school_year', '=', $year-1)
                 ->get();
+                Debugbar::info( $event,$event2);
             }elseif($id == 14){
                 $event2 = DB::table('events')
                 ->where('rooms_id', '=', $id)
@@ -327,6 +338,7 @@ class HomeController extends Controller
                 ->where('rooms_id', '=', 1)
                 ->where('school_year', '=', $year-1)
                 ->get();
+                Debugbar::info( $event,$event2);
             }
         }
 
@@ -344,13 +356,14 @@ class HomeController extends Controller
         return response()->json($event);
     } */
 
-    public function activity_showimage($id)
+    public function activity_showimage($id,$school_year)
     {
         $eventImage = DB::table('activities')
             ->where('events_id', '=', $id)
+            ->where('school_year', '=', $school_year)
             ->get();
             // Debugbar::info( $eventImage);
-        dd($id);
+        // dd($id,$school_year);
         return view('parent.show-activity-image', compact('eventImage'));
     }
 }

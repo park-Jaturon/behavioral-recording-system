@@ -66,7 +66,7 @@ class RoomController extends Controller
         [
             'room_name.required'=> 'โปรดระบุ ห้องเรียน',
             'room_name.regex'=> 'รูปแบบห้องเรียนไม่ถูกต้อง ตัวอย่าง อบ2/1 *ห้ามเว้นวรรค',
-            'roomname.max' => 'ห้องเรียนนี้ถูกใช้ไปแล้ว',
+            'room_name.unique' => 'ห้องเรียนนี้มีในระบบแล้ว',
         ]);
 
         $room = Room::findOrFail($rooms_id);

@@ -73,7 +73,6 @@
                                 </div>
                             @endif
 
-
                         </div>
                     </div>
                 </div>
@@ -88,14 +87,16 @@
             //   document.getElementById("demo").innerHTML = "Hello World";
             // console.log({{}});
 
-            axios.put($url + '/teacher/students/upClass', {
+            axios.post($url + '/teacher/students/upClass', {
                     students: {!! $users !!},
-                    // lastName: 'Flintstone'
+                    
                 })
                 .then(function(response) {
                     console.log(response);
+                    window.location.reload();
                 })
                 .catch(function(error) {
+                    
                     console.log(error);
                 });
         }

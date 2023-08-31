@@ -59,8 +59,12 @@
                         count($table10_semester1) > 0 &&
                         count($table10_semester2) > 0)
                     <div class="alert alert-info text-center" role="alert">
-                        <h5>ประเมินพัฒนาการครบทั้ง2ภาคเรียนแล้ว <a
-                                href="{{ url('teacher/record/appraisal/show/' . $student->student_id) }}"> ดูบันทึก</a> </h5>
+                        <h5>
+                            ประเมินพัฒนาการครบทั้ง2ภาคเรียนแล้ว
+                            <a href="{{ url('teacher/record/appraisal/show/' . $student->student_id) }}">
+                                ดูบันทึก
+                            </a>
+                        </h5>
                     </div>
                 @else
                     <div class="card">
@@ -2587,7 +2591,7 @@
             ]
         ]
 
-        
+
         $(document).ready(function() {
             if (data1_1.length > 0 || data1_2.length > 0) {
                 $('#pills-1-tab').addClass('have-data');
@@ -2685,7 +2689,8 @@
 
             if (semester === 'ภาคเรียน2') {
                 dataList[0].forEach((v, index) => (index += 1, $(`#pills-${index}-tab`).removeClass('have-data')));
-                dataList[1].forEach((v, index) => (index += 1, v.length > 0 && $(`#pills-${index}-tab`).addClass('have-data')));
+                dataList[1].forEach((v, index) => (index += 1, v.length > 0 && $(`#pills-${index}-tab`).addClass(
+                    'have-data')));
             }
 
             if (table === 'table1') {
