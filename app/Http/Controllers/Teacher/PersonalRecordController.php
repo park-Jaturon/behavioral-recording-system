@@ -53,8 +53,9 @@ class PersonalRecordController extends Controller
             ->join('rooms', 'teachers.rooms_id', '=', 'rooms.rooms_id')
             ->join('students', 'rooms.rooms_id', '=', 'students.rooms_id')
             ->where('users.rank_id', '=', Auth::user()->rank_id)
-            ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name')
+            ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name','level')
             ->get();
+            Debugbar::info( $user);
         return view('personal-record.development-appraisal', compact('user'));
     }
 

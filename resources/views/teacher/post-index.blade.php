@@ -18,7 +18,10 @@
                 @foreach ($post as $row)
                     <div class="card mb-3">
                         <div class="card-header">
-                            {{ $row->p_topic }}
+                            <div class="row">
+                                <div class="col"><label for="topic">{{ $row->p_topic}}</label></div>
+                                <div class="col text-end"> <label for="status">{{__('สถานะ').' '.':'.' '.$row->status}}</label></div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
@@ -26,12 +29,14 @@
                                 {!! $row->p_description !!}
                             </div>
                         </div>
-                        @if (auth()->User()->rank == 'teacher')
-                            <div class="card-footer text-end">
+
+                        <div class="card-footer text-end">
+                            @if (auth()->User()->rank == 'teacher')
                                 <a href="{{ url('teacher/post/edit/' . $row->posts_id) }}" class="btn btn-primary">แก้ไข</a>
-                                <button type="button" class="btn btn-danger delete-item " data-posts_id="{{ $row->posts_id }}">ลบ</button>                              
-                            </div>
-                        @endif
+                                {{-- <button type="button" class="btn btn-danger delete-item "
+                                    data-posts_id="{{ $row->posts_id }}">ลบ</button> --}}
+                            @endif
+                        </div>
 
                     </div>
                 @endforeach
@@ -39,10 +44,8 @@
 
         </div>
     </div>
-   
-    
 @endsection
 
 @section('script')
-<script src="\js\confirm-delete-post.js"></script>
+    <script src="\js\confirm-delete-post.js"></script>
 @endsection

@@ -23,10 +23,13 @@
                                 </div>
                               </div>
                             <div class="row mb-0 ">
-                                <div class="col-md-8 offset-md-4 ">
+                                <div class="col-md-auto  ">
                                     <button type="submit" class="btn btn-primary float-end">
                                         {{ __('บันทึก') }}
                                     </button>
+                                </div>
+                                <div class="col-md-auto  ">
+                                   <a name="" id="" class="btn btn-danger" href="{{route('image.activity',['events_id'=>$event->events_id])}}" role="button">ยกเลิก</a>
                                 </div>
                             </div>
                         </form>

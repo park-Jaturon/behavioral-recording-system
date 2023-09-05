@@ -29,10 +29,18 @@
                                     <tr>
                                         <th scope="row" class=" text-center">{{ $data->number }}</th>
                                         <td>
-                                            <a href="{{ url('teacher/record/appraisal/add/' . $data->student_id) }}"
+                                            @if ($data->level == 'อบ2')
+                                                 <a href="{{ url('teacher/record/appraisal/add/' . $data->student_id) }}"
                                                 style="text-decoration: none;">
                                                 {{ $data->prefix_name . $data->first_name . ' ' . $data->last_name }}
                                             </a>
+                                            @else
+                                            <a href="{{ url('teacher/record/appraisal/add2/' . $data->student_id) }}"
+                                                style="text-decoration: none;">
+                                                {{ $data->prefix_name . $data->first_name . ' ' . $data->last_name }}
+                                            </a>
+                                            @endif
+                                           
                                         </td>
                                         <td class=" text-center">{{ $data->room_name }}</td>
                                         <td class=" text-center">

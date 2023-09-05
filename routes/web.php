@@ -92,7 +92,7 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('room/show/{id}',[TeacherController::class, 'room_show'])->name('room.show');
     Route::get('room/edit/{id}',[TeacherController::class, 'room_edit'])->name('room.edit');
     Route::post('room/update/{id}',[TeacherController::class, 'room_update'])->name('room.update');
-    Route::post('students/upClass',[TeacherController::class, 'upClass']);
+    Route::post('students/upClass',[TeacherController::class, 'upClass'])->name('up.class');
     /* Check */
     Route::get('check',[CheckController::class, 'index'])->name('index.check');
     Route::get('post-time/{student_id}',[CheckController::class, 'post_time']);
@@ -111,7 +111,9 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::patch('event/update/{id}', [EventsController::class, 'update'])->name('calendar.update');
     Route::delete('event/delete/{id}', [EventsController::class, 'destroy'])->name('calendar.destroy');
     /* Activity */ 
-    Route::get('activity/index',[ActivityController::class, 'index'])->name('index.activity');
+    Route::get('activity/edit/{events_id}',[ActivityController::class, 'edit'])->name('edit.activity');
+    Route::post('activity/update/{events_id}',[ActivityController::class, 'update_activity'])->name('update.activity');
+    Route::delete('activity/delete/{id}',[ActivityController::class, 'destroy']);
     Route::get('activity/{events_id}',[ActivityController::class, 'image'])->name('image.activity');
     Route::get('activity/add/{events_id}',[ActivityController::class, 'add'])->name('add.activity');
     Route::post('activity/store/{events_id}',[ActivityController::class, 'store_activity'])->name('store.activity');

@@ -5,7 +5,22 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('ประวัตินักเรียน') }}</div>
+                    <div class="card-header">
+                        {{-- <div class="row">
+                            
+                           <h5>{{ __('ประวัตินักเรียน') }}</h5> 
+                        </div> --}}
+                        <div class="row justify-content-start">
+                            <div class="col ">
+                                <a class="btn btn-light" href="{{ route('teacher.room') }}" role="button"><i
+                                        class="bi bi-chevron-left"></i></a>
+                                <label for="">
+                                    <h5>{{ __('ประวัตินักเรียน') }}</h5>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -13,7 +28,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        
+
                         <div class="container ">
                             <div class="row">
                                 <div class=" col">
@@ -33,9 +48,8 @@
                                 <div class="mb-3 col">
                                     <label for="birthdays" class=" col-form-label">วันเกิด</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text"
-                                            value="{{ $datastudents->birthdays }}" aria-label="readonly input example"
-                                            readonly>
+                                        <input class="form-control" type="text" value="{{ $datastudents->birthdays }}"
+                                            aria-label="readonly input example" readonly>
 
                                     </div>
                                 </div>

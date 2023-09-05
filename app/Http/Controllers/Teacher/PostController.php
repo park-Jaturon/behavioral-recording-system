@@ -81,6 +81,7 @@ class PostController extends Controller
 
     public function update(Request $request, $posts_id)
     {
+        // dd($request);
         $request->validate(
             [
                 'topic' => 'required|string', //min:5
@@ -96,6 +97,7 @@ class PostController extends Controller
             ->update([
                 'p_topic' => $request->topic,
                 'p_description' => $request->description,
+                'status' => $request->flexRadioDefault,
             ]);
 
         return redirect(route('index.post'))->with('successaddpost', 'บันทึกข้อมูลเสร็จสิ้น');

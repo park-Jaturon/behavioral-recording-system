@@ -34,7 +34,6 @@
 
     <!-- jQuery UI Datetimepicker -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <!-- sweetalert2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -179,9 +178,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('index.event') }}">ตารางเรียน</a>
                                     </li>
-                                    <li class="nav-item ">
+                                    {{-- <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('index.activity') }}">รูปกิจกรรม</a>
-                                    </li>
+                                    </li> --}}
                                     {{-- <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('index.behavior') }}">รายงานพฤติกรรม</a>
                                     </li> --}}
@@ -291,7 +290,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     {{-- echarts --}}
     <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-    
+      <!-- jQuery UI Datetimepicker -->
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @yield('script')
 </body>
 

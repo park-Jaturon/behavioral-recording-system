@@ -181,7 +181,7 @@
                     $('#saveSub').click(function() {
                         var title = $('#title').val();
                         var rooms_id = {!! json_encode($room->rooms_id) !!};
-                        
+
                         var start_date = $('#estart').val();
                         var end_date = $('#eend').val();
                         console.log(title, start_date, end_date);
@@ -250,41 +250,9 @@
                 },
                 eventClick: function(event) {
                     var id = event.eventsid;
-                    Swal.fire({
-                        title: 'คุณแน่ใจน่ะว่าจะลบจริงๆ',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'ใช้ฉันต้องการลบ',
-                        cancelButtonText: 'ยกเลิก'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $.ajax({
-                                url: "{{ route('calendar.destroy', '') }}" + '/' + id,
-                                type: "DELETE",
-                                dataType: 'json',
-                                success: function(response) {
-                                    $('#calendar').fullCalendar('removeEvents',
-                                        response);
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'ตารางเรียน/กิจกรรมของคุณถูกลบไปแล้ว',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    })
-                                    setTimeout(() => {
-                                        window.location.href = $url +
-                                            '/teacher/event/inddex';
-                                    }, 2000);
-                                },
-                                error: function(error) {
-                                    console.log(error)
-                                },
-                            });
-                        }
-                    })
+                    console.log(id);
+                    window.location="{{route('image.activity','')}}"+ '/' + id;
+                   
                 },
 
             })

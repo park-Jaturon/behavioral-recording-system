@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     @foreach ($showpost as $row)
+                    @if ($row->status == 'shown')
                     <div class="card mb-3">
                         <div class="card-header">
                             {{ $row->p_topic }}
@@ -19,14 +20,8 @@
                                 {!! $row->p_description !!}
                             </div>
                         </div>
-                        @if (auth()->User()->rank == 'teacher')
-                            <div class="card-footer text-end">
-                                <a href="{{ url('teacher/post/edit/' . $row->posts_id) }}" class="btn btn-primary">แก้ไข</a>
-                                <button type="button" class="btn btn-danger delete-item " data-posts_id="{{ $row->posts_id }}">ลบ</button>                              
-                            </div>
-                        @endif
-
                     </div>
+                    @endif
                 @endforeach
                 </div>
             </div>

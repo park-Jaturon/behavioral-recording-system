@@ -6,31 +6,63 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Events;
 use Barryvdh\Debugbar\Facades\Debugbar;
-use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 
 class ActivityController extends Controller
 {
-    public function index()
+    public function edit($events_id)
     {
-        $event = DB::table('teachers')
-        // ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
-        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
-        ->join('events','teachers.rooms_id','=','events.rooms_id')
-        ->orderByRaw('events.start DESC')
-        ->get();
-        // dd($event);
-        return view('teacher.activity-index', compact('event'));
+        $activities = DB::table('activities')
+            ->where('events_id', '=', $events_id)
+            ->get();
+
+        $event = DB::table('events')
+            ->where('events_id', '=', $events_id)
+            ->first();
+        Debugbar::info($event);
+        return view('teacher.activity-edit', compact('activities', 'event')); //
+    }
+
+    public function update_activity(Request $request, $events_id)
+    {
+        
+        // dd($request,$events_id);
+        Events::where('events_id', $events_id)
+            ->update([
+                'title' => $request->topic,
+                'start' => $request->starrt,
+                'end' => $request->end,
+            ]);
+        return redirect()->back()->with('successeditactivity', 'แก้ไขข้อมูลเสร็จสิ้น');
+    }
+
+    public function destroy($id){
+        $activity = Activity::findOrFail($id);
+      
+      
+        $destination = 'uploads/activity/' . $activity->activity_images;
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
+        Activity::destroy($id);
+      
     }
 
     public function image($events_id)
     {
         $activities = DB::table('activities')
-        ->where('events_id', '=', $events_id)
-        ->get();
-        return view('teacher.activity-image', compact('activities','events_id'));
+            ->where('events_id', '=', $events_id)
+            ->get();
+
+        // $events = Events::where('events_id', '=',$events_id)->select('title')->first();
+        $topic = DB::table('events')
+            ->select('title')
+            ->where('events_id', '=', $events_id)
+            ->first();
+        Debugbar::info($topic);
+        return view('teacher.activity-image', compact('activities', 'events_id','topic'));
     }
 
     public function add($events_id)
@@ -57,6 +89,6 @@ class ActivityController extends Controller
             }
         }
 
-        return redirect(route('index.activity'))->with('success', 'บันทึกรูปกกิจกกรรมเสร็จสิ้น');
+        return redirect(route('image.activity',['events_id'=>$events_id]))->with('success', 'บันทึกรูปกกิจกกรรมเสร็จสิ้น');
     }
 }

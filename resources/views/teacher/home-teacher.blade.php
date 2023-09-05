@@ -5,75 +5,88 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header text-center"> 
+                    <div class="card-header text-center">
                         @php
-                            if (count($users)>0) {
-                               echo $users[0]->room_name;
+                            if (count($users) > 0) {
+                                echo $users[0]->room_name;
                             }
                         @endphp
-                        </div>
-                    
+                    </div>
+
                     <div class="card-body">
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success">
                                 {{ $message }}
                             </div>
                         @endif
-                        <div class="table-responsive">
-                            <table class="table table-striped table-fixed">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center" scope="col">เลขที่</th>
-                                        <th scope="col">ชื่อ-นามสกุล</th>
-                                        <th scope="col" class=" text-center">สถานะ</th>
-                                        <th scope="col" class=" text-center">ดูข้อมูล</th>
-                                        <th scope="col" class=" text-center">แก้ไขข้อมูล</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($users as $user)
-                                    <tr class="">
-                                        <td class="text-center">{{ $user->number }}</td>
-                                        <td>{{ $user->prefix_name . $user->first_name . ' ' . $user->last_name }}
-                                        </td>
-                                        <td align="center">
-                                            <div class="col-6 ">
-                                                @if ($user->status == 'เรียนอยู่')
-                                                    <input class="form-control" type="text"
-                                                        value="{{ $user->status }}" aria-label="Disabled input example"
-                                                        disabled readonly style="color: rgb(23, 187, 23);">
-                                                @else
-                                                    <input class="form-control" type="text"
-                                                        value="{{ $user->status }}" aria-label="Disabled input example"
-                                                        disabled readonly style="color: red;">
-                                                @endif
-
+                        <form action="{{route('up.class')}}" method="post">
+                            @csrf
+                            <div class="table-responsive">
+                                <table class="table table-striped table-fixed">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" scope="col">เลขที่</th>
+                                            <th scope="col">ชื่อ-นามสกุล</th>
+                                            <th scope="col" class=" text-center">สถานะ</th>
+                                            <th scope="col" class=" text-center">ดูข้อมูล</th>
+                                            <th scope="col" class=" text-center">แก้ไขข้อมูล</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($users as $user)
+                                            <tr class="">
+                                                <td class="text-center">{{ $user->number }}</td>
+                                                <td>
+                                                    {{ $user->prefix_name . $user->first_name . ' ' . $user->last_name }}
+                                                </td>
+                                                <td align="center">
+                                                    <div class="col-6 ">
+                                                        @if ($user->status == 'เรียนอยู่')
+                                                            <input class="form-control" type="text"
+                                                                value="{{ $user->status }}" aria-label="Disabled input example"
+                                                                disabled readonly style="color: rgb(23, 187, 23);">
+                                                        @else
+                                                            <input class="form-control" type="text"
+                                                                value="{{ $user->status }}" aria-label="Disabled input example"
+                                                                disabled readonly style="color: red;">
+                                                        @endif
+    
+                                                    </div>
+                                                </td>
+    
+                                                <td align="center">
+                                                    <a class="btn btn-primary "
+                                                        href="{{ url('teacher/room/show/' . $user->student_id) }}"
+                                                        role="button"><i class="bi bi-eye"></i></a>
+                                                </td>
+                                                <td align="center"><a class="btn btn-primary "
+                                                        href="{{ url('teacher/room/edit/' . $user->student_id) }}"
+                                                        role="button"><i class="bi bi-tools"></i></a>
+                                                </td>
+                                                <td>
+                                                    @if ($user->elevate == 'true')
+                                                        <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="check[]" value="{{$user->student_id}}" id="flexCheckDefault">
+                                                      </div>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @empty
+    
+                                            <div class="alert alert-info text-center" role="alert">
+                                                <h4><strong>ยังไม่มีนักเรียนในห้องเรียนนี้</strong> </h4>
                                             </div>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                    {{-- <div class="col text-end">
+                                        <button type="button" class="btn btn-primary" onclick="upClass()">เลื่อนขั้น</button>
+                                    </div> --}}
 
-                                        </td>
-                                        <td align="center"><a class="btn btn-primary "
-                                                href="{{ url('teacher/room/show/' . $user->student_id) }}"
-                                                role="button"><i class="bi bi-eye"></i></a></td>
-                                        <td align="center"><a class="btn btn-primary "
-                                                href="{{ url('teacher/room/edit/' . $user->student_id) }}"
-                                                role="button"><i class="bi bi-tools"></i></a></td>
-                                    </tr>
-                                @empty
-                               
-                                <div class="alert alert-info text-center" role="alert">
-                                  <h4><strong>ยังไม่มีนักเรียนในห้องเรียนนี้</strong> </h4>  
-                                </div>
-                                    
-                                @endforelse
-                                </tbody>
-                            </table>
-                            @if ($UpClass == true)
-                                <div class="col text-end">
-                                    <button type="button" class="btn btn-primary" onclick="upClass()">เลื่อนขั้น</button>
-                                </div>
-                            @endif
-
-                        </div>
+                                    <button type="submit" class="btn btn-primary ">เลื่อนขั้น</button>
+                            </div>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -83,20 +96,21 @@
 
 @section('script')
     <script>
+        console.log(flexCheckDefault).value;
         function upClass() {
             //   document.getElementById("demo").innerHTML = "Hello World";
             // console.log({{}});
 
             axios.post($url + '/teacher/students/upClass', {
                     students: {!! $users !!},
-                    
+
                 })
                 .then(function(response) {
                     console.log(response);
                     window.location.reload();
                 })
                 .catch(function(error) {
-                    
+
                     console.log(error);
                 });
         }

@@ -287,9 +287,14 @@
                                 </div>
 
                             </div>
-                            <button type="submit" class="btn btn-primary float-end">
-                                บันทึก
-                            </button>
+                            <div class="row justify-content-center align-items-end">
+                                <div class="col text-end">
+                                    <button type="submit" class="btn btn-primary ">บันทึก</button>
+                                    <a name="" id="" class="btn btn-danger"
+                                    href="{{ route('teacher.room') }}" role="button">ยกเลิก</a>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>

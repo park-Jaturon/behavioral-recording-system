@@ -57,31 +57,32 @@ class TeacherController extends Controller
     public function upClass(Request $request)
     {
 
-        $students = $request->json()->all();
+        $students = $request->input('check');
+// dd($students);
+        // Debugbar::info( $students);
 
-        // Debugbar::info($students['students']['school_year']+1);
-
-        foreach ($students['students'] as $upclassStudent) {
-            $studentsD =  Student::find($upclassStudent['student_id']);
-            // Debugbar::info($upclassStudent['school_year'] + 1);
+        foreach ($students as $upclassStudent) {
+            $studentsD =  Student::find($upclassStudent);
+            
             $studentsD->level = 'อบ3';
-            $studentsD->school_year = $upclassStudent['school_year'] + 1;
-            if ($studentsD['rooms_id'] == 2) {
+            $studentsD->elevate = 'false';
+            $studentsD->school_year = $studentsD->school_year + 1;
+            if ($studentsD->rooms_id == 2) {
                 $studentsD->rooms_id = 9;
             }
-            if ($studentsD['rooms_id'] == 5) {
+            if ($studentsD->rooms_id == 5) {
                 $studentsD->rooms_id = 10;
             }
-            if ($studentsD['rooms_id'] == 1) {
+            if ($studentsD->rooms_id == 1) {
                 $studentsD->rooms_id = 11;
             }
-            if ($studentsD['rooms_id'] == 6) {
+            if ($studentsD->rooms_id == 6) {
                 $studentsD->rooms_id = 12;
             }
-            if ($studentsD['rooms_id'] == 7) {
+            if ($studentsD->rooms_id == 7) {
                 $studentsD->rooms_id = 13;
             }
-            if ($studentsD['rooms_id'] == 8) {
+            if ($studentsD->rooms_id == 8) {
                 $studentsD->rooms_id = 14;
             }
             $studentsD->save();
@@ -166,6 +167,6 @@ class TeacherController extends Controller
         $data->habitations = $request->habitations;
         $data->status = $request->status;
         $data->save();
-        return redirect()->back()->with('success', 'แก้ไขข้อมูลเสร็จสิ้น');
+        return redirect(route('teacher.room'))->with('success', 'แก้ไขข้อมูลเสร็จสิ้น');
     }
 }
