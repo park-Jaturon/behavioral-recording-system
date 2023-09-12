@@ -131,13 +131,17 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     //  Route::get('record/weight-height/add/{student_id}',[PersonalRecordController::class, 'weight_height_add']);
 
      Route::get('record/appraisal',[PersonalRecordController::class, 'appraisal'])->name('record.appraisal');
-     Route::get('record/appraisal/show/{student_id}',[PersonalRecordController::class, 'appraisal_show']);
+     Route::get('record/appraisal/show/{student_id}',[PersonalRecordController::class, 'appraisal_show'])->name('appraisal.show2');
+     Route::get('record/appraisal/show2/{student_id}',[PersonalRecordController::class, 'appraisal_show2'])->name('appraisal.show3');
      Route::post('record/appraisal/store/{student_id}',[PersonalRecordController::class, 'appraisal_store'])->name('store.appraisal');
      Route::get('commen/edit/{id}',[PersonalRecordController::class, 'commenTeacher']);
      Route::post('commen/update/{id}',[PersonalRecordController::class, 'updatecommenTeacher']);
      Route::get('pdf/{student_id}', [PersonalRecordController::class, 'viewPDF'])->name('show.pdf');
+     Route::get('pdf2/{student_id}', [PersonalRecordController::class, 'viewPDF2'])->name('show.pdf2');
      Route::get('pdf/download/{student_id}', [PersonalRecordController::class, 'exportPDF'])->name('download.pdf');
+     Route::get('pdf2/download/{student_id}', [PersonalRecordController::class, 'exportPDF2'])->name('download.pdf2');
      Route::get('record/appraisal/add/{student_id}',[PersonalRecordController::class, 'appraisal_add']);
+     Route::get('record/appraisal/add2/{student_id}',[PersonalRecordController::class, 'appraisal_add2']);
     //  Route::post('record/appraisal/page1/put/{student_id}', [PersonalRecordController::class, 'page1_put']);
     //  Route::get('record/appraisal/add-page2/{student_id}',[AppraisalController::class, 'page2_add'])->name('add.page2');
 });
@@ -153,7 +157,7 @@ Route::prefix('parent')->middleware('isparent')->group(function () {
     Route::get('events',[HomeController::class, 'descendant_events'])->name('events.descendant');
     Route::get('descendant/events/show/{rooms_id}',[HomeController::class, 'events_show']);
     Route::get('behaviors',[HomeController::class, 'descendant_behaviors'])->name('descendant.behaviors');
-    Route::get('descendant/behavior/show/{student_id}',[HomeController::class, 'behavior_show']); //
+    Route::get('descendant/behavior/show/{student_id}',[HomeController::class, 'behavior_show'])->name('show.behavior'); //
     Route::get('activity',[HomeController::class, 'descendant_activity'])->name('activity.descendant');
     Route::get('descendant/activity/image/show/{events_id}/{school_year}',[HomeController::class, 'activity_showimage']);
     Route::get('descendant/activity/show/{rooms_id}/{school_year}/{level}',[HomeController::class, 'activity_show'])->name('show_activity');

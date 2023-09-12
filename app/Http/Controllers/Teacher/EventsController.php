@@ -21,11 +21,12 @@ class EventsController extends Controller
        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
        ->join('events','teachers.rooms_id','=','events.rooms_id')
        ->get();
-
+       
         foreach ($bookings as $booking) {
             $events[] = [
                 'eventsid' => $booking->events_id,
                 'title' => $booking->title,
+                'description' => $booking->description,
                 'start' => $booking->start,
                 'end' => $booking->end,
             ];
@@ -41,16 +42,22 @@ class EventsController extends Controller
     {
         $levelsClass = Room::findOrFail($request->rooms_id);
         $schoolYear = Student::where('rooms_id', $levelsClass->rooms_id)->first(); 
-        // Debugbar::info( $schoolYear->school_year);
+        // Debugbar::info($request);
         $request->validate([
             'title' => 'required|string',
+            'Textarea1' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
 
-        ]);
+        ],
+    [
+        'title.required'=> 'โปรดระบุ เรื่อง',
+        'Textarea1.required'=> 'โปรดระบุ เนื้อความ'
+    ]);
 
         $subject = Events::create([
             'title' => $request->title,
+            'description' =>$request->Textarea1,
             'rooms_id' => $request->rooms_id,
             'start' => $request->start_date,
             'end' => $request->end_date,
@@ -62,8 +69,8 @@ class EventsController extends Controller
         'start' => $subject->start,
         'end' => $subject->end,
         'title' => $subject->title,
+        'Textarea1' =>$subject->description,
         'teachers_id' =>$subject->teachers_id ,
-
     ]);
     }
 

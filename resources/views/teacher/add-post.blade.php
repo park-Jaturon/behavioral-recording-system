@@ -6,11 +6,17 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        @if (empty($data->posts_id))
-                            {{ __('เพิ่มประกาศ') }}
-                        @else
-                            {{ __('แก้ไขประกาศ') }}
-                        @endif
+                        <div class="row justify-content-start align-items-center g-2">
+                            
+                            <div class="col">
+                                @if (empty($data->posts_id))
+                                {{ __('เพิ่มประกาศ') }}
+                            @else
+                                {{ __('แก้ไขประกาศ') }}
+                            @endif
+                            </div>
+                        </div>
+                       
                     </div>
                     <form
                         action="{{ empty($data->posts_id) ? url('teacher/post/store/' . $room->rooms_id) : url('teacher/post/update/' . $data->posts_id) }}"

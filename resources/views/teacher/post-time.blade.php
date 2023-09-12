@@ -6,13 +6,18 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('ลงเวลามาเรียน-กลับบ้าน' . ' ' . date('d/m/Y', strtotime($datenow))) }}
+                        <div class="row justify-content-start align-items-center g-2">
+                            <div class="col-auto">
+                                <a class="btn btn-light" href="{{ route('index.check') }}" role="button"><i
+                                    class="bi bi-chevron-left"></i></a>
+                            </div>
+                            <div class="col-auto">
+                                {{ __('ลงเวลามาเรียน-กลับบ้าน' . ' ' . date('d/m/Y', strtotime($datenow))) }}
+                            </div>
+                        </div>
 
 
                     </div>
-
-
-
                     <div class="card-body">
                         {{-- @if ($message = Session::get('error'))
                             <div class="alert alert-success">

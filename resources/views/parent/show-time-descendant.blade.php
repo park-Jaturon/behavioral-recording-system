@@ -5,7 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('เวลามาเรียน - เวลากลับบ้าน') }}</div>
+                <div class="card-header">
+                    <div class="row justify-content-start align-items-center g-2">
+                        <div class="col-auto">
+                            <a class="btn btn-light" href="{{ route('time.descendant') }}" role="button"><i
+                                class="bi bi-chevron-left"></i></a>
+                        </div>
+                        <div class="col-auto">
+                            {{ __('เวลามาเรียน - เวลากลับบ้าน') }}
+                        </div>
+                    </div>
+                    
+                </div>
 
                 <div class="card-body">
                     <div class="table-responsive">

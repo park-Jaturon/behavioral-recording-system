@@ -17,6 +17,7 @@ class ManageteacherController extends Controller
         $teacher = DB::table('teachers')
             ->join('rooms', 'teachers.rooms_id', '=', 'rooms.rooms_id')
             ->select('teachers.*', 'rooms.room_name')
+            ->orderBy('room_name')
             ->get();
            
         return view('admin.manageteacherindex', compact('teacher'));

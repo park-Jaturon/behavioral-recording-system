@@ -3,7 +3,10 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-auto">
+                <a class="btn btn-light" href="{{ route('admindashboard') }}" role="button"><i class="bi bi-chevron-left"></i></a>
+            </div>
+            <div class="col-md-auto">
                 <h3>ครู</h3>
             </div>
             <div class="col-md-8">

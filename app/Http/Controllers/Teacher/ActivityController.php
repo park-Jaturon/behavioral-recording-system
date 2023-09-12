@@ -32,6 +32,7 @@ class ActivityController extends Controller
         Events::where('events_id', $events_id)
             ->update([
                 'title' => $request->topic,
+                'description' => $request->description,
                 'start' => $request->starrt,
                 'end' => $request->end,
             ]);

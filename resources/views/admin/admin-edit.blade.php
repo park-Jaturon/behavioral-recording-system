@@ -1,3 +1,5 @@
-<div class="container">
-    <h2>park</h2>
-</div>
+@extends('layouts.app')
+
+@section('content')
+<h1>ff</h1>
+@endsection

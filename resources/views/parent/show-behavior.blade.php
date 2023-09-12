@@ -3,6 +3,10 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div>
+                <a class="btn btn-light" href="{{ route('descendant.behaviors') }}" role="button"><i
+                    class="bi bi-chevron-left"></i></a>
+            </div>
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">

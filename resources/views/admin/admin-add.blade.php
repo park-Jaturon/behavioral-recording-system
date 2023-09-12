@@ -7,10 +7,10 @@
                 <div class="card">
                     <div class="card-header">
                         @if (empty($dataAdmin->users_id))
-                        {{ __('เพิ่มผู้ดูแลระบบ') }}
-                    @else
-                        {{ __('แก้ไขผู้ดูแลระบบ') }}
-                    @endif
+                            {{ __('เพิ่มผู้ดูแลระบบ') }}
+                        @else
+                            {{ __('แก้ไขผู้ดูแลระบบ') }}
+                        @endif
                     </div>
                     <div class="card-body">
                         @if ($message = Session::get('success'))
@@ -18,7 +18,7 @@
                                 {{ $message }}
                             </div>
                         @endif
-                        <form action="{{url('admin/users/admin/store')}}" method="post">
+                        <form action="{{ url('admin/users/admin/store') }}" method="post">
                             @csrf
                             <div class="row mb-3">
                                 <label for="name"
@@ -61,12 +61,18 @@
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary float-end">
+
+                            <div class="row justify-content-end align-items-start g-2">
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary ">
                                         {{ __('บันทึก') }}
                                     </button>
                                 </div>
+                                <div class="col-auto">
+                                    <a name="" id="" class="btn btn-danger"
+                                        href="{{ route('index.admin') }}" role="button"> ยกเลิก</a>
+                                </div>
+
                             </div>
                         </form>
                     </div>

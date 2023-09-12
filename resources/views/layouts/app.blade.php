@@ -16,10 +16,15 @@
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
     <!-- Flatpickr -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css"
         rel="stylesheet" />
@@ -50,11 +55,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/locale-all.js'></script>
 
-{{-- parsley.js --}}
-{{-- <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
-integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- parsley.js --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
+        integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
         var $url = {!! json_encode(url('/')) !!};
@@ -93,10 +98,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::User()->users_name }}
                             </a>
-    
+
                             <div class="dropdown-menu dropdown-menu-end" style="position: absolute"
                                 aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('/profile/'.Auth::User()->users_id)}}">{{__('เปลี่ยนรหัสผ่าน')}}</a>
+                                <a class="dropdown-item"
+                                    href="{{ url('/profile/' . Auth::User()->users_id) }}">{{ __('เปลี่ยนรหัสผ่าน') }}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -105,7 +111,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                            </div>  
+                            </div>
                         </li>
                     </ul>
 
@@ -160,6 +166,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                 </ul>
                             @endif
                             {{-- Teacher --}}
+                            @php
+                                $users = DB::table('teachers')
+                                    ->join('users', 'teachers.teachers_id', '=', 'users.rank_id')
+                                    ->where('users.rank', '=', 'teacher')
+                                    ->join('rooms', 'rooms.rooms_id', '=', 'teachers.rooms_id')
+                                    ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+                                    ->first();
+                            @endphp
                             @if (Auth::User()->rank == 'teacher')
                                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
@@ -178,15 +192,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('index.event') }}">ตารางเรียน</a>
                                     </li>
-                                    {{-- <li class="nav-item ">
-                                        <a class="nav-link" href="{{ route('index.activity') }}">รูปกิจกรรม</a>
-                                    </li> --}}
-                                    {{-- <li class="nav-item ">
-                                        <a class="nav-link" href="{{ route('index.behavior') }}">รายงานพฤติกรรม</a>
-                                    </li> --}}
-                                    <li class="nav-item ">
-                                        <a class="nav-link" href="{{ route('record.appraisal') }}">แบบประเมินพัฒนาการ</a>
-                                    </li>
+                                    @if (strstr($users->room_name, 'อบ2') || strstr($users->room_name, 'อบ3'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link"
+                                                href="{{ route('record.appraisal') }}">แบบประเมินพัฒนาการ</a>
+                                        </li>
+                                    @endif
                                     <li>
 
                                         {{-- <li class="nav-item dropdown">
@@ -290,8 +301,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     {{-- echarts --}}
     <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-      <!-- jQuery UI Datetimepicker -->
-      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- jQuery UI Datetimepicker -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @yield('script')
 </body>
 

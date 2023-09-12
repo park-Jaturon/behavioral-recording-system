@@ -6,19 +6,26 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row justify-content-between">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-auto">
+                                <a class="btn btn-light" href="{{ route('activity.descendant') }}" role="button"><i
+                                        class="bi bi-chevron-left"></i></a>
+                            </div>
                             <div class="col-4">
                                 {{ __('รูปกิจกรรม') }}
                             </div>
                             <div class="col-3 text-end">
-                                <select class="form-select" aria-label="Default select example" onchange="selectLevel(value)">
+                                <select class="form-select" aria-label="Default select example"
+                                    onchange="selectLevel(value)">
                                     {{--  id="selectLevel" --}}
                                     <option class="text-center" selected disabled>---ระดับชั้น---</option>
                                     @if ($level == 'อบ2')
-                                        <option class="text-center" value="1">อบ2</option>
+                                        <option class="text-center" value="1">อบ1</option>
+                                        <option class="text-center" value="2">อบ2</option>
                                     @else
-                                        <option class="text-center" value="1">อบ2</option>
-                                        <option class="text-center" value="2">อบ3</option>
+                                        <option class="text-center" value="1">อบ1</option>
+                                        <option class="text-center" value="2">อบ2</option>
+                                        <option class="text-center" value="3">อบ3</option>
                                     @endif
 
                                 </select>
@@ -51,8 +58,9 @@
 @section('script')
     <script>
         let text = ""; // ประกาศตัวแปร text ในขอบเขตที่กว้างขึ้น
-        let levels1 = {!! $event !!}; //อบ2
-        let levels2 = {!! $event2 !!}; //อบ3
+        let levels1 = {!! $event1 !!}; //อบ1
+        let levels2 = {!! $event2 !!}; //อบ2
+        let levels3 = {!! $event3 !!}; //อบ3
         // console.log($url);
         function selectLevel(value) {
             console.log(value);
@@ -65,6 +73,10 @@
             } else if (value == 2) {
                 text = "";
                 levels2.forEach(myFunction);
+                document.getElementById("result").innerHTML = text;
+            }else if (value == 3) {
+                text = "";
+                levels3.forEach(myFunction);
                 document.getElementById("result").innerHTML = text;
             }
         }

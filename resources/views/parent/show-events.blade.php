@@ -3,8 +3,57 @@
 @section('content')
     {{-- show --}}
     <div class="container">
-        <h1>ตารางเรียน</h1>
+        <div class="row justify-content-start align-items-center g-2">
+            <div class="col-auto">
+                <a class="btn btn-light" href="{{ route('events.descendant') }}" role="button"><i
+                    class="bi bi-chevron-left"></i></a>
+            </div>
+            <div class="col">
+                <h1>ตารางเรียน</h1>
+            </div>
+        </div>
+        
         <div id='calendar'></div>
+    </div>
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ตารางเรียน/กิจกรรม</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="" class="form-label">เรื่อง</label>
+                        <input type="text" class="form-control" id="title" disabled readonly>
+                        <small id="titleError" class="text-danger"></small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">เนื้อความ</label>
+                        <textarea class="form-control" id="textarea1" rows="3" disabled readonly></textarea>
+                        <small id="textarea1Error" class="text-danger"></small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">ระยะเวลา</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                            <input type="text" id="estart" aria-label="First name" class="form-control" disabled
+                                readonly>
+                            <span class="input-group-text">ถึง</span>
+                            <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                            <input type="text" id="eend" aria-label="First name" class="form-control" disabled
+                                readonly>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -30,121 +79,32 @@
                 selectHelper: true,
                 locale: 'th', // กำหนดให้แสดงภาษาไทย
 
-                select: function(start, end, allDays) {
-                    // $('#bookingModal').modal('toggle');
-
+                eventClick: function(event) {
+                    var id = event.eventsid;
+                    // var title = document.getElementById('title');
+                    console.log(id);
+                    document.getElementById('title').value = event.title;
+                    document.getElementById('textarea1').value = event.description;
+                    document.getElementById('estart').value = formatDate(event.start);
+                    document.getElementById('eend').value = formatDate(event.end);
                     $('#bookingModal').modal('show');
-                    $('#estart').flatpickr({
-                        enableTime: true,
-                        dateFormat: "Y-m-d H:i",
-                        defaultDate: moment(start).format('YYYY-MM-DD h:mm'),
-                        locale: {
-                            firstDayOfWeek: 1,
-                            rangeSeparator: " ถึง ",
-                            scrollTitle: "เลื่อนเพื่อเพิ่มหรือลด",
-                            toggleTitle: "คลิกเพื่อเปลี่ยน",
-                            time_24hr: true,
-                            weekdays: {
-                                shorthand: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
-                                longhand: [
-                                    "อาทิตย์",
-                                    "จันทร์",
-                                    "อังคาร",
-                                    "พุธ",
-                                    "พฤหัสบดี",
-                                    "ศุกร์",
-                                    "เสาร์",
-                                ],
-                            },
-                            months: {
-                                shorthand: [
-                                    "ม.ค.",
-                                    "ก.พ.",
-                                    "มี.ค.",
-                                    "เม.ย.",
-                                    "พ.ค.",
-                                    "มิ.ย.",
-                                    "ก.ค.",
-                                    "ส.ค.",
-                                    "ก.ย.",
-                                    "ต.ค.",
-                                    "พ.ย.",
-                                    "ธ.ค.",
-                                ],
-                                longhand: [
-                                    "มกราคม",
-                                    "กุมภาพันธ์",
-                                    "มีนาคม",
-                                    "เมษายน",
-                                    "พฤษภาคม",
-                                    "มิถุนายน",
-                                    "กรกฎาคม",
-                                    "สิงหาคม",
-                                    "กันยายน",
-                                    "ตุลาคม",
-                                    "พฤศจิกายน",
-                                    "ธันวาคม",
-                                ],
-                            }
-                        }
-                    });
 
-                    $('#eend').flatpickr({
-                        enableTime: true,
-                        dateFormat: "Y-m-d H:i",
-                        defaultDate: moment(end).format('YYYY-MM-DD h:mm'),
-                        locale: {
-                            firstDayOfWeek: 1,
-                            rangeSeparator: " ถึง ",
-                            scrollTitle: "เลื่อนเพื่อเพิ่มหรือลด",
-                            toggleTitle: "คลิกเพื่อเปลี่ยน",
-                            time_24hr: true,
-                            weekdays: {
-                                shorthand: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
-                                longhand: [
-                                    "อาทิตย์",
-                                    "จันทร์",
-                                    "อังคาร",
-                                    "พุธ",
-                                    "พฤหัสบดี",
-                                    "ศุกร์",
-                                    "เสาร์",
-                                ],
-                            },
-                            months: {
-                                shorthand: [
-                                    "ม.ค.",
-                                    "ก.พ.",
-                                    "มี.ค.",
-                                    "เม.ย.",
-                                    "พ.ค.",
-                                    "มิ.ย.",
-                                    "ก.ค.",
-                                    "ส.ค.",
-                                    "ก.ย.",
-                                    "ต.ค.",
-                                    "พ.ย.",
-                                    "ธ.ค.",
-                                ],
-                                longhand: [
-                                    "มกราคม",
-                                    "กุมภาพันธ์",
-                                    "มีนาคม",
-                                    "เมษายน",
-                                    "พฤษภาคม",
-                                    "มิถุนายน",
-                                    "กรกฎาคม",
-                                    "สิงหาคม",
-                                    "กันยายน",
-                                    "ตุลาคม",
-                                    "พฤศจิกายน",
-                                    "ธันวาคม",
-                                ],
-                            }
-                        }
-                    });
-                }
+
+                },
             })
         })
+
+        function formatDate(date) {
+            const options = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+            };
+            const dateObj = new Date(date);
+            return dateObj.toLocaleDateString('th-TH', options); // แสดงเป็นรูปแบบวันที่ "DD/MM/YYYY"
+        }
+        $('.modal fade').parsley();
     </script>
 @endsection

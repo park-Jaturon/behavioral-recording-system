@@ -17,6 +17,12 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="" class="form-label">เนื้อความ</label>
+                        <textarea class="form-control" id="textarea1" rows="3"></textarea>
+                        <small id="textarea1Error" class="text-danger"></small>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="" class="form-label">ระยะเวลา</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
@@ -37,8 +43,19 @@
     </div>
     {{--  --}}
     <div class="container">
-        <h1>ตารางเรียน</h1>
-        <div id='calendar'></div>
+        <div class="row justify-content-start align-items-center g-2">
+            <div class="col-auto">
+                <a class="btn btn-light" href="{{ route('teacher.dashboard') }}" role="button"><i
+                    class="bi bi-chevron-left"></i></a>
+            </div>
+            <div class="col-auto">
+                <h1>ตารางเรียน</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center g-2">
+            <div id='calendar'></div>
+        </div>
+        
     </div>
 @endsection
 
@@ -181,10 +198,10 @@
                     $('#saveSub').click(function() {
                         var title = $('#title').val();
                         var rooms_id = {!! json_encode($room->rooms_id) !!};
-
+                        var Textarea1 = $('#textarea1').val();
                         var start_date = $('#estart').val();
                         var end_date = $('#eend').val();
-                        console.log(title, start_date, end_date);
+                        console.log(Textarea1);
 
                         $.ajax({
                             url: "{{ route('calendar.store') }}",
@@ -192,6 +209,7 @@
                             dataType: 'json',
                             data: {
                                 title,
+                                Textarea1,
                                 rooms_id,
                                 start_date,
                                 end_date
@@ -205,16 +223,17 @@
                                     showConfirmButton: false,
                                     timer: 1500
                                 });
-                                setTimeout(() => {
-                                    window.location.href = $url +
-                                        '/teacher/event/inddex';
-                                }, 1600);
+                                window.location.href = $url +
+                                    '/teacher/event/inddex';
 
                             },
                             error: function(error) {
                                 if (error.responseJSON.errors) {
                                     $('#titleError').html(error.responseJSON.errors
                                         .title);
+                                    $('#textarea1Error').html(error.responseJSON
+                                        .errors
+                                        .Textarea1);
                                 }
                             },
                         });
@@ -251,8 +270,8 @@
                 eventClick: function(event) {
                     var id = event.eventsid;
                     console.log(id);
-                    window.location="{{route('image.activity','')}}"+ '/' + id;
-                   
+                    window.location = "{{ route('image.activity', '') }}" + '/' + id;
+
                 },
 
             })

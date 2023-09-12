@@ -2,10 +2,18 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center align-items-center g-2">
-            <div class="col-md-8">
-                <a href="{{ route('add.post') }}" class=" btn btn-success float-end">เพิ่ม</a>
+        <div class="row align-items-center g-2">
+            <div class="col-md-auto align-self-start">
+                <a class="btn btn-light" href="{{ route('teacher.dashboard') }}" role="button"><i
+                    class="bi bi-chevron-left"></i></a>
+              </div>
+            <div class="col-md-auto align-self-start">
+                <h3>ประกาศ</h3>
             </div>
+            <div class="col align-self-end">
+                <a href="{{ route('add.post') }}" class=" btn btn-success float-end">เพิ่ม</a>
+              </div>
+           
             @if ($message = Session::get('successaddpost'))
                 <div class="alert alert-success">
                     {{ $message }}

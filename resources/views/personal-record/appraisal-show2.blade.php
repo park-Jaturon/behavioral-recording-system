@@ -3,17 +3,16 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center align-items-center g-2 mb-2">
-            {{-- @dd(isset($dataphysicallysemester1)) --}}
             <div class="col">
                 <a class="btn btn-light" href="{{ route('record.appraisal') }}" role="button"><i
                     class="bi bi-chevron-left"></i></a>
             </div>
             <div class="col-auto">
                 @if (isset($datasemester1) && isset($datasemester2))
-                    <a name="" id="" class="btn btn-primary" href="{{ url('teacher/pdf/' . $student_id) }}"
+                    <a name="" id="" class="btn btn-primary" href="{{ url('teacher/pdf2/' . $student_id) }}"
                         role="button"><i class="bi bi-file-earmark-pdf"></i>ดู</a>
                     <a name="" id="" class="btn btn-primary"
-                        href="{{ url('teacher/pdf/download/' . $student_id) }}" role="button"><i
+                        href="{{ url('teacher/pdf2/download/' . $student_id) }}" role="button"><i
                             class="bi bi-file-earmark-pdf"></i> ดาวน์โหลด</a>
                 @else
                     <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true"><i
@@ -27,14 +26,14 @@
                     {{--  id="selectLevel" --}}
                     <option class="text-center" selected disabled>---ระดับชั้น---</option>
                     {{-- <option class="text-center" value="1">อบ1</option> --}}
-                    <option selected class="text-center" value="2">อบ2</option>
-                    <option class="text-center" value="3">อบ3</option>
+                    <option class="text-center" value="2">อบ2</option>
+                    <option selected class="text-center" value="3">อบ3</option>
                 </select>
             </div>
         </div>
 
         <div class="row justify-content-center align-items-start g-2">
-            <div class="col-md-8">
+            <div class="col-8">
                 <div class="card text-start">
                     <div class="card-header">
                         <!-- Nav tabs -->
@@ -107,9 +106,8 @@
                                                     <input class="form-control text-center" type="text" value="ควรเสริม"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @elseif ($dataphysicallysemester1[0]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
-                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
-                                                        readonly>
+                                                    <input class="form-control text-center" type="text" value="ปานกลาง"
+                                                        aria-label="Disabled input example" disabled readonly>
                                                 @elseif ($dataphysicallysemester1[0]->score_rate_physically == 3)
                                                     <input class="form-control text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
@@ -236,7 +234,7 @@
                                                 2.มีสุขภาพอนามัยสุขนิสัยที่ดี
                                             </td>
                                             <td>
-                                                2.1 รับประทานอาหารที่มีประโยชน์และดื่มน้ำสะอาดได้ด้วยตนเอง
+                                                2.1 รับประทานอาหารที่มีประโยชน์ได้หลายชนิดดื่มน้ำสะอาดได้ด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[3]->score_rate_physically))
@@ -281,7 +279,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.2 ล้างมือก่อนรับประทานอาหารและหลังใช้ห้องส้วมได้ด้วยตนเอง
+                                                2.2 ล้างมือก่อนรับประทานอาหารและหลังใช้ห้องน้ำ ห้องส้วมได้ด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[4]->score_rate_physically))
@@ -509,7 +507,7 @@
                                                 3.รักษาความปลอดภัยของตนเองและผู้อื่น
                                             </td>
                                             <td>
-                                                3.1 เล่นและทำกิจกรรมอย่างปลอดภัยได้ด้วยตนเอง
+                                                3.1 เล่นและทำกิจกรรมและปฏิบัตต่อผู่อื่นอย่างปลอดภัยได้ด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[9]->score_rate_physically))
@@ -554,7 +552,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                3.2 ระมัดระวังตนเองให้ปลอดภัยขณะเล่นได้บางครั้ง
+                                                3.2 ระมัดระวังตนเองให้ปลอดภัยขณะเล่น
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[10]->score_rate_physically))
@@ -608,7 +606,7 @@
                                                 1.เคลื่อนไหวร่างกายอย่างคล่องแคล่วประสานสัมพันธ์และทรงตัวได้
                                             </td>
                                             <td>
-                                                1.1 เดินต่อเท้าไปข้างหน้าเป็นเส้นตรงได้โดยไม่ต้องกางแขน
+                                                1.1 เดินต่อเท้าถอยหลังเป็นเส้นตรงได้โดยไม่ต้องกางแขน
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[11]->score_rate_physically))
@@ -653,7 +651,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.2 กระโดดขาเดียวไปอยู่กับที่ได้โดยไม่เสียการทรงตัว
+                                                1.2 กระโดดขาเดียวไปข้างหน้าได้อย่างต่อเนื่องโดยไม่เสียการทรงตัว
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[12]->score_rate_physically))
@@ -698,7 +696,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.3 วิ่งหลบหลีกสิ่งกีดขวางได้
+                                                1.3 วิ่งหลบหลีกสิ่งกีดขวางได้อย่างคล่องแคล่ว
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[13]->score_rate_physically))
@@ -743,7 +741,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.4 รับลูกบอลโดยใช้มือทั้ง 2 ข้าง
+                                                1.4 รับลูกบอลที่กระดอนจากพื้นได้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[14]->score_rate_physically))
@@ -788,7 +786,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.5 เดินลงบันไดสลับเท้าได้
+                                                1.5 เดินลงบันไดสลับเท้าได้อย่างคล่องแคล่ว
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[15]->score_rate_physically))
@@ -881,7 +879,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.2 เขียนรูปสี่เหลียมตามได้อย่างมีมุมชัดเจน
+                                                2.2 เขียนรูปสามเหลียมตามแบบได้อย่างมีมุมชัดเจน
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[17]->score_rate_physically))
@@ -926,7 +924,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.3 ร้อยวัสดุที่มีรูขนาดเส้นผ่าศูนย์กลาง 0.5 เซนติเมตรได้
+                                                2.3 ร้อยวัสดุที่มีรูขนาดเส้นผ่าศูนย์กลาง 0.25 เซนติเมตรได้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[18]->score_rate_physically))
@@ -971,7 +969,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.4 โยนลูกบอลไปข้างหน้าได้ไม่คล่องแคล่ว
+                                                2.4 โยนลูกบอลไปข้างหน้าได้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[19]->score_rate_physically))
@@ -1044,10 +1042,10 @@
                                                 <label for="">มีสุขภาพจิตดีและมีความสุข</label>
                                             </th>
                                             <td rowspan="2">
-                                                1.แสดงออกทางอารมณ์ได้อย่างเหนาะสม
+                                                1.แสดงออกทางอารมณ์ได้อย่างเหมาะสม
                                             </td>
                                             <td>
-                                                1.1 แสดงอารมณ์ความรู้สึกได้ตามสถานการณ์
+                                                1.1 แสดงอารมณ์ได้อย่างสอดคล่องกับสถานการณ์อย่างเหมาะสม
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[0]->score_rate_mood_mind))
@@ -1185,7 +1183,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.2 แสดงความพอใจในผลงานและความสามารถจองตนเอง
+                                                2.2 แสดงความพอใจในผลงานและความสามารถของตนเองและผู้อื่น
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[3]->score_rate_mood_mind))
@@ -1323,11 +1321,11 @@
                                             <th scope="row" rowspan="4">
                                                 <u>พัฒนาการด้านอารมณ์และจิตใจ</u> <br>
                                                 <label for="">มาตรฐานที่ 4</label><br>
-                                                <label for="">ชื่นชมและแสดงออกทางศิลปะ ครตรี
-                                                    และการเคลื่อนไหว</label>
+                                                <label for="">ชื่นชมและแสดงออกทางศิลปะ
+                                                    ดนตรีและการเคลื่อนไหว</label>
                                             </th>
                                             <td rowspan="4">
-                                                1. สนใจมีความสุขและแสดงออกผ่านงานศิลปะคนตรีและการเคลื่อนไหว
+                                                1. สนใจมีความสุขและแสดงออกผ่านงานศิลปะ ดนตรีและการเคลื่อนไหว
                                             </td>
                                             <td>
                                                 1.1 สนใจ มีความสุขและแสดงออผ่านงานศิลปะ
@@ -1377,7 +1375,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.2 สนใจ มีความสุขและแสดงออกผ่านเสียงเลงดนตรี
+                                                1.2 สนใจ มีความสุขและแสดงออกผ่านเสียงเพลงดนตรี
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[7]->score_rate_mood_mind))
@@ -1424,7 +1422,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.3 สนใจ มีความสุขและแสดงท่าทาง/เคลื่อนไหวประกอบเลงจังหวะและดนตรี
+                                                1.3 สนใจ มีความสุขและแสดงท่าทาง/เคลื่อนไหวประกอบเพลงจังหวะและดนตรี
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[8]->score_rate_mood_mind))
@@ -1471,7 +1469,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.4สนใจแล้วมีความสุขขณะทำงานศิลปะ
+                                                1.4 สนใจแล้วมีความสุขขณะทำงานศิลปะ
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[9]->score_rate_mood_mind))
@@ -1526,7 +1524,7 @@
                                                 1.ซื่อสีตย์สุจริต
                                             </td>
                                             <td>
-                                                1.1 ขออนุญาตหรือรอคอยเมื่อต้องการสิ่งของของผู้อื่นเมื่อมีผู้ชี้เนะ
+                                                1.1 ขออนุญาตหรือรอคอยเมื่อต้องการสิ่งของของผู้อื่นด้วยตัวเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[10]->score_rate_mood_mind))
@@ -1573,7 +1571,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.2 รู้จักขอโทษเมื่อมีผู้ชี้เนะ
+                                                1.2 รู้จักขอโทษด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[11]->score_rate_mood_mind))
@@ -1620,10 +1618,10 @@
                                         </tr>
                                         <tr>
                                             <td rowspan="3">
-                                                2.มีความเมตากรุณา มีน้ำำใจ และช่วยเหลือแบ่งปัน
+                                                2.มีความเมตากรุณา มีน้ำใจ และช่วยเหลือแบ่งปัน
                                             </td>
                                             <td>
-                                                2.1 แสดงความรักต่อเพื่อนและมีเมตตาต่อสัตว์เลี้ยง
+                                                2.1 แสดงความรักเพื่อนและมีเมตตาต่อสัตว์เลี้ยง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[12]->score_rate_mood_mind))
@@ -1670,7 +1668,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.2 ช่วยเหลือผู้อื่นได้เมื่อมีผู้ชี้เนะ
+                                                2.2 ช่วยเหลือผู้อื่นได้ด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[13]->score_rate_mood_mind))
@@ -1767,7 +1765,7 @@
                                                 3.มีความเห็นอกเห็นใจผู้อื่น
                                             </td>
                                             <td>
-                                                3.1 แสดงสีหน้าท่าทางรับรู้ความรู้สิกของผู้อื่น
+                                                3.1 แสดงสีหน้าท่าทางรับรู้ความรู้สึกของผู้อื่นอย่างสอดคล้องกับสถานการณ์
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[15]->score_rate_mood_mind))
@@ -1814,7 +1812,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                3.2 รับรู้ความรู้ศึกผู้อื่นและปลอบโยนเมื่อผู้อื่นเสียใจ
+                                                3.2 รับรู้ความรู้สึกผู้อื่นและปลอบโยนเมื่อผู้อื่นเสียใจ
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[16]->score_rate_mood_mind))
@@ -1864,7 +1862,7 @@
                                                 4.มีความรับผิดชอบ
                                             </td>
                                             <td>
-                                                4.1 ทำงานที่ได้รับมอบหมายจนสำเร็จเมื่อมีผู้ชี้เนะ
+                                                4.1 ทำงานที่ได้รับมอบหมายจนสำเร็จด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[17]->score_rate_mood_mind))
@@ -1911,7 +1909,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                4.2 รักษาสิงของที่ใช้ร่วมกัน
+                                                4.2 รักษาสิงของที่ใช้ร่วมกันได้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[18]->score_rate_mood_mind))
@@ -1983,13 +1981,13 @@
                                                 <u>พัฒนาการด้านสังคม</u> <br>
                                                 <label for="">มาตรฐานที่ 6</label><br>
                                                 <label
-                                                    for="">มีทักกษะชีวิตและปฎิบัติตามหลักปรัชญาของเศรษฐกิจพอเพียง</label>
+                                                    for="">มีทักษะชีวิตและปฎิบัติตามหลักปรัชญาของเศรษฐกิจพอเพียง</label>
                                             </th>
                                             <td rowspan="4">
                                                 1.ช่วยเหลือตนเองในการปฎิบัติกิจวัตรประจำวัน
                                             </td>
                                             <td>
-                                                1.1 แต่ตัวได้ด้วยตนเอง
+                                                1.1 แต่งตัวด้วยตนเองได้อย่างคล่องแคล่ว
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[0]->score_rate_social))
@@ -2036,7 +2034,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.2 รับประทานอาหารด้วนตนเอง
+                                                1.2 รับประทานอาหารด้วยตนเองอย่างถูกวิธี
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[1]->score_rate_social))
@@ -2083,7 +2081,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.3 ใช้ห้องน้ำ ห้องส้วมด้วยตนเอง
+                                                1.3 ใช้และทำความสะอาดหลังใช้ห้องน้ำ ห้องส้วมด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[2]->score_rate_social))
@@ -2130,7 +2128,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.4 ระมัดระวังดูแลตนเองและผู้อื่นให้ปลอดภัยโดยมีผู้อื่นคอยตักเตือนบ้าง
+                                                1.4 ระมัดระวังดูแลตนเองและผู้อื่นให้ปลอดภัย
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[3]->score_rate_social))
@@ -2180,7 +2178,7 @@
                                                 2.มีวินัยในตนเอง
                                             </td>
                                             <td>
-                                                2.1 เก็บของเล่น ของใช้เข้าที่ด้วยตนเอง
+                                                2.1 เก็บของเล่น ของใช้เข้าที่อย่างเรียบร้อยด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[4]->score_rate_social))
@@ -2227,7 +2225,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.2 เข้าแถวตามลำดับกก่อน-หลัง ได้ด้วยตนเอง
+                                                2.2 เข้าแถวตามลำดับก่อน-หลัง ได้ด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[5]->score_rate_social))
@@ -2274,7 +2272,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.3 ทึ้งขยะเป็นที่ได้แต่ไม่เรียบร้อย
+                                                2.3 ทึ้งขยะเป็นที่ได้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[6]->score_rate_social))
@@ -2321,10 +2319,10 @@
                                         </tr>
                                         <tr>
                                             <td rowspan="2">
-                                                3.ประหยัดพอเพียง
+                                                3.ประหยัดและพอเพียง
                                             </td>
                                             <td>
-                                                3.1 ใช้สิงของเครื่องใช้อย่างประหยัดและพพอเพียงเมื่อมีผู้ชี้เนะ
+                                                3.1 ใช้สิ่งของเครื่องใช้อย่างประหยัดและพอเพียงด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[7]->score_rate_social))
@@ -2371,7 +2369,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                3.2 รักกษาสิ่งของที่ใช้ร่วมกัน
+                                                3.2 รู้จักใช้สิ่งของ/เครื่องใช้/น้ำ/ไฟอย่างประหยัด
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[8]->score_rate_social))
@@ -2426,7 +2424,7 @@
                                                 1.ดูแลรักษาธรรมชาติและสิ่งแวดล้อม
                                             </td>
                                             <td>
-                                                1.1 มีส่วนร่วมดูแลรักษาธรรมชาติและสิ่งแวดล้อมเมื่อมีผู้ชี้แนะ
+                                                1.1 มีส่วนร่วมดูแลรักษาธรรมชาติและสิ่งแวดล้อมด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[9]->score_rate_social))
@@ -2570,7 +2568,7 @@
                                                 2.มีมารยาทตามวัฒนธรรมไทย และรักความเป็นไทย
                                             </td>
                                             <td>
-                                                2.1 ปฎิบัติตามมารยาทไทยด้วยตนเอง
+                                                2.1 ปฎิบัติตามมารยาทไทยได้ตามกาลเทศะ
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[12]->score_rate_social))
@@ -2664,7 +2662,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.3 ยืนตรงเมื่อได้ยินเสียงเพลงชาติไทยและเพลงสรรเสริญพระบารมี
+                                                2.3 ยืนตรงและร่วมร้องเพลงชาติไทยและเพลงสรรเสริญพระบารมี
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[14]->score_rate_social))
@@ -2711,7 +2709,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.4 มีสัมมาคารวะและมารยาทตามวัฒนธรรมไทย
+                                                2.4 มีสัมมาคารวะและมารยาทตามวัฒนธรรมไทยได้คล่อง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[15]->score_rate_social))
@@ -2804,13 +2802,13 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th scope="row" rowspan="13">
+                                            <th scope="row" rowspan="15">
                                                 <u>พัฒนาการด้านสังคม</u> <br>
                                                 <label for="">มาตรฐานที่ 8</label><br>
                                                 <label for="">อยู่ร่วมกับผู้อื่นได้อย่างมีความสุข
                                                     และปฎิบัติตนเป็นสมาชิกที่ดีของสังคมในระบอกประชาธิปไตยอันมีพระมหากษัตริย์ทรงเป็นประมุข</label>
                                             </th>
-                                            <td rowspan="3">
+                                            <td rowspan="5">
                                                 1.ยอมรับความเหมือนความแตกต่างระหว่างบุคคล
                                             </td>
                                             <td>
@@ -2908,7 +2906,8 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.3 เล่นและทำกิจกรรมร่วมกับเด็กที่แตกต่างไปจากตนได้ เช่นต่างภาษา เชื้อชาติ
+                                                1.3 เล่นและทำกิจกรรมร่วมกับกลุ่มเด็กที่แตกต่างไปจากตนได้ เช่น ต่างภาษา
+                                                เชื้อชาติ
                                                 พื้นเพทางสังคมหรือมีความบกพร่องทางร่างกาย
                                             </td>
                                             <td valign="middle">
@@ -2954,12 +2953,10 @@
                                                 @endif
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td rowspan="5">
-                                                2.มีปฎิสัมพันธ์ทีดีกับผู้อื่น
-                                            </td>
+                                        <tr> <!-- เพิ่มเติมมาใหม่ -->
                                             <td>
-                                                2.1 เล่นหรือทำงานร่วมกับเพื่อนเป็นกลุ่ม
+                                                1.4 แลกเปลี่ยนความคิดเห็นและยอมรับความแตกต่างระหว่างบุคคล เชื้อชาติ
+                                                ศาสนา สังคมและวัฒนธรรมอื่น
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[20]->score_rate_social))
@@ -3004,9 +3001,10 @@
                                                 @endif
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr> <!-- เพิ่มเติมมาใหม่ -->
                                             <td>
-                                                2.2 ยิ้ม ทักทาย หรือพูดคุยกับผู้ใหญ่และบุคคลที่คุ้นเคยได้ด้วนตนเอง
+                                                1.5
+                                                พูดเกี่ยวกับประเพณีครอบครัวต่างๆและเข้าร่วมเล่นแสดงความสนใจในวัฒนธรรมอื่น
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[21]->score_rate_social))
@@ -3052,8 +3050,11 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td rowspan="5">
+                                                2.มีปฎิสัมพันธ์ทีดีกับผู้อื่น
+                                            </td>
                                             <td>
-                                                2.3 เข้าร่วมกิจกรรมกลุ่มได้นานขึ้น
+                                                2.1 เล่นหรือทำงานร่วมกับเพื่อนเป็นกลุ่ม
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[22]->score_rate_social))
@@ -3100,7 +3101,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.4 แบ่นปันกันเพื่อนและผลัดกันเล่นโดยมีผู้ใหญ่แนะนำ
+                                                2.2 ยิ้ม ทักทาย หรือพูดคุยกับผู้ใหญ่และบุคคลที่คุ้นเคยได้ด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[23]->score_rate_social))
@@ -3147,7 +3148,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.5 ประนีประนอมแก้ไขปัญหาร่วมกับผู้อื่นได้
+                                                2.3 เข้าร่วมกิจกรรมกลุ่มได้นานขึ้นด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[24]->score_rate_social))
@@ -3193,11 +3194,8 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td rowspan="5">
-                                                3.ปฎิบัติตนเบื้องต้นในการเป็นสมาชิกที่ดีของสังคม
-                                            </td>
                                             <td>
-                                                3.1 มีส่วนร่วมในการสร้างข้อตกลงและปฎิบัติตามข้อตกลงเมื่อมีผู้ชี้แนะ
+                                                2.4 แบ่นปันกันเพื่อนและผลัดกันเล่นด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[25]->score_rate_social))
@@ -3244,7 +3242,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                3.2 ปฎิบัติตนเป็นผู้นำและผู้ตามได้ด้วนตนเอง
+                                                2.5 ประนีประนอมแก้ไขปัญหาร่วมกับผู้นอื่นได้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[26]->score_rate_social))
@@ -3290,8 +3288,11 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td rowspan="5">
+                                                3.ปฎิบัติตนเบื้องต้นในการเป็นสมาชิกที่ดีของสังคม
+                                            </td>
                                             <td>
-                                                3.3 ประนีประนอมแก้ไข้ปัญหาโดยปราศจากความรุนแรงเมื่อมีผู้ชี้แนะ
+                                                3.1 มีส่วนร่วมในการสร้างข้อตกลงและปฎิบัติตามข้อตกลงด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[27]->score_rate_social))
@@ -3338,7 +3339,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                3.4 ยืนตรงเคารพพธงชาติร้องเพลงชาติ
+                                                3.2 ปฎิบัติตนเป็นผู้นำและผู้ตามได้เหมาะสมกับสถานการณ์
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[28]->score_rate_social))
@@ -3385,8 +3386,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                3.5
-                                                เข้าร่วมกกิจกรรมที่เกี่ยวกับสถาบันพระมหากกษัตริย์ตามที่โรงเรียนและชุมชนจัดขึ้น
+                                                3.3 ประนีประนอมแก้ไข้ปัญหาโดยปราศจากความรุนแรงด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[29]->score_rate_social))
@@ -3431,6 +3431,101 @@
                                                 @endif
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                3.4 ยืนตรงเคารพธงชาติร้องเพลงชาติ
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($datasocialsemester1[30]->score_rate_social))
+                                                @elseif ($datasocialsemester1[30]->score_rate_social == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($datasocialsemester1[30]->score_rate_social == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($datasocialsemester1[30]->score_rate_social == 3)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ดี" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @endif
+                                                @if (empty($datasocialsemester1[30]->score_rate_social))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($datasocialsemester2[30]->score_rate_social))
+                                                @elseif ($datasocialsemester2[30]->score_rate_social == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($datasocialsemester2[30]->score_rate_social == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($datasocialsemester2[30]->score_rate_social == 3)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ดี" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @endif
+                                                @if (empty($datasocialsemester2[30]->score_rate_social))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                3.5
+                                                เข้าร่วมกิจกรรมที่เกี่ยวกับสถาบันพระมหากกษัตริย์ตามที่โรงเรียนและชุมชนจัดขึ้น
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($datasocialsemester1[31]->score_rate_social))
+                                                @elseif ($datasocialsemester1[31]->score_rate_social == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($datasocialsemester1[31]->score_rate_social == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($datasocialsemester1[31]->score_rate_social == 3)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ดี" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @endif
+                                                @if (empty($datasocialsemester1[31]->score_rate_social))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                            </td>
+                                            <td valign="middle">
+                                                @if (!isset($datasocialsemester2[31]->score_rate_social))
+                                                @elseif ($datasocialsemester2[31]->score_rate_social == 1)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ควรเสริม" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($datasocialsemester2[31]->score_rate_social == 2)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ปานกลาง" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @elseif ($datasocialsemester2[31]->score_rate_social == 3)
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ดี" aria-label="Disabled input example" disabled
+                                                        readonly>
+                                                @endif
+                                                @if (empty($datasocialsemester2[31]->score_rate_social))
+                                                    <input class="form-control text-center" type="text"
+                                                        value="ยังไม่ได้รับการประเมิน"
+                                                        aria-label="Disabled input example" disabled readonly>
+                                                @endif
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -3464,7 +3559,7 @@
                                                 1.สนทนาโต้ตอบและเล่าเรื่องให้ผู้อื่นเข้าใจ
                                             </td>
                                             <td>
-                                                1.1 ฟังผู้อื่นพูดจนจบและสนทนาโต้ดอบสอดคล้องกับเรื่องที่ฟัง
+                                                1.1 ฟังผู้อื่นพูดจนจบและสนทนาโต้ตอบอย่างต่อเนื่อง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[0]->score_rate_intellectual))
@@ -3558,7 +3653,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.3 ฟังคำสัง 2 ขั้นตอนและสามารถปฎิบัติได้
+                                                1.3 ฟังคำสัง 3 ขั้นตอนและสามารถปฏิบัติได้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[2]->score_rate_intellectual))
@@ -3605,7 +3700,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.4 พูดโต้ตอบและเล่าเรื่องเป็นประโยคอย่างต่อเนื่อง
+                                                1.4 พูดโต้ตอบและเล่าเรื่องราวต่อเนื่องได้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[3]->score_rate_intellectual))
@@ -3652,7 +3747,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.5 ฟัง พูด โต้ตอบและแสดงความรู้สึกเกี่ยวกับเรื่องที่ฟังได้
+                                                1.5 ฟัง พูด โต้ตอบและนำมาถ่ายทอดด้วยคำพูดของตนเองได้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[4]->score_rate_intellectual))
@@ -3702,7 +3797,8 @@
                                                 2.อ่านเขียนภาพและสัญลักญณ์ได้
                                             </td>
                                             <td>
-                                                2.1 อ่านภาพ สัญลักษณ์ คำ พร้อมทั้งชี้ หรือ กวาดตามองข้อความตามบรรทัด
+                                                2.1 อ่านภาพ สัญลักษณ์ คำ
+                                                ด้วยการชี้หรือกวาดตามองจุดเริ่มต้นและจุดจบของข้อความ
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[5]->score_rate_intellectual))
@@ -3749,7 +3845,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.2 เขียนคล้ายตัวอักษร
+                                                2.2 เขียนชื่อตนเองตามแบบเขียนข้อความด้วยวิธีที่คิดขึ้นเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[6]->score_rate_intellectual))
@@ -3796,7 +3892,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.3 เปิดและอ่านหนังสือด้วนตนเอง
+                                                2.3 อ่านหนังสือและเล่าเรื่องซ้ำด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[7]->score_rate_intellectual))
@@ -3848,10 +3944,11 @@
                                                 <label for="">มีความสามารถในการคิดเป็นพื้นฐานในการเรียนรู้</label>
                                             </th>
                                             <td rowspan="5">
-                                                1.สนทนาโต้ตอบและเล่าเรื่องให้ผู้อื่นเข้าใจ
+                                                1.มีความสามารถในการคิดรวบยอด
                                             </td>
                                             <td>
-                                                1.1 บอกลักษณะส่วนประกอบของสิ่งของต่างๆจากกการสังเกตโดยใช้ประสาทสัมผัส
+                                                1.1
+                                                บอกลักษณะการประกอบเปลี่ยนแปลงหรือความสัมพันธ์ของสิ่งของต่างๆจากการสังเกตโดยใช้ประสาทสัมผัส
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[8]->score_rate_intellectual))
@@ -3898,8 +3995,8 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.2 จับคู่และเปรียบเทียบความแตกต่างหรือความเหมือนของสิ่งต่างๆ
-                                                โดยใช้ลักษณะที่สังเกตพบเพียงลักกษณะเดียว
+                                                1.2 จับคู่และเปรียบเทียบความแตกต่างและความเหมือนของสิ่งต่างๆ
+                                                โดยใช้ลักษณะที่สังเกตพบ 2 ลักกษณะขึ้นไป
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[9]->score_rate_intellectual))
@@ -3946,7 +4043,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.3 จำแนกและจัดกลุ่มสิ่งต่างๆ โดยใช้อย่างน้อย 1 ลักกษณะเป็นเกณฑ์
+                                                1.3 จำแนกและจัดกลุ่มสิ่งต่างๆ โดยใช้ตั้งแต่ 2 ลักษณะขึ้นไปเป็นเกณฑ์
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[10]->score_rate_intellectual))
@@ -3993,7 +4090,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.4 เรียงลำดับสิ่งของหรือเหตุกการณ์อย่างน้อย 4 ลำดับ
+                                                1.4 เรียงลำดับสิ่งของหรือเหตุกการณ์อย่างน้อย 5 ลำดับ
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[11]->score_rate_intellectual))
@@ -4040,7 +4137,8 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.5 แก้ปัญหาด้วยวิธีการต่างๆ โดยกการลองผิดลองถูกด้วยตนเอง
+                                                1.5 วางแผนและลงมือแก้ปัญหาหรือความต้องการด้วยวิธีการต่างๆ
+                                                ที่คิดด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[12]->score_rate_intellectual))
@@ -4090,7 +4188,8 @@
                                                 2.มีความสามารถในการคิดเชิงเหตุผล
                                             </td>
                                             <td>
-                                                2.1 ระบุสาเหตุหรือผลที่เกิดขึ้นในเหตุการณ์หรือการกระทำเมื่อมีผู้ชี้แนะ
+                                                2.1
+                                                อธิบายหรือเชื่อมโยงสาเหตุและผลที่เกิดขึ้นในเหตุการณ์หรือการกระทำด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[13]->score_rate_intellectual))
@@ -4138,7 +4237,7 @@
                                         <tr>
                                             <td>
                                                 2.2
-                                                คาดเดาหรือคาดคะเนสิ่งที่อาดเกินขึ้นหรือมีส่วนร่วมในการลงความเห็นจากข้อมูล
+                                                คาดคะเนสิ่งที่อาดเกินขึ้นและมีส่วนร่วมในการลงความเห็นจากข้อมูลอย่างมีเหตุผล
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[14]->score_rate_intellectual))
@@ -4188,7 +4287,7 @@
                                                 3.มีความสามารถในการคิดแก้ปัญหาและตัดสินใจ
                                             </td>
                                             <td>
-                                                3.1 ตัดสินใจในเรื่องง่ายๆ และเริ่มเรียนรู้ผลที่เกิดขึ้น
+                                                3.1 ตัดสินใจในเรื่องง่ายๆ และยอมรับผลที่เกิดขึ้น
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[15]->score_rate_intellectual))
@@ -4235,7 +4334,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                3.2 ระบุปัญหาโดยลองผิดลองถูก
+                                                3.2 ระบุปัญหาสร้างทางเลือกและวิธีแก้ปัญหา
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[16]->score_rate_intellectual))
@@ -4283,7 +4382,7 @@
                                         <tr>
                                             <td>
                                                 3.3
-                                                ให้เตุผผลในการคาดคะแนการลงความเห็นหรือการลงข้อสรุปเพื่ออธิบายเกี่ยวกับสิ่งที่สังเกตหรือเรียนรู้
+                                                ให้เหตุผลในการคาดคะแนการลงความเห็นหรือการลงข้อสรุปเพื่ออธิบายเกี่ยวกับสิ่งที่สังเกตหรือเรียนรู้
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[17]->score_rate_intellectual))
@@ -4339,7 +4438,7 @@
                                             </td>
                                             <td>
                                                 1.1
-                                                สร้างผลงานศิลปะเพื่อสื่อสานตวามรู้สึกของตนเองโดยมีการดัดแปลงและแปลกใหม่จากเดิมหรือมีรายละเอียดเพิ่มขึ้น
+                                                สร้างผลงานศิลปะเพื่อสื่อสานความรู้สึกของตนเองโดยมีการดัดแปลงและแปลกใหม่จากเดิมหรือมีรายละเอียดเพิ่มขึ้น
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[18]->score_rate_intellectual))
@@ -4387,7 +4486,7 @@
                                         <tr>
                                             <td>
                                                 1.2 เล่น/ทำงานศิลปะตามจินตนาการของตนเอง
-                                                โดนมีลักษณะคิดริเริ่มคิดคล่องแคล่วคิดยึดหยุ่นและคิดละเอียดลออ
+                                                โดนมีลักษณะคิดริเริ่ม คิดคล่องแคล่ว คิดยึดหยุ่นและคิดละเอียดละอ่อน
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[19]->score_rate_intellectual))
@@ -4438,7 +4537,7 @@
                                             </td>
                                             <td>
                                                 2.1
-                                                เคลื่อนไหวท่าทางเพื่อสื่อสารความคิดความรู้สึกของตนเองอย่างหลากหลายหรือแปลกใหม่
+                                                เคลื่อนไหวท่าทางเพื่อสื่อสารความคิดความรู้สึกของตนเองอย่างหลากหลายและแปลกใหม่
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[20]->score_rate_intellectual))
@@ -4543,7 +4642,7 @@
                                                 1.มีเจคติที่ดีต่อการเรียนรู้
                                             </td>
                                             <td>
-                                                1.1 สนใจซักถามเกี่ยวกับสัญลักษณ์หรือตัวหนังสือที่พบเห็น
+                                                1.1 สนใจหยิบหนังสือมาอ่านและเขียนสื่อความคิดด้วยตนเองเป็นประจำอย่างต่อเนื่อง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[22]->score_rate_intellectual))
@@ -4590,7 +4689,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.2 กระตือรือร้นในการเข้าร่วมกิจกรรม
+                                                1.2 กระตือรือร้นในการเข้าร่วมกิจกรรม ตั้งแต่ต้นจนจบ
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[23]->score_rate_intellectual))
@@ -4637,7 +4736,8 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                1.3 ถามคำถามและแสดงความคิดเห็นเกี่ยวกับเรื่องที่สนใจ
+                                                1.3
+                                                ถามคำถามเกี่ยวกับเรื่องต่างๆและกระตือรือร้นที่จะหาคำตอบด้วยวิธีการหลากหลาย
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[24]->score_rate_intellectual))
@@ -4687,7 +4787,7 @@
                                                 2.มีความสามารถในการแสวงหาความรู้
                                             </td>
                                             <td>
-                                                2.1 ค้นหาคำตอบของข้อสงสัยต่างๆ ตามวิธีการของตนเอง
+                                                2.1 ค้นหาคำตอบของข้อสงสัยต่างๆ โดยใช่วิธีการที่หลากหลายด้วยตนเอง
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[25]->score_rate_intellectual))
@@ -4734,7 +4834,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                2.2 ใช้ประโยคคำถามว่า "ที่ไหน" "ทำไม" ในการค้นหาคำตอบ
+                                                2.2 ใช้ประโยคคำถามว่า "เมื่อไหร่" "อย่างไร" ในการค้นหาคำตอบ
                                             </td>
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[26]->score_rate_intellectual))
@@ -4869,8 +4969,8 @@
                                 $score_physically2 = ($appraisalsemester2Physically->score_physically / 60) * 100;
                                 $score_mood_mind1 = ($appraisalsemester1mood_mind->score_mood_mind / 57) * 100;
                                 $score_mood_mind2 = ($appraisalsemester2mood_mind->score_mood_mind / 57) * 100;
-                                $score_social1 = ($appraisalsemester1social->score_social / 90) * 100;
-                                $score_social2 = ($appraisalsemester2social->score_social / 90) * 100;
+                                $score_social1 = ($appraisalsemester1social->score_social / 96) * 100;
+                                $score_social2 = ($appraisalsemester2social->score_social / 96) * 100;
                                 $score_intellectual1 = ($appraisalsemester1intellectual->score_intellectual / 84) * 100;
                                 $score_intellectual2 = ($appraisalsemester2intellectual->score_intellectual / 84) * 100;
                                 // Debugbar::notice($score_physically1,$score_physically2);
@@ -5156,24 +5256,23 @@
                                     </tbody>
                                 </table>
                                 {{-- <div>
-                                    <span>
-                                        >66.66&&<=100=ดี </span>
-                                            <br>
-                                            <span>
-                                                >33.33&&<=66.66=ปานกลาง </span>
-                                                    <br>
-                                                    <span>
-                                                        <=33.33=ควรเสริม </span>
+                                <span>
+                                    >66.66&&<=100=ดี </span>
+                                        <br>
+                                        <span>
+                                            >33.33&&<=66.66=ปานกลาง </span>
+                                                <br>
+                                                <span>
+                                                    <=33.33=ควรเสริม </span>
 
-                                                          
-                                </div> --}}
+                                                      
+                            </div> --}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4">
+            <div class="col-4">
                 <div class="card mb-2">
                     <div class="card-header">
                         {{ __('ภาคเรียน1') }}
@@ -5205,21 +5304,21 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
+
 @section('script')
     <script>
         function selectLevel(value) {
-            
+
             if (value === '2') {
                 console.log('อบ2');
-                location.reload();
+                location.href = "{{ route('appraisal.show2', ['student_id' => $student_id]) }}";
             }
             if (value === '3') {
                 console.log('อบ3');
-                location.href = "{{ route('appraisal.show3', ['student_id' => $student_id]) }}";
+                location.reload();
             }
         }
 
@@ -5257,7 +5356,7 @@
                         name: 'พัฒนาการด้านอารมณ์และจิตใจ'
                     },
                     {
-                        value: (socialData / 90) * 100,
+                        value: (socialData / 96) * 100,
                         name: 'พัฒนาการด้านสังคม'
                     },
                     {
@@ -5309,7 +5408,7 @@
                         name: 'พัฒนาการด้านอารมณ์และจิตใจ'
                     },
                     {
-                        value: (socialData2 / 90) * 100,
+                        value: (socialData2 / 96) * 100,
                         name: 'พัฒนาการด้านสังคม'
                     },
                     {

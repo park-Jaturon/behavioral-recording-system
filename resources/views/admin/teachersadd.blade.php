@@ -119,11 +119,14 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-0 ">
-                                <div class="col-md-8 offset-md-4 ">
-                                    <button type="submit" class="btn btn-primary float-end">
-                                        {{ __('บันทึก') }}
-                                    </button>
+                            <div class="row justify-content-end align-items-center g-2">
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary">
+                                    {{ __('บันทึก') }}
+                                </button>
+                            </div>
+                                <div class="col-auto">
+                                    <a name="" id="" class="btn btn-danger" href="{{route('index.manageteacher')}}" role="button"> ยกเลิก</a>
                                 </div>
                             </div>
                         </form>

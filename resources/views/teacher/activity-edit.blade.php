@@ -15,18 +15,20 @@
                         role="button"><i class="bi bi-chevron-left"></i></a>
                 </div> --}}
             </div>
-            <div class="row g-2 align-items-center mb-3">
-                <div class="col-auto">
+            <div class="row g-2 justify-content-center mb-3">
+                {{-- <div class="col-auto">
                     <label for="inputPassword6" class="col-form-label">เรื่อง </label>
-                </div>
-                <div class="col-auto">
+                </div> --}}
+                <div class="col-2 align-self-start">
+                    <label for="" class="form-label">เรื่อง</label>
                     <input type="text" class="form-control" name="topic" id="inputName" value="{{ $event->title }}">
                 </div>
     
-                <div class="col-auto">
+                {{-- <div class="col-auto">
                     <label for="" class="col-form-label">ระยะเวลา</label>
-                </div>
-                <div class="col-auto">
+                </div> --}}
+                <div class="col-4 align-self-start">
+                    <label for="" class="col-form-label">ระยะเวลา</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
                         <input type="text" id="estart" aria-label="First name" class="form-control " name="starrt">
@@ -35,10 +37,15 @@
                         <input type="text" id="eend" aria-label="First name" class="form-control" name="end">
                     </div>
                 </div>
-                <div class="col-auto">
+                <div class="col-4 align-self-start">
+                    <label for="" class="form-label">เนื้อความ</label>
+                    <textarea class="form-control" id="textarea1" rows="2" name="description">{{$event->description}}</textarea>
+                    <small id="textarea1Error" class="text-danger"></small>
+                </div>
+                <div class="col-auto align-self-end">
                     <button type="submit" class="btn btn-primary">บันทึก</button>
                 </div>
-                <div class="col-md-auto  ">
+                <div class="col-md-auto align-self-end">
                     <a name="" id="" class="btn btn-danger" href="{{route('image.activity',['events_id'=>$event->events_id])}}" role="button">ยกเลิก</a>
                  </div>
             </div>

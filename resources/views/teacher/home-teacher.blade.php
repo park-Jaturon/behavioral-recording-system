@@ -6,11 +6,20 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header text-center">
-                        @php
+                        <div class="row justify-content-start align-items-center g-2">
+                            <div class="col-auto">
+                                <a class="btn btn-light" href="{{ route('teacher.dashboard') }}" role="button"><i
+                                    class="bi bi-chevron-left"></i></a>
+                            </div>
+                            <div class="col-auto">
+                                @php
                             if (count($users) > 0) {
                                 echo $users[0]->room_name;
                             }
                         @endphp
+                            </div>
+                        </div>
+                        
                     </div>
 
                     <div class="card-body">
@@ -19,7 +28,7 @@
                                 {{ $message }}
                             </div>
                         @endif
-                        <form action="{{route('up.class')}}" method="post">
+                        <form action="{{ route('up.class') }}" method="post">
                             @csrf
                             <div class="table-responsive">
                                 <table class="table table-striped table-fixed">
@@ -43,17 +52,19 @@
                                                     <div class="col-6 ">
                                                         @if ($user->status == 'เรียนอยู่')
                                                             <input class="form-control" type="text"
-                                                                value="{{ $user->status }}" aria-label="Disabled input example"
-                                                                disabled readonly style="color: rgb(23, 187, 23);">
+                                                                value="{{ $user->status }}"
+                                                                aria-label="Disabled input example" disabled readonly
+                                                                style="color: rgb(23, 187, 23);">
                                                         @else
                                                             <input class="form-control" type="text"
-                                                                value="{{ $user->status }}" aria-label="Disabled input example"
-                                                                disabled readonly style="color: red;">
+                                                                value="{{ $user->status }}"
+                                                                aria-label="Disabled input example" disabled readonly
+                                                                style="color: red;">
                                                         @endif
-    
+
                                                     </div>
                                                 </td>
-    
+
                                                 <td align="center">
                                                     <a class="btn btn-primary "
                                                         href="{{ url('teacher/room/show/' . $user->student_id) }}"
@@ -66,27 +77,37 @@
                                                 <td>
                                                     @if ($user->elevate == 'true')
                                                         <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="check[]" value="{{$user->student_id}}" id="flexCheckDefault">
-                                                      </div>
+                                                            <input class="form-check-input" type="checkbox" name="check[]"
+                                                                value="{{ $user->student_id }}" id="flexCheckDefault">
+                                                        </div>
                                                     @endif
                                                 </td>
                                             </tr>
                                         @empty
-    
+
                                             <div class="alert alert-info text-center" role="alert">
                                                 <h4><strong>ยังไม่มีนักเรียนในห้องเรียนนี้</strong> </h4>
                                             </div>
                                         @endforelse
                                     </tbody>
                                 </table>
-                                    {{-- <div class="col text-end">
-                                        <button type="button" class="btn btn-primary" onclick="upClass()">เลื่อนขั้น</button>
-                                    </div> --}}
+                            </div>
+                            @if (count($users) > 0)
+                                <input type="hidden" name="cLevel" value="{{ $users[0]->level }}" />
+                                <input type="hidden" name="idRoom" value="{{ $users[0]->rooms_id }}" />
+                            @endif
 
-                                    <button type="submit" class="btn btn-primary ">เลื่อนขั้น</button>
+                            <div class="row justify-content-end align-items-start g-2">
+                                <div class="col-auto">
+                                    @if (count($users) > 0)
+                                        @if ($users[0]->level == 'อบ1' || $users[0]->level == 'อบ2')
+                                            <button type="submit" class="btn btn-primary ">เลื่อนขั้น</button>
+                                        @endif
+                                    @endif
+                                </div>
                             </div>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
@@ -97,6 +118,7 @@
 @section('script')
     <script>
         console.log(flexCheckDefault).value;
+
         function upClass() {
             //   document.getElementById("demo").innerHTML = "Hello World";
             // console.log({{}});

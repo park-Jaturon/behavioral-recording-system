@@ -15,11 +15,11 @@ class ManagestudentController extends Controller
     public function managestudentindex()
     {
         $student = DB::table('students')
-        ->join('rooms', 'students.rooms_id', '=', 'rooms.rooms_id')
-        ->select('students.student_id','students.number','students.prefix_name','students.first_name','students.last_name','rooms.room_name',)
-        ->get();
+            ->join('rooms', 'students.rooms_id', '=', 'rooms.rooms_id')
+            ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name',)
+            ->get();
         //dd( $student);
-        return view('admin.managestudentindex',compact('student'));
+        return view('admin.managestudentindex', compact('student'));
     }
 
     public function esitstudent($student_id)
@@ -30,7 +30,7 @@ class ManagestudentController extends Controller
         $ParentStuden = Parents::findOrFail($data->parents_id);
         $parent = Parents::all();
         Debugbar::info($ParentStuden);
-        return view('admin.studentadd',compact('data','room','parent','StudentRoom','ParentStuden'));
+        return view('admin.studentadd', compact('data', 'room', 'parent', 'StudentRoom', 'ParentStuden'));
     }
 
     public function addstudent()
@@ -41,8 +41,8 @@ class ManagestudentController extends Controller
         $ParentStuden = new Parents();
         $StudentRoom = new Room();
         Debugbar::info($room);
-        Debugbar::info(date("Y")+543);
-        return view('admin.studentadd',compact('data','room','parent','StudentRoom','ParentStuden'));
+        Debugbar::info(date("Y") + 543);
+        return view('admin.studentadd', compact('data', 'room', 'parent', 'StudentRoom', 'ParentStuden'));
     }
 
     public function storestudent(Request $request)
@@ -64,7 +64,7 @@ class ManagestudentController extends Controller
             'telephonenumbermother' => 'numeric|digits:10|nullable',
             'telephonenumberbus' => 'numeric|digits:10|nullable',
             'habitations' => 'required|string|min:10|max:255',
-        ],[
+        ], [
             'prefix.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'firstname.required' => 'กรุณาป้อน ชื่อ',
             'firstname.min' => 'ข้อมูลไม่ถูกต้อง',
@@ -97,6 +97,19 @@ class ManagestudentController extends Controller
             'habitations.min' => 'ที่อยู่ไม่ถูกต้อง'
         ]);
         // Debugbar::info(date("Y")+543);
+        if ($request->room) {
+            $dRoom = Room::findOrFail($request->room);
+            if ($dRoom->rooms_id == 15||$dRoom->rooms_id == 16||$dRoom->rooms_id == 17||$dRoom->rooms_id == 18||$dRoom->rooms_id == 19||$dRoom->rooms_id == 20) {
+                $level = "อบ1";
+            }
+            if ($dRoom->rooms_id == 2||$dRoom->rooms_id == 5||$dRoom->rooms_id == 1||$dRoom->rooms_id == 6||$dRoom->rooms_id == 7||$dRoom->rooms_id == 8) {
+                $level = "อบ2";
+            }
+            if ($dRoom->rooms_id == 9||$dRoom->rooms_id == 10||$dRoom->rooms_id == 11||$dRoom->rooms_id == 12||$dRoom->rooms_id == 13||$dRoom->rooms_id == 14) {
+                $level = "อบ3";
+            }
+        }
+        // dd($dRoom);
         Student::create([
             'prefix_name' => $request->prefix,
             'first_name' => $request->firstname,
@@ -113,14 +126,15 @@ class ManagestudentController extends Controller
             'telephone_number_mother' => $request->telephonenumbermother,
             'telephone_number_bus' => $request->telephonenumberbus,
             'habitations' => $request->habitations,
+            'level' => $level,
             'school_year' => date("Y")+543,
         ]);
         return redirect()->back()->with('success','บันทึกข้อมูลเสร็จสิ้น');
     }
 
-    public function update(Request $request,$student_id)
+    public function update(Request $request, $student_id)
     {
-       
+
         $request->validate([
             'prefix' => 'required|string',
             'firstname' => 'required|string|min:3|regex:/^[ก-๙]+$/u',
@@ -137,7 +151,7 @@ class ManagestudentController extends Controller
             'telephonenumbermother' => 'numeric|digits:10|nullable',
             'telephonenumberbus' => 'numeric|digits:10|nullable',
             'habitations' => 'required|string|min:10|max:255',
-        ],[
+        ], [
             'prefix.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'firstname.required' => 'กรุณาป้อน ชื่อ',
             'firstname.min' => 'ข้อมูลไม่ถูกต้อง',
@@ -170,23 +184,23 @@ class ManagestudentController extends Controller
         ]);
         //dd($request);
         $data = Student::findOrFail($student_id);
-          $data->prefix_name = $request->prefix;
-          $data->first_name = $request->firstname;
-          $data->last_name = $request->lastname;
-          $data->rooms_id = $request->room;
-          $data->birthdays = $request->birthdays;
-          $data->symbol = $request->symbol;
-          $data->id_tags = $request->id_tags;
-          $data->number = $request->numberid;
-          $data->father = $request->father;
-          $data->mother = $request->mother;
-          $data->parents_id = $request->parents;
-          $data->telephone_number_father = $request->telephonenumberfather;
-          $data->telephone_number_mother = $request->telephonenumbermother;
-          $data->telephone_number_bus = $request->telephonenumberbus;
-          $data->habitations = $request->habitations;
-          $data->save();
-        return redirect()->back()->with('success','แก้ไขข้อมูลเสร็จสิ้น');
+        $data->prefix_name = $request->prefix;
+        $data->first_name = $request->firstname;
+        $data->last_name = $request->lastname;
+        $data->rooms_id = $request->room;
+        $data->birthdays = $request->birthdays;
+        $data->symbol = $request->symbol;
+        $data->id_tags = $request->id_tags;
+        $data->number = $request->numberid;
+        $data->father = $request->father;
+        $data->mother = $request->mother;
+        $data->parents_id = $request->parents;
+        $data->telephone_number_father = $request->telephonenumberfather;
+        $data->telephone_number_mother = $request->telephonenumbermother;
+        $data->telephone_number_bus = $request->telephonenumberbus;
+        $data->habitations = $request->habitations;
+        $data->save();
+        return redirect()->back()->with('success', 'แก้ไขข้อมูลเสร็จสิ้น');
     }
 
     public function destroy($student_id)

@@ -280,9 +280,17 @@
                             </div>
 
                         </div>
-                        <button type="submit" class="btn btn-primary float-end">
-                            บันทึก
-                        </button>
+                        
+                        <div class="row justify-content-end align-items-center g-2">
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">
+                                {{ __('บันทึก') }}
+                            </button>
+                        </div>
+                            <div class="col-auto">
+                                <a name="" id="" class="btn btn-danger" href="{{route('index.managestudent')}}" role="button"> ยกเลิก</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

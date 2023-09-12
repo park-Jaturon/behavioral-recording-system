@@ -16,8 +16,14 @@ class TeacherController extends Controller
 {
     public function home()
     {
-
-        return view('teacher.dashboard');
+        $users = DB::table('teachers')
+        ->join('users','teachers.teachers_id', '=', 'users.rank_id')
+        ->where('users.rank', '=', 'teacher')
+        ->join('rooms', 'rooms.rooms_id', '=', 'teachers.rooms_id')
+        ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
+        ->first();
+    Debugbar::info( $users);
+        return view('teacher.dashboard',compact('users'));
     }
 
     public function room()
@@ -29,11 +35,11 @@ class TeacherController extends Controller
             })
             ->join('rooms', 'rooms.rooms_id', '=', 'teachers.rooms_id')
             ->join('students', 'students.rooms_id', '=', 'rooms.rooms_id')
-            ->select('students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'students.status', 'students.elevate', 'rooms.room_name', 'students.student_id', 'students.school_year')
+            ->select('students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'students.status', 'students.elevate', 'rooms.room_name', 'students.student_id', 'students.school_year', 'students.level', 'students.rooms_id')//
             ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
             ->where('students.level', 'like', 'อบ%')
             ->get();
-        Debugbar::info(count($users));
+        Debugbar::info($users);
 
 
         if (count($users) > 0) {
@@ -56,38 +62,68 @@ class TeacherController extends Controller
 
     public function upClass(Request $request)
     {
-
-        $students = $request->input('check');
-// dd($students);
-        // Debugbar::info( $students);
-
-        foreach ($students as $upclassStudent) {
-            $studentsD =  Student::find($upclassStudent);
-            
-            $studentsD->level = 'อบ3';
-            $studentsD->elevate = 'false';
-            $studentsD->school_year = $studentsD->school_year + 1;
-            if ($studentsD->rooms_id == 2) {
-                $studentsD->rooms_id = 9;
+        // dd($request);
+        if ($request->cLevel == "อบ1") {
+            $data = Student::where('rooms_id', '=', $request->idRoom)
+                ->get();
+            foreach ($data as $upclassStudent) {
+                $studentsD = Student::find($upclassStudent->student_id);
+                // dd($studentsD);
+                $studentsD->level = 'อบ2';
+                $studentsD->elevate = 'false';
+                $studentsD->school_year = $studentsD->school_year + 1;
+                if ($studentsD->rooms_id == 15) {
+                    $studentsD->rooms_id = 2;
+                }
+                if ($studentsD->rooms_id == 16) {
+                    $studentsD->rooms_id = 5;
+                }
+                if ($studentsD->rooms_id == 17) {
+                    $studentsD->rooms_id = 1;
+                }
+                if ($studentsD->rooms_id == 18) {
+                    $studentsD->rooms_id = 6;
+                }
+                if ($studentsD->rooms_id == 19) {
+                    $studentsD->rooms_id = 7;
+                }
+                if ($studentsD->rooms_id == 20) {
+                    $studentsD->rooms_id = 8;
+                }
+                $studentsD->save();
             }
-            if ($studentsD->rooms_id == 5) {
-                $studentsD->rooms_id = 10;
-            }
-            if ($studentsD->rooms_id == 1) {
-                $studentsD->rooms_id = 11;
-            }
-            if ($studentsD->rooms_id == 6) {
-                $studentsD->rooms_id = 12;
-            }
-            if ($studentsD->rooms_id == 7) {
-                $studentsD->rooms_id = 13;
-            }
-            if ($studentsD->rooms_id == 8) {
-                $studentsD->rooms_id = 14;
-            }
-            $studentsD->save();
+            return redirect()->back();
         }
-        return redirect()->back();
+        if ($request->cLevel == "อบ2") {
+            $students = $request->input('check');
+            foreach ($students as $upclassStudent) {
+                $studentsD = Student::find($upclassStudent);
+
+                $studentsD->level = 'อบ3';
+                $studentsD->elevate = 'false';
+                $studentsD->school_year = $studentsD->school_year + 1;
+                if ($studentsD->rooms_id == 2) {
+                    $studentsD->rooms_id = 9;
+                }
+                if ($studentsD->rooms_id == 5) {
+                    $studentsD->rooms_id = 10;
+                }
+                if ($studentsD->rooms_id == 1) {
+                    $studentsD->rooms_id = 11;
+                }
+                if ($studentsD->rooms_id == 6) {
+                    $studentsD->rooms_id = 12;
+                }
+                if ($studentsD->rooms_id == 7) {
+                    $studentsD->rooms_id = 13;
+                }
+                if ($studentsD->rooms_id == 8) {
+                    $studentsD->rooms_id = 14;
+                }
+                $studentsD->save();
+            }
+            return redirect()->back();
+        }
     }
 
     public function room_show($student_id)

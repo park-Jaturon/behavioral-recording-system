@@ -5,7 +5,17 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('ประกาศ') }}</div>
+                    <div class="card-header">
+                        <div class="row justify-content-start align-items-center g-2">
+                            <div class="col-auto">
+                                <a class="btn btn-light" href="{{ route('home.parent') }}" role="button"><i
+                                    class="bi bi-chevron-left"></i></a>
+                            </div>
+                            <div class="col-auto">
+                                {{ __('ประกาศ') }}
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))

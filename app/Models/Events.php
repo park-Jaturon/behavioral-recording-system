@@ -17,6 +17,7 @@ class Events extends Model
     protected $fillable = [
        'rooms_id',
        'title',
+       'description',
        'start',
        'end',
        'level',

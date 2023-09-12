@@ -16,7 +16,7 @@
 
         .nav-pills .nav-link.active,
         .nav-pills .show>.nav-link {
-            background-color: #17a2b8;
+            background-color: #b3f3fd;
             color: white;
             border-radius: 0px;
         }
@@ -318,7 +318,6 @@
                                                             <option value="2">ปานกลาง</option>
                                                             <option value="3">ดี</option>
                                                         </select>
-
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -449,7 +448,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        1.2 กระโดดขาเดียวไปอยู่กับที่ได้โดยไม่เสียการทรงตัว
+                                                        1.2 กระโดดขาเดียวอยู่กับที่ได้โดยไม่เสียการทรงตัว
                                                         <input type="hidden" name="table_section[]" value="2_1_2" />
                                                     </td>
                                                     <td class="text-center">
@@ -895,7 +894,7 @@
                                                         <label for="">มีคุณธรรม จริยธรรม และ จิตใจที่ดีงาม</label>
                                                     </th>
                                                     <td rowspan="2">
-                                                        1.ซื่อสีตย์สุจริต
+                                                        1.ซื่อสัตย์สุจริต
                                                     </td>
                                                     <td>
                                                         1.1 ขออนุญาตหรือรอคอยเมื่อต้องการสิ่งของของผู้อื่นเมื่อมีผู้ชี้เนะ
@@ -936,7 +935,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td rowspan="3">
-                                                        2.มีความเมตากรุณา มีน้ำใจ และช่วยเหลือแบ่งปัน
+                                                        2.มีความเมตตากรุณา มีน้ำใจ และช่วยเหลือแบ่งปัน
                                                     </td>
                                                     <td>
                                                         2.1 แสดงความรักต่อเพื่อนและมีเมตตาต่อสัตว์เลี้ยง
@@ -1119,7 +1118,7 @@
                                                         <u>พัฒนาการด้านสังคม</u> <br>
                                                         <label for="">มาตรฐานที่ 6</label><br>
                                                         <label
-                                                            for="">มีทักกษะชีวิตและปฎิบัติตามหลักปรัชญาของเศรษฐกิจพอเพียง</label>
+                                                            for="">มีทักษะชีวิตและปฎิบัติตามหลักปรัชญาของเศรษฐกิจพอเพียง</label>
                                                     </th>
                                                     <td rowspan="4">
                                                         1.ช่วยเหลือตนเองในการปฎิบัติกิจวัตรประจำวัน
@@ -1224,7 +1223,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        2.2 เข้าแถวตามลำดับกก่อน-หลัง ได้ด้วยตนเอง
+                                                        2.2 เข้าแถวตามลำดับก่อน-หลัง ได้ด้วยตนเอง
                                                         <input type="hidden" name="table_section[]" value="6_2_2" />
                                                     </td>
                                                     <td class="text-center">
@@ -1265,7 +1264,7 @@
                                                         3.ประหยัดพอเพียง
                                                     </td>
                                                     <td>
-                                                        3.1 ใช้สิงของเครื่องใช้อย่างประหยัดและพอเพียงเมื่อมีผู้ชี้เนะ
+                                                        3.1 ใช้สิ่งของเครื่องใช้อย่างประหยัดและพอเพียงเมื่อมีผู้ชี้เนะ
                                                         <input type="hidden" name="table_section[]" value="6_3_1" />
                                                     </td>
                                                     <td class="text-center">
@@ -1284,7 +1283,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        3.2 รักกษาสิ่งของที่ใช้ร่วมกัน
+                                                        3.2 รักษาสิ่งของที่ใช้ร่วมกัน
                                                         <input type="hidden" name="table_section[]" value="6_3_2" />
                                                     </td>
                                                     <td class="text-center">
@@ -1573,7 +1572,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        1.2 บอกกความเหมืนหรือความแตกต่างระหว่างตัวเองและผู้อื่นได้
+                                                        1.2 บอกความเหมืนหรือความแตกต่างระหว่างตัวเองและผู้อื่นได้
                                                         <input type="hidden" name="table_section[]" value="8_1_2" />
                                                     </td>
                                                     <td class="text-center">
@@ -2204,7 +2203,7 @@
                                                 <tr>
                                                     <td>
                                                         3.3
-                                                        ให้เตุผผลในการคาดคะแนการลงความเห็นหรือการลงข้อสรุปเพื่ออธิบายเกี่ยวกับสิ่งที่สังเกตหรือเรียนรู้
+                                                        ให้เหตุผลในการคาดคะแนการลงความเห็นหรือการลงข้อสรุปเพื่ออธิบายเกี่ยวกับสิ่งที่สังเกตหรือเรียนรู้
                                                         <input type="hidden" name="table_section[]" value="10_3_3" />
                                                     </td>
                                                     <td class="text-center">
@@ -2315,7 +2314,7 @@
                                                     </td>
                                                     <td>
                                                         2.1
-                                                        เคลื่อนไหวท่าทางเพพื่อสื่อสารความคิดความรู้สึกของตนเองอย่างหลากหลายหรือแปลกใหม่
+                                                        เคลื่อนไหวท่าทางเพื่อสื่อสารความคิดความรู้สึกของตนเองอย่างหลากหลายหรือแปลกใหม่
                                                         <input type="hidden" name="table_section[]" value="11_2_1" />
                                                     </td>
                                                     <td class="text-center">
@@ -2593,72 +2592,134 @@
 
 
         $(document).ready(function() {
-            if (data1_1.length > 0 || data1_2.length > 0) {
-                $('#pills-1-tab').addClass('have-data');
-            } else {
-                $('#pills-1-tab').removeClass('have-data');
+            if ("{{ $check_table_semester1 }}" == false && "{{ $check_table_semester2 }}" == false) {
+
+                if (data1_1.length == 11) {
+
+                    $('#pills-1-tab').addClass('have-data');
+                } else {
+                    console.log(data1_1.length);
+                    $('#pills-1-tab').removeClass('have-data');
+                }
+
+                if (data2_1.length == 9) {
+                    $('#pills-2-tab').addClass('have-data');
+                } else {
+                    $('#pills-2-tab').removeClass('have-data');
+                }
+
+                if (data3_1.length == 10) {
+                    $('#pills-3-tab').addClass('have-data');
+                } else {
+                    $('#pills-3-tab').removeClass('have-data');
+                }
+
+                if (data4_1.length == 9) {
+                    $('#pills-4-tab').addClass('have-data');
+                } else {
+                    $('#pills-4-tab').removeClass('have-data');
+                }
+
+                if (data5_1.length == 9) {
+                    $('#pills-5-tab').addClass('have-data');
+                } else {
+                    $('#pills-5-tab').removeClass('have-data');
+                }
+
+                if (data6_1.length == 8) {
+                    $('#pills-6-tab').addClass('have-data');
+                } else {
+                    $('#pills-6-tab').removeClass('have-data');
+                }
+
+                if (data7_1.length == 13) {
+                    $('#pills-7-tab').addClass('have-data');
+                } else {
+                    $('#pills-7-tab').removeClass('have-data');
+                }
+
+                if (data8_1.length == 18) {
+                    $('#pills-8-tab').addClass('have-data');
+                } else {
+                    $('#pills-8-tab').removeClass('have-data');
+                }
+
+                if (data9_1.length == 10) {
+                    $('#pills-9-tab').addClass('have-data');
+                } else {
+                    $('#pills-9-tab').removeClass('have-data');
+                }
+
+                if (data10_1.length > 0) {
+                    $('#pills-10-tab').addClass('have-data');
+                } else {
+                    $('#pills-10-tab').removeClass('have-data');
+                }
             }
 
-            if (data1_1.length > 0 || data1_2.length > 0) {
-                $('#pills-1-tab').addClass('have-data');
-            } else {
-                $('#pills-1-tab').removeClass('have-data');
-            }
+            if ("{{ $check_table_semester1 }}" == true && "{{ $check_table_semester2 }}" == false) {
+                console.log(data1_2.length);
+                if (data1_2.length == 11) {
+                    $('#pills-1-tab').addClass('have-data');
+                } else {
+                    $('#pills-1-tab').removeClass('have-data');
+                }
 
-            if (data2_1.length > 0 || data2_2.length > 0) {
-                $('#pills-2-tab').addClass('have-data');
-            } else {
-                $('#pills-2-tab').removeClass('have-data');
-            }
+                if (data2_2.length == 9) {
+                    $('#pills-2-tab').addClass('have-data');
+                } else {
+                    $('#pills-2-tab').removeClass('have-data');
+                }
 
-            if (data3_1.length > 0 || data3_2.length > 0) {
-                $('#pills-3-tab').addClass('have-data');
-            } else {
-                $('#pills-3-tab').removeClass('have-data');
-            }
+                if (data3_2.length == 10) {
+                    $('#pills-3-tab').addClass('have-data');
+                } else {
+                    $('#pills-3-tab').removeClass('have-data');
+                }
 
-            if (data4_1.length > 0 || data4_2.length > 0) {
-                $('#pills-4-tab').addClass('have-data');
-            } else {
-                $('#pills-4-tab').removeClass('have-data');
-            }
+                if (data4_2.length == 9) {
+                    $('#pills-4-tab').addClass('have-data');
+                } else {
+                    $('#pills-4-tab').removeClass('have-data');
+                }
 
-            if (data5_1.length > 0 || data5_2.length > 0) {
-                $('#pills-5-tab').addClass('have-data');
-            } else {
-                $('#pills-5-tab').removeClass('have-data');
-            }
+                if (data5_2.length == 9) {
+                    $('#pills-5-tab').addClass('have-data');
+                } else {
+                    $('#pills-5-tab').removeClass('have-data');
+                }
 
-            if (data6_1.length > 0 || data6_2.length > 0) {
-                $('#pills-6-tab').addClass('have-data');
-            } else {
-                $('#pills-6-tab').removeClass('have-data');
-            }
+                if (data6_2.length == 8) {
+                    $('#pills-6-tab').addClass('have-data');
+                } else {
+                    $('#pills-6-tab').removeClass('have-data');
+                }
 
-            if (data7_1.length > 0 || data7_2.length > 0) {
-                $('#pills-7-tab').addClass('have-data');
-            } else {
-                $('#pills-7-tab').removeClass('have-data');
-            }
+                if (data7_2.length == 13) {
+                    $('#pills-7-tab').addClass('have-data');
+                } else {
+                    $('#pills-7-tab').removeClass('have-data');
+                }
 
-            if (data8_1.length > 0 || data8_2.length > 0) {
-                $('#pills-8-tab').addClass('have-data');
-            } else {
-                $('#pills-8-tab').removeClass('have-data');
-            }
+                if (data8_2.length == 18) {
+                    $('#pills-8-tab').addClass('have-data');
+                } else {
+                    $('#pills-8-tab').removeClass('have-data');
+                }
 
-            if (data9_1.length > 0 || data9_2.length > 0) {
-                $('#pills-9-tab').addClass('have-data');
-            } else {
-                $('#pills-9-tab').removeClass('have-data');
-            }
+                if (data9_2.length == 10) {
+                    $('#pills-9-tab').addClass('have-data');
+                } else {
+                    $('#pills-9-tab').removeClass('have-data');
+                }
 
-            if (data10_1.length > 0 || data10_2.length > 0) {
-                $('#pills-10-tab').addClass('have-data');
-            } else {
-                $('#pills-10-tab').removeClass('have-data');
+                if (data10_2.length > 0) {
+                    $('#pills-10-tab').addClass('have-data');
+                } else {
+                    $('#pills-10-tab').removeClass('have-data');
+                }
             }
-        })
+        });
 
         function jsfuncSetState(value) {
             document.getElementById(value).setAttribute("style", "color:MediumSeaGreen ")

@@ -103,11 +103,14 @@
                                 </div>
                             </div>
                             
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
+                            <div class="row justify-content-end align-items-center g-2">
+                                <div class="col-auto">
                                     <button type="submit" class="btn btn-primary float-end">
                                         {{ __('บันทึก') }}
                                     </button>
+                                </div>
+                                <div class="col-auto">
+                                    <a name="" id="" class="btn btn-danger" href="{{route('index.user')}}" role="button"> ยกเลิก</a>
                                 </div>
                             </div>
                         </form>
