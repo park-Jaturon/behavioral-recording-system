@@ -50,7 +50,7 @@
                 <div class="alert alert-info text-center" role="alert">
                     <h5>
                         ประเมินพัฒนาการครบทั้ง2ภาคเรียนแล้ว
-                        <a href="#">{{--{{ url('teacher/record/appraisal/show/' . $student->student_id) }}--}}
+                        <a href="{{route('appraisal.show3',['student_id'=>$student->student_id])}}">{{--{{ url('teacher/record/appraisal/show/' . $student->student_id) }}--}}
                             ดูบันทึก
                         </a>
                     </h5>

@@ -41,8 +41,8 @@
                         <div class="card-footer text-end">
                             @if (auth()->User()->rank == 'teacher')
                                 <a href="{{ url('teacher/post/edit/' . $row->posts_id) }}" class="btn btn-primary">แก้ไข</a>
-                                {{-- <button type="button" class="btn btn-danger delete-item "
-                                    data-posts_id="{{ $row->posts_id }}">ลบ</button> --}}
+                                <button type="button" class="btn btn-danger delete-item "
+                                    data-posts_id="{{ $row->posts_id }}">ลบ</button>
                             @endif
                         </div>
 

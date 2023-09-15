@@ -18,6 +18,8 @@ class Post extends Model
        'rooms_id',
        'p_topic',
        'p_description',
-       'status'
+       'status',
+       'created_at',
+       'updated_at',
     ];
 }

@@ -31,6 +31,8 @@
                             <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
                             <input type="text" id="eend" aria-label="First name" class="form-control">
                         </div>
+                        {{-- <small id="estartError" class="text-danger"></small> --}}
+                        <small id="eendError" class="text-danger"></small>
                     </div>
 
                 </div>
@@ -46,7 +48,7 @@
         <div class="row justify-content-start align-items-center g-2">
             <div class="col-auto">
                 <a class="btn btn-light" href="{{ route('teacher.dashboard') }}" role="button"><i
-                    class="bi bi-chevron-left"></i></a>
+                        class="bi bi-chevron-left"></i></a>
             </div>
             <div class="col-auto">
                 <h1>ตารางเรียน</h1>
@@ -55,7 +57,7 @@
         <div class="row justify-content-center align-items-center g-2">
             <div id='calendar'></div>
         </div>
-        
+
     </div>
 @endsection
 
@@ -202,7 +204,15 @@
                         var start_date = $('#estart').val();
                         var end_date = $('#eend').val();
                         console.log(Textarea1);
-
+                        if (new Date(end_date) < new Date(start_date)) {
+                            $('#estartError').text('รูปแบบระยะเวลาไม่ถูกต้อง'+'วันที่สิ้นสุดต้องมากกว่าวันที่เริ่มต้น');
+                            $('#eendError').text('รูปแบบระยะเวลาไม่ถูกต้อง'+'วันที่สิ้นสุดต้องมากกว่าวันที่เริ่มต้น');
+                        } else {
+                            // กรณีที่ end_date มีค่ามากกว่าหรือเท่ากับ start_date
+                            // สามารถลบข้อความผิดพลาดทิ้งไปได้
+                            $('#estartError').text('');
+                            $('#eendError').text('');
+                        }
                         $.ajax({
                             url: "{{ route('calendar.store') }}",
                             type: "POST",

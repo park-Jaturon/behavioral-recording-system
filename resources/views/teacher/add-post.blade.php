@@ -7,16 +7,16 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row justify-content-start align-items-center g-2">
-                            
+
                             <div class="col">
                                 @if (empty($data->posts_id))
-                                {{ __('เพิ่มประกาศ') }}
-                            @else
-                                {{ __('แก้ไขประกาศ') }}
-                            @endif
+                                    {{ __('เพิ่มประกาศ') }}
+                                @else
+                                    {{ __('แก้ไขประกาศ') }}
+                                @endif
                             </div>
                         </div>
-                       
+
                     </div>
                     <form
                         action="{{ empty($data->posts_id) ? url('teacher/post/store/' . $room->rooms_id) : url('teacher/post/update/' . $data->posts_id) }}"
@@ -51,57 +51,78 @@
                                     @enderror
                                 </small>
                             </div>
+                            <div class="mb-3">
+                                <div class="row">
+                                    <label for="" class="form-label">การแสดงประกาศ</label>
+                                </div>
 
-                            @if (!empty($data->posts_id))
-                                <div class="mb-3">
-                                    <div class="row">
-                                        <label for="" class="form-label">การแสดงประกาศ</label>
-                                    </div>
-
-                                    <div class="row">
-                                        @if ($data->status == 'shown')
+                                <div class="row">
+                                    @if (empty($data->posts_id))
                                         <div class="col-1 ml-5">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="shown"
-                                                    id="flexRadioDefault1" checked>
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    value="shown" id="flexRadioDefault1" checked>
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                     แสดง
                                                 </label>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="col">
                                             <div class="form-check">
-                                                 <input class="form-check-input" type="radio" name="flexRadioDefault" value="hidden" id="flexRadioDefault2" >{{-- checked --}}
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    value="hidden" id="flexRadioDefault2">{{-- checked --}}
                                                 <label class="form-check-label" for="flexRadioDefault2">
-                                                  ไม่แสดง
+                                                    ไม่แสดง
                                                 </label>
-                                              </div>
+                                            </div>
                                         </div>
+                                    @endif
+                                    @if (!empty($data->posts_id))
+                                        @if ($data->status == 'shown')
+                                            <div class="col-1 ml-5">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        value="shown" id="flexRadioDefault1" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        แสดง
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        value="hidden" id="flexRadioDefault2">{{-- checked --}}
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        ไม่แสดง
+                                                    </label>
+                                                </div>
+                                            </div>
                                         @else
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="shown"
-                                                    id="flexRadioDefault1" checked>
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                    แสดง
-                                                </label>
+                                            <div class="col-1 ml-5">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        value="shown" id="flexRadioDefault1" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        แสดง
+                                                    </label>
+                                                </div>
+
                                             </div>
-                                            
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-check">
-                                                 <input class="form-check-input" type="radio" name="flexRadioDefault" value="hidden" id="flexRadioDefault2" checked>{{-- checked --}}
-                                                <label class="form-check-label" for="flexRadioDefault2">
-                                                  ไม่แสดง
-                                                </label>
-                                              </div>
-                                        </div>
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        value="hidden" id="flexRadioDefault2" checked>{{-- checked --}}
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        ไม่แสดง
+                                                    </label>
+                                                </div>
+                                            </div>
                                         @endif
-                                       
-                                    </div>
+                                    @endif
                                 </div>
-                            @endif
+                            </div>
                         </div>
                         <div class="card-footer text-end">
                             <button type="submit" class="btn btn-primary ">{{ __('บันทึก') }}</button>

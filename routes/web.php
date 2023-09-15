@@ -109,6 +109,7 @@ Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('event/inddex',[EventsController::class, 'index'] )->name('index.event');
     Route::post('event/add',[EventsController::class, 'store'])->name('calendar.store');
     Route::patch('event/update/{id}', [EventsController::class, 'update'])->name('calendar.update');
+    Route::post('event/inspect/delete', [EventsController::class, 'inspect']);
     Route::delete('event/delete/{id}', [EventsController::class, 'destroy'])->name('calendar.destroy');
     /* Activity */ 
     Route::get('activity/edit/{events_id}',[ActivityController::class, 'edit'])->name('edit.activity');

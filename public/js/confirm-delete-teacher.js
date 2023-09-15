@@ -4,7 +4,6 @@ document.querySelector('#tbTeacher').addEventListener('click', (e) => {
     var teachersId = e.target.dataset.teachers_id;
     axios.post($url + '/admin/teacher/inspect/delete', {
       teachers: teachersId,
-
     })
       .then(function (response) {
         if (response.data == 1) {

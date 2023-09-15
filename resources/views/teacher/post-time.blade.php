@@ -19,11 +19,12 @@
 
                     </div>
                     <div class="card-body">
-                        {{-- @if ($message = Session::get('error'))
-                            <div class="alert alert-success">
-                                {{ $message }}
-                            </div>
-                        @endif --}}
+                        @if ($message = Session::get('Error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                          </div>
+                            
+                        @endif
                         @if ($message = Session::get('Messages'))
                             <div class="alert alert-success">
                                 {{ $message }}

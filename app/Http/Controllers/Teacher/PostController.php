@@ -14,9 +14,9 @@ class PostController extends Controller
     public function index()
     {
         $post = DB::table('teachers')
-            //    ->join('users', 'teachers.teachers_id', '=', 'users.users_id')
             ->where('teachers.teachers_id', '=', Auth::user()->rank_id)
             ->join('posts', 'teachers.rooms_id', '=', 'posts.rooms_id')
+            ->orderBy('posts.created_at', 'desc')
             ->get();
         //    dd($post);
         return view('teacher.post-index', compact('post'));

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use App\Models\Events;
 use App\Models\Room;
@@ -87,6 +88,17 @@ class EventsController extends Controller
             'end' => $request->end_date,
         ]);
         return response()->json('Event updated');
+    }
+
+    public function inspect(Request $request)
+    {
+        $dataevent = Activity::where('events_id','=',$request->event)->count();
+        Debugbar::info($dataevent);
+        if($dataevent > 1){
+            return response()->json('1');  
+         }else{
+            return response()->json('0'); 
+         }
     }
 
     public function destroy($id)

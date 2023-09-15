@@ -9,20 +9,25 @@
                         <div class="row justify-content-start align-items-center g-2">
                             <div class="col-auto">
                                 <a class="btn btn-light" href="{{ route('teacher.dashboard') }}" role="button"><i
-                                    class="bi bi-chevron-left"></i></a>
+                                        class="bi bi-chevron-left"></i></a>
                             </div>
                             <div class="col-auto">
                                 @php
-                            if (count($users) > 0) {
-                                echo $users[0]->room_name;
-                            }
-                        @endphp
+                                    if (count($users) > 0) {
+                                        echo $users[0]->room_name;
+                                    }
+                                @endphp
                             </div>
                         </div>
-                        
+
                     </div>
 
                     <div class="card-body">
+                        @if ($message = Session::get('Error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @endif
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success">
                                 {{ $message }}
@@ -74,14 +79,25 @@
                                                         href="{{ url('teacher/room/edit/' . $user->student_id) }}"
                                                         role="button"><i class="bi bi-tools"></i></a>
                                                 </td>
-                                                <td>
-                                                    @if ($user->elevate == 'true')
+                                                @if ($user->level == 'อบ2')
+                                                    <td>
+                                                        @if ($user->elevate == 'true')
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    name="check[]" value="{{ $user->student_id }}"
+                                                                    id="flexCheckDefault">
+                                                            </div>
+                                                        @endif
+                                                    </td>
+                                                @endif
+                                                @if ($user->level == 'อบ1')
+                                                    <td>
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox" name="check[]"
                                                                 value="{{ $user->student_id }}" id="flexCheckDefault">
                                                         </div>
-                                                    @endif
-                                                </td>
+                                                    </td>
+                                                @endif
                                             </tr>
                                         @empty
 
@@ -100,7 +116,12 @@
                             <div class="row justify-content-end align-items-start g-2">
                                 <div class="col-auto">
                                     @if (count($users) > 0)
-                                        @if ($users[0]->level == 'อบ1' || $users[0]->level == 'อบ2')
+                                        @if ($users[0]->level == 'อบ2')
+                                            @if ($UpClass == 'true')
+                                                <button type="submit" class="btn btn-primary ">เลื่อนขั้น</button>
+                                            @endif
+                                        @endif
+                                        @if ($users[0]->level == 'อบ1')
                                             <button type="submit" class="btn btn-primary ">เลื่อนขั้น</button>
                                         @endif
                                     @endif

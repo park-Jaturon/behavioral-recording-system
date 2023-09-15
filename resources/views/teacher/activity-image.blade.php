@@ -2,15 +2,19 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-around mb-3 g-2">
+        <div class="row justify-content-around mb-3 g-2" id="rActivity">
             <div class="col-auto">
                 <a class="btn btn-light" href="{{ route('index.event') }}" role="button"><i class="bi bi-chevron-left"></i></a>
-                 <label for="topic"><h5>{{$topic->title}}</h5></label>
+                <label for="topic">
+                    <h5>{{ $topic->title }}</h5>
+                </label>
             </div>
-            
+
             <div class="col-auto">
-                <a href="{{ url('teacher/activity/add/' . $events_id) }}" class="btn btn-primary">เพิ่ม</a>
-                <a href="{{route('edit.activity',['events_id'=>$events_id])}}" class="btn btn-warning">แก้ไข</a>
+                <a href="{{ url('teacher/activity/add/' . $events_id) }}" class="btn btn-success">เพิ่ม</a>
+                <button type="button" class="btn btn-danger delete-item" data-events_id="{{$events_id}}">ลบ</button>
+                {{-- <a href="#" class="btn btn-danger delete-item" data-events_id="{{ $events_id }}">ลบ</a> --}}
+                <a href="{{ route('edit.activity', ['events_id' => $events_id]) }}" class="btn btn-warning">แก้ไข</a>
             </div>
         </div>
         <div class="row">
@@ -21,9 +25,9 @@
                     <div class="carousel-inner">
 
                         @forelse ($activities as $images)
-                            <div class="carousel-item active" data-bs-interval="10000" >   {{-- style="height: 550px" --}}
-                                <img src="\uploads\activity\{{ $images->activity_images }}" class="d-block w-100 " 
-                                    alt="...">              {{-- style="height: 100% ; width:100%" --}}
+                            <div class="carousel-item active" data-bs-interval="10000"> {{-- style="height: 550px" --}}
+                                <img src="\uploads\activity\{{ $images->activity_images }}" class="d-block w-100 "
+                                    alt="..."> {{-- style="height: 100% ; width:100%" --}}
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
                                 data-bs-slide="prev">
@@ -47,4 +51,55 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        document.querySelector('#rActivity').addEventListener('click', (e) => {
+            if (e.target.matches('.delete-item')) {
+                console.log(e.target.dataset.events_id);
+                var eventId = e.target.dataset.events_id;
+                axios.post($url + '/teacher/event/inspect/delete', {
+                    event: eventId,
+                    })
+                    .then(function(response) {
+                        console.log(response);
+                        if (response.data == 0) {
+                            Swal.fire({
+                                title: 'คุณแน่ใจน่ะว่าจะลบจริงๆ',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'ใช่ฉันต้องการลบ',
+                                cancelButtonText: 'ยกเลิก'
+                            }).then((result) => {
+
+                                if (result.isConfirmed) {
+                                    axios.delete($url + '/teacher/event/delete/' + e.target.dataset.events_id)
+                                        .then((response) => {
+                                            Swal.fire(
+                                                'ลบแล้ว!',
+                                                'ข้อมูลของคุณถูกลบไปแล้ว',
+                                                'success'
+                                            );
+                                            window.location.href = "{{route('index.event')}}";
+                                        });
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'ผิดพลาด',
+                                text: 'ไม่สามารถลบได้ กรุณาลบรูปให้หมดก่อน',
+                                // footer: '<a href="">Why do I have this issue?</a>'
+                            })
+                        }
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
+            }
+        });
+    </script>
 @endsection

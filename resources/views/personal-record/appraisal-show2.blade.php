@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+    input.border-success{
+        box-shadow: 0 0 5pt 0.5pt #198754;
+}
+</style>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center align-items-center g-2 mb-2">
@@ -103,13 +111,13 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[0]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[0]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text" value="ควรเสริม"
+                                                    <input class="form-control border-success text-center" type="text" value="ควรเสริม"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @elseif ($dataphysicallysemester1[0]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text" value="ปานกลาง"
+                                                    <input class="form-control border-success text-center" type="text" value="ปานกลาง"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @elseif ($dataphysicallysemester1[0]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[0]->score_rate_physically))
@@ -121,15 +129,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[0]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[0]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[0]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[0]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[0]->score_rate_physically))
@@ -146,15 +154,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[1]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[1]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[1]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[1]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[1]->score_rate_physically))
@@ -166,15 +174,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[1]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[1]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[1]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[1]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[1]->score_rate_physically))
@@ -191,15 +199,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[2]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[2]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[2]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[2]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[2]->score_rate_physically))
@@ -211,15 +219,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[2]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[2]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[2]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[2]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[2]->score_rate_physically))
@@ -239,15 +247,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[3]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[3]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[3]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[3]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[3]->score_rate_physically))
@@ -259,15 +267,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[3]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[3]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[3]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[3]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[3]->score_rate_physically))
@@ -284,15 +292,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[4]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[4]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[4]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[4]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[4]->score_rate_physically))
@@ -304,15 +312,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[4]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[4]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[4]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[4]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[4]->score_rate_physically))
@@ -329,15 +337,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[5]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[5]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[5]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[5]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[5]->score_rate_physically))
@@ -349,15 +357,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[5]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[5]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[5]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[5]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[5]->score_rate_physically))
@@ -374,15 +382,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[6]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[6]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[6]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[6]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[6]->score_rate_physically))
@@ -394,15 +402,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[6]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[6]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[6]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[6]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[6]->score_rate_physically))
@@ -419,15 +427,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[7]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[7]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[7]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[7]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[7]->score_rate_physically))
@@ -439,15 +447,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[7]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[7]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[7]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[7]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[7]->score_rate_physically))
@@ -464,15 +472,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[8]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[8]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[8]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[8]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[8]->score_rate_physically))
@@ -484,15 +492,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[8]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[8]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[8]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[8]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[8]->score_rate_physically))
@@ -512,15 +520,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[9]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[9]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[9]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[9]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[9]->score_rate_physically))
@@ -532,15 +540,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[9]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[9]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[9]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[9]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[9]->score_rate_physically))
@@ -557,15 +565,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[10]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[10]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[10]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[10]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[10]->score_rate_physically))
@@ -577,15 +585,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[10]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[10]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[10]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[10]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[10]->score_rate_physically))
@@ -611,15 +619,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[11]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[11]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[11]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[11]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[11]->score_rate_physically))
@@ -631,15 +639,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[11]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[11]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[11]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[11]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[11]->score_rate_physically))
@@ -656,15 +664,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[12]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[12]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[12]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[12]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[12]->score_rate_physically))
@@ -676,15 +684,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[12]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[12]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[12]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[12]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[12]->score_rate_physically))
@@ -701,15 +709,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[13]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[13]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[13]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[13]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[13]->score_rate_physically))
@@ -721,15 +729,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[13]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[13]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[13]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[13]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[13]->score_rate_physically))
@@ -746,15 +754,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[14]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[14]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[14]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[14]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[14]->score_rate_physically))
@@ -766,15 +774,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[14]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[14]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[14]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[14]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[14]->score_rate_physically))
@@ -791,15 +799,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[15]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[15]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[15]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[15]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[15]->score_rate_physically))
@@ -811,15 +819,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[15]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[15]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[15]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[15]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[15]->score_rate_physically))
@@ -839,15 +847,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[16]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[16]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[16]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[16]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[16]->score_rate_physically))
@@ -859,15 +867,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[16]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[16]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[16]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[16]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[16]->score_rate_physically))
@@ -884,15 +892,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[17]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[17]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[17]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[17]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[17]->score_rate_physically))
@@ -904,15 +912,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[17]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[17]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[17]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[17]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[17]->score_rate_physically))
@@ -929,15 +937,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[18]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[18]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[18]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[18]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[18]->score_rate_physically))
@@ -949,15 +957,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[18]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[18]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[18]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[18]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[18]->score_rate_physically))
@@ -974,15 +982,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester1[19]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester1[19]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[19]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester1[19]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester1[19]->score_rate_physically))
@@ -994,15 +1002,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataphysicallysemester2[19]->score_rate_physically))
                                                 @elseif ($dataphysicallysemester2[19]->score_rate_physically == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[19]->score_rate_physically == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataphysicallysemester2[19]->score_rate_physically == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($dataphysicallysemester2[19]->score_rate_physically))
@@ -1050,15 +1058,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[0]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[0]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[0]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[0]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester1[0]->score_rate_mood_mind))
@@ -1070,15 +1078,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[0]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[0]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[0]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[0]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester2[0]->score_rate_mood_mind))
@@ -1095,15 +1103,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[1]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[1]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[1]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[1]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester1[1]->score_rate_mood_mind))
@@ -1115,15 +1123,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[1]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[1]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[1]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[1]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester2[1]->score_rate_mood_mind))
@@ -1143,15 +1151,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[2]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[2]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[2]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[2]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester1[2]->score_rate_mood_mind))
@@ -1163,15 +1171,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[2]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[2]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[2]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[2]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester2[2]->score_rate_mood_mind))
@@ -1188,15 +1196,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[3]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[3]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[3]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[3]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester1[3]->score_rate_mood_mind))
@@ -1208,15 +1216,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[3]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[3]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[3]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[3]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester2[3]->score_rate_mood_mind))
@@ -1233,15 +1241,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[4]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[4]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[4]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[4]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester1[4]->score_rate_mood_mind))
@@ -1253,15 +1261,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[4]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[4]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[4]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[4]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester2[4]->score_rate_mood_mind))
@@ -1278,15 +1286,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[5]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[5]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[5]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[5]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text" value="ดี"
+                                                    <input class="form-control border-success text-center" type="text" value="ดี"
                                                         aria-label="Disabled input example" disabled readonly>
                                                 @endif
                                                 @if (empty($datamood_mindsemester1[5]->score_rate_mood_mind))
@@ -1298,15 +1306,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[5]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[5]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[5]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[5]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1333,15 +1341,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[6]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[6]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[6]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[6]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1354,15 +1362,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[6]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[6]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[6]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[6]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1380,15 +1388,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[7]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[7]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[7]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[7]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1401,15 +1409,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[7]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[7]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[7]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[7]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1427,15 +1435,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[8]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[8]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[8]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[8]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1448,15 +1456,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[8]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[8]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[8]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[8]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1474,15 +1482,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[9]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[9]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[9]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[9]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1495,15 +1503,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[9]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[9]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[9]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[9]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1529,15 +1537,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[10]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[10]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[10]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[10]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1550,15 +1558,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[10]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[10]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[10]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[10]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1576,15 +1584,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[11]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[11]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[11]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[11]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1597,15 +1605,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[11]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[11]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[11]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[11]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1626,15 +1634,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[12]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[12]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[12]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[12]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1647,15 +1655,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[12]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[12]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[12]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[12]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1673,15 +1681,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[13]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[13]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[13]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[13]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1694,15 +1702,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[13]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[13]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[13]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[13]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1720,15 +1728,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[14]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[14]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[14]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[14]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1741,15 +1749,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[14]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[14]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[14]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[14]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1770,15 +1778,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[15]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[15]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[15]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[15]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1791,15 +1799,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[15]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[15]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[15]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[15]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1817,15 +1825,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[16]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[16]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[16]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[16]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1838,15 +1846,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[16]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[16]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[16]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[16]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1867,15 +1875,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[17]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[17]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[17]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[17]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1888,15 +1896,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[17]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[17]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[17]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[17]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1914,15 +1922,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester1[18]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester1[18]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[18]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester1[18]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1935,15 +1943,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datamood_mindsemester2[18]->score_rate_mood_mind))
                                                 @elseif ($datamood_mindsemester2[18]->score_rate_mood_mind == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[18]->score_rate_mood_mind == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datamood_mindsemester2[18]->score_rate_mood_mind == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -1992,15 +2000,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[0]->score_rate_social))
                                                 @elseif ($datasocialsemester1[0]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[0]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[0]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2013,15 +2021,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[0]->score_rate_social))
                                                 @elseif ($datasocialsemester2[0]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[0]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[0]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2039,15 +2047,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[1]->score_rate_social))
                                                 @elseif ($datasocialsemester1[1]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[1]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[1]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2060,15 +2068,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[1]->score_rate_social))
                                                 @elseif ($datasocialsemester2[1]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[1]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[1]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2086,15 +2094,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[2]->score_rate_social))
                                                 @elseif ($datasocialsemester1[2]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[2]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[2]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2107,15 +2115,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[2]->score_rate_social))
                                                 @elseif ($datasocialsemester2[2]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[2]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[2]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2133,15 +2141,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[3]->score_rate_social))
                                                 @elseif ($datasocialsemester1[3]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[3]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[3]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2154,15 +2162,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[3]->score_rate_social))
                                                 @elseif ($datasocialsemester2[3]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[3]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[3]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2183,15 +2191,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[4]->score_rate_social))
                                                 @elseif ($datasocialsemester1[4]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[4]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[4]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2204,15 +2212,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[4]->score_rate_social))
                                                 @elseif ($datasocialsemester2[4]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[4]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[4]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2230,15 +2238,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[5]->score_rate_social))
                                                 @elseif ($datasocialsemester1[5]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[5]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[5]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2251,15 +2259,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[5]->score_rate_social))
                                                 @elseif ($datasocialsemester2[5]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[5]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[5]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2277,15 +2285,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[6]->score_rate_social))
                                                 @elseif ($datasocialsemester1[6]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[6]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[6]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2298,15 +2306,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[6]->score_rate_social))
                                                 @elseif ($datasocialsemester2[6]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[6]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[6]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2327,15 +2335,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[7]->score_rate_social))
                                                 @elseif ($datasocialsemester1[7]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[7]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[7]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2348,15 +2356,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[7]->score_rate_social))
                                                 @elseif ($datasocialsemester2[7]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[7]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[7]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2374,15 +2382,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[8]->score_rate_social))
                                                 @elseif ($datasocialsemester1[8]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[8]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[8]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2395,15 +2403,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[8]->score_rate_social))
                                                 @elseif ($datasocialsemester2[8]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[8]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[8]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2429,15 +2437,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[9]->score_rate_social))
                                                 @elseif ($datasocialsemester1[9]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[9]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[9]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2450,15 +2458,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[9]->score_rate_social))
                                                 @elseif ($datasocialsemester2[9]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[9]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[9]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2476,15 +2484,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[10]->score_rate_social))
                                                 @elseif ($datasocialsemester1[10]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[10]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[10]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2497,15 +2505,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[10]->score_rate_social))
                                                 @elseif ($datasocialsemester2[10]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[10]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[10]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2523,15 +2531,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[11]->score_rate_social))
                                                 @elseif ($datasocialsemester1[11]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[11]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[11]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2544,15 +2552,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[11]->score_rate_social))
                                                 @elseif ($datasocialsemester2[11]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[11]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[11]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2573,15 +2581,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[12]->score_rate_social))
                                                 @elseif ($datasocialsemester1[12]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[12]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[12]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2594,15 +2602,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[12]->score_rate_social))
                                                 @elseif ($datasocialsemester2[12]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[12]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[12]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2620,15 +2628,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[13]->score_rate_social))
                                                 @elseif ($datasocialsemester1[13]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[13]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[13]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2641,15 +2649,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[13]->score_rate_social))
                                                 @elseif ($datasocialsemester2[13]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[13]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[13]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2667,15 +2675,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[14]->score_rate_social))
                                                 @elseif ($datasocialsemester1[14]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[14]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[14]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2688,15 +2696,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[14]->score_rate_social))
                                                 @elseif ($datasocialsemester2[14]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[14]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[14]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2714,15 +2722,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[15]->score_rate_social))
                                                 @elseif ($datasocialsemester1[15]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[15]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[15]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2735,15 +2743,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[15]->score_rate_social))
                                                 @elseif ($datasocialsemester2[15]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[15]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[15]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2761,15 +2769,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[16]->score_rate_social))
                                                 @elseif ($datasocialsemester1[16]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[16]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[16]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2782,15 +2790,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[16]->score_rate_social))
                                                 @elseif ($datasocialsemester2[16]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[16]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[16]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2817,15 +2825,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[17]->score_rate_social))
                                                 @elseif ($datasocialsemester1[17]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[17]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[17]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2838,15 +2846,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[17]->score_rate_social))
                                                 @elseif ($datasocialsemester2[17]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[17]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[17]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2864,15 +2872,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[18]->score_rate_social))
                                                 @elseif ($datasocialsemester1[18]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[18]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[18]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2885,15 +2893,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[18]->score_rate_social))
                                                 @elseif ($datasocialsemester2[18]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[18]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[18]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2913,15 +2921,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[19]->score_rate_social))
                                                 @elseif ($datasocialsemester1[19]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[19]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[19]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2934,15 +2942,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[19]->score_rate_social))
                                                 @elseif ($datasocialsemester2[19]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[19]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[19]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2961,15 +2969,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[20]->score_rate_social))
                                                 @elseif ($datasocialsemester1[20]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[20]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[20]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -2982,15 +2990,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[20]->score_rate_social))
                                                 @elseif ($datasocialsemester2[20]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[20]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[20]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3009,15 +3017,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[21]->score_rate_social))
                                                 @elseif ($datasocialsemester1[21]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[21]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[21]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3030,15 +3038,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[21]->score_rate_social))
                                                 @elseif ($datasocialsemester2[21]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[21]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[21]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3059,15 +3067,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[22]->score_rate_social))
                                                 @elseif ($datasocialsemester1[22]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[22]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[22]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3080,15 +3088,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[22]->score_rate_social))
                                                 @elseif ($datasocialsemester2[22]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[22]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[22]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3106,15 +3114,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[23]->score_rate_social))
                                                 @elseif ($datasocialsemester1[23]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[23]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[23]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3127,15 +3135,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[23]->score_rate_social))
                                                 @elseif ($datasocialsemester2[23]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[23]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[23]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3153,15 +3161,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[24]->score_rate_social))
                                                 @elseif ($datasocialsemester1[24]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[24]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[24]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3174,15 +3182,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[24]->score_rate_social))
                                                 @elseif ($datasocialsemester2[24]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[24]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[24]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3200,15 +3208,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[25]->score_rate_social))
                                                 @elseif ($datasocialsemester1[25]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[25]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[25]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3221,15 +3229,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[25]->score_rate_social))
                                                 @elseif ($datasocialsemester2[25]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[25]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[25]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3247,15 +3255,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[26]->score_rate_social))
                                                 @elseif ($datasocialsemester1[26]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[26]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[26]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3268,15 +3276,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[26]->score_rate_social))
                                                 @elseif ($datasocialsemester2[26]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[26]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[26]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3297,15 +3305,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[27]->score_rate_social))
                                                 @elseif ($datasocialsemester1[27]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[27]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[27]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3318,15 +3326,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[27]->score_rate_social))
                                                 @elseif ($datasocialsemester2[27]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[27]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[27]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3344,15 +3352,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[28]->score_rate_social))
                                                 @elseif ($datasocialsemester1[28]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[28]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[28]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3365,15 +3373,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[28]->score_rate_social))
                                                 @elseif ($datasocialsemester2[28]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[28]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[28]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3391,15 +3399,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[29]->score_rate_social))
                                                 @elseif ($datasocialsemester1[29]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[29]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[29]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3412,15 +3420,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[29]->score_rate_social))
                                                 @elseif ($datasocialsemester2[29]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[29]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[29]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3438,15 +3446,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[30]->score_rate_social))
                                                 @elseif ($datasocialsemester1[30]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[30]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[30]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3459,15 +3467,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[30]->score_rate_social))
                                                 @elseif ($datasocialsemester2[30]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[30]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[30]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3486,15 +3494,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester1[31]->score_rate_social))
                                                 @elseif ($datasocialsemester1[31]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[31]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester1[31]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3507,15 +3515,15 @@
                                             <td valign="middle">
                                                 @if (!isset($datasocialsemester2[31]->score_rate_social))
                                                 @elseif ($datasocialsemester2[31]->score_rate_social == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[31]->score_rate_social == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($datasocialsemester2[31]->score_rate_social == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3564,15 +3572,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[0]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[0]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[0]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[0]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3585,15 +3593,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[0]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[0]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[0]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[0]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3611,15 +3619,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[1]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[1]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[1]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[1]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3632,15 +3640,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[1]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[1]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[1]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[1]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3658,15 +3666,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[2]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[2]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[2]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[2]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3679,15 +3687,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[2]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[2]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[2]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[2]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3705,15 +3713,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[3]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[3]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[3]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[3]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3726,15 +3734,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[3]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[3]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[3]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[3]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3752,15 +3760,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[4]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[4]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[4]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[4]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3773,15 +3781,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[4]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[4]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[4]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[4]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3803,15 +3811,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[5]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[5]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[5]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[5]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3824,15 +3832,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[5]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[5]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[5]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[5]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3850,15 +3858,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[6]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[6]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[6]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[6]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3871,15 +3879,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[6]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[6]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[6]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[6]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3897,15 +3905,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[7]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[7]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[7]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[7]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3918,15 +3926,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[7]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[7]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[7]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[7]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3953,15 +3961,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[8]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[8]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[8]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[8]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -3974,15 +3982,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[8]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[8]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[8]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[8]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4001,15 +4009,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[9]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[9]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[9]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[9]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4022,15 +4030,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[9]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[9]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[9]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[9]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4048,15 +4056,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[10]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[10]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[10]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[10]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4069,15 +4077,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[10]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[10]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[10]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[10]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4095,15 +4103,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[11]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[11]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[11]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[11]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4116,15 +4124,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[11]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[11]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[11]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[11]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4143,15 +4151,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[12]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[12]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[12]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[12]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4164,15 +4172,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[12]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[12]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[12]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[12]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4194,15 +4202,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[13]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[13]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[13]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[13]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4215,15 +4223,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[13]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[13]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[13]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[13]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4242,15 +4250,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[14]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[14]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[14]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[14]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4263,15 +4271,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[14]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[14]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[14]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[14]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4292,15 +4300,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[15]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[15]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[15]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[15]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4313,15 +4321,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[15]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[15]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[15]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[15]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4339,15 +4347,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[16]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[16]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[16]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[16]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4360,15 +4368,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[16]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[16]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[16]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[16]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4387,15 +4395,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[17]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[17]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[17]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[17]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4408,15 +4416,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[17]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[17]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[17]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[17]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4443,15 +4451,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[18]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[18]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[18]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[18]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4464,15 +4472,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[18]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[18]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[18]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[18]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4491,15 +4499,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[19]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[19]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[19]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[19]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4512,15 +4520,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[19]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[19]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[19]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[19]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4542,15 +4550,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[20]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[20]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[20]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[20]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4563,15 +4571,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[20]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[20]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[20]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[20]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4591,15 +4599,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[21]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[21]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[21]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[21]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4612,15 +4620,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[21]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[21]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[21]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[21]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4647,15 +4655,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[22]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[22]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[22]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[22]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4668,15 +4676,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[22]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[22]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[22]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[22]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4694,15 +4702,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[23]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[23]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[23]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[23]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4715,15 +4723,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[23]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[23]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[23]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[23]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4742,15 +4750,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[24]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[24]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[24]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[24]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4763,15 +4771,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[24]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[24]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[24]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[24]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4792,15 +4800,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[25]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[25]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[25]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[25]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4813,15 +4821,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[25]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[25]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[25]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[25]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4839,15 +4847,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[26]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[26]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[26]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[26]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4860,15 +4868,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[26]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[26]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[26]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[26]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4886,15 +4894,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester1[27]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester1[27]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[27]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester1[27]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
@@ -4907,15 +4915,15 @@
                                             <td valign="middle">
                                                 @if (!isset($dataintellectualsemester2[27]->score_rate_intellectual))
                                                 @elseif ($dataintellectualsemester2[27]->score_rate_intellectual == 1)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ควรเสริม" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[27]->score_rate_intellectual == 2)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ปานกลาง" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @elseif ($dataintellectualsemester2[27]->score_rate_intellectual == 3)
-                                                    <input class="form-control text-center" type="text"
+                                                    <input class="form-control border-success text-center" type="text"
                                                         value="ดี" aria-label="Disabled input example" disabled
                                                         readonly>
                                                 @endif
