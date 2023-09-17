@@ -43,6 +43,8 @@ Route::post('/profile/update/{id}', [App\Http\Controllers\HomeController::class,
 
 Route::prefix('admin')->middleware('isadmin')->group(function () {
     Route::get('dashboard', [AdminControllre::class, 'index'])->name('admindashboard');
+    Route::get('setTime',[AdminControllre::class, 'time_static'])->name('admin.setTime');
+    Route::post('update/setTime',[AdminControllre::class, 'update_time_static'])->name('admin.updateSetTime');
     /* Room */
     Route::get('room', [RoomController::class, 'roomindex'])->name('room.index');
     Route::get('room/add', [RoomController::class, 'addroom'])->name('add.room');
@@ -88,6 +90,7 @@ Route::prefix('admin')->middleware('isadmin')->group(function () {
 
 Route::prefix('teacher')->middleware('isteacher')->group(function () {
     Route::get('dashboard', [TeacherController::class, 'home'])->name('teacher.dashboard');
+    /* Room */
     Route::get('room',[TeacherController::class, 'room'])->name('teacher.room');
     Route::get('room/show/{id}',[TeacherController::class, 'room_show'])->name('room.show');
     Route::get('room/edit/{id}',[TeacherController::class, 'room_edit'])->name('room.edit');

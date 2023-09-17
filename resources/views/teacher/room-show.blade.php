@@ -10,11 +10,13 @@
                             
                            <h5>{{ __('ประวัตินักเรียน') }}</h5> 
                         </div> --}}
-                        <div class="row justify-content-start">
-                            <div class="col ">
-                                <a class="btn btn-light" href="{{ route('teacher.room') }}" role="button"><i
-                                        class="bi bi-chevron-left"></i></a>
-                                <label for="">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 text-start">
+                                <a class="btn btn-info" href="{{ route('teacher.room') }}" role="button"><i
+                                        class="bi bi-chevron-left"></i>กลับ</a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <label for="status">
                                     <h5>{{ __('ประวัตินักเรียน') }}</h5>
                                 </label>
                             </div>

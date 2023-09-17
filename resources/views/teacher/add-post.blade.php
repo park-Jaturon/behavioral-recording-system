@@ -83,7 +83,7 @@
                                             <div class="col-1 ml-5">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                        value="shown" id="flexRadioDefault1" checked>
+                                                        value="show" id="flexRadioDefault1" checked>
                                                     <label class="form-check-label" for="flexRadioDefault1">
                                                         แสดง
                                                     </label>
@@ -103,7 +103,7 @@
                                             <div class="col-1 ml-5">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                        value="shown" id="flexRadioDefault1" checked>
+                                                        value="show" id="flexRadioDefault1" checked>
                                                     <label class="form-check-label" for="flexRadioDefault1">
                                                         แสดง
                                                     </label>

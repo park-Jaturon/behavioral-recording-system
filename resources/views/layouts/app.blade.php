@@ -190,7 +190,7 @@
                                         <a class="nav-link" href="{{ route('index.post') }}">ประกาศ</a>
                                     </li>
                                     <li class="nav-item ">
-                                        <a class="nav-link" href="{{ route('index.event') }}">ตารางเรียน</a>
+                                        <a class="nav-link" href="{{ route('index.event') }}">ปฏิทินกิจกรรม</a>
                                     </li>
                                     @if (strstr($users->room_name, 'อบ2') || strstr($users->room_name, 'อบ3'))
                                         <li class="nav-item ">

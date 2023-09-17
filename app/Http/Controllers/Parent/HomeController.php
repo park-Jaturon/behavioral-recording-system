@@ -59,10 +59,11 @@ class HomeController extends Controller
 
     public function post_show($rooms_id)
     {
-        $showpost = Post::where('rooms_id', '=', $rooms_id)
+        $showpost = DB::table('posts')
+            ->where('rooms_id', '=', $rooms_id)
             ->orderBy('posts.created_at', 'desc')
             ->get();
-
+        Debugbar::info($showpost);
         return view('parent.show-post', compact('showpost'));
     }
 

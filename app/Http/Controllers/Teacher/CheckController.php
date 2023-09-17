@@ -46,9 +46,9 @@ class CheckController extends Controller
         $latest_date = DB::table('timecards')
         ->where('timecards.student_id', '=',$student_id)
         ->max('c_date');
-        
-        //    dd( $latest_date);
-        return view('teacher.post-time', compact('data', 'timenow', 'datenow','student','check_student','latest_date'));    //,'student'
+        $setTime = DB::table('statictime')->first();
+        Debugbar::info($setTime);
+        return view('teacher.post-time', compact('setTime','data', 'timenow', 'datenow','student','check_student','latest_date'));    //,'student'
     }
 
     public function checktime(Request $request, $student_id)

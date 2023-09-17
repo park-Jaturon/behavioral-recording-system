@@ -94,7 +94,7 @@ class EventsController extends Controller
     {
         $dataevent = Activity::where('events_id','=',$request->event)->count();
         Debugbar::info($dataevent);
-        if($dataevent > 1){
+        if($dataevent > 0){
             return response()->json('1');  
          }else{
             return response()->json('0'); 

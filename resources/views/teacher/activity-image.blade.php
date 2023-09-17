@@ -2,18 +2,21 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-around mb-3 g-2" id="rActivity">
-            <div class="col-auto">
-                <a class="btn btn-light" href="{{ route('index.event') }}" role="button"><i class="bi bi-chevron-left"></i></a>
+        <div class="row align-items-center mb-3 g-2" id="rActivity">
+            <div class="col-md-4 text-start">
+                <a class="btn btn-info" href="{{ route('index.event') }}" role="button"><i class="bi bi-chevron-left"></i>กลับ</a>
+                
+            </div>
+
+            <div class="col-md-4 text-center">
                 <label for="topic">
                     <h5>{{ $topic->title }}</h5>
                 </label>
             </div>
 
-            <div class="col-auto">
+            <div class="col-md-4 text-end">
                 <a href="{{ url('teacher/activity/add/' . $events_id) }}" class="btn btn-success">เพิ่ม</a>
                 <button type="button" class="btn btn-danger delete-item" data-events_id="{{$events_id}}">ลบ</button>
-                {{-- <a href="#" class="btn btn-danger delete-item" data-events_id="{{ $events_id }}">ลบ</a> --}}
                 <a href="{{ route('edit.activity', ['events_id' => $events_id]) }}" class="btn btn-warning">แก้ไข</a>
             </div>
         </div>

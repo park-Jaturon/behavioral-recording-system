@@ -7,11 +7,11 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row justify-content-start align-items-center g-2">
-                            <div class="col-auto">
-                                <a class="btn btn-light" href="{{ route('teacher.dashboard') }}" role="button"><i
-                                    class="bi bi-chevron-left"></i></a>
+                            <div class="col-md-4 text-start">
+                                <a class="btn btn-info" href="{{ route('teacher.dashboard') }}" role="button"><i
+                                    class="bi bi-chevron-left"></i>กลับ</a>
                             </div>
-                            <div class="col-auto">
+                            <div class="col-md-4 text-center">
                                 {{ __('แบบประเมินพัฒนาการ ') }}
                             </div>
                         </div>

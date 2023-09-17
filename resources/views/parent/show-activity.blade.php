@@ -7,14 +7,14 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <a class="btn btn-light" href="{{ route('activity.descendant') }}" role="button"><i
-                                        class="bi bi-chevron-left"></i></a>
+                            <div class="col-md-4">
+                                <a class="btn btn-info" href="{{ route('activity.descendant') }}" role="button"><i
+                                        class="bi bi-chevron-left"></i>กลับ</a>
                             </div>
-                            <div class="col-4">
+                            <div class="col-md-4 text-center">
                                 {{ __('รูปกิจกรรม') }}
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-md-3 text-end">
                                 <select class="form-select" aria-label="Default select example"
                                     onchange="selectLevel(value)">
                                     {{--  id="selectLevel" --}}
@@ -27,7 +27,6 @@
                                         <option class="text-center" value="2">อบ2</option>
                                         <option class="text-center" value="3">อบ3</option>
                                     @endif
-
                                 </select>
                             </div>
                         </div>
@@ -74,7 +73,7 @@
                 text = "";
                 levels2.forEach(myFunction);
                 document.getElementById("result").innerHTML = text;
-            }else if (value == 3) {
+            } else if (value == 3) {
                 text = "";
                 levels3.forEach(myFunction);
                 document.getElementById("result").innerHTML = text;

@@ -69,7 +69,15 @@
                 @else
                     <div class="card">
                         <div class="card-header">
-                            {{ $student->prefix_name . $student->first_name . ' ' . $student->last_name }}
+                            <div class="row justify-content-start align-items-center g-2">
+                                <div class="col-md-4 text-start">
+                                    <a class="btn btn-info" href="{{ route('record.appraisal') }}" role="button"><i
+                                        class="bi bi-chevron-left"></i>กลับ</a>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    {{ $student->prefix_name . $student->first_name . ' ' . $student->last_name }}
+                                </div>
+                            </div>
                         </div>
 
                         <div class="card-body">
@@ -125,17 +133,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class=" text-center" valign="middle"> พัฒนาการ
-                                                    </th>
-                                                    <th scope="col" class=" text-center" valign="middle">ตัวบ่งชี้
-                                                    </th>
+                                                    <th scope="col" class=" text-center" valign="middle"> พัฒนาการ</th>
+                                                    <th scope="col" class=" text-center" valign="middle">ตัวบ่งชี้</th>
                                                     <th scope="col" class=" text-center" valign="middle">พฤติกรรม</th>
-                                                    <th scope="col" class=" text-center" valign="middle"
-                                                        width="200px">
-                                                        <select class="form-select" aria-label="Default select example"
-                                                            name="semester" required
-                                                            onChange="selectSemester('table1', event)"
-                                                            data-parsley-required-message="กรุณาเลือกภาคเรียน">
+                                                    <th scope="col" class=" text-center" valign="middle" width="200px">
+                                                        <select class="form-select" aria-label="Default select example" name="semester" required
+                                                            onChange="selectSemester('table1', event)" data-parsley-required-message="กรุณาเลือกภาคเรียน">
                                                             <option selected disabled>-- ภาคเรียนที่ --</option>
                                                             @if ($check_table_semester1 == false && $check_table_semester2 == false)
                                                                 <option value="ภาคเรียน1">ภาคเรียน 1</option>

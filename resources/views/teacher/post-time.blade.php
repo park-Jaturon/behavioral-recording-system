@@ -7,11 +7,11 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row justify-content-start align-items-center g-2">
-                            <div class="col-auto">
-                                <a class="btn btn-light" href="{{ route('index.check') }}" role="button"><i
-                                    class="bi bi-chevron-left"></i></a>
+                            <div class="col-4 text-start">
+                                <a class="btn btn-info" href="{{ route('index.check') }}" role="button"><i
+                                    class="bi bi-chevron-left"></i>กลับ</a>
                             </div>
-                            <div class="col-auto">
+                            <div class="col-4 text-center">
                                 {{ __('ลงเวลามาเรียน-กลับบ้าน' . ' ' . date('d/m/Y', strtotime($datenow))) }}
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                 {{-- เวลามาโรงเรียน --}}
                                 <div class="col">
                                     {{-- @dd($latest_date,$datenow) --}}
-                                    @if ($timenow <= '08.00')
+                                    @if ($timenow >= $setTime->time_in_start && $timenow <= $setTime->time_in_end)
                                         @if ($latest_date == $datenow)
                                             <div class="mb-3">
                                                 <label for="" class="form-label">เวลามาโรงเรียน</label>
@@ -82,7 +82,7 @@
                                 {{-- เวลากลับบ้าน --}}
                                 <div class="col">
                                     {{-- @dd(empty($check_student[0]->c_out))  --}}
-                                    @if ($timenow >= '15.00' && $timenow <= '18.00')
+                                    @if ($timenow >= $setTime->time_out_start && $timenow <= $setTime->time_out_end)
                                         @if (empty($check_student[0]->c_out))
                                             <div class="mb-3">
                                                 <label for="" class="form-label">เวลากลับบ้าน</label>

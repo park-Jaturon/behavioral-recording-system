@@ -7,11 +7,11 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row justify-content-start align-items-center g-2">
-                            <div class="col">
-                                <a class="btn btn-light" href="{{ route('post.descendant') }}" role="button"><i
-                                        class="bi bi-chevron-left"></i></a>
+                            <div class="col-md-4">
+                                <a class="btn btn-info" href="{{ route('post.descendant') }}" role="button"><i
+                                        class="bi bi-chevron-left"></i>กลับ</a>
                             </div>
-                            <div class="col">
+                            <div class="col-md-4 text-center">
                                 {{ __('ประกาศ') }}
                             </div>
                         </div>
@@ -19,7 +19,7 @@
 
                     <div class="card-body">
                         @foreach ($showpost as $row)
-                            @if ($row->status == 'shown')
+                            @if ($row->status == 'show')
                                 <div class="card mb-3">
                                     <div class="card-header">
                                         {{ $row->p_topic }}

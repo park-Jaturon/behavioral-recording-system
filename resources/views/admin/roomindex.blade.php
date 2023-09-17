@@ -3,14 +3,14 @@
 @section('content')
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-auto align-self-start">
-                <a class="btn btn-light" href="{{ route('admindashboard') }}" role="button"><i
-                    class="bi bi-chevron-left"></i></a>
+            <div class="col-md-4 text-start">
+                <a class="btn btn-info" href="{{ route('admindashboard') }}" role="button"><i
+                    class="bi bi-chevron-left"></i>กลับ</a>
               </div>
-              <div class="col-md-auto align-self-start">
+              <div class="col-md-4 text-center">
                 <h3>ห้องเรียน</h3>
               </div>
-              <div class="col align-self-end">
+              <div class="col-md-4 text-end">
                 <a href="{{ route('add.room') }}" class=" btn btn-primary float-end">เพิ่ม</a>
               </div>
           </div>

@@ -2,11 +2,14 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div>
-                <a class="btn btn-light" href="{{ route('descendant.behaviors') }}" role="button"><i
-                    class="bi bi-chevron-left"></i></a>
+        <div class="row justify-content-start align-items-center g-2 mb-2">
+            <div class="col">
+                <a class="btn btn-info" href="{{ route('descendant.behaviors') }}" role="button"><i
+                        class="bi bi-chevron-left"></i>กลับ</a>
             </div>
+
+        </div>
+        <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">

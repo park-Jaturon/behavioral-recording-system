@@ -5,13 +5,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header text-center">
-                        <div class="row justify-content-start align-items-center g-2">
-                            <div class="col-auto">
-                                <a class="btn btn-light" href="{{ route('teacher.dashboard') }}" role="button"><i
-                                        class="bi bi-chevron-left"></i></a>
+                    <div class="card-header">
+                        <div class="row align-items-center g-2">
+                            <div class="col-md-4  text-start">
+                                <a class="btn btn-info" href="{{ route('teacher.dashboard') }}" role="button"><i
+                                        class="bi bi-chevron-left"></i>กลับ</a>
                             </div>
-                            <div class="col-auto">
+                            <div class="col-md-4 text-center">
                                 @php
                                     if (count($users) > 0) {
                                         echo $users[0]->room_name;

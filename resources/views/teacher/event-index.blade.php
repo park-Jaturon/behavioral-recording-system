@@ -46,12 +46,12 @@
     {{--  --}}
     <div class="container">
         <div class="row justify-content-start align-items-center g-2">
-            <div class="col-auto">
-                <a class="btn btn-light" href="{{ route('teacher.dashboard') }}" role="button"><i
-                        class="bi bi-chevron-left"></i></a>
+            <div class="col-4">
+                <a class="btn btn-info" href="{{ route('teacher.dashboard') }}" role="button"><i
+                        class="bi bi-chevron-left"></i>กลับ</a>
             </div>
-            <div class="col-auto">
-                <h1>ตารางเรียน</h1>
+            <div class="col-4 text-center">
+                <h1>ปฏิทินกิจกรรม</h1>
             </div>
         </div>
         <div class="row justify-content-center align-items-center g-2">

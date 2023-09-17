@@ -13,8 +13,8 @@
         <div class="row justify-content-center align-items-center g-2 mb-2">
             {{-- @dd(isset($dataphysicallysemester1)) --}}
             <div class="col">
-                <a class="btn btn-light" href="{{ route('record.appraisal') }}" role="button"><i
-                    class="bi bi-chevron-left"></i></a>
+                <a class="btn btn-info" href="{{ route('record.appraisal') }}" role="button"><i
+                    class="bi bi-chevron-left"></i>กลับ</a>
             </div>
             <div class="col-auto">
                 @if (isset($datasemester1) && isset($datasemester2))
@@ -32,9 +32,7 @@
             </div>
             <div class="col-2">
                 <select class="form-select" aria-label="Default select example" onchange="selectLevel(value)">
-                    {{--  id="selectLevel" --}}
                     <option class="text-center" selected disabled>---ระดับชั้น---</option>
-                    {{-- <option class="text-center" value="1">อบ1</option> --}}
                     <option selected class="text-center" value="2">อบ2</option>
                     <option class="text-center" value="3">อบ3</option>
                 </select>

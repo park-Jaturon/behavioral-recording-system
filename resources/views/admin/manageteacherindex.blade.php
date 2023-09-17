@@ -2,16 +2,18 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-auto">
-                <a class="btn btn-light" href="{{ route('admindashboard') }}" role="button"><i class="bi bi-chevron-left"></i></a>
+        <div class="row justify-content-start align-items-center g-2">
+            <div class="col-md-4">
+                <a class="btn btn-info" href="{{ route('admindashboard') }}" role="button"><i class="bi bi-chevron-left"></i>กลับ</a>
             </div>
-            <div class="col-md-auto">
+            <div class="col-md-4 text-center">
                 <h3>ครู</h3>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <a href="{{ route('add.teacher') }}" class=" btn btn-primary float-end">เพิ่ม</a>
             </div>
+        </div>
+        <div class="row justify-content-center">
             <div class="table-responsive my-3">
                 <table id="tbTeacher" class="table table-striped">
                     <thead>

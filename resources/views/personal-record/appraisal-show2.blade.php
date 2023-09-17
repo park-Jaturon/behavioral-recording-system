@@ -12,8 +12,8 @@
     <div class="container">
         <div class="row justify-content-center align-items-center g-2 mb-2">
             <div class="col">
-                <a class="btn btn-light" href="{{ route('record.appraisal') }}" role="button"><i
-                    class="bi bi-chevron-left"></i></a>
+                <a class="btn btn-info" href="{{ route('record.appraisal') }}" role="button"><i
+                    class="bi bi-chevron-left"></i>กลับ</a>
             </div>
             <div class="col-auto">
                 @if (isset($datasemester1) && isset($datasemester2))
