@@ -36,7 +36,10 @@ class Student extends Model
         'school_year',
     ];
 
-    public function images(){
-        return $this->hasMany(Behavior::class,'student_id','student_id');
+    public function parent(){
+        return $this->belongsTo(Parents::class,'parents_id');
+    }
+    public function room(){
+        return $this->belongsTo(Room::class, 'rooms_id');
     }
 }

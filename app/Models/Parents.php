@@ -21,4 +21,7 @@ class Parents extends Model
        'relationship',
        'job',
     ];
+    public function students(){
+        return $this->hasMany(Student::class,'parents_id');
+    }
 }

@@ -14,12 +14,14 @@ class ManagestudentController extends Controller
 {
     public function managestudentindex()
     {
-        $student = DB::table('students')
-            ->join('rooms', 'students.rooms_id', '=', 'rooms.rooms_id')
-            ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name',)
-            ->get();
-        //dd( $student);
-        return view('admin.managestudentindex', compact('student'));
+        // $student = DB::table('students')
+        //     ->join('rooms', 'students.rooms_id', '=', 'rooms.rooms_id')
+        //     ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name',)
+        //     ->get();
+            $student = Student::with(['parent'],['room'])->get();
+            // Debugbar::info($student->room->room_name);
+
+        return view('admin.managestudentindex', compact('student'));//,'parent'
     }
 
     public function esitstudent($student_id)

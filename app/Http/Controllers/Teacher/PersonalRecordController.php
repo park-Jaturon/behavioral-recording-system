@@ -214,7 +214,8 @@ class PersonalRecordController extends Controller
                 'appraisalsemester2social',
                 'appraisalsemester2intellectual',
                 'datasemester1',
-                'datasemester2'
+                'datasemester2',
+                'student'
             )
         );
     }
@@ -377,7 +378,8 @@ class PersonalRecordController extends Controller
                 'appraisalsemester2intellectual',
                 'datasemester1',
                 'datasemester2',
-                'student_id'
+                'student_id',
+                'student'
             )
         );
     }

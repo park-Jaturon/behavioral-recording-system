@@ -6,11 +6,10 @@
             <div class="col-md-8">
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong> {{$error}}</strong> 
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-                   
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong> {{ $error }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                     @endforeach
                 @endif
                 <div class="card">
@@ -21,12 +20,12 @@
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('IDName') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('IDName') }}</label>
 
                                 <div class="col-md-6">
-                                    <input  type="text" name="name" 
-                                        class="form-control "   {{--@error('name') is-invalid @enderror --}}
-                                         value="{{ old('name') }}"  >{{--autofocus --}}
+                                    <input type="text" name="name" class="form-control " {{-- @error('name') is-invalid @enderror --}}
+                                        value="{{ old('name') }}">{{-- autofocus --}}
 
                                     {{-- @error('name') required autocomplete="name"
                                         <span class="invalid-feedback" role="alert">
@@ -42,8 +41,8 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password" {{--@error('password') is-invalid @enderror --}}
-                                        required autocomplete="new-password">
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        {{-- @error('password') is-invalid @enderror --}} required autocomplete="new-password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -83,9 +82,20 @@
                                     <select class="form-select  " name="rankid" aria-label="Default select example">
                                         <option selected value="0" disabled>ชื่อ - นามสกุล</option>
                                         @foreach ($datateachers as $datateacher)
-                                            <option value="{{ $datateacher->teachers_id }}">
-                                                {{ $datateacher->prefix_name . $datateacher->first_name . ' ' . $datateacher->last_name }}
-                                            </option>
+                                            @php
+                                                $shouldDisplayOptionTeacher = true;
+                                                foreach ($userteachers as $userteacher) {
+                                                    if ($datateacher->teachers_id == $userteacher->teachers_id) {
+                                                        $shouldDisplayOptionTeacher = false;
+                                                        break;
+                                                    }
+                                                }
+                                            @endphp
+                                            @if ($shouldDisplayOptionTeacher)
+                                                <option value="{{ $datateacher->teachers_id }}">
+                                                    {{ $datateacher->prefix_name . $datateacher->first_name . ' ' . $datateacher->last_name }}
+                                                </option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -95,14 +105,25 @@
                                     <select class="form-select  " name="rankid" aria-label="Default select example">
                                         <option selected value="0" disabled>ชื่อ - นามสกุล</option>
                                         @foreach ($dataparents as $dataparent)
-                                            <option value="{{ $dataparent->parents_id }}">
-                                                {{ $dataparent->prefix_name . $dataparent->first_name . ' ' . $dataparent->last_name }}
-                                            </option>
+                                            @php
+                                                $shouldDisplayOptionParents = true;
+                                                foreach ($userparents as $userparent) {
+                                                    if ($dataparent->parents_id == $userparent->parents_id) {
+                                                        $shouldDisplayOptionParents = false;
+                                                        break;
+                                                    }
+                                                }
+                                            @endphp
+                                            @if ($shouldDisplayOptionParents)
+                                                <option value="{{ $dataparent->parents_id }}">
+                                                    {{ $dataparent->prefix_name . $dataparent->first_name . ' ' . $dataparent->last_name }}
+                                                </option>
+                                            @endif
                                         @endforeach
-                                    </select> 
+                                    </select>
                                 </div>
                             </div>
-                            
+
                             <div class="row justify-content-end align-items-center g-2">
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary float-end">
@@ -110,7 +131,8 @@
                                     </button>
                                 </div>
                                 <div class="col-auto">
-                                    <a name="" id="" class="btn btn-danger" href="{{route('index.user')}}" role="button"> ยกเลิก</a>
+                                    <a name="" id="" class="btn btn-danger"
+                                        href="{{ route('index.user') }}" role="button"> ยกเลิก</a>
                                 </div>
                             </div>
                         </form>

@@ -50,7 +50,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ url('teacher/post/edit/' . $row->posts_id) }}"
-                                        class="btn btn-primary">แก้ไข</a>
+                                        class="btn btn-warning">แก้ไข</a>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger delete-item "

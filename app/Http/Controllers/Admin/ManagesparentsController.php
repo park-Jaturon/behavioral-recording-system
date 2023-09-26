@@ -4,13 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Parents;
+use App\Models\Student;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 
 class ManagesparentsController extends Controller
 {
     public function manageparentsindex()
     {
-        $parent = Parents::all();
+        $parent = Parents::with('students')->get();
+        // Debugbar::info($parent);
+        // dd( $parent);
         return view('admin.manageparentsindex',compact('parent'));
     }
 

@@ -15,7 +15,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('parent.parent-home');
+        $students = DB::table('students')
+            ->where('parents_id', '=', Auth::user()->rank_id)
+            ->join('rooms', 'students.rooms_id', '=', 'rooms.rooms_id')
+            ->get();
+            Debugbar::info($students);
+        return view('parent.parent-home',compact('students'));
     }
 
     public function  descendant_show()
@@ -25,7 +30,7 @@ class HomeController extends Controller
             ->join('rooms', 'students.rooms_id', '=', 'rooms.rooms_id')
             ->get();
         // dd( $students);
-        return view('parent.pedigree', compact('students'));
+        return view('parent.pedigree',compact('students'));
     }
 
     public function descendant_time()
@@ -39,12 +44,15 @@ class HomeController extends Controller
 
     public function time_show($student_id)
     {
+        $students = DB::table('students')
+            ->where('student_id', '=', $student_id)
+            ->first();
         $check_student = DB::table('students')
             ->join('timecards', 'students.student_id', '=', 'timecards.student_id')
             ->where('timecards.student_id', '=', $student_id)
             ->get();
-        // dd( $check_student);
-        return view('parent.show-time-descendant', compact('check_student'));
+            Debugbar::info($students);
+        return view('parent.show-time-descendant', compact('check_student','students'));
     }
 
     public function descendant_post()
@@ -59,12 +67,16 @@ class HomeController extends Controller
 
     public function post_show($rooms_id)
     {
+        $rooms = DB::table('rooms')
+            ->where('rooms_id', '=', $rooms_id)
+            ->first();
+
         $showpost = DB::table('posts')
             ->where('rooms_id', '=', $rooms_id)
             ->orderBy('posts.created_at', 'desc')
             ->get();
-        Debugbar::info($showpost);
-        return view('parent.show-post', compact('showpost'));
+        Debugbar::info($showpost,$rooms);
+        return view('parent.show-post', compact('showpost','rooms'));
     }
 
     public function descendant_events()
@@ -78,6 +90,10 @@ class HomeController extends Controller
 
     public function events_show($rooms_id)
     {
+        $rooms = DB::table('rooms')
+            ->where('rooms_id', '=', $rooms_id)
+            ->first();
+
         $events = array();
         $bookings = Events::where('rooms_id', '=', $rooms_id)
             ->get();
@@ -92,7 +108,7 @@ class HomeController extends Controller
             ];
         }
 
-        return view('parent.show-events', ['events' => $events]);
+        return view('parent.show-events', ['events' => $events],compact('rooms'));
     }
 
     public function descendant_behaviors()
@@ -108,7 +124,10 @@ class HomeController extends Controller
     public function behavior_show($student_id)
     {
         $student = Student::find($student_id);
-
+        Debugbar::info($student);
+        $rooms = DB::table('rooms')
+            ->where('rooms_id', '=', $student->rooms_id)
+            ->first();
         $datasemester1 = DB::table('physically')
             ->where('student_id', '=', $student_id)
             ->where('semester', 'LIKE', "%ภาคเรียน1%")
@@ -219,7 +238,8 @@ class HomeController extends Controller
                 'appraisalsemester1social',
                 'appraisalsemester2social',
                 'appraisalsemester1intellectual',
-                'appraisalsemester2intellectual'
+                'appraisalsemester2intellectual',
+                'student','rooms'
             )
         );
     }

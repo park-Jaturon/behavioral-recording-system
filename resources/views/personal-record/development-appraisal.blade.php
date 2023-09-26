@@ -9,13 +9,13 @@
                         <div class="row justify-content-start align-items-center g-2">
                             <div class="col-md-4 text-start">
                                 <a class="btn btn-info" href="{{ route('teacher.dashboard') }}" role="button"><i
-                                    class="bi bi-chevron-left"></i>กลับ</a>
+                                        class="bi bi-chevron-left"></i>กลับ</a>
                             </div>
                             <div class="col-md-4 text-center">
                                 {{ __('แบบประเมินพัฒนาการ ') }}
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -30,7 +30,8 @@
                                     <th scope="col" class=" text-center">เลขที่</th>
                                     <th scope="col" class=" text-center">ชื่อ - นามสกุล</th>
                                     <th scope="col" class=" text-center">ห้อง</th>
-                                    <th scope="col" class=" text-center">แบบประเมินพัฒนาการ</th>
+                                    <th scope="col" class=" text-center">บันทึกแบบประเมินพัฒนาการ</th>
+                                    <th scope="col" class=" text-center">ดูแบบประเมินพัฒนาการ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,27 +39,28 @@
                                     <tr>
                                         <th scope="row" class=" text-center">{{ $data->number }}</th>
                                         <td>
-                                            @if ($data->level == 'อบ2')
-                                                <a href="{{ url('teacher/record/appraisal/add/' . $data->student_id) }}"
-                                                    style="text-decoration: none;">
-                                                    {{ $data->prefix_name . $data->first_name . ' ' . $data->last_name }}
-                                                </a>
-                                            @else
-                                                <a href="{{ url('teacher/record/appraisal/add2/' . $data->student_id) }}"
-                                                    style="text-decoration: none;">
-                                                    {{ $data->prefix_name . $data->first_name . ' ' . $data->last_name }}
-                                                </a>
-                                            @endif
-
+                                            {{ $data->prefix_name . $data->first_name . ' ' . $data->last_name }}
                                         </td>
                                         <td class=" text-center">{{ $data->room_name }}</td>
                                         <td class=" text-center">
                                             @if ($data->level == 'อบ2')
-                                                <a class="btn btn-primary"
-                                                    href="{{ url('teacher/record/appraisal/show/' . $data->student_id) }}" role="button">ดูบันทึก</a>
-                                                    
+                                                <a class="btn btn-success"
+                                                    href="{{ url('teacher/record/appraisal/add/' . $data->student_id) }}"
+                                                    role="button"><i class="bi bi-clipboard-plus"></i></a>
                                             @else
-                                                <a class="btn btn-primary" href="{{ url('teacher/record/appraisal/show2/' . $data->student_id) }}" role="button">ดูบันทึก</a>
+                                                <a class="btn btn-success"
+                                                    href="{{ url('teacher/record/appraisal/add2/' . $data->student_id) }}"
+                                                    role="button"><i class="bi bi-clipboard-plus"></i></a>
+                                            @endif
+                                        <td class=" text-center">
+                                            @if ($data->level == 'อบ2')
+                                                <a class="btn btn-primary"
+                                                    href="{{ url('teacher/record/appraisal/show/' . $data->student_id) }}"
+                                                    role="button"><i class="bi bi-eye"></i></a>
+                                            @else
+                                                <a class="btn btn-primary"
+                                                    href="{{ url('teacher/record/appraisal/show2/' . $data->student_id) }}"
+                                                    role="button"><i class="bi bi-eye"></i></a>
                                             @endif
 
                                         </td>

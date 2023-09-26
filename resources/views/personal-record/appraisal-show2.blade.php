@@ -11,11 +11,14 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center align-items-center g-2 mb-2">
-            <div class="col">
+            <div class="col-md-4">
                 <a class="btn btn-info" href="{{ route('record.appraisal') }}" role="button"><i
                     class="bi bi-chevron-left"></i>กลับ</a>
             </div>
-            <div class="col-auto">
+            <div class="col-md-4">
+                {{ $student->prefix_name . $student->first_name . ' ' . $student->last_name }}
+            </div>
+            <div class="col-md-2">
                 @if (isset($datasemester1) && isset($datasemester2))
                     <a name="" id="" class="btn btn-primary" href="{{ url('teacher/pdf2/' . $student_id) }}"
                         role="button"><i class="bi bi-file-earmark-pdf"></i>ดู</a>
@@ -29,7 +32,7 @@
                             class="bi bi-file-earmark-pdf"></i> ดาวน์โหลด</a>
                 @endif
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
                 <select class="form-select" aria-label="Default select example" onchange="selectLevel(value)">
                     {{--  id="selectLevel" --}}
                     <option class="text-center" selected disabled>---ระดับชั้น---</option>

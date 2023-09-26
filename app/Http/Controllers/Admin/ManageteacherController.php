@@ -87,7 +87,7 @@ class ManageteacherController extends Controller
             'lastname' => 'required|string|min:3|regex:/^[ก-๙]+$/u',
             'rankteacher' => 'required|string',
             'imageteacher' => 'nullable|mimes:jpeg,jpg,png',
-            'room' => 'required',
+            // 'room' => 'required',
         ],
         [
             'prefix.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
@@ -99,7 +99,7 @@ class ManageteacherController extends Controller
             'lastname.min' => 'นามสกุลไม่ถูกต้อง',
             'rankteacher.required' => 'กรุณาเลือกตำแหน่ง',
             'imageteacher.required' => 'กรุณาใส่รูป',
-            'room.required' => 'กรุณาเลือกห้องเรียน',
+            // 'room.required' => 'กรุณาเลือกห้องเรียน',
         ]);
 
         $teachers = Teacher::findOrFail($teachers_id);
@@ -120,7 +120,7 @@ class ManageteacherController extends Controller
             $file->move('uploads/teacher/', $filename);
             $teachers->teacher_image = $filename;
         }
-        $teachers->rooms_id = $request->room;
+        // $teachers->rooms_id = $request->room;
         $teachers->save();
 
         return redirect()->back()->with('success', 'แก้ไขข้อมูลเสร็จสิ้น');

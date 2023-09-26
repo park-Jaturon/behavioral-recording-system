@@ -7,6 +7,7 @@ use App\Models\User;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -29,6 +30,8 @@ class UserController extends Controller
                     ->where('users.rank', '=', 'parent');
             })
             ->get();
+
+        session(['userteachers' => $userteachers, 'userparents' => $userparents]);
         return view('admin.user-index', compact('userteachers', 'userparents'));
     }
 
@@ -72,7 +75,7 @@ class UserController extends Controller
         return redirect(route('index.user'))->with('successupdateuser', 'แก้ไขข้อมูลเสร็จสิ้น');
     }
 
-   
+
 
     public function delete($id)
     {
@@ -82,16 +85,16 @@ class UserController extends Controller
     public function admin()
     {
         $IDAdmin = DB::table('users')
-        ->where('rank', '=', 'admin')
-        ->get();
-        Debugbar::info( $IDAdmin);
-        return view('admin.manageadmin',compact('IDAdmin'));
+            ->where('rank', '=', 'admin')
+            ->get();
+        Debugbar::info(Auth::user()->users_id);
+        return view('admin.manageadmin', compact('IDAdmin'));
     }
 
     public function register_admin()
     {
         $dataAdmin = new User();
-        return view('admin.admin-add',compact('dataAdmin'));
+        return view('admin.admin-add', compact('dataAdmin'));
     }
 
     public function store_admin(Request $request)
@@ -99,11 +102,11 @@ class UserController extends Controller
         // dd($request);
 
         $request->validate([
-            'name' => ['required', 'string','min:3', 'max:255'],
+            'name' => ['required', 'string', 'min:3', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ],[
+        ], [
             'name.required' => 'โปรดระบุ IDName',
-            'name.min' => 'ข้อมูลไม่ถูกต้อง IDName ต้องมีอย่างน้อย 3 ตัว', 
+            'name.min' => 'ข้อมูลไม่ถูกต้อง IDName ต้องมีอย่างน้อย 3 ตัว',
             'password.min' => 'ข้อมูลไม่ถูกต้อง password ต้องมีอย่างน้อย 9 ตัว',
             'password.confirmed' => 'รหัสผ่านไม่ตรงกัน',
         ]);
@@ -112,10 +115,10 @@ class UserController extends Controller
             'users_name' => $request['name'],
             'password' => Hash::make($request['password']),
             'rank' => 'admin',
-            
+
         ]);
 
-        return redirect()->route('index.admin')->with('success','บันทึกข้อมูลเสร็จสิ้น');
+        return redirect()->route('index.admin')->with('success', 'บันทึกข้อมูลเสร็จสิ้น');
     }
 
     // public function edit_admin($users_id)
@@ -125,25 +128,25 @@ class UserController extends Controller
     //     return view('admin.admin-edit',compact('dataAdmin'));
     // }
 
-    public function update_admin(Request $request,$users_id)
+    public function update_admin(Request $request, $users_id)
     {
         $request->validate([
-            'name' => ['required', 'string','min:3', 'max:255'],
+            'name' => ['required', 'string', 'min:3', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ],[
+        ], [
             'name.required' => 'โปรดระบุ IDName',
-            'name.min' => 'ข้อมูลไม่ถูกต้อง IDName ต้องมีอย่างน้อย 3 ตัว', 
+            'name.min' => 'ข้อมูลไม่ถูกต้อง IDName ต้องมีอย่างน้อย 3 ตัว',
             'password.min' => 'ข้อมูลไม่ถูกต้อง password ต้องมีอย่างน้อย 9 ตัว',
             'password.confirmed' => 'รหัสผ่านไม่ตรงกัน',
         ]);
 
         User::where('users_id', $users_id)
-      ->update([
-        'users_name' => $request['name'],
-        'password' => Hash::make($request['password']),
+            ->update([
+                'users_name' => $request['name'],
+                'password' => Hash::make($request['password']),
 
-    ]);
-    return redirect()->route('index.admin')->with('success','แก้ไขข้อมูลเสร็จสิ้น');
+            ]);
+        return redirect()->route('index.admin')->with('success', 'แก้ไขข้อมูลเสร็จสิ้น');
     }
 
     public function inspectAdmin(Request $request)
@@ -151,22 +154,23 @@ class UserController extends Controller
         $dataAdmin = User::findOrFail($request->admin);
 
         $count = User::where('rank', $dataAdmin->rank)->count();
-         if($count > 1){
-            return response()->json('1');  
-         }else{
-            return response()->json('0'); 
-         }
+        if ($count > 1) {
+            return response()->json(true);
+        } else {
+            return response()->json('0');
+        }
     }
 
     public function destroy_admin($id)
     {
         $admin = User::findOrFail($id);
-        $countAdmin = User::where('rank',$admin->rank)->count();
-        if($countAdmin > 1){
+        // $countAdmin = User::where('rank', $admin->rank)->count();
+        if ($admin->users_id != Auth::user()->users_id) {
             User::destroy($id);
-        }else{
-            //
+            return response()->json('true');
+        } else {
+            return response()->json('false');
         }
-        // Debugbar::info( $countAdmin);
+        // Debugbar::info($admin);
     }
 }

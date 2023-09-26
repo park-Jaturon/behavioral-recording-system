@@ -16,6 +16,10 @@ class Room extends Model
      */
     protected $fillable = [
         'room_name',
-        
     ];
+
+    public function student(){
+        return $this->hasMany(Student::class, 'rooms_id');
+    }
+    
 }

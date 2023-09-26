@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-md-4">
-                                <a class="btn btn-info" href="{{ route('activity.descendant') }}" role="button"><i
+                                <a class="btn btn-info" href="{{ route('home.parent') }}" role="button"><i
                                         class="bi bi-chevron-left"></i>กลับ</a>
                             </div>
                             <div class="col-md-4 text-center">

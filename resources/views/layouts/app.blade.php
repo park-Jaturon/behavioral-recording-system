@@ -144,6 +144,10 @@
                                         <a class="nav-link" href="{{ route('index.managestudent') }}">นักเรียน</a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link"
+                                            href="{{ route('admin.updateSetTime') }}">ตั้งค่าเวลามาเรียน/กลับบ้าน</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link" href="{{ route('index.user') }}">ผู้ใช้งาน</a>
                                     </li>
                                     <li class="nav-item">
@@ -199,24 +203,6 @@
                                         </li>
                                     @endif
                                     <li>
-
-                                        {{-- <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            บันทึกรายงาน
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-menu-dark">
-                                            <li><a class="dropdown-item"
-                                                    href="{{ route('record.weight-height') }}">บันทึกน้ำหนัก - ส่วนสูง</a>
-                                            </li>
-                                            <li><a class="dropdown-item"
-                                                    href="{{ route('record.appraisal') }}">แบบประเมินพัฒนาการ</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </li> --}}
                                 </ul>
                             @endif
                             {{-- Parent --}}
@@ -226,7 +212,7 @@
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('home.parent') }}">Dashboard</a>
                                     </li>
-                                    <li class="nav-item ">
+                                    {{-- <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('show.descendant') }}">ห้องเรียน</a>
                                     </li>
                                     <li class="nav-item ">
@@ -243,27 +229,7 @@
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="{{ route('descendant.behaviors') }}">รายงานพฤติกรรม</a>
-                                    </li>
-
-
-
-                                    {{-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        บันทึกรายงาน
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item"
-                                                href="#">บันทึกน้ำหนัก - ส่วนสูง</a>
-                                        </li>
-                                        <li><a class="dropdown-item"
-                                                href="#">แบบประเมินพัฒนาการ</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </li> --}}
+                                    </li> --}}
                                 </ul>
                             @endif
                             {{-- <form class="d-flex mt-3" role="search">

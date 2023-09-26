@@ -12,11 +12,14 @@
     <div class="container">
         <div class="row justify-content-center align-items-center g-2 mb-2">
             {{-- @dd(isset($dataphysicallysemester1)) --}}
-            <div class="col">
+            <div class="col-md-4">
                 <a class="btn btn-info" href="{{ route('record.appraisal') }}" role="button"><i
                     class="bi bi-chevron-left"></i>กลับ</a>
             </div>
-            <div class="col-auto">
+            <div class="col-md-4">
+                {{ $student->prefix_name . $student->first_name . ' ' . $student->last_name }}
+            </div>
+            <div class="col-md-2">
                 @if (isset($datasemester1) && isset($datasemester2))
                     <a name="" id="" class="btn btn-primary" href="{{ url('teacher/pdf/' . $student_id) }}"
                         role="button"><i class="bi bi-file-earmark-pdf"></i>ดู</a>
