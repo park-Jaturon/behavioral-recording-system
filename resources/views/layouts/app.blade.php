@@ -145,7 +145,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
-                                            href="{{ route('admin.updateSetTime') }}">ตั้งค่าเวลามาเรียน/กลับบ้าน</a>
+                                            href="{{ route('admin.setTime') }}">ตั้งค่าเวลามาเรียน/กลับบ้าน</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('index.user') }}">ผู้ใช้งาน</a>

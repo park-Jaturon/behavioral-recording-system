@@ -14,14 +14,33 @@ class ManagestudentController extends Controller
 {
     public function managestudentindex()
     {
-        // $student = DB::table('students')
-        //     ->join('rooms', 'students.rooms_id', '=', 'rooms.rooms_id')
-        //     ->select('students.student_id', 'students.number', 'students.prefix_name', 'students.first_name', 'students.last_name', 'rooms.room_name',)
-        //     ->get();
             $student = Student::with(['parent'],['room'])->get();
-            // Debugbar::info($student->room->room_name);
+            $studentLevel1_1 = Student::with('room', 'parent')->where('rooms_id',15)->get();
+            $studentLevel1_2 = Student::with('room', 'parent')->where('rooms_id',16)->get();
+            $studentLevel1_3 = Student::with('room', 'parent')->where('rooms_id',17)->get();
+            $studentLevel1_4 = Student::with('room', 'parent')->where('rooms_id',18)->get();
+            $studentLevel1_5 = Student::with('room', 'parent')->where('rooms_id',19)->get();
+            $studentLevel1_6 = Student::with('room', 'parent')->where('rooms_id',20)->get();
+            $studentLevel2_1 = Student::with('room', 'parent')->where('rooms_id',2)->get();
+            $studentLevel2_2 = Student::with('room', 'parent')->where('rooms_id',5)->get();
+            $studentLevel2_3 = Student::with('room', 'parent')->where('rooms_id', 1)->get();
+            $studentLevel2_4 = Student::with('room', 'parent')->where('rooms_id',6)->get();
+            $studentLevel2_5 = Student::with('room', 'parent')->where('rooms_id',7)->get();
+            $studentLevel2_6 = Student::with('room', 'parent')->where('rooms_id',8)->get();
+            $studentLevel3_1 = Student::with('room', 'parent')->where('rooms_id',9)->get();
+            $studentLevel3_2 = Student::with('room', 'parent')->where('rooms_id',10)->get();
+            $studentLevel3_3 = Student::with('room', 'parent')->where('rooms_id',11)->get();
+            $studentLevel3_4 = Student::with('room', 'parent')->where('rooms_id',12)->get();
+            $studentLevel3_5 = Student::with('room', 'parent')->where('rooms_id',13)->get();
+            $studentLevel3_6 = Student::with('room', 'parent')->where('rooms_id',14)->get();
+            Debugbar::info($student);
+            Debugbar::info($studentLevel2_3,$studentLevel3_3);
 
-        return view('admin.managestudentindex', compact('student'));//,'parent'
+        return view('admin.managestudentindex', 
+        compact('student',
+        'studentLevel1_1','studentLevel1_2','studentLevel1_3','studentLevel1_4','studentLevel1_5','studentLevel1_6',
+        'studentLevel2_1','studentLevel2_2','studentLevel2_3','studentLevel2_4','studentLevel2_5','studentLevel2_6',
+        'studentLevel3_1','studentLevel3_2','studentLevel3_3','studentLevel3_4','studentLevel3_5','studentLevel3_6'));//,'parent'
     }
 
     public function esitstudent($student_id)
@@ -131,7 +150,7 @@ class ManagestudentController extends Controller
             'level' => $level,
             'school_year' => date("Y")+543,
         ]);
-        return redirect()->back()->with('success','บันทึกข้อมูลเสร็จสิ้น');
+        return redirect(route('index.managestudent'))->with('success','บันทึกข้อมูลเสร็จสิ้น');
     }
 
     public function update(Request $request, $student_id)

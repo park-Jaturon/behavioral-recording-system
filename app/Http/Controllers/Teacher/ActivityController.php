@@ -90,6 +90,6 @@ class ActivityController extends Controller
             }
         }
 
-        return redirect(route('image.activity',['events_id'=>$events_id]))->with('success', 'บันทึกรูปกกิจกกรรมเสร็จสิ้น');
+        return redirect(route('image.activity',['events_id'=>$events_id]))->with('success', 'บันทึกรูปกกิจกรรมเสร็จสิ้น');
     }
 }

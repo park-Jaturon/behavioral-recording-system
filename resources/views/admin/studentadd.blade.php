@@ -288,7 +288,7 @@
                             </button>
                         </div>
                             <div class="col-auto">
-                                <a name="" id="" class="btn btn-danger" href="{{route('index.managestudent')}}" role="button"> ยกเลิก</a>
+                                <a name="" id="" class="btn btn-danger" href="javascript:window.history.back()" role="button"> ยกเลิก</a>{{--{{route('index.managestudent')}} --}}
                             </div>
                         </div>
                     </form>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-5">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
@@ -100,11 +100,12 @@
                             <div class="row justify-content-end align-items-center g-2">
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary">
-                                    {{ __('บันทึก') }}
-                                </button>
-                            </div>
+                                        {{ __('บันทึก') }}
+                                    </button>
+                                </div>
                                 <div class="col-auto">
-                                    <a name="" id="" class="btn btn-danger" href="{{route('index.manageparents')}}" role="button"> ยกเลิก</a>
+                                    <a name="" id="" class="btn btn-danger"
+                                        href="{{ route('index.manageparents') }}" role="button"> ยกเลิก</a>
                                 </div>
                             </div>
                         </form>
@@ -112,5 +113,99 @@
                 </div>
             </div>
         </div>
+        @isset($dataParent->parents_id)
+            <div class="row justify-content-around align-items-center g-2">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            แก้ไขนักเรียนในปกครอง
+                        </div>
+                        <div class="card-body">
+                            @foreach ($dataParent->students as $Dstuden)
+                                <div class="row justify-content-start align-items-center g-2 mb-1">
+                                    <div class="col-md-auto">
+                                        <label for="parents" class="form-label">นักเรียนในปกครอง</label>
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <input class="form-control" type="text"
+                                            placeholder="{{ $Dstuden->prefix_name . $Dstuden->first_name . ' ' . $Dstuden->last_name }}"
+                                            aria-label="Disabled input example" disabled readonly>
+                                        <input type="hidden" id="studentAll" data-id="{{ $Dstuden->student_id }}"
+                                            name="student_section[]" value="{{ $Dstuden->student_id }}" />
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <label for="parents" class="form-label">ชื่อ – นามสกุล (ผู้ปกครอง)</label>
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <select class="form-select" id="parentAll" name="parents[]"
+                                            aria-label="Default select example">
+                                            <option value="{{ $dataParent->parents_id }}" selected>
+                                                {{ old('--ผู้ปกกครอง--', $dataParent->prefix_name . $dataParent->first_name . ' ' . $dataParent->last_name) }}
+                                            </option>
+                                            @foreach ($parent as $parents)
+                                                <option value="{{ $parents->parents_id }}">
+                                                    {{ $parents->prefix_name }}{{ $parents->first_name }}
+                                                    {{ $parents->last_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('parents')
+                                            <small id="helpId" class="text-muted">
+                                                <span role="alert" class="text-danger">
+                                                    <strong> {{ $message }}</strong>
+                                                </span>
+                                            </small>
+                                        @enderror
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="card-footer text-muted">
+                            <div class="row justify-content-end align-items-center g-2">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary" onclick="btnSave()">
+                                        {{ __('บันทึก') }}
+                                    </button>
+                                </div>
+                                <div class="col-auto">
+                                    <a name="" id="" class="btn btn-danger"
+                                        href="{{ route('index.manageparents') }}" role="button"> ยกเลิก</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endisset
     </div>
+@endsection
+@section('script')
+    <script>
+        function btnSave() {
+            let studentAll = document.querySelectorAll('#studentAll');
+            let parentAll = document.querySelectorAll('#parentAll');
+
+            let param = [];
+
+            studentAll.forEach((studentElement, index) => {
+                let student_id = studentElement.getAttribute('data-id');
+                let parentElement = parentAll[index];
+                let parent_id = parentElement.value;
+
+                // สร้างออบเจ็กต์ที่มี student_id และ parent_id แล้วเพิ่มเข้าในอาเรย์ param
+                param.push({
+                    student_id: student_id,
+                    parent_id: parent_id
+                });
+            });
+
+            // param ตอนนี้จะเก็บข้อมูล student_id กับ parent_id แต่ละคู่
+            console.log(param);
+            axios.post('/api/parentedit', param).then((response) => {
+                console.log(response);
+                if (response.data.status == 'success') {
+                    location.href = "/admin/manage/parents";
+                }
+            })
+        }
+    </script>
 @endsection

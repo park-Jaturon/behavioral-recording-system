@@ -145,7 +145,7 @@
                     $('#eend').flatpickr({
                         enableTime: true,
                         dateFormat: "Y-m-d H:i",
-                        defaultDate: moment(end).format('YYYY-MM-DD h:mm'),
+                        defaultDate: moment(start).format('YYYY-MM-DD h:mm'),
                         locale: {
                             firstDayOfWeek: 1,
                             rangeSeparator: " ถึง ",

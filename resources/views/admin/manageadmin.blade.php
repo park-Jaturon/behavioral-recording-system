@@ -34,7 +34,9 @@
                         <tbody>
                             @foreach ($IDAdmin as $ID)
                                 <tr class="">
-                                    <td scope="row" class=" text-center">{{ $ID->users_name }}</td>
+                                    <td scope="row" class=" text-center">
+                                        {{ $ID->users_name }}
+                                    </td>
                                     <td>
                                         <button type="button" class="btn btn-danger delete-item"
                                             data-admin_id="{{ $ID->users_id }}">ลบ</button>

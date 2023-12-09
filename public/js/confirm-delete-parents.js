@@ -19,9 +19,17 @@ document.querySelector('#tbParent').addEventListener('click', (e) => {
                     );
                     setTimeout(() => {
                         window.location.href = $url + '/admin/manage/parents';
-                    }, 2000);
+                    });
+                }).catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'ผิดพลาด',
+                        text: 'ไม่สามารถลบผู้ปกครองคนนี้ได้เนื่องจากยังมีนักเรียนในปกครอง',
+                        // footer: '<a href="">Why do I have this issue?</a>'
+                    })
                 });
             }
         });
+        
     }
 });
